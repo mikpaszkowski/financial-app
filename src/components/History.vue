@@ -15,13 +15,14 @@ export default {
 <style lang="scss">
 
 #history-origin{
-    position: absolute;
+    position: relative;
     width: 700px;
     height: 600px;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-left: 10%;
+    margin-left: auto;
+    margin-right: auto;
     background-color: rgba(238, 238, 238, 0.685);
      transition: 1s ease-in-out;
 }

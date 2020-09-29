@@ -59,9 +59,11 @@ body {
 }
 
 .background-image {
-  position: fixed;
+  position: rel;
   width: 100%;
   height: 101%;
+  margin-right: auto;
+  margin-left: auto;
   background-image: linear-gradient(
       rgb(79, 175, 179),
       rgba(167, 255, 233, 0.479)

@@ -2,7 +2,7 @@
   <div id="transfer-origin">
        <modal-validation :occuredErrors="errors" :modalOn="isModalOn"></modal-validation>
     <div class="transfer-forms" id="wholewindow">
-      <form class="form" id="form" @submit="checkForm">
+      <form class="form" id="form">
          
         <ul class="list">
           <li class="transtype">
@@ -67,7 +67,7 @@
         <div id="errors" v-if="errors.length">
         </div>
         <div class="buttons">
-          <button class="btn1" type="submit" ref="submitButton">Perform</button>
+          <button class="btn1" type="submit" ref="submitButton" @click="checkForm">Perform</button>
           <button type="reset" class="btn2">Clear</button>
         </div>
       </form>
@@ -125,7 +125,13 @@ export default {
       isModalOn: false,
     };
   },
+  created() {
+    this.$root.$on('modalValClosed', this.closeModal);
+  },
   methods: {
+    closeModal: function(){
+      this.isModalOn = false;
+    },
     checkForm: function (e) {
       this.errors = [];
 
@@ -149,6 +155,7 @@ export default {
       }
     
       if (!this.errors.length) {
+        alert("errors : " + errors.length);
           return true;
       }else{
           this.isModalOn = true;

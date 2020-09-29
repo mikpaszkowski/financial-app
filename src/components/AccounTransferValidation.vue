@@ -1,7 +1,7 @@
 <template>
   <transition name="validation">
-    <div class="val-background" v-show="modalOn">
-      <div id="val-window">
+    <div class="val-background" v-if="modalOn">
+      <div id="val-window" v-if="modalShown">
         <div id="errors">
           <h1>Please correct the following error/s:</h1>
           <ul>
@@ -18,10 +18,15 @@
 
 <script>
 export default {
+  data() {
+    return {
+      modalShown: true,
+    }
+  },
   props: ["occuredErrors", "modalOn"],
   methods: {
     clickedOk: function () {
-      this.modalOn = false;
+      this.$root.$emit('modalValClosed');
     },
   },
 };
