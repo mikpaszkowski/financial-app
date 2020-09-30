@@ -25,13 +25,8 @@
             <div class="button-box">
               <div id="btn"></div>
               <div class="upper-buttons">
-<<<<<<< HEAD
-                <button type="button" class="toggle-btn-left" id="btn1">Log In</button>
-                <button type="button" class="toggle-btn-right" id="btn2">Register</button>
-=======
                 <button type="button" class="toggle-btn-left" id="btn1" @click="logInEvent">Log In</button>
                 <button type="button" class="toggle-btn-right" id="btn2" @click="signInEvent">Sign in</button>
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
               </div>
             </div>
             <form id="register" class="input-group" action>
@@ -42,26 +37,13 @@
                     name="userid"
                     class="input-field"
                     placeholder="User ID"
-<<<<<<< HEAD
-                    required
-=======
                     v-model="signIn.userId"
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
                   />
                 </div>
                 <div class="passwordfield">
                   <input
                     type="text"
                     class="input-field"
-<<<<<<< HEAD
-                    name="password"
-                    placeholder="Email Address"
-                    required
-                  />
-                </div>
-                <div class="emailaddress">
-                  <input type="text" class="input-field" placeholder="Enter Password" required />
-=======
                    
                     placeholder="Email Address"
                     v-model="signIn.email"
@@ -69,7 +51,6 @@
                 </div>
                 <div class="emailaddress">
                   <input type="text" class="input-field" placeholder="Enter Password" v-model="signIn.password"/>
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
                 </div>
                 <div class="remember">
                   <input type="checkbox" class="check-box" name="checkbox" />
@@ -78,13 +59,8 @@
               </div>
 
               <div class="loginbutton">
-<<<<<<< HEAD
-                <button type="submit" class="submit-btn">
-                  <div class="s-btn">Register</div>
-=======
                 <button type="submit" class="submit-btn" @click="signin">
                   Sign in
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
                 </button>
               </div>
             </form>
@@ -103,14 +79,6 @@ import LogInPicture from "../assets/login.svg";
 import ModalForgotPassword from "./ModalForgotPassword.vue";
 
 export default {
-<<<<<<< HEAD
-  name: "login",
-  data() {
-    return {
-      modalOpen: false,
-      logIn: {
-        userId: '',
-=======
   name: "signin",
   data() {
     return {
@@ -118,7 +86,6 @@ export default {
       signIn: {
         userId: '',
         email: '',
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
         password: '',
       }
     };
@@ -131,11 +98,6 @@ export default {
         this.modalOpen = false;
         console.log("closeModal: " + this.modalOpen);
     },
-<<<<<<< HEAD
-    login: function(){
-      console.log(this.logIn);
-    }
-=======
     signin: function(){
       console.log(this.signIn);
       alert(this.signIn);
@@ -146,7 +108,6 @@ export default {
     logInEvent: function(){
       this.$root.$emit('signInEvent');
     },
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
   },
   components: {
     LogInSVG: LogInPicture,
@@ -396,11 +357,7 @@ body {
 
 #btn {
   top: 0;
-<<<<<<< HEAD
-  left: 0;
-=======
   right: 0;
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
   position: absolute;
   z-index: 1;
   width: 50%;

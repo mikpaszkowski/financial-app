@@ -1,22 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <div class="background-image"></div>
-    <div class="headlinebar" v-if="isModalsOut">
-      <router-link to="/">
-        <div class="logo">
-          <img :src="image" id="main_icon" alt="mail" />
-          <h1>Bank Account Manager</h1>
-        </div>
-      </router-link>
-      <div id="buttons">
-        <button class="login" @click="login">Log in</button>
-        <button class="signin" @click="signin">Sign in</button>
-      </div>
-    </div>
-    <modal-log-in v-show="modalLogInOpen"></modal-log-in>
-    <modal-sign-in v-show="modalSignInOpen"></modal-sign-in>
-=======
     <div :class="headlinePositionStyle">
       <div class="background-image"></div>
       <div class="headlinebar" v-if="isModalsOut">
@@ -38,7 +21,6 @@
     <transition name="fade">
       <modal-sign-in v-if="modalSignInOpen"></modal-sign-in>
     </transition>
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
   </div>
 </template>
 
@@ -53,16 +35,11 @@ export default {
     login: function () {
       this.modalLogInOpen = true;
       this.modalSignInOpen = false;
-<<<<<<< HEAD
-=======
       this.isHeadlineOut = true;
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
     },
     signin: function () {
       this.modalSignInOpen = true;
       this.modalLogInOpen = false;
-<<<<<<< HEAD
-=======
       this.isHeadlineOut = true;
     },
   },
@@ -71,7 +48,6 @@ export default {
       return {
         hideHeadline: this.isHeadlineOut,
       };
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
     },
   },
   components: {
@@ -83,18 +59,6 @@ export default {
       image: HeadlineImage,
       modalLogInOpen: false,
       modalSignInOpen: false,
-<<<<<<< HEAD
-      isModalsOut: true,
-    };
-  },
-  created() {
-    if(!this.modalLogInOpen && !this.modalSignInOpen){
-      console.log('modals closed');
-      this.isModalsOut = true;
-    }else{
-      this.isModalsOut = false;
-    }
-=======
       isHeadlineOut: false,
     };
   },
@@ -112,7 +76,6 @@ export default {
    beforeDestroy() {
     this.$root.$off("logInClose");
     this.$root.$off("singInClose");
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
   },
 };
 </script>
@@ -121,8 +84,6 @@ export default {
 <style lang="scss" scoped>
 $font-stack: Helvetica, sans-serif;
 
-<<<<<<< HEAD
-=======
 
 .hideHeadline {
   display: none;
@@ -138,7 +99,6 @@ $font-stack: Helvetica, sans-serif;
   }
 }
 
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
 body {
   margin: 0;
 }
@@ -154,11 +114,7 @@ body {
     url("../assets/signin_image.jpg");
   background-size: cover;
   background-position: center;
-<<<<<<< HEAD
-  animation: 5s ease-out both backgroundImage;
-=======
   animation: 2s ease-out both backgroundImage;
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
 }
 
 @keyframes backgroundImage {

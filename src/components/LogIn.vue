@@ -25,13 +25,8 @@
             <div class="button-box">
               <div id="btn"></div>
               <div class="upper-buttons">
-<<<<<<< HEAD
-                <button type="button" class="toggle-btn-left" id="btn1">Log In</button>
-                <button type="button" class="toggle-btn-right" id="btn2">Register</button>
-=======
                 <button type="button" class="toggle-btn-left" id="btn1" @click="logInEvent">Log In</button>
                 <button type="button" class="toggle-btn-right" id="btn2" @click="signInEvent">Sign in</button>
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
               </div>
             </div>
             <form id="login" class="input-group" action="#">
@@ -71,54 +66,11 @@
               </div>
               <div class="forgot" id="forgot" @click="openModal" v-bind:isModalOpened="modalOpen">Forgot Password?</div>
             </form>
-<<<<<<< HEAD
-
-            <form id="register" class="input-group" action>
-              <div class="inputarea">
-                <div class="userid">
-                  <input
-                    type="text"
-                    name="userid"
-                    class="input-field"
-                    placeholder="User ID"
-                    required
-                  />
-                </div>
-                <div class="passwordfield">
-                  <input
-                    type="text"
-                    class="input-field"
-                    name="password"
-                    placeholder="Email Address"
-                    required
-                  />
-                </div>
-                <div class="emailaddress">
-                  <input type="text" class="input-field" placeholder="Enter Password" required />
-                </div>
-                <div class="remember">
-                  <input type="checkbox" class="check-box" name="checkbox" />
-                  <span>remember password</span>
-                </div>
-              </div>
-
-              <div class="loginbutton">
-                <button type="submit" class="submit-btn">
-                  <div class="s-btn">Register</div>
-                </button>
-              </div>
-            </form>
-=======
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
             <div class="forgot" id="forgot" @click="openModal">Forgot Password?</div>
           </div>
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-    
-=======
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
   </div>
 </template>
 
@@ -144,13 +96,6 @@ export default {
     },
     closeModal: function(){
         this.modalOpen = false;
-<<<<<<< HEAD
-        console.log("closeModal: " + this.modalOpen);
-    },
-    login: function(){
-      console.log(this.logIn);
-    }
-=======
     },
     login: function(){
       console.log(this.logIn);
@@ -161,7 +106,6 @@ export default {
     logInEvent: function(){
       this.$root.$emit('signInEvent');
     },
->>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
   },
   components: {
     LogInSVG: LogInPicture,
