@@ -2,7 +2,11 @@
   <div id="transfer-origin">
        <modal-validation :occuredErrors="errors" :modalOn="isModalOn"></modal-validation>
     <div class="transfer-forms" id="wholewindow">
+<<<<<<< HEAD
       <form class="form" id="form" @submit="checkForm">
+=======
+      <form class="form" id="form">
+>>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
          
         <ul class="list">
           <li class="transtype">
@@ -67,7 +71,11 @@
         <div id="errors" v-if="errors.length">
         </div>
         <div class="buttons">
+<<<<<<< HEAD
           <button class="btn1" type="submit" ref="submitButton">Perform</button>
+=======
+          <button class="btn1" type="submit" ref="submitButton" @click="checkForm">Perform</button>
+>>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
           <button type="reset" class="btn2">Clear</button>
         </div>
       </form>
@@ -125,7 +133,17 @@ export default {
       isModalOn: false,
     };
   },
+<<<<<<< HEAD
   methods: {
+=======
+  created() {
+    this.$root.$on('modalValClosed', this.closeModal);
+  },
+  methods: {
+    closeModal: function(){
+      this.isModalOn = false;
+    },
+>>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
     checkForm: function (e) {
       this.errors = [];
 
@@ -149,6 +167,10 @@ export default {
       }
     
       if (!this.errors.length) {
+<<<<<<< HEAD
+=======
+        alert("errors : " + errors.length);
+>>>>>>> 2fe219bd701fa7c1573477fd5a913e9be11f4135
           return true;
       }else{
           this.isModalOn = true;
