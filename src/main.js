@@ -11,6 +11,7 @@ import AccountTransfer from './components/AccountTransfer.vue'
 import HomePage from './components/HomePage.vue'
 import Routes from './routes'
 
+
 Vue.component('app-heading', TheHeading)
 Vue.component('app-side-bar', TheSideBar)
 Vue.component('app-account-data', AccountData)
@@ -20,6 +21,7 @@ Vue.component('app-transfer', AccountTransfer)
 Vue.component('login', LogIn)
 
 Vue.use(VueRouter);
+
 
 const router = new VueRouter({
   routes: Routes,

@@ -84,7 +84,7 @@ $color: rgb(57, 201, 189);
   flex-wrap: wrap;
   justify-content: center;
   top: -250px;
-  margin-top: 0;
+  margin: 0 0 2rem 0;
   width: 100%;
   color: white;
   background-color: $color;

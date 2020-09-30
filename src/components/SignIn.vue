@@ -1,6 +1,8 @@
 <template>
   <div id="modal">
-      <modal-forgot-password v-bind:isModalOpened = "modalOpen"></modal-forgot-password>
+    <modal-forgot-password
+      v-bind:isModalOpened="modalOpen"
+    ></modal-forgot-password>
     <div class="circle-background"></div>
     <div class="background-image"></div>
     <div class="frontpage">
@@ -25,32 +27,41 @@
             <div class="button-box">
               <div id="btn"></div>
               <div class="upper-buttons">
-                <button type="button" class="toggle-btn-left" id="btn1" @click="logInEvent">Log In</button>
-                <button type="button" class="toggle-btn-right" id="btn2" @click="signInEvent">Sign in</button>
+                <button
+                  type="button"
+                  class="toggle-btn-left"
+                  id="btn1"
+                  @click="logInEvent"
+                >
+                  Log In
+                </button>
+                <button
+                  type="button"
+                  class="toggle-btn-right"
+                  id="btn2"
+                  @click="signInEvent"
+                >
+                  Sign in
+                </button>
               </div>
             </div>
             <form id="register" class="input-group" action>
               <div class="inputarea">
-                <div class="userid">
-                  <input
-                    type="text"
-                    name="userid"
-                    class="input-field"
-                    placeholder="User ID"
-                    v-model="signIn.userId"
-                  />
-                </div>
                 <div class="passwordfield">
                   <input
                     type="text"
                     class="input-field"
-                   
                     placeholder="Email Address"
                     v-model="signIn.email"
                   />
                 </div>
                 <div class="emailaddress">
-                  <input type="text" class="input-field" placeholder="Enter Password" v-model="signIn.password"/>
+                  <input
+                    type="text"
+                    class="input-field"
+                    placeholder="Enter Password"
+                    v-model="signIn.password"
+                  />
                 </div>
                 <div class="remember">
                   <input type="checkbox" class="check-box" name="checkbox" />
@@ -59,17 +70,23 @@
               </div>
 
               <div class="loginbutton">
-                <button type="submit" class="submit-btn" @click="signin">
-                  Sign in
+                <button type="submit" class="submit-btn" @click="signup">
+                  Sign up
                 </button>
               </div>
             </form>
-            <div class="forgot" id="forgot" @click="openModal" v-bind:isModalOpened="modalOpen">Forgot Password?</div>
+            <div
+              class="forgot"
+              id="forgot"
+              @click="openModal"
+              v-bind:isModalOpened="modalOpen"
+            >
+              Forgot Password?
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -84,45 +101,50 @@ export default {
     return {
       modalOpen: false,
       signIn: {
-        userId: '',
-        email: '',
-        password: '',
-      }
+        email: "",
+        password: "",
+      },
     };
   },
   methods: {
     openModal: function () {
       this.modalOpen = !this.modalOpen;
     },
-    closeModal: function(){
-        this.modalOpen = false;
-        console.log("closeModal: " + this.modalOpen);
+    closeModal: function () {
+      this.modalOpen = false;
+      console.log("closeModal: " + this.modalOpen);
     },
-    signin: function(){
-      console.log(this.signIn);
-      alert(this.signIn);
+    signup: function () {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
     },
-    signInEvent: function(){
-      this.$root.$emit('logInClose');
+    signInEvent: function () {
+      this.$root.$emit("logInClose");
     },
-    logInEvent: function(){
-      this.$root.$emit('signInEvent');
+    logInEvent: function () {
+      this.$root.$emit("signInEvent");
     },
   },
   components: {
     LogInSVG: LogInPicture,
     "modal-forgot-password": ModalForgotPassword,
   },
-  created: function(){
-      console.log("created: " + this.modalOpen);
-      this.$root.$on('modalClosed', this.closeModal);
-  }
+  created: function () {
+    console.log("created: " + this.modalOpen);
+    this.$root.$on("modalClosed", this.closeModal);
+  },
 };
 </script>
 
 
 <style lang="scss" scoped>
-
 .LogInSVG {
   display: flex;
   height: 205px;
@@ -214,16 +236,16 @@ body {
 
 .front-small-window {
   display: flex;
-  
+
   position: relative;
-  animation: .5s ease-in-out 2.5s both shadowEffect;
+  animation: 0.5s ease-in-out 2.5s both shadowEffect;
 }
 
 @keyframes shadowEffect {
-  from{
+  from {
     box-shadow: none;
-  }  
-  to{
+  }
+  to {
     box-shadow: 2px 2px 20px 0px #0d4030;
   }
 }
@@ -504,7 +526,7 @@ body {
   margin-top: 20px;
 }
 
-.forgot{
+.forgot {
   text-decoration: none;
   color: black;
 }
@@ -519,10 +541,10 @@ body {
   margin-bottom: 0;
 }
 
-.router-link{
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    letter-spacing: 1px;
+.router-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 </style>

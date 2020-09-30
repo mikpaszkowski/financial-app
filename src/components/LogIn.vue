@@ -26,7 +26,7 @@
               <div id="btn"></div>
               <div class="upper-buttons">
                 <button type="button" class="toggle-btn-left" id="btn1" @click="logInEvent">Log In</button>
-                <button type="button" class="toggle-btn-right" id="btn2" @click="signInEvent">Sign in</button>
+                <button type="button" class="toggle-btn-right" id="btn2" @click="signInEvent">Sign up</button>
               </div>
             </div>
             <form id="login" class="input-group" action="#">
@@ -99,6 +99,7 @@ export default {
     },
     login: function(){
       console.log(this.logIn);
+      this.$router.replace('home');
     },
     signInEvent: function(){
       this.$root.$emit('logInClose');

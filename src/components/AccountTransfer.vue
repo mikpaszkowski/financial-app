@@ -155,7 +155,6 @@ export default {
       }
     
       if (!this.errors.length) {
-        alert("errors : " + errors.length);
           return true;
       }else{
           this.isModalOn = true;

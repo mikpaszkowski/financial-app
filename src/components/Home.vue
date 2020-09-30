@@ -6,6 +6,11 @@
     <transition name="cards">
       <router-view></router-view>
     </transition>
+    <footer>
+      <hr id="upper">
+      <p>Some text in the footer</p>
+      <hr id="lower">
+    </footer>
   </div>
 </template>
 
@@ -71,5 +76,30 @@ body {
     url("../assets/signin_image.jpg");
   background-size: cover;
   background-position: center;
+}
+
+footer{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 15rem;
+}
+
+hr{
+  text-align: center;
+  
+  margin: 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#upper{
+  width: 80%;
+}
+
+#lower{
+  width: 99%
 }
 </style>
