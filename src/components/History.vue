@@ -36,20 +36,7 @@ export default {
 
 
 <style lang="scss">
-.fade-enter-active,
-.fade-leave-active {
-  transition: 1s ease-in-out;
-}
 
-.fade-leave-to,
-.fade.enter {
-  opacity: 0;
-}
-
-.fade-leave,
-.fade.enter-to {
-  opacity: 1;
-}
 
 .history-table {
   width: 90%;

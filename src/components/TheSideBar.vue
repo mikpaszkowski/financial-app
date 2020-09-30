@@ -67,7 +67,7 @@ export default {
 
 <style lang="scss" scoped>
 
-$color: rgb(57, 201, 189);
+$color: #00e8d5;
 
 .toolbarPosition {
   transform: rotate(90deg);

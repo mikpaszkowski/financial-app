@@ -7,9 +7,10 @@
       <router-view></router-view>
     </transition>
     <footer>
-      <hr id="upper">
+      
       <p>Some text in the footer</p>
       <hr id="lower">
+      <p>Some other text</p>
     </footer>
   </div>
 </template>
@@ -39,25 +40,15 @@ export default {
 
 <style lang="scss">
 
-
-
-.cards-enter-active{
-  transition: .3s ease-in-out;
-}
-
-.cards-leave-active{
-  transition: .2s ease-in-out;
-}
-
 .cards-leave-to, .cards-enter{
   opacity: 0;
+  transition: all .1s ease-in-out;
 }
 
 .cards-leave, .cards-enter-to{
   opacity: 1;
+  transition: all .5s ease-in-out;
 }
-
-
 
 body {
   margin: 0;
@@ -84,7 +75,9 @@ footer{
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  margin-top: 15rem;
+  margin-top: 30rem;
+  background-color: rgba(238, 238, 238, 0.671);
+  height: 20rem;
 }
 
 hr{
@@ -95,11 +88,7 @@ hr{
   margin-right: auto;
 }
 
-#upper{
-  width: 80%;
-}
-
 #lower{
-  width: 99%
+  width: 60%
 }
 </style>

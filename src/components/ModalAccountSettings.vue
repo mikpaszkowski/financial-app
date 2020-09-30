@@ -5,30 +5,30 @@
       <div class="exit2" id="exit2" @click="modalClosed">
         <ExitSVG id="ExitSVG" />
       </div>
-     <form class="edit-form" id="form1" method="POST" name="form1">
-          <ul class="form1">
-            <li>
-              <label for="name" id="name">Name and surname</label>
-              <input type="text" name="name" id="name-form" />
-            </li>
-            <li>
-              <label for="birth" id="birth">Date of birth</label>
-              <input type="date" name="birth" id="date_select" />
-            </li>
-            <li>
-              <label for="address">Address</label>
-              <input type="text" name="address" />
-            </li>
-          </ul>
-          <div class="edit-buttons button-1">
-            <button type="submit" id="save-button-1" class="save-button">
-              Save
-            </button>
-            <button type="reset" id="cancel-button-1" class="cancel-button">
-              Clear
-            </button>
-          </div>
-        </form>
+      <form class="edit-form" id="form1" method="POST" name="form1">
+        <ul class="form1">
+          <li>
+            <label for="name" id="name">Name and surname</label>
+            <input type="text" name="name" id="name-form" v-model= "personalData.name"/>
+          </li>
+          <li>
+            <label for="birth" id="birth">Date of birth</label>
+            <input type="date" name="birth" id="date_select" v-model= "personalData.birth"/>
+          </li>
+          <li>
+            <label for="address">Address</label>
+            <input type="text" name="address" v-model= "personalData.address"/>
+          </li>
+        </ul>
+        <div class="edit-buttons button-1">
+          <button type="submit" id="save-button-2" class="save-button" @click="saveChanges">
+            Save
+          </button>
+          <button type="reset" id="cancel-button-2" class="cancel-button">
+            Clear
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -45,6 +45,11 @@ export default {
     return {
       languages: languages,
       timezones: timeZones,
+      personalDetails: {
+        name: null,
+        birth: null,
+        address: null,
+      },
     };
   },
   components: {
@@ -55,6 +60,9 @@ export default {
     modalClosed: function () {
       this.$root.$emit("modalAccountSettingsClosed");
     },
+    saveChanges: function(){
+      
+    }
   },
 };
 </script>
@@ -84,12 +92,13 @@ export default {
 }
 
 * {
-  font-family: "Halvetica", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 .dark-background {
   position: fixed;
   display: flex;
+  justify-content: center;
   z-index: 10;
   opacity: 0.5;
   top: 0;
@@ -125,12 +134,11 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 100;
-  width: 50%;
-  height: 50%;
+  width: 25rem;
+  height: 20rem;
   top: 0;
-  margin-left: 25%;
-  margin-top: 25%;
-  padding: 0 1rem;
+  margin: 20% 40% 0 40%;
+  padding: 1.5rem 0;
   background-color: rgb(213, 253, 244);
 }
 
@@ -156,11 +164,28 @@ export default {
 
   li {
     margin-top: 1rem;
+    padding: 0;
 
     label {
       margin-bottom: 0.5rem;
-      letter-spacing: 0.1rem;
+      font-size: 0.9rem;
     }
+    input {
+      width: 20rem;
+      height: 2rem;
+      border: none;
+      font-size: 1rem;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        box-shadow: 1px 1px 7px 0px #c3c3c3;
+      }
+    }
+  }
+
+  ul {
+    padding: 0;
   }
 
   #language-select,

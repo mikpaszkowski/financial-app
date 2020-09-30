@@ -42,7 +42,7 @@ body {
 .headlinebar {
   position: relative;
   z-index: 1;
-  background-color: #19a0af;
+  background-color: #00c4ca;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

@@ -1,6 +1,9 @@
 <template>
-  <div>
-      <modal-forgot-password v-bind:isModalOpened = "modalOpen"></modal-forgot-password>
+  <div id="modal">
+    <modal-forgot-password
+      v-bind:isModalOpened="modalOpen"
+    ></modal-forgot-password>
+
     <div class="circle-background"></div>
     <div class="background-image"></div>
     <div class="frontpage">
@@ -25,8 +28,22 @@
             <div class="button-box">
               <div id="btn"></div>
               <div class="upper-buttons">
-                <button type="button" class="toggle-btn-left" id="btn1" @click="logInEvent">Log In</button>
-                <button type="button" class="toggle-btn-right" id="btn2" @click="signInEvent">Sign up</button>
+                <button
+                  type="button"
+                  class="toggle-btn-left"
+                  id="btn1"
+                  @click="logInEvent"
+                >
+                  Log In
+                </button>
+                <button
+                  type="button"
+                  class="toggle-btn-right"
+                  id="btn2"
+                  @click="signInEvent"
+                >
+                  Sign up
+                </button>
               </div>
             </div>
             <form id="login" class="input-group" action="#">
@@ -64,9 +81,18 @@
                   </router-link>
                 </button>
               </div>
-              <div class="forgot" id="forgot" @click="openModal" v-bind:isModalOpened="modalOpen">Forgot Password?</div>
+              <div
+                class="forgot"
+                id="forgot"
+                @click="openModal"
+                v-bind:isModalOpened="modalOpen"
+              >
+                Forgot Password?
+              </div>
             </form>
-            <div class="forgot" id="forgot" @click="openModal">Forgot Password?</div>
+            <div class="forgot" id="forgot" @click="openModal">
+              Forgot Password?
+            </div>
           </div>
         </div>
       </div>
@@ -78,49 +104,63 @@
 <script>
 import LogInPicture from "../assets/login.svg";
 import ModalForgotPassword from "./ModalForgotPassword.vue";
+import SignUp from "./SignUp.vue";
 
 export default {
+  props: ["signUpOpen"],
+  components: {
+    "modal-sign-up": SignUp,
+  },
   name: "login",
   data() {
     return {
       modalOpen: false,
       logIn: {
-        userId: '',
-        password: '',
-      }
+        userId: "",
+        password: "",
+      },
+      modalSignUpOpen: false,
     };
   },
   methods: {
     openModal: function () {
       this.modalOpen = !this.modalOpen;
     },
-    closeModal: function(){
-        this.modalOpen = false;
+    closeModal: function () {
+      this.modalOpen = false;
     },
-    login: function(){
+    login: function () {
       console.log(this.logIn);
-      this.$router.replace('home');
+      this.$router.replace("home");
     },
-    signInEvent: function(){
-      this.$root.$emit('logInClose');
+    signInEvent: function () {
+      this.$root.$emit("logInClose");
     },
-    logInEvent: function(){
-      this.$root.$emit('signInEvent');
+    logInEvent: function () {
+      this.$root.$emit("signInEvent");
     },
   },
   components: {
     LogInSVG: LogInPicture,
     "modal-forgot-password": ModalForgotPassword,
   },
-  created: function(){
-      console.log("created: " + this.modalOpen);
-      this.$root.$on('modalClosed', this.closeModal);
-  }
+  created: function () {
+    console.log("created: " + this.modalOpen);
+    this.$root.$on("modalClosed", this.closeModal);
+  },
 };
 </script>
 
 
 <style lang="scss" scoped>
+#modal{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+
+
 .LogInSVG {
   display: flex;
   height: 205px;
@@ -212,16 +252,16 @@ body {
 
 .front-small-window {
   display: flex;
-  
+
   position: relative;
-  animation: .5s ease-in-out 2.5s both shadowEffect;
+  animation: 0.5s ease-in-out 2.5s both shadowEffect;
 }
 
 @keyframes shadowEffect {
-  from{
+  from {
     box-shadow: none;
-  }  
-  to{
+  }
+  to {
     box-shadow: 2px 2px 20px 0px #0d4030;
   }
 }
@@ -502,7 +542,7 @@ body {
   margin-top: 20px;
 }
 
-.forgot{
+.forgot {
   text-decoration: none;
   color: black;
 }
@@ -517,10 +557,10 @@ body {
   margin-bottom: 0;
 }
 
-.router-link{
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    letter-spacing: 1px;
+.router-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 </style>

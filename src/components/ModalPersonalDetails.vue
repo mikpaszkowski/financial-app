@@ -84,7 +84,7 @@ export default {
 
 
 * {
-  font-family: "Halvetica", sans-serif;
+   font-family: "Rubik", sans-serif;
 }
 
 .dark-background {
@@ -106,7 +106,7 @@ export default {
   width: 56px;
 }
 
-.exit1 #ExitSVG {
+#ExitSVG {
   position: relative;
   height: 1.8em;
   margin-top: 0.4em;
@@ -118,27 +118,19 @@ export default {
   }
 }
 
-.conatiner1-module,
-.conatiner2-module,
-.conatiner3-module {
+.conatiner1-module {
   position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 100;
-  width: 50%;
-  height: 50%;
+   width: 25rem;
+  height: 20rem;
   top: 0;
-  margin-left: 25%;
-  margin-top: 25%;
-  padding: 0 1rem;
+  margin: 20% 40% 0 40%;
+  padding: 1.5rem 0;
   background-color: rgb(213, 253, 244);
-}
-
-
-.conatiner1-module svg {
-  width: 100%;
 }
 
 .exit1,
@@ -163,14 +155,32 @@ export default {
 
   li {
     margin-top: 1rem;
+    padding: 0;
 
     label {
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.1rem;
+       margin-bottom: 0.5rem;
+      font-size: .9rem;
     }
+    input{
+      width: 20rem;
+      height: 2rem;
+      border:none;
+      font-size: 1rem;
+      border-radius: .25rem;
+      transition: all .2s ease-in-out;
+
+      &:hover{
+          box-shadow: 1px 1px 7px 0px #c3c3c3;
+      }
+  }
   }
 
-  input {
+  ul{
+    padding: 0;
+  }
+
+  #language-select,
+  #select-time-zone {
     width: 20rem;
     height: 2rem;
     font-size: 1rem;

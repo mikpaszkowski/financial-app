@@ -41,7 +41,7 @@
                   id="btn2"
                   @click="signInEvent"
                 >
-                  Sign in
+                  Sign up
                 </button>
               </div>
             </div>
@@ -137,14 +137,20 @@ export default {
     "modal-forgot-password": ModalForgotPassword,
   },
   created: function () {
-    console.log("created: " + this.modalOpen);
-    this.$root.$on("modalClosed", this.closeModal);
+    this.$root.$emit("modalClosed", this.closeModal);
   },
 };
 </script>
 
 
 <style lang="scss" scoped>
+#modal{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+
 .LogInSVG {
   display: flex;
   height: 205px;

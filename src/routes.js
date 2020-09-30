@@ -5,11 +5,11 @@ import HomeWelcome from './components/HomeWelcome.vue'
 import History from './components/History.vue'
 import AccountTransfer from './components/AccountTransfer.vue'
 import HomePage from './components/HomePage.vue'
-import SignIn from './components/SignIn.vue'
+import SignUp from './components/SignUp.vue'
 
 export default [
     {
-        path: '/',
+        path: '',
         component: HomePage,
 
         children: [
@@ -18,14 +18,10 @@ export default [
                 component: LogIn,
             },
             {
-                path: 'signin',
-                component: SignIn,
+                path: 'signup',
+                component: SignUp,
             }
         ]
-    },
-    {
-        path: '/login',
-        component: LogIn, 
     },
     {
         path: '/home',

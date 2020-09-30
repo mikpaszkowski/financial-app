@@ -3,23 +3,26 @@
     <div :class="headlinePositionStyle">
       <div class="background-image"></div>
       <div class="headlinebar" v-if="isModalsOut">
-        <router-link to="/">
+        <router-link to="/" exact>
           <div class="logo">
             <img :src="image" id="main_icon" alt="mail" />
             <h1>Bank Account Manager</h1>
           </div>
         </router-link>
         <div id="buttons">
-          <button class="login" @click="login">Log in</button>
-          <button class="signin" @click="signin">Sign in</button>
+          <router-link to="/login" exact
+            ><button class="login" @click="login">Log in</button></router-link
+          >
+          <router-link to="/signup" exact
+            ><button class="signin" @click="signup">
+              Sign up
+            </button></router-link
+          >
         </div>
       </div>
     </div>
     <transition name="fade">
-      <modal-log-in v-if="modalLogInOpen"></modal-log-in>
-    </transition>
-    <transition name="fade">
-      <modal-sign-in v-if="modalSignInOpen"></modal-sign-in>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
@@ -28,18 +31,13 @@
 <script>
 import HeadlineImage from "../assets/headline_logo.png";
 import LogIn from "./LogIn.vue";
-import SignIn from "./SignIn.vue";
 
 export default {
   methods: {
     login: function () {
-      this.modalLogInOpen = true;
-      this.modalSignInOpen = false;
       this.isHeadlineOut = true;
     },
-    signin: function () {
-      this.modalSignInOpen = true;
-      this.modalLogInOpen = false;
+    signup: function () {
       this.isHeadlineOut = true;
     },
   },
@@ -51,7 +49,6 @@ export default {
     },
   },
   components: {
-    "modal-sign-in": SignIn,
     "modal-log-in": LogIn,
   },
   data() {
@@ -69,11 +66,11 @@ export default {
     } else {
       this.isModalsOut = false;
     }
-    this.$root.$on('logInClose', this.signin);
-    this.$root.$on('singInClose', this.login);
+    this.$root.$on("logInClose", this.signin);
+    this.$root.$on("singInClose", this.login);
   },
 
-   beforeDestroy() {
+  beforeDestroy() {
     this.$root.$off("logInClose");
     this.$root.$off("singInClose");
   },
@@ -84,17 +81,33 @@ export default {
 <style lang="scss" scoped>
 $font-stack: Helvetica, sans-serif;
 
+.fade-enter-active{
+  transition: 5s ease-in-out;
+}
+
+.fade-leave-active{
+  transition: 5s ease-in-out;
+}
+
+.fade-leave-to, .cards-enter{
+  opacity: 0;
+}
+
+.fade-leave, .cards-enter-to{
+  opacity: 1;
+}
+
 
 .hideHeadline {
   display: none;
-  animation: opacity homepageOut 1s ease-in-out .5s ;
+  animation: opacity homepageOut 1s ease-in-out 0.5s;
 }
 
 @keyframes homepageOut {
-  from{
+  from {
     opacity: 1;
   }
-  to{
+  to {
     opacity: 0;
   }
 }

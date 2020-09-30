@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <transition name="fade">
+  <div id="account">
     <modal-personal-details
       :isPersonalModalOpen="modalPersonalDetails_open"
     ></modal-personal-details>
@@ -7,7 +8,7 @@
       :isAccountModalOpen="modalAccountSettings_open"
     ></modal-account-settings>
     <modal-email-address :isEmailModalOpen = "modalEmailAddress_open"></modal-email-address>
-    
+  
     <div class="module1">
       <div class="container">
         <div class="person1">
@@ -130,14 +131,20 @@
           </div>
           <ul class="email_ul">
             <li>
-              <label for>Email:</label>
+              <label>Email:</label>
               <p id="email_p">john.smith@gmail.com</p>
+            </li>
+            <li>
+              <label>Phone number:</label>
             </li>
           </ul>
         </div>
       </div>
     </div>
+    
   </div>
+    </transition>
+    
 </template>
 
 
@@ -176,7 +183,7 @@ export default {
     modalAccountSettingsClosed: function () {
       this.modalAccountSettings_open = false;
     },
-     modalEmailAddressOpen: function () {
+    modalEmailAddressOpen: function () {
       this.modalEmailAddress_open = true;
     },
     modalEmailAddressClosed: function () {
@@ -184,8 +191,14 @@ export default {
     },
   },
   created() {
-    this.$root.$on("modalPersonalDetailsClosed",this.modalPersonalDetailsClosed);
-    this.$root.$on("modalAccountSettingsClosed", this.modalAccountSettingsClosed);
+    this.$root.$on(
+      "modalPersonalDetailsClosed",
+      this.modalPersonalDetailsClosed
+    );
+    this.$root.$on(
+      "modalAccountSettingsClosed",
+      this.modalAccountSettingsClosed
+    );
     this.$root.$on("modalEmailClosed", this.modalEmailAddressClosed);
   },
 };
@@ -193,6 +206,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 
 
 .editAvatar {
@@ -237,8 +251,8 @@ export default {
   z-index: 1;
 }
 
-* {
-  font-family: "Poppins", sans-serif;
+*{
+  font-family: "Rubik", sans-serif;
 }
 
 .module1 {
@@ -248,9 +262,9 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: center;
-  font-family: Helvetica, sans-serif;
   margin: 35px;
   padding: 15px;
+  transition: all 1s ease-in-out;
 }
 
 li {
@@ -288,7 +302,6 @@ ul {
 .EditSectionSVG {
   width: 25px;
   height: 25px;
-  
 }
 
 svg:hover {
@@ -299,7 +312,7 @@ svg:hover {
   width: 35px;
   height: 35px;
   cursor: pointer;
-  transition: all .15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 
 .container {
@@ -570,6 +583,8 @@ svg:hover {
 .nav {
   display: inline-flex;
   justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5rem;
 }
 
 .headline {
@@ -582,6 +597,7 @@ svg:hover {
 p {
   margin: 0;
   width: 58%;
+  font-weight: 400 !important;
 }
 
 .data {

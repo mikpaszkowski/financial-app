@@ -73,7 +73,7 @@ export default {
 }
 
 * {
-  font-family: "Halvetica", sans-serif;
+   font-family: "Rubik", sans-serif;
 }
 
 .dark-background {
@@ -118,9 +118,8 @@ export default {
   width: 25rem;
   height: 20rem;
   top: 0;
-  margin-left: 25%;
-  margin-top: 25%;
-  padding: 0 1rem;
+  margin: 20% 40% 0 40%;
+  padding: 0 .5rem;
   background-color: rgb(213, 253, 244);
 }
 
@@ -143,6 +142,8 @@ export default {
       width: 20rem;
       height: 2rem;
       border:none;
+      font-size: 1rem;
+      border-radius: .25rem;
       transition: all .2s ease-in-out;
 
       &:hover{
@@ -157,6 +158,7 @@ export default {
   li,
   label {
     display: block;
+    font-family: "Rubik", sans-serif;
   }
 
   li {
@@ -164,7 +166,7 @@ export default {
 
     label {
       margin-bottom: 0.5rem;
-      font-size: .7rem;
+      font-size: .9rem;
     }
   }
 
