@@ -31,7 +31,7 @@
                   type="button"
                   class="toggle-btn-left"
                   id="btn1"
-                  @click="logInEvent"
+                  @click="logIn"
                 >
                   Log In
                 </button>
@@ -39,7 +39,6 @@
                   type="button"
                   class="toggle-btn-right"
                   id="btn2"
-                  @click="signInEvent"
                 >
                   Sign up
                 </button>
@@ -115,21 +114,10 @@ export default {
       console.log("closeModal: " + this.modalOpen);
     },
     signup: function () {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .catch(function (error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // ...
-        });
+      this.$router.replace('/home/account');
     },
-    signInEvent: function () {
-      this.$root.$emit("logInClose");
-    },
-    logInEvent: function () {
-      this.$root.$emit("signInEvent");
+    logIn: function () {
+      this.$router.replace("/login");
     },
   },
   components: {
@@ -138,6 +126,7 @@ export default {
   },
   created: function () {
     this.$root.$emit("modalClosed", this.closeModal);
+    this.$root.$emit('headlineClosed');
   },
 };
 </script>

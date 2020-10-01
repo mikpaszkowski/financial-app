@@ -32,7 +32,7 @@
                   type="button"
                   class="toggle-btn-left"
                   id="btn1"
-                  @click="logInEvent"
+                  @click="logIn"
                 >
                   Log In
                 </button>
@@ -40,7 +40,7 @@
                   type="button"
                   class="toggle-btn-right"
                   id="btn2"
-                  @click="signInEvent"
+                  @click="signUp"
                 >
                   Sign up
                 </button>
@@ -76,7 +76,7 @@
 
               <div class="loginbutton">
                 <button type="submit" class="submit-btn" id="submit-btn">
-                  <router-link to="/home" class="router-link">
+                  <router-link to="/home/account" class="router-link">
                     <div class="s-btn" @click="login">Log in</div>
                   </router-link>
                 </button>
@@ -115,7 +115,7 @@ export default {
   data() {
     return {
       modalOpen: false,
-      logIn: {
+      logInData: {
         userId: "",
         password: "",
       },
@@ -130,14 +130,14 @@ export default {
       this.modalOpen = false;
     },
     login: function () {
-      console.log(this.logIn);
+      console.log(this.logInData);
       this.$router.replace("home");
     },
-    signInEvent: function () {
-      this.$root.$emit("logInClose");
+    signUp: function () {
+      this.$router.replace("/signup");
     },
-    logInEvent: function () {
-      this.$root.$emit("signInEvent");
+    logIn: function () {
+      this.$router.replace("/login");
     },
   },
   components: {
@@ -146,7 +146,7 @@ export default {
   },
   created: function () {
     console.log("created: " + this.modalOpen);
-    this.$root.$on("modalClosed", this.closeModal);
+    this.$root.$emit('headlineClosed');
   },
 };
 </script>

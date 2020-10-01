@@ -39,7 +39,7 @@ export default {
 
 
 .history-table {
-  width: 90%;
+  width: 70%;
   text-align: center;
   border-collapse: separate;
   position: relative;

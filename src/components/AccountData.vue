@@ -364,7 +364,7 @@ svg:hover {
   background-color: rgba(203, 255, 248, 0.6);
   position: absolute;
   z-index: -1;
-  width: 43vw;
+   width: 41rem;
   height: 100%;
 }
 
@@ -487,14 +487,14 @@ svg:hover {
   flex-direction: column;
   justify-content: space-around;
   box-shadow: 0px 0px 10px 0px #203753;
-  width: 43vw;
+  height: 260px;
   border-radius: 2px;
+  width: 41rem;
 }
 
 .lower_module {
   display: flex;
   align-self: flex-start;
-  height: 27vh;
 
   .email_ul {
     padding-right: 60px;
@@ -504,7 +504,6 @@ svg:hover {
 .middle_module {
   display: flex;
   align-self: flex-start;
-  height: 31vh;
 }
 
 .email {

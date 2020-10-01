@@ -20,6 +20,36 @@
           >
         </div>
       </div>
+      <div class="content">
+        <div id="photo">
+          <div id="headline">
+            <h1>
+              Trusted by more than 50,000 <br />
+              worldwide.
+            </h1>
+            <p>
+              Bank Account Manager. Over 180 countires and 120 currencies
+              supported.
+            </p>
+          </div>
+          <div class="buttons">
+            <button id="freeAccount">Open a Free Account</button>
+            <button id="video">Watch a video</button>
+          </div>
+        </div>
+        <div class="whiteArea">
+          <div class="headline">
+            <h1>Why you should choose Bank Account Manager?</h1>
+            <p>Here's Top 4 reasons why using a BAM for manage your money.</p>
+            <div class="reasons">
+              <div class="reason usage"></div>
+              <div class="reason payments"></div>
+              <div class="reason fees"></div>
+              <div class="reason security"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <transition name="fade">
       <router-view></router-view>
@@ -38,6 +68,9 @@ export default {
       this.isHeadlineOut = true;
     },
     signup: function () {
+      this.isHeadlineOut = true;
+    },
+    headlineClosed: function () {
       this.isHeadlineOut = true;
     },
   },
@@ -68,6 +101,7 @@ export default {
     }
     this.$root.$on("logInClose", this.signin);
     this.$root.$on("singInClose", this.login);
+    this.$root.$on("headlineClosed", this.headlineClosed);
   },
 
   beforeDestroy() {
@@ -79,24 +113,25 @@ export default {
 
 
 <style lang="scss" scoped>
-$font-stack: Helvetica, sans-serif;
+$font-stack: "Rubik", sans-serif;
 
-.fade-enter-active{
+.fade-enter-active {
   transition: 5s ease-in-out;
 }
 
-.fade-leave-active{
+.fade-leave-active {
   transition: 5s ease-in-out;
 }
 
-.fade-leave-to, .cards-enter{
+.fade-leave-to,
+.cards-enter {
   opacity: 0;
 }
 
-.fade-leave, .cards-enter-to{
+.fade-leave,
+.cards-enter-to {
   opacity: 1;
 }
-
 
 .hideHeadline {
   display: none;
@@ -222,6 +257,73 @@ body {
     box-shadow: 0px 1px 9px 0px #76fffdf5;
     background-color: #11a7a4;
     color: white;
+  }
+}
+
+#photo {
+  position: relative;
+  text-align: center;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2) 17%,
+      rgba(4, 102, 99, 0.2) 58%,
+      rgba(79, 175, 179, 0.4) 100%
+    ),
+    url("../assets/computer.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-bottom: 7rem;
+  width: 100%;
+  height: 83%;
+
+  .buttons {
+    margin-top: 100px;
+
+    #freeAccount {
+      margin-right: 20px;
+      background-color: rgb(74, 195, 58);
+      border: none;
+      font-weight: bold;
+    }
+
+    #video {
+      margin-left: 20px;
+      background-color: transparent;
+      border: 1px solid white;
+    }
+
+    button {
+      padding: 10px 20px;
+      color: white;
+      border-radius: 0.35rem;
+    }
+  }
+
+  #headline {
+    font-family: $font-stack;
+    padding: 0 150px;
+    vertical-align: top;
+    padding-top: 60px;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+  }
+}
+
+.whiteArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  font-family: $font-stack;
+  width: 100%;
+  height: 40rem;
+  background-color: rgba(255, 255, 255, 0.767);
+  
+  .headline{
+    margin-top: 5rem;
   }
 }
 </style>

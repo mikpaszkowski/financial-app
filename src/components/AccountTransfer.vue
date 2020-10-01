@@ -141,9 +141,10 @@ export default {
       if (!this.transferData.description) {
         this.errors.push("Description required.");
       }
-      if (isNaN(this.transferData.amount)) {
+      if (isNaN(this.transferData.amount) || this,transferData.amount == null) {
         this.errors.push("Invalid amount number.");
       } else if (parseInt(this.transferData.amount) <= 0) {
+        alert(parseInt(this.transferData.amount));
         this.errors.push("Amount number should be greater that 0.");
       }
       if (isNaN(this.transferData.code)) {
