@@ -15,7 +15,7 @@
 The main goal of application was to skill myself in the field of front-end.
 The app is making simple bank operations such as deposit/withdraw of money and sending requests
 to the other people. (Still in progress) validation of log in/sign up can keep the input data in proper form and within
-required statements.
+required statements. Input data will be put directly in the data base (MySQL/MongoDb).
 Basing on the transactions of the user we can calculate the blance of the user's cash.
 I've made a lot of work from the ZERO of html/css and JavaScript
 
@@ -27,9 +27,9 @@ to create known single-page-application.
 
 ## Required forward work
 
-* not-fully progressive
+* fully-progressive app
 
-* early-stage back-end (data bases, server-side issues, nothing in fact :D)
+* full-stack application (data bases, server-side issues, nothing in fact :D)
 
 
 ## Build Setup
