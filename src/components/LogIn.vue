@@ -60,13 +60,16 @@
                 </div>
                 <div class="passwordfield">
                   <input
-                    type="text"
+                    type="password"
                     id="password"
                     name="password"
                     class="input-field"
                     placeholder="Password"
                     v-model="logIn.password"
                   />
+                  <a id="password-toggle" @click="toggle"
+                    ><ion-icon name="eye-outline" id="toggle"></ion-icon
+                  ></a>
                 </div>
                 <div class="remember">
                   <input type="checkbox" class="check-box" />
@@ -139,6 +142,21 @@ export default {
     logIn: function () {
       this.$router.replace("/login");
     },
+    toggle: function () {
+      const toggle = document.getElementById("toggle");
+      const password = document.querySelector("#password");
+      const passwordType = password.type;
+      if (passwordType === "text") {
+        password.type = "password";
+      } else {
+        password.type = "text";
+      }
+      if (toggle.name === "eye-outline") {
+        toggle.setAttribute("name", "eye-off-outline");
+      }else{
+        toggle.setAttribute("name", "eye-outline")
+      }
+    },
   },
   components: {
     LogInSVG: LogInPicture,
@@ -146,20 +164,18 @@ export default {
   },
   created: function () {
     console.log("created: " + this.modalOpen);
-    this.$root.$emit('headlineClosed');
+    this.$root.$emit("headlineClosed");
   },
 };
 </script>
 
 
 <style lang="scss" scoped>
-#modal{
+#modal {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-
-
 
 .LogInSVG {
   display: flex;
@@ -453,6 +469,18 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-content: center;
+}
+
+#toggle {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 100;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+#toggle:hover {
+  color: rgb(82, 160, 82);
 }
 
 .inputarea {
