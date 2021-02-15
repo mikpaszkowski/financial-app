@@ -33,7 +33,12 @@
             </p>
           </div>
           <div class="buttons">
-            <button id="freeAccount">Open a Free Account</button>
+            <router-link to="/singup" exact>
+              <button @click="freeAccountClicked" id="freeAccount">
+                Open a Free Account
+              </button>
+            </router-link>
+
             <button id="video">Watch a video</button>
           </div>
         </div>
@@ -73,6 +78,9 @@ export default {
     headlineClosed: function () {
       this.isHeadlineOut = true;
     },
+    freeAccountClicked() {
+      this.isHeadlineOut = true;
+    },
   },
   computed: {
     headlinePositionStyle: function () {
@@ -88,12 +96,12 @@ export default {
     return {
       image: HeadlineImage,
       modalLogInOpen: false,
-      modalSignInOpen: false,
+      modalSignUpOpen: false,
       isHeadlineOut: false,
     };
   },
   created() {
-    if (!this.modalLogInOpen && !this.modalSignInOpen) {
+    if (!this.modalLogInOpen && !this.modalSignUpOpen) {
       console.log("modals closed");
       this.isModalsOut = true;
     } else {
@@ -241,7 +249,7 @@ body {
 
   &:hover {
     box-shadow: 0px 1px 7px 0px #ffffff;
-    background-color: rgba(255, 255, 255, 0.568);
+    background-color: rgba(255, 255, 255, 0.842);
     color: rgb(82, 82, 82);
   }
 }
@@ -254,8 +262,8 @@ body {
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: 0px 1px 9px 0px #76fffdf5;
-    background-color: #11a7a4;
+    box-shadow: 0px 1px 17px 7px #76fffdf5;
+    background-color: transparent;
     color: white;
   }
 }
@@ -278,25 +286,31 @@ body {
   height: 83%;
 
   .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin-top: 100px;
 
     #freeAccount {
+      padding: 20px 10px;
       margin-right: 20px;
-      background-color: rgb(74, 195, 58);
+      background-color: #1abc9c;
       border: none;
-      font-weight: bold;
+      cursor: pointer;
     }
 
     #video {
+      padding: 20px 10px;
       margin-left: 20px;
       background-color: transparent;
       border: 1px solid white;
+      cursor: pointer;
     }
 
     button {
-      padding: 10px 20px;
       color: white;
       border-radius: 0.35rem;
+      font-size: 20px;
     }
   }
 
@@ -321,8 +335,8 @@ body {
   width: 100%;
   height: 40rem;
   background-color: rgba(255, 255, 255, 0.767);
-  
-  .headline{
+
+  .headline {
     margin-top: 5rem;
   }
 }

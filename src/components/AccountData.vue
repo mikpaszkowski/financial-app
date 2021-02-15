@@ -1,150 +1,150 @@
 <template>
   <transition name="fade">
-  <div id="account">
-    <modal-personal-details
-      :isPersonalModalOpen="modalPersonalDetails_open"
-    ></modal-personal-details>
-    <modal-account-settings
-      :isAccountModalOpen="modalAccountSettings_open"
-    ></modal-account-settings>
-    <modal-email-address :isEmailModalOpen = "modalEmailAddress_open"></modal-email-address>
-  
-    <div class="module1">
-      <div class="container">
-        <div class="person1">
-          <div class="background-1 background-transparency"></div>
-          <div class="personaldata personaldata1">
-            <img
-              src="../assets/face_photo.jpg"
-              id="face_photo"
-              alt="facephoto"
-            />
-            <div class="editAvatar">
-              <EditAvatarImage />
+    <div id="account">
+      <modal-personal-details
+        :isPersonalModalOpen="modalPersonalDetails_open"
+      ></modal-personal-details>
+      <modal-account-settings
+        :isAccountModalOpen="modalAccountSettings_open"
+      ></modal-account-settings>
+      <modal-email-address
+        :isEmailModalOpen="modalEmailAddress_open"
+      ></modal-email-address>
+
+      <div class="module1">
+        <div class="container">
+          <div class="person1">
+            <div class="background-1 background-transparency"></div>
+            <div class="personaldata personaldata1">
+              <img
+                src="../assets/face_photo.jpg"
+                id="face_photo"
+                alt="facephoto"
+              />
+              <div class="editAvatar">
+                <EditAvatarImage />
+              </div>
+            </div>
+
+            <div class="personaldata personaldata2">John</div>
+            <div class="personaldata personaldata3">Smith</div>
+            <div class="personaldata personaldata4">+69 987621351</div>
+          </div>
+          <div class="upper_module">
+            <div class="background"></div>
+            <div class="nav">
+              <div class="headline">Personal Details</div>
+              <div class="edit-button-svg">
+                <button
+                  class="edit1"
+                  id="edit1"
+                  @click="modalPersonalDetailsOpen"
+                >
+                  <EditSectionSVG id="svg-edit" />
+                </button>
+              </div>
+            </div>
+            <ul class="personal_ul">
+              <li>
+                <label for>Name:</label>
+                <p id="personal_name_p">John Smith</p>
+              </li>
+
+              <li>
+                <label for>Date of birth:</label>
+                <p id="date_p">26/06/1997</p>
+              </li>
+              <li>
+                <label for>Address:</label>
+                <p id="address_p">Florida 23A</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="person2">
+            <div class="background-2"></div>
+            <div class="walletimage">
+              <img src="../assets/wallet.png" id="wallet" alt="wallet" />
+            </div>
+            <div class="money">4543 $</div>
+            <div class="availablebalance">Available Balance</div>
+            <div class="transferbuttons">
+              <router-link to="/home/transfer">
+                <button class="transfer" id="transfer">Transfer</button>
+              </router-link>
             </div>
           </div>
-
-          <div class="personaldata personaldata2">John</div>
-          <div class="personaldata personaldata3">Smith</div>
-          <div class="personaldata personaldata4">+69 987621351</div>
-        </div>
-        <div class="upper_module">
-          <div class="background"></div>
-          <div class="nav">
-            <div class="headline">Personal Details</div>
-            <div class="edit-button-svg">
-              <button
-                class="edit1"
-                id="edit1"
-                @click="modalPersonalDetailsOpen"
-              >
-                <EditSectionSVG id="svg-edit" />
-              </button>
+          <div class="middle_module">
+            <div class="background"></div>
+            <div class="nav">
+              <div class="headline">Account settings</div>
+              <div class="edit-button-svg">
+                <button
+                  class="edit2"
+                  id="edit2"
+                  @click="modalAccountSettingsOpen"
+                >
+                  <EditSectionSVG id="svg-edit" />
+                </button>
+              </div>
             </div>
-          </div>
-          <ul class="personal_ul">
-            <li>
-              <label for>Name:</label>
-              <p id="personal_name_p">John Smith</p>
-            </li>
+            <ul class="account_ul">
+              <li>
+                <label for>Language:</label>
+                <p id="language_p">English</p>
+              </li>
 
-            <li>
-              <label for>Date of birth:</label>
-              <p id="date_p">26/06/1997</p>
-            </li>
-            <li>
-              <label for>Address:</label>
-              <p id="address_p">Florida 23A</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="person2">
-          <div class="background-2"></div>
-          <div class="walletimage">
-            <img src="../assets/wallet.png" id="wallet" alt="wallet" />
-          </div>
-          <div class="money">4543 $</div>
-          <div class="availablebalance">Available Balance</div>
-          <div class="transferbuttons">
-            <router-link to="/home/transfer">
-              <button class="transfer" id="transfer">Transfer</button>
-            </router-link>
+              <li>
+                <label for>Time Zone:</label>
+                <p id="time_zone_p">Somewhere</p>
+              </li>
+              <li>
+                <label for>Status:</label>
+                <p style="color: green" id="status_p">Enabled</p>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="middle_module">
-          <div class="background"></div>
-          <div class="nav">
-            <div class="headline">Account settings</div>
-            <div class="edit-button-svg">
-              <button
-                class="edit2"
-                id="edit2"
-                @click="modalAccountSettingsOpen"
-              >
-                <EditSectionSVG id="svg-edit" />
-              </button>
+
+        <div class="container">
+          <div class="person3">
+            <div class="background-3"></div>
+            <div class="personaldata">
+              <img src="../assets/chat.png" id="chat" alt="chatpng" />
             </div>
-          </div>
-          <ul class="account_ul">
-            <li>
-              <label for>Language:</label>
-              <p id="language_p">English</p>
-            </li>
-
-            <li>
-              <label for>Time Zone:</label>
-              <p id="time_zone_p">Somewhere</p>
-            </li>
-            <li>
-              <label for>Status:</label>
-              <p style="color: greenyellow" id="status_p">Enabled</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="person3">
-          <div class="background-3"></div>
-          <div class="personaldata">
-            <img src="../assets/chat.png" id="chat" alt="chatpng" />
-          </div>
-          <div class="question1">Need help?</div>
-          <div class="question2">
-            Do you have any questions? Or you may be concern about issues with
-            your account? We will help you!
-          </div>
-          <button class="chatwithus">Chat with Us</button>
-        </div>
-        <div class="lower_module">
-          <div class="background"></div>
-          <div class="nav">
-            <div class="headline">Email address</div>
-            <div class="edit-button-svg">
-              <button class="edit3" id="edit3" @click="modalEmailAddressOpen">
-                <EditSectionSVG id="svg-edit" />
-              </button>
+            <div class="question1">Need help?</div>
+            <div class="question2">
+              Do you have any questions? Or you may be concern about issues with
+              your account? We will help you!
             </div>
+            <button class="chatwithus">Chat with Us</button>
           </div>
-          <ul class="email_ul">
-            <li>
-              <label>Email:</label>
-              <p id="email_p">john.smith@gmail.com</p>
-            </li>
-            <li>
-              <label>Phone number:</label>
-            </li>
-          </ul>
+          <div class="lower_module">
+            <div class="background"></div>
+            <div class="nav">
+              <div class="headline">Email address</div>
+              <div class="edit-button-svg">
+                <button class="edit3" id="edit3" @click="modalEmailAddressOpen">
+                  <EditSectionSVG id="svg-edit" />
+                </button>
+              </div>
+            </div>
+            <ul class="email_ul">
+              <li>
+                <label>Email:</label>
+                <p id="email_p">john.smith@gmail.com</p>
+              </li>
+              <li>
+                <label>Phone number:</label>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-    
-  </div>
-    </transition>
-    
+  </transition>
 </template>
 
 
@@ -206,9 +206,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
-
-
 .editAvatar {
   position: absolute;
   z-index: 1;
@@ -251,7 +248,7 @@ export default {
   z-index: 1;
 }
 
-*{
+* {
   font-family: "Rubik", sans-serif;
 }
 
@@ -364,7 +361,7 @@ svg:hover {
   background-color: rgba(203, 255, 248, 0.6);
   position: absolute;
   z-index: -1;
-   width: 41rem;
+  width: 41rem;
   height: 100%;
 }
 
