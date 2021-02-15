@@ -14,7 +14,7 @@
       <div class="module1">
         <div class="container">
           <div class="person1">
-            <div class="background-1 background-transparency"></div>
+            <!-- <div class="background-1 background-transparency"></div> -->
             <div class="personaldata personaldata1">
               <img
                 src="../assets/face_photo.jpg"
@@ -26,12 +26,13 @@
               </div>
             </div>
 
-            <div class="personaldata personaldata2">John</div>
-            <div class="personaldata personaldata3">Smith</div>
-            <div class="personaldata personaldata4">+69 987621351</div>
+            <div class="personaldata personaldata2">
+              {{ userNameCom.length > 0 ? userNameCom : userName }}
+            </div>
+            <div class="personaldata personaldata3">{{ userSurname }}</div>
           </div>
           <div class="upper_module">
-            <div class="background"></div>
+            <!-- <div class="background"></div> -->
             <div class="nav">
               <div class="headline">Personal Details</div>
               <div class="edit-button-svg">
@@ -47,16 +48,28 @@
             <ul class="personal_ul">
               <li>
                 <label for>Name:</label>
-                <p id="personal_name_p">John Smith</p>
+                <p id="personal_name_p">
+                  {{ userNameCom.length > 0 ? userNameCom : userName }}
+                </p>
               </li>
 
               <li>
                 <label for>Date of birth:</label>
-                <p id="date_p">26/06/1997</p>
+                <p id="date_p">
+                  {{ birthDateCom.length > 0 ? birthDateCom : birthDate }}
+                </p>
               </li>
               <li>
                 <label for>Address:</label>
-                <p id="address_p">Florida 23A</p>
+                <p id="address_p">
+                  {{ addressCom.length > 0 ? addressCom : address }}
+                </p>
+              </li>
+              <li>
+                <label for>Phone:</label>
+                <p id="phone_p">
+                  {{ phoneNumber.length > 0 ? phoneNumberCom : phoneNumber }}
+                </p>
               </li>
             </ul>
           </div>
@@ -64,7 +77,7 @@
 
         <div class="container">
           <div class="person2">
-            <div class="background-2"></div>
+            <!-- <div class="background-2"></div> -->
             <div class="walletimage">
               <img src="../assets/wallet.png" id="wallet" alt="wallet" />
             </div>
@@ -77,7 +90,7 @@
             </div>
           </div>
           <div class="middle_module">
-            <div class="background"></div>
+            <!-- <div class="background"></div> -->
             <div class="nav">
               <div class="headline">Account settings</div>
               <div class="edit-button-svg">
@@ -110,7 +123,7 @@
 
         <div class="container">
           <div class="person3">
-            <div class="background-3"></div>
+            <!-- <div class="background-3"></div> -->
             <div class="personaldata">
               <img src="../assets/chat.png" id="chat" alt="chatpng" />
             </div>
@@ -122,7 +135,7 @@
             <button class="chatwithus">Chat with Us</button>
           </div>
           <div class="lower_module">
-            <div class="background"></div>
+            <!-- <div class="background"></div> -->
             <div class="nav">
               <div class="headline">Email address</div>
               <div class="edit-button-svg">
@@ -161,6 +174,11 @@ export default {
       modalPersonalDetails_open: false,
       modalAccountSettings_open: false,
       modalEmailAddress_open: false,
+      userName: "",
+      userSurname: "",
+      phoneNumber: "",
+      address: "",
+      birthDate: "",
     };
   },
   components: {
@@ -190,6 +208,30 @@ export default {
       this.modalEmailAddress_open = false;
     },
   },
+  mounted() {
+    this.userName = this.$store.getters.getCurrentName;
+    this.userSurname = this.$store.getters.getCurrentSurename;
+    this.phoneNumber = this.$store.getters.getCurrentPhoneNumber;
+    this.birthDate = this.$store.getters.getCurrentBirthDate;
+    this.address = this.$store.getters.getCurrentAddress;
+  },
+  computed: {
+    userNameCom() {
+      return this.$store.getters.getCurrentName;
+    },
+    birthDateCom() {
+      return this.$store.getters.getCurrentBirthDate;
+    },
+    userSurnameCom() {
+      return this.$store.getters.getCurrentSurename;
+    },
+    phoneNumberCom() {
+      return this.$store.getters.getCurrentPhoneNumber;
+    },
+    addressCom() {
+      return this.$store.getters.getCurrentAddress;
+    },
+  },
   created() {
     this.$root.$on(
       "modalPersonalDetailsClosed",
@@ -205,7 +247,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss"scoped>
 .editAvatar {
   position: absolute;
   z-index: 1;
@@ -282,6 +324,7 @@ ul {
   margin: 3vh;
   justify-content: space-between;
 }
+
 .account_ul li {
   display: flex;
   flex-direction: row;
@@ -305,6 +348,7 @@ svg:hover {
   fill: rgb(86, 145, 255);
   transform: scale(1.1);
 }
+
 #svg-edit {
   width: 35px;
   height: 35px;
@@ -480,7 +524,6 @@ svg:hover {
 .middle_module {
   display: flex;
   align-self: flex-start;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-around;
   box-shadow: 0px 0px 10px 0px #203753;
@@ -566,8 +609,8 @@ svg:hover {
 .edit2,
 .edit3 {
   position: absolute;
-  right: 1em;
-  top: 1em;
+  right: 10px;
+  top: 10px;
   width: 25px;
   height: 25px;
   background-color: transparent;
@@ -578,6 +621,7 @@ svg:hover {
 
 .nav {
   display: inline-flex;
+  position: relative;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
   padding-bottom: 1.5rem;
@@ -599,7 +643,30 @@ p {
 .data {
   font-size: 20px;
 }
+
 label {
   font-weight: 600;
+}
+
+@media screen and (max-width: 1306px) {
+  .person1,
+  .person2,
+  .person3,
+  .upper_module,
+  .middle_module,
+  .lower_module {
+    width: 100%;
+  }
+
+  .person1,
+  .person2,
+  .person3 {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .person1 {
+    padding: 15px 0;
+  }
 }
 </style>

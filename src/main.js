@@ -9,6 +9,7 @@ import History from './components/History.vue'
 import AccountTransfer from './components/AccountTransfer.vue'
 import HomePage from './components/HomePage.vue'
 import Routes from './routes'
+import Store from './store/index'
 
 
 Vue.component('app-heading', TheHeading)
@@ -29,5 +30,6 @@ const router = new VueRouter({
 const app = new Vue({
   el: '#app',
   render: h => h(App),
-  router: router
+  router: router,
+  store: Store,
 })

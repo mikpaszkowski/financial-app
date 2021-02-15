@@ -5,30 +5,35 @@
       <div class="exit2" id="exit2" @click="modalClosed">
         <ExitSVG id="ExitSVG" />
       </div>
-      <form class="edit-form" id="form1" method="POST" name="form1">
+      <div class="edit-form" id="form1">
         <ul class="form1">
           <li>
             <label for="name" id="name">Name and surname</label>
-            <input type="text" name="name" id="name-form" v-model= "personalData.name"/>
+            <input type="text" name="name" id="name-form" />
           </li>
           <li>
             <label for="birth" id="birth">Date of birth</label>
-            <input type="date" name="birth" id="date_select" v-model= "personalData.birth"/>
+            <input type="date" name="birth" id="date_select" />
           </li>
           <li>
             <label for="address">Address</label>
-            <input type="text" name="address" v-model= "personalData.address"/>
+            <input type="text" name="address" />
           </li>
         </ul>
         <div class="edit-buttons button-1">
-          <button type="submit" id="save-button-2" class="save-button" @click="saveChanges">
+          <button
+            type="submit"
+            id="save-button-2"
+            class="save-button"
+            @click="saveChanges"
+          >
             Save
           </button>
           <button type="reset" id="cancel-button-2" class="cancel-button">
             Clear
           </button>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>
@@ -60,9 +65,7 @@ export default {
     modalClosed: function () {
       this.$root.$emit("modalAccountSettingsClosed");
     },
-    saveChanges: function(){
-      
-    }
+    saveChanges: function () {},
   },
 };
 </script>

@@ -33,7 +33,7 @@
             </p>
           </div>
           <div class="buttons">
-            <router-link to="/singup" exact>
+            <router-link to="/signup" exact>
               <button @click="freeAccountClicked" id="freeAccount">
                 Open a Free Account
               </button>

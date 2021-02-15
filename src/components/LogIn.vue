@@ -67,9 +67,9 @@
                     placeholder="Password"
                     v-model="logIn.password"
                   />
-                  <a id="password-toggle" @click="toggle"
-                    ><ion-icon name="eye-outline" id="toggle"></ion-icon
-                  ></a>
+                  <a id="password-toggle" @click="toggle">
+                    <ion-icon name="eye-outline" id="toggle"></ion-icon>
+                  </a>
                 </div>
                 <div class="remember">
                   <input type="checkbox" class="check-box" />
@@ -93,9 +93,6 @@
                 Forgot Password?
               </div>
             </form>
-            <div class="forgot" id="forgot" @click="openModal">
-              Forgot Password?
-            </div>
           </div>
         </div>
       </div>
@@ -153,8 +150,8 @@ export default {
       }
       if (toggle.name === "eye-outline") {
         toggle.setAttribute("name", "eye-off-outline");
-      }else{
-        toggle.setAttribute("name", "eye-outline")
+      } else {
+        toggle.setAttribute("name", "eye-outline");
       }
     },
   },
@@ -170,7 +167,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss"scoped>
 #modal {
   position: absolute;
   width: 100%;
@@ -237,6 +234,7 @@ body {
     transform: translateX(100%);
     transform: translateY(100%);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -261,6 +259,7 @@ body {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -277,6 +276,7 @@ body {
   from {
     box-shadow: none;
   }
+
   to {
     box-shadow: 2px 2px 20px 0px #0d4030;
   }
@@ -294,6 +294,7 @@ body {
     opacity: 0;
     transform: translateY(-10rem);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -341,6 +342,7 @@ body {
     transform: translateX(17em);
     opacity: 0;
   }
+
   to {
     transform: translateX(0em);
     opacity: 1;
@@ -386,11 +388,13 @@ body {
     transform: translateX(-9em);
     opacity: 0;
   }
+
   50% {
     transform: scale(1.1);
 
     opacity: 1;
   }
+
   100% {
     transform: scale(1);
     transform: translateX(0em);
@@ -441,6 +445,7 @@ body {
   color: rgb(66, 66, 66);
   width: 50%;
 }
+
 .toggle-btn-left {
   font-size: 15px;
   text-align: center;
