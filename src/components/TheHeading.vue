@@ -24,9 +24,9 @@ export default {
     };
   },
   methods: {
-    menuButton : function(){
-      this.$root.$emit('clickedMenuButton');
-    }
+    menuButton: function () {
+      this.$root.$emit("clickedMenuButton");
+    },
   },
 };
 </script>
@@ -42,7 +42,7 @@ body {
 .headlinebar {
   position: relative;
   z-index: 1;
-  background-color: #00c4ca;
+  background-color: #225355;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -79,10 +79,10 @@ body {
     transform: translateY(-100px);
   }
 
-83%{
-  opacity: 1;
-   transform: translateY(30px);
-}
+  83% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
   100% {
     transform: translateY(0);
   }

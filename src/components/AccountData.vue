@@ -14,7 +14,7 @@
       <div class="module1">
         <div class="container">
           <div class="person1">
-            <!-- <div class="background-1 background-transparency"></div> -->
+            <div class="background-1 background-transparency"></div>
             <div class="personaldata personaldata1">
               <img
                 src="../assets/face_photo.jpg"
@@ -27,12 +27,13 @@
             </div>
 
             <div class="personaldata personaldata2">
+              Welcome, <br />
               {{ userNameCom.length > 0 ? userNameCom : userName }}
+              {{ userSurnameCom.length > 0 ? userSurnameCom : userSurname }}
             </div>
-            <div class="personaldata personaldata3">{{ userSurname }}</div>
           </div>
           <div class="upper_module">
-            <!-- <div class="background"></div> -->
+            <div class="background"></div>
             <div class="nav">
               <div class="headline">Personal Details</div>
               <div class="edit-button-svg">
@@ -50,6 +51,7 @@
                 <label for>Name:</label>
                 <p id="personal_name_p">
                   {{ userNameCom.length > 0 ? userNameCom : userName }}
+                  {{ userSurnameCom.length > 0 ? userSurnameCom : userSurname }}
                 </p>
               </li>
 
@@ -68,7 +70,7 @@
               <li>
                 <label for>Phone:</label>
                 <p id="phone_p">
-                  {{ phoneNumber.length > 0 ? phoneNumberCom : phoneNumber }}
+                  {{ phoneNumberCom.length > 0 ? phoneNumberCom : phoneNumber }}
                 </p>
               </li>
             </ul>
@@ -77,7 +79,7 @@
 
         <div class="container">
           <div class="person2">
-            <!-- <div class="background-2"></div> -->
+            <div class="background-2"></div>
             <div class="walletimage">
               <img src="../assets/wallet.png" id="wallet" alt="wallet" />
             </div>
@@ -90,7 +92,7 @@
             </div>
           </div>
           <div class="middle_module">
-            <!-- <div class="background"></div> -->
+            <div class="background"></div>
             <div class="nav">
               <div class="headline">Account settings</div>
               <div class="edit-button-svg">
@@ -123,7 +125,7 @@
 
         <div class="container">
           <div class="person3">
-            <!-- <div class="background-3"></div> -->
+            <div class="background-3"></div>
             <div class="personaldata">
               <img src="../assets/chat.png" id="chat" alt="chatpng" />
             </div>
@@ -135,7 +137,7 @@
             <button class="chatwithus">Chat with Us</button>
           </div>
           <div class="lower_module">
-            <!-- <div class="background"></div> -->
+            <div class="background"></div>
             <div class="nav">
               <div class="headline">Email address</div>
               <div class="edit-button-svg">
@@ -167,6 +169,7 @@ import EditSectionSVG from "../assets/edit_icon.svg";
 import ModalPersonalDetails from "./ModalPersonalDetails.vue";
 import ModalAccountSettings from "./ModalAccountSettings.vue";
 import ModalEmailAddress from "./ModalEmailAddress.vue";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -207,15 +210,29 @@ export default {
     modalEmailAddressClosed: function () {
       this.modalEmailAddress_open = false;
     },
+    ...mapGetters([
+      "getCurrentName",
+      "getCurrentBirthDate",
+      "getCurrentSurename",
+      "getCurrentPhoneNumber",
+      "getCurrentAddress",
+    ]),
   },
   mounted() {
-    this.userName = this.$store.getters.getCurrentName;
-    this.userSurname = this.$store.getters.getCurrentSurename;
-    this.phoneNumber = this.$store.getters.getCurrentPhoneNumber;
-    this.birthDate = this.$store.getters.getCurrentBirthDate;
-    this.address = this.$store.getters.getCurrentAddress;
+    this.userName = this.getCurrentName;
+    this.userSurname = this.getCurrentSurename;
+    this.phoneNumber = this.getCurrentPhoneNumber;
+    this.birthDate = this.getCurrentBirthDate;
+    this.address = this.getCurrentAddress;
   },
   computed: {
+    // ...mapGetters({
+    //   usernameCom: "getCurrentName",
+    //   birthDateCom: "getCurrentBirthDate",
+    //   userSurnameCom: "getCurrentSurename",
+    //   phoneNumberCom: "getCurrentPhoneNumber",
+    //   addressCom: "getCurrentAddress",
+    // }),
     userNameCom() {
       return this.$store.getters.getCurrentName;
     },
@@ -248,6 +265,15 @@ export default {
 
 
 <style lang="scss"scoped>
+$font-color: rgb(68, 68, 68);
+$font-size: 20px;
+$main-font: "Rubik", sans-serif;
+
+* {
+  font-family: $main-font;
+  font-size: $font-size;
+}
+
 .editAvatar {
   position: absolute;
   z-index: 1;
@@ -290,10 +316,6 @@ export default {
   z-index: 1;
 }
 
-* {
-  font-family: "Rubik", sans-serif;
-}
-
 .module1 {
   display: flex;
   position: relative;
@@ -309,7 +331,7 @@ export default {
 li {
   display: flex;
   flex-direction: column;
-  margin: 3vh;
+  margin: 45px;
   justify-content: space-between;
 }
 
@@ -321,21 +343,18 @@ ul {
 .personal_ul li {
   display: flex;
   flex-direction: row;
-  margin: 3vh;
   justify-content: space-between;
 }
 
 .account_ul li {
   display: flex;
   flex-direction: row;
-  margin: 3vh;
   justify-content: space-between;
 }
 
 .email_ul li {
   display: flex;
   flex-direction: row;
-  margin: 3vh;
   justify-content: space-between;
 }
 
@@ -362,6 +381,8 @@ svg:hover {
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: center;
+  width: 1500px;
+  height: 500px;
   margin: 10px;
   animation: 0.4s container_animation;
   animation-fill-mode: both;
@@ -382,52 +403,60 @@ svg:hover {
 .person1,
 .person2,
 .person3 {
-  box-shadow: 0px 0px 10px 0px #203753;
-  width: 240px;
   display: flex;
   flex-direction: column;
   align-content: center;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  border-radius: 2px;
+  position: relative;
+  box-shadow: 0px 0px 10px 0px #203753;
+  width: 400px;
+  height: 100%;
+  font-size: 1.5em;
+  border-radius: 5px;
   margin-right: 15px;
 }
 
 .background-1,
 .background-2,
 .background-3 {
-  background-color: rgba(203, 255, 248, 0.6);
   position: absolute;
   z-index: 0;
 }
 
+.background-1,
+.background-2,
+.background-3,
 .background {
-  background-color: rgba(203, 255, 248, 0.6);
+  background-color: rgb(255, 255, 255);
+}
+
+.background {
   position: absolute;
   z-index: -1;
-  width: 41rem;
+  width: 100%;
   height: 100%;
 }
 
 .background-1 {
-  width: 15em;
+  width: 100%;
   height: 100%;
 }
 
 .background-2 {
-  width: 15em;
+  width: 100%;
   height: 100%;
   z-index: -1;
 }
 
 .background-3 {
-  width: 15em;
+  width: 100%;
   height: 100%;
   z-index: -1;
 }
 
 .background-transparency {
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .person2 {
@@ -448,6 +477,8 @@ svg:hover {
   justify-content: space-between;
   text-align: center;
   margin: 5px;
+  font-size: 1.1em;
+  color: $font-color;
 }
 
 .personaldata4 {
@@ -474,7 +505,6 @@ svg:hover {
   border: none;
   background-color: rgb(131, 235, 209);
   font-weight: bold;
-  color: black;
   margin: 5px;
   box-shadow: 1px 1px 5px grey;
   transition: transform 0.3s ease-in-out;
@@ -493,7 +523,6 @@ svg:hover {
 }
 
 .question2 {
-  color: rgb(117, 117, 117);
   width: 180px;
   text-align: center;
   font-size: 9px;
@@ -513,8 +542,8 @@ svg:hover {
 #face_photo {
   position: relative;
   z-index: 0;
-  width: 85px;
-  height: 80px;
+  width: 120px;
+  height: 110px;
   border-radius: 100%;
   box-shadow: 1px 1px 5px 0px grey;
 }
@@ -526,10 +555,11 @@ svg:hover {
   align-self: flex-start;
   flex-direction: column;
   justify-content: space-around;
+  position: relative;
   box-shadow: 0px 0px 10px 0px #203753;
-  height: 260px;
-  border-radius: 2px;
-  width: 41rem;
+  height: 100%;
+  border-radius: 5px;
+  width: 1000px;
 }
 
 .lower_module {
@@ -563,7 +593,6 @@ svg:hover {
 }
 
 .availablebalance {
-  color: rgb(121, 121, 121);
 }
 
 .money {
@@ -602,7 +631,6 @@ svg:hover {
 
 .transfer a {
   text-decoration: none;
-  color: black;
 }
 
 .edit1,
@@ -624,11 +652,10 @@ svg:hover {
   position: relative;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
-  padding-bottom: 1.5rem;
 }
 
 .headline {
-  font-size: large;
+  font-size: 1.4em;
   font-weight: normal;
   margin-left: 19px;
   margin-top: 14px;

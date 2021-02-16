@@ -13,6 +13,7 @@ export default new Vuex.Store({
         currentPhoneNumber: '+48 985 652 332',
         currentBirthDate: '24/05/1994',
         currentAddress: '25 Union Square W, New York, NY 10003, USA',
+
     },
     mutations: {
         setCurrentName(state, payLoad) {

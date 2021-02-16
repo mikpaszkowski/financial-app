@@ -7,7 +7,7 @@
       <button class="component" id="component-account">Account</button>
     </router-link>
     <router-link to="/home/history" exact>
-    <button class="component" id="component-history">History</button>
+      <button class="component" id="component-history">History</button>
     </router-link>
     <button class="component" id="component-offer">Bank offer</button>
     <button class="component" id="component-call">Call center</button>
@@ -50,7 +50,6 @@ export default {
   methods: {
     slideInOutBar: function () {
       this.isToolbarOn = !this.isToolbarOn;
-      console.log("isToolBarOn : " + this.isToolbarOn);
     },
   },
   created: function () {
@@ -66,8 +65,7 @@ export default {
 
 
 <style lang="scss" scoped>
-
-$color: #00e8d5;
+$color: #336c68;
 
 .toolbarPosition {
   transform: rotate(90deg);
@@ -162,8 +160,7 @@ a {
   text-decoration: none;
 }
 
-.router-link-active{
-  background-color: darken($color, 25%);
+.router-link-active {
+  background-color: darken($color, 10%);
 }
-
 </style>

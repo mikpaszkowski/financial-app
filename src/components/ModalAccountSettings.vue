@@ -8,16 +8,22 @@
       <div class="edit-form" id="form1">
         <ul class="form1">
           <li>
-            <label for="name" id="name">Name and surname</label>
-            <input type="text" name="name" id="name-form" />
+            <label for="language" id="language">Language</label>
+            <select name="language" id="language" v-model="selectedLanguage">
+              <option value="" disabled>Choose your language</option>
+              <option value="" v-for="(language, idx) in languages" :key="idx">
+                {{ language.name }}
+              </option>
+            </select>
           </li>
           <li>
-            <label for="birth" id="birth">Date of birth</label>
-            <input type="date" name="birth" id="date_select" />
-          </li>
-          <li>
-            <label for="address">Address</label>
-            <input type="text" name="address" />
+            <label for="timezone" id="timezone">Time Zone</label>
+            <select name="time-zone" id="time-zone" v-model="selectedTimeZone">
+              <option value="" disabled>Your time zone</option>
+              <option value="" v-for="(timezone, idx) in timezones" :key="idx">
+                {{ timezone.name }}
+              </option>
+            </select>
           </li>
         </ul>
         <div class="edit-buttons button-1">
@@ -50,11 +56,8 @@ export default {
     return {
       languages: languages,
       timezones: timeZones,
-      personalDetails: {
-        name: null,
-        birth: null,
-        address: null,
-      },
+      status: true,
+      selectedLanguage: "",
     };
   },
   components: {

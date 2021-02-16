@@ -7,9 +7,8 @@
       <router-view></router-view>
     </transition>
     <footer>
-      
       <p>Some text in the footer</p>
-      <hr id="lower">
+      <hr id="lower" />
       <p>Some other text</p>
     </footer>
   </div>
@@ -39,15 +38,16 @@ export default {
 
 
 <style lang="scss">
-
-.cards-leave-to, .cards-enter{
+.cards-leave-to,
+.cards-enter {
   opacity: 0;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
-.cards-leave, .cards-enter-to{
+.cards-leave,
+.cards-enter-to {
   opacity: 1;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 body {
@@ -55,21 +55,13 @@ body {
 }
 
 .background-image {
-  position: rel;
+  position: absolute;
   width: 100%;
-  height: 101%;
-  margin-right: auto;
-  margin-left: auto;
-  background-image: linear-gradient(
-      rgb(79, 175, 179),
-      rgba(167, 255, 233, 0.479)
-    ),
-    url("../assets/signin_image.jpg");
-  background-size: cover;
-  background-position: center;
+  height: 100%;
+  background-color: #f1f5f6;
 }
 
-footer{
+footer {
   position: relative;
   display: flex;
   justify-content: center;
@@ -80,15 +72,15 @@ footer{
   height: 20rem;
 }
 
-hr{
+hr {
   text-align: center;
-  
+
   margin: 1rem 0;
   margin-left: auto;
   margin-right: auto;
 }
 
-#lower{
-  width: 60%
+#lower {
+  width: 60%;
 }
 </style>

@@ -2,14 +2,14 @@
   <div v-if="isPersonalModalOpen">
     <div class="dark-background" id="dark-background"></div>
     <transition name="fade">
-      <div class="conatiner1-module" id="conatiner1-module">
+      <div class="container1-module" id="container1-module">
         <div class="exit1" id="exit1" @click="modalClosed">
           <ExitSVG id="ExitSVG" />
         </div>
         <div class="edit-form" id="form1">
           <ul class="form1">
             <li>
-              <label for="name" id="name">Name</label>
+              <label for="name" id="name">First Name</label>
               <input
                 v-model="userName"
                 type="text"
@@ -18,7 +18,7 @@
               />
             </li>
             <li>
-              <label for="surname" id="surname">Surname</label>
+              <label for="surname" id="surname">Last Name</label>
               <input
                 v-model="userSurname"
                 type="text"
@@ -45,7 +45,12 @@
             </li>
           </ul>
           <div class="edit-buttons button-1">
-            <button @click="save" id="save-button-1" class="save-button">
+            <button
+              v-on:click.enter="save"
+              @click="save"
+              id="save-button-1"
+              class="save-button"
+            >
               Save
             </button>
             <button
@@ -66,6 +71,7 @@
 
 <script>
 import ExitIconSVG from "../assets/exit.svg";
+import { mapActions } from "vuex";
 
 export default {
   data() {
@@ -85,12 +91,20 @@ export default {
     modalClosed: function () {
       this.$root.$emit("modalPersonalDetailsClosed");
     },
+    ...mapActions([
+      "updateCurrentName",
+      "updateCurrentSurname",
+      "updateCurrentAddress",
+      "updateCurrentBirthDate",
+      "updateCurrentPhoneNumber",
+    ]),
     save() {
-      this.$store.dispatch("updateCurrentName", this.userName);
-      this.$store.dispatch("updateCurrentSurname", this.userSurname);
-      this.$store.dispatch("updateCurrentAddress", this.address);
-      this.$store.dispatch("updateCurrentBirthDate", this.birthDate);
-      this.$store.dispatch("updateCurrentPhoneNumber", this.phoneNumber);
+      this.updateCurrentName(this.userName);
+      this.updateCurrentSurname(this.userSurname);
+      this.updateCurrentAddress(this.address);
+      this.updateCurrentBirthDate(this.birthDate);
+      this.updateCurrentPhoneNumber(this.phoneNumber);
+      this.modalClosed();
     },
   },
 };
@@ -155,15 +169,15 @@ export default {
   }
 }
 
-.conatiner1-module {
+.container1-module {
   position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 100;
-  width: 400px;
-  height: 420px;
+  width: 600px;
+  height: 800px;
   background-color: #d5fdf4b3;
   right: 50%;
   margin-right: -200px;

@@ -194,6 +194,7 @@ body {
   width: 100%;
   font-family: $font-stack;
   font-size: 20px;
+  background-color: #225355;
   animation: 1s ease-in both headline_slide_in,
     cubic-bezier(0.6, 0.04, 0.98, 0.335);
 
