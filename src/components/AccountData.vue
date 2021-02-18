@@ -262,36 +262,18 @@ export default {
     this.currentLanugage = this.getCurrentLanguage;
   },
   computed: {
-    userNameCom() {
-      return this.$store.getters.getCurrentName;
-    },
-    birthDateCom() {
-      return this.$store.getters.getCurrentBirthDate;
-    },
-    userSurnameCom() {
-      return this.$store.getters.getCurrentSurename;
-    },
-    phoneNumberCom() {
-      return this.$store.getters.getCurrentPhoneNumber;
-    },
-    addressCom() {
-      return this.$store.getters.getCurrentAddress;
-    },
-    currentEmailAddressCom() {
-      return this.$store.getters.getCurrentEmailAddress;
-    },
-    additionalEmailAddressCom() {
-      return this.$store.getters.getAdditionalEmailAddress;
-    },
-    additionalPhoneNumberCom() {
-      return this.$store.getters.getAdditionalPhoneNumber;
-    },
-    currentTimeZoneCom() {
-      return this.$store.getters.getCurrentTimeZone;
-    },
-    currentLanguageCom() {
-      return this.$store.getters.getCurrentLanguage;
-    },
+    ...mapGetters({
+      userNameCom: "getCurrentName",
+      birthDateCom: "getCurrentBirthDate",
+      userSurnameCom: "getCurrentSurename",
+      phoneNumberCom: "getCurrentPhoneNumber",
+      addressCom: "getCurrentAddress",
+      currentEmailAddressCom: "getCurrentEmailAddress",
+      additionalEmailAddressCom: "getAdditionalEmailAddress",
+      additionalPhoneNumberCom: "getAdditionalPhoneNumber",
+      currentTimeZoneCom: "getCurrentTimeZone",
+      currentLanguageCom: "getCurrentLanguage",
+    }),
   },
   created() {
     this.$root.$on(

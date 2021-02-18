@@ -242,6 +242,7 @@ $border-radius: 5px;
       color: $input-font-color;
       outline: none;
       transition: box-shadow ease-in-out 0.1s;
+      font-size: 1.2em;
 
       &:focus {
         box-shadow: 1px 1px 4px 0px $save-button-color;
