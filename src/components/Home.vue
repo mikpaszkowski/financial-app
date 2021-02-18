@@ -26,7 +26,6 @@ export default {
   methods: {
     showAccountData: function () {
       this.component = "app-account-data";
-      console.log(this.isAccountButtonClicked);
     },
   },
 

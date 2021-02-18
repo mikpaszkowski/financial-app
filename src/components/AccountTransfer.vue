@@ -1,12 +1,14 @@
 <template>
   <div id="transfer-origin">
-       <modal-validation :occuredErrors="errors" :modalOn="isModalOn"></modal-validation>
+    <modal-validation
+      :occuredErrors="errors"
+      :modalOn="isModalOn"
+    ></modal-validation>
     <div class="transfer-forms" id="wholewindow">
       <form class="form" id="form">
-         
         <ul class="list">
           <li class="transtype">
-            <label for="name" id="type">Type of<br />transaction</label>
+            <label for="name" id="type">Type of transaction</label>
             <select
               name="transactions"
               id="list-of-transactions"
@@ -21,20 +23,18 @@
               </option>
             </select>
           </li>
-          <div class="text-meassage-box">
-            <li>
-              <label for="description" id="description_headline"
-                >Description:</label
-              >
-              <textarea
-                type="text"
-                id="description"
-                placeholder="Type text here..."
-                v-model="transferData.description"
-              ></textarea>
-            </li>
-            <div class="textarea_meassage" id="text_area_message"></div>
-          </div>
+          <li>
+            <label for="description" id="description_headline"
+              >Description:</label
+            >
+            <textarea
+              type="text"
+              id="description"
+              placeholder="Type text here..."
+              v-model="transferData.description"
+            ></textarea>
+          </li>
+          <div class="textarea_meassage" id="text_area_message"></div>
 
           <div class="amount-box">
             <li>
@@ -64,10 +64,16 @@
             <div id="codemessage" class="code_message"></div>
           </div>
         </ul>
-        <div id="errors" v-if="errors.length">
-        </div>
+        <div id="errors" v-if="errors.length"></div>
         <div class="buttons">
-          <button class="btn1" type="submit" ref="submitButton" @click="checkForm">Perform</button>
+          <button
+            class="btn1"
+            type="submit"
+            ref="submitButton"
+            @click="checkForm"
+          >
+            Perform
+          </button>
           <button type="reset" class="btn2">Clear</button>
         </div>
       </form>
@@ -97,7 +103,6 @@
         </router-link>
       </div>
     </div>
-   
   </div>
 </template>
 
@@ -126,10 +131,10 @@ export default {
     };
   },
   created() {
-    this.$root.$on('modalValClosed', this.closeModal);
+    this.$root.$on("modalValClosed", this.closeModal);
   },
   methods: {
-    closeModal: function(){
+    closeModal: function () {
       this.isModalOn = false;
     },
     checkForm: function (e) {
@@ -141,7 +146,9 @@ export default {
       if (!this.transferData.description) {
         this.errors.push("Description required.");
       }
-      if (isNaN(this.transferData.amount) || this,transferData.amount == null) {
+      if (
+        (isNaN(this.transferData.amount) || this, transferData.amount == null)
+      ) {
         this.errors.push("Invalid amount number.");
       } else if (parseInt(this.transferData.amount) <= 0) {
         alert(parseInt(this.transferData.amount));
@@ -154,14 +161,13 @@ export default {
           "Invalid 5-digit code - required 5-digit long number."
         );
       }
-    
-      if (!this.errors.length) {
-          return true;
-      }else{
-          this.isModalOn = true;
-          e.preventDefault();
-      }
 
+      if (!this.errors.length) {
+        return true;
+      } else {
+        this.isModalOn = true;
+        e.preventDefault();
+      }
     },
   },
 };
@@ -169,124 +175,178 @@ export default {
 
 
 <style lang="scss" scoped>
-:root {
-  font-family: "Poppins", sans-serif;
-}
+$form-width: 700px;
+$form-height: 800px;
+$font-stack: "Rubik", sans-serif;
+$font-size: 20px;
+$input-height: 50px;
 
-#transfer-origin {
-  margin-top: 15rem;
-  font-weight: 800;
-  color: white;
-  background-color: rgb(183, 248, 242);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-a {
-  text-decoration: none;
-  color: rgb(112, 112, 112);
-  font-size: small;
-}
-
-a:hover {
-  color: rgb(88, 88, 226);
-}
-
-svg {
-  width: 25px;
-}
-
-svg:hover {
-  fill: rgb(88, 88, 226);
-}
-
-textarea {
-  vertical-align: top;
-  width: 300px;
-  height: 100px;
-  border-radius: 3px;
-  padding: 3px;
-}
-textarea:hover {
-  border-color: rgb(221, 255, 97);
-}
-
-textarea:placeholder-shown {
-  font-size: 12px;
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-  color: black;
-  letter-spacing: 4px;
-}
-
-textarea:focus::placeholder {
-  opacity: 0;
-  transition: 0.2s;
-}
-
-li {
-  display: flex;
-  justify-content: flex-start;
-  margin: 30px;
-  border-radius: 3px;
-}
-
-input,
-select,
-textarea {
-  outline: none;
-  border-width: 0;
-  border-radius: 2px;
-  border-width: 1px;
-}
-
-input:placeholder-shown {
-  font-size: 12px;
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-  color: black;
-  letter-spacing: 4px;
-}
-
-input:focus::placeholder {
-  opacity: 0;
-  transition: 0.2s;
-}
-
-input:hover {
-  border-color: rgb(221, 255, 97);
-}
-
-select {
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-  height: 40px;
-}
-
-.transtype {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-option {
-  font-weight: bold;
+* {
+  font-family: $font-stack;
+  font-size: $font-size;
 }
 
 .transfer-forms {
-  margin-top: 10rem;
-  position: absolute;
-  justify-content: center;
-  align-content: center;
-  width: fit-content;
+  position: relative;
+  width: $form-width;
+  height: $form-height;
+  top: 50%;
+  left: 50%;
+  margin-left: -$form-width / 2;
+  padding: 20px;
+  background-color: rgb(99, 207, 193);
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px grey;
+  animation: 1s ease-in-out entry;
+
+  .form {
+    ul {
+      padding: 0;
+
+      label {
+        margin-top: 20px;
+      }
+
+      li,
+      label,
+      select {
+        position: relative;
+        display: block;
+        width: 100%;
+      }
+      input[type="text"] {
+        width: 100%;
+        height: $input-height;
+
+        &:placeholder-shown {
+          font-size: 0.8em;
+          font-family: $font-stack;
+          color: black;
+          letter-spacing: 4px;
+        }
+        &:focus::placeholder {
+          opacity: 0;
+          transition: 0.2s;
+        }
+      }
+
+      select {
+        font-family: $font-stack;
+      }
+
+      textarea {
+        vertical-align: top;
+        width: 99%;
+        height: $input-height;
+        border-radius: 3px;
+        padding: 3px;
+
+        &:placeholder-shown {
+          font-size: 16px;
+          font-family: $font-stack;
+          color: black;
+          letter-spacing: 4px;
+        }
+
+        &:focus::placeholder {
+          opacity: 0;
+          transition: 0.2s;
+        }
+      }
+
+      .transtype {
+        select,
+        option {
+          height: $input-height;
+          font-size: 1em;
+        }
+      }
+      .amount-box {
+        .amount_message {
+          position: absolute;
+          z-index: 1;
+          margin-left: 140px;
+          margin-right: 10px;
+          align-self: auto;
+          margin-top: 80px;
+        }
+      }
+
+      .code-box {
+        position: relative;
+        z-index: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: self-end;
+        outline: none;
+      }
+    }
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 25px;
+      font-weight: normal;
+      width: 60%;
+      height: 40px;
+      margin-left: 25%;
+      margin-right: 100%;
+
+      .btn1,
+      .btn2 {
+        width: 40%;
+        height: 100%;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+        border-radius: 2px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 900;
+      }
+      .btn1:hover {
+        background-color: rgb(154, 255, 145);
+      }
+
+      .btn2:hover {
+        background-color: rgb(255, 174, 108);
+      }
+    }
+  }
+
+  .go-back-home {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 20px;
+
+    a {
+      text-decoration: none;
+      color: rgb(112, 112, 112);
+      font-size: small;
+
+      &:hover {
+        color: rgb(88, 88, 226);
+      }
+    }
+    svg {
+      width: 25px;
+
+      &:hover {
+        fill: rgb(88, 88, 226);
+      }
+    }
+  }
+}
+
+.transfer-forms {
+  position: relative;
+  width: $form-width;
+  height: $form-height;
+  top: 50%;
+  left: 50%;
+  margin-left: -$form-width / 2;
+  padding: 20px;
   background-color: rgb(99, 207, 193);
   border-radius: 3px;
   box-shadow: 1px 1px 5px grey;
@@ -305,106 +365,6 @@ option {
   100% {
     transform: scale(1);
   }
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 25px;
-  font-weight: normal;
-  width: 60%;
-  height: 40px;
-  margin-left: 25%;
-  margin-right: 100%;
-}
-
-.btn1,
-.btn2 {
-  width: 40%;
-  height: 100%;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  margin: 10px;
-  border-radius: 2px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-}
-
-.btn1:hover {
-  background-color: rgb(154, 255, 145);
-}
-
-.btn2:hover {
-  background-color: rgb(255, 174, 108);
-}
-
-#money {
-  margin-right: 45px;
-}
-
-#description_headline {
-  margin-right: 20px;
-}
-
-#amount {
-  max-width: 110px;
-  padding: 5px;
-}
-
-#type {
-  margin-right: 30px;
-  text-align: center;
-}
-
-#code5 {
-  width: 70px;
-  height: 25px;
-  text-align: center;
-}
-
-#code {
-  margin-right: 12px;
-}
-
-select {
-  width: 100px;
-  text-align: center;
-}
-
-ul {
-  list-style-type: none;
-}
-
-li {
-  margin: 30px;
-}
-
-table {
-  position: absolute;
-  text-align: center;
-  color: black;
-  bottom: -15%;
-  width: 50%;
-  margin-bottom: inherit;
-}
-
-table td {
-  padding: 0 10px 0 10px;
-}
-
-table th {
-  padding: 20px;
-}
-
-.amount_message {
-  position: absolute;
-  z-index: 1;
-  margin-left: 140px;
-  margin-right: 10px;
-  align-self: auto;
-  margin-top: 80px;
 }
 
 .code_message {
@@ -431,12 +391,6 @@ table th {
   }
 }
 
-.textarea_meassage {
-  position: relative;
-  margin-left: 140px;
-  margin-top: 1%;
-}
-
 .code_message,
 .amount_message,
 .textarea_meassage {
@@ -444,27 +398,6 @@ table th {
   font-size: 0.5rem;
   letter-spacing: 2px;
   font-weight: bold;
-}
-
-.amount-box {
-  z-index: 0;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: self-end;
-}
-
-.amount-box li {
-  margin-bottom: 0;
-}
-
-.code-box {
-  position: relative;
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: self-end;
-  outline: none;
 }
 
 .text-meassage-box {
@@ -477,12 +410,5 @@ table th {
 
 .text-meassage-box li {
   margin-bottom: 0;
-}
-
-.go-back-home {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-bottom: 20px;
 }
 </style>
