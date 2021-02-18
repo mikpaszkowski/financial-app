@@ -111,7 +111,7 @@
               </li>
               <li>
                 <label for>Status:</label>
-                <p style="color: green" id="status_p">Enabled</p>
+                <div class="status enabled"></div>
               </li>
             </ul>
           </div>
@@ -150,6 +150,7 @@
                       : currentEmailAddress
                   }}
                 </p>
+                <div class="primary"></div>
                 <li>
                   <label>Email:</label>
                 <p id="email_p">
@@ -166,6 +167,7 @@
                 <p>
                   {{ phoneNumberCom.length > 0 ? phoneNumberCom : phoneNumber }}
                 </p>
+                <div class="primary"></div>
               </li>
               <li>
                 <label>Phone:</label>
@@ -310,10 +312,70 @@ export default {
 $font-color: rgb(68, 68, 68);
 $font-size: 20px;
 $main-font: "Rubik", sans-serif;
+$modal-width: 700px;
+$modal-height: 700px;
+$input-border-color: #bdc3c7;
+$input-font-color: #656565;
+$save-button-color: #16a085;
+$border-radius: 5px;
+$flat-green: #2ecc71;
+$flat-blue: #3498db;
+$flat-red: #e74c3c;
 
 * {
   font-family: $main-font;
   font-size: $font-size;
+}
+
+.primary {
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  right: 250px;
+  background-color: $flat-blue;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75em;
+  border-radius: 2em;
+  text-align: center;
+  padding-top: 3px;
+  letter-spacing: 1px;
+  margin-left: 10px;
+
+  &::before {
+    content: "Primary";
+  }
+}
+
+.status {
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  left: 450px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75em;
+  border-radius: 2em;
+  text-align: center;
+  padding-top: 3px;
+  letter-spacing: 1px;
+  margin-left: 10px;
+}
+
+.enabled {
+  background-color: $flat-green;
+
+  &::before {
+    content: "Enabled";
+  }
+}
+
+.disabled {
+  background-color: $flat-red;
+
+  &::before {
+    content: "Disabled";
+  }
 }
 
 .editAvatar {
@@ -715,6 +777,7 @@ p {
 
 label {
   font-weight: 600;
+  color: $input-font-color;
 }
 
 @media screen and (max-width: 1306px) {

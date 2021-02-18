@@ -3,8 +3,11 @@
     <div class="dark-background" id="dark-background"></div>
     <transition name="fade">
       <div class="container1-module" id="container1-module">
-        <div class="exit1" id="exit1" @click="modalClosed">
-          <ExitSVG id="ExitSVG" />
+        <div class="headline-container">
+          <h1>Personal Details</h1>
+          <div class="exit1" id="exit1" @click="modalClosed">
+            <ExitSVG id="ExitSVG" />
+          </div>
         </div>
         <div class="edit-form" id="form1">
           <ul class="form1">
@@ -41,13 +44,13 @@
             </li>
             <li>
               <label for="phone-number">Phone</label>
-              <input v-model="phoneNumber" name="phone-number" />
+              <input type="text" v-model="phoneNumber" name="phone-number" />
             </li>
           </ul>
           <button
             v-on:click.enter="save"
             @click="save"
-            id="save-button-1"
+            id="save-button"
             class="save-button"
           >
             Save
@@ -103,6 +106,13 @@ export default {
 
 
 <style lang="scss" scoped>
+$modal-width: 700px;
+$modal-height: 800px;
+$input-border-color: #bdc3c7;
+$input-font-color: #656565;
+$save-button-color: #16a085;
+$border-radius: 5px;
+
 .fade-enter-active {
   animation: bounce-in 0.5s ease-out;
 }
@@ -141,22 +151,17 @@ export default {
   transition: 1s;
 }
 
-.exit1 {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 56px;
-}
-
 #ExitSVG {
   position: relative;
   height: 1.8em;
   margin-top: 0.4em;
   transition: all 0.2s ease-in-out;
+  opacity: 0.5;
 
   &:hover {
     cursor: pointer;
     transform: rotate(90deg);
+    opacity: 1;
   }
 }
 
@@ -167,20 +172,38 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 100;
-  width: 600px;
-  height: 800px;
-  background-color: #ffffff;
-  right: 50%;
-  margin-right: -200px;
-}
+  width: $modal-width;
+  height: $modal-height;
+  top: 50%;
+  left: 50%;
+  margin-top: -$modal-height / 2;
+  margin-left: -$modal-width / 2;
+  padding: 30px;
+  padding-top: 15px;
+  padding-bottom: 0;
+  background-color: white;
+  border-radius: $border-radius;
 
-.exit1,
-.exit2,
-.exit3 {
-  position: absolute;
-  top: 2%;
-  left: 89%;
-  width: 10%;
+  .headline-container {
+    border-bottom: 1px solid $input-border-color;
+    width: 100%;
+    top: 0;
+
+    h1 {
+      color: black;
+      font-size: 1.5em;
+      font-weight: lighter;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .exit1 {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 55px;
+    }
+  }
 }
 
 .edit-form {
@@ -188,6 +211,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   li,
   label {
@@ -199,55 +223,52 @@ export default {
     padding: 0;
 
     label {
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-    }
-    input {
-      width: 20rem;
-      height: 2rem;
-      border: none;
-      font-size: 1rem;
-      border-radius: 0.25rem;
-      transition: all 0.2s ease-in-out;
-
-      &:hover {
-        box-shadow: 1px 1px 7px 0px #c3c3c3;
-      }
+      font-size: 0.8em;
+      color: $input-font-color;
+      margin-bottom: 10px;
     }
   }
 
   ul {
     padding: 0;
-  }
+    width: 100%;
 
-  #language-select,
-  #select-time-zone {
-    width: 20rem;
-    height: 2rem;
-    font-size: 1rem;
-    border: none;
-    transition: box-shadow 0.15s ease-in-out;
+    input[type="text"],
+    input[type="date"] {
+      border: $input-border-color 1px solid;
+      border-radius: $border-radius;
+      width: 100%;
+      height: 60px;
+      color: $input-font-color;
+      outline: none;
+      transition: box-shadow ease-in-out 0.1s;
 
-    &:hover {
-      box-shadow: 1px 1px 7px 0px #c3c3c3;
+      &:focus {
+        box-shadow: 1px 1px 4px 0px $save-button-color;
+      }
     }
   }
 
-  #save-button-1 {
-    width: 90%;
-    height: 50px;
-    font-size: 1rem;
+  #save-button {
+    margin-top: 1.5rem;
+    width: 100%;
+    height: 65px;
+    font-size: 1.2em;
+    color: white;
+    font-weight: 500;
     box-shadow: 1px 1px 7px 0px #c3c3c3;
+    border-radius: $border-radius;
     border: none;
     cursor: pointer;
+    background-color: $save-button-color;
   }
 
-  #save-button-1 {
+  #save-button {
     margin-right: 0.5rem;
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      background-color: lightgreen;
+      background-color: lighten($save-button-color, 10%);
     }
   }
 }

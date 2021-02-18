@@ -3,7 +3,7 @@
     <div class="dark-background" id="dark-background"></div>
     <div class="conatiner2-module" id="conatiner2-module">
       <div class="headline-container">
-        <h1>Personal Details</h1>
+        <h1>Account Settings</h1>
         <div class="exit2" id="exit2" @click="modalClosed">
           <ExitSVG id="ExitSVG" />
         </div>
@@ -147,6 +147,7 @@ $border-radius: 5px;
   &:hover {
     cursor: pointer;
     transform: rotate(90deg);
+    opacity: 1;
   }
 }
 
@@ -224,9 +225,11 @@ $border-radius: 5px;
       width: 100%;
       height: 60px;
       color: $input-font-color;
+      transition: box-shadow ease-in-out 0.2s;
+      outline: none;
 
       &:focus {
-        box-shadow: 1px 1px 7px 0px $save-button-color;
+        box-shadow: 1px 1px 4px 0px $save-button-color;
       }
     }
   }
