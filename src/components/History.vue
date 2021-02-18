@@ -2,20 +2,24 @@
   <table class="history-table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Transaction</th>
-        <th>Amount</th>
+        <th>Date</th>
         <th>Description</th>
-        <th>Data</th>
+        <th>Status</th>
+        <th>Amount</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="row in history" :key="row.id">
-        <td>{{ row.id }}</td>
-        <td id="transaction">{{ row.transaction }}</td>
-        <td>{{ row.amount + " $" }}</td>
-        <td>{{ row.description }}</td>
         <td>{{ row.date }}</td>
+        <td>{{ row.description }}</td>
+        <td>status</td>
+        <td>
+          {{
+            row.transaction == "deposit"
+              ? `- ${row.amount} (${row.currency})`
+              : `+ ${row.amount} (${row.currency})`
+          }}
+        </td>
       </tr>
     </tbody>
   </table>
@@ -36,10 +40,8 @@ export default {
 
 
 <style lang="scss">
-
-
 .history-table {
-  width: 70%;
+  width: 90%;
   text-align: center;
   border-collapse: separate;
   position: relative;
@@ -67,7 +69,7 @@ table th:last-child {
 
 td,
 th {
-  padding: 0.7rem;
+  padding: 1rem;
   border: 1px solid #979797;
 }
 
@@ -93,11 +95,11 @@ table tr {
 }
 
 td {
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 #transaction {
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 1em;
 }
 </style>

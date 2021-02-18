@@ -67,12 +67,6 @@
                   {{ addressCom.length > 0 ? addressCom : address }}
                 </p>
               </li>
-              <li>
-                <label for>Phone:</label>
-                <p id="phone_p">
-                  {{ phoneNumberCom.length > 0 ? phoneNumberCom : phoneNumber }}
-                </p>
-              </li>
             </ul>
           </div>
         </div>
@@ -139,7 +133,7 @@
           <div class="lower_module">
             <div class="background"></div>
             <div class="nav">
-              <div class="headline">Email address</div>
+              <div class="headline">Email & Phone</div>
               <div class="edit-button-svg">
                 <button class="edit3" id="edit3" @click="modalEmailAddressOpen">
                   <EditSectionSVG id="svg-edit" />
@@ -149,10 +143,35 @@
             <ul class="email_ul">
               <li>
                 <label>Email:</label>
-                <p id="email_p">john.smith@gmail.com</p>
+                <p id="email_p">
+                  {{
+                    currentEmailAddressCom.length > 0
+                      ? currentEmailAddressCom
+                      : currentEmailAddress
+                  }}
+                </p>
+                <li>
+                  <label>Email:</label>
+                <p id="email_p">
+                  {{
+                    additionalEmailAddressCom.length > 0
+                      ? additionalEmailAddressCom
+                      : additionalEmailAddress
+                  }}
+                </p>
+                </li>
               </li>
               <li>
-                <label>Phone number:</label>
+                <label>Phone:</label>
+                <p>
+                  {{ phoneNumberCom.length > 0 ? phoneNumberCom : phoneNumber }}
+                </p>
+              </li>
+              <li>
+                <label>Phone:</label>
+                <p>
+                  {{ additionalPhoneNumberCom.length > 0 ? additionalPhoneNumberCom : additionalPhoneNumber }}
+                </p>
               </li>
             </ul>
           </div>
@@ -180,6 +199,9 @@ export default {
       userName: "",
       userSurname: "",
       phoneNumber: "",
+      currentEmailAddress: "",
+      additionalPhoneNumber: "",
+      additionalEmailAddress: "",
       address: "",
       birthDate: "",
     };
@@ -216,6 +238,9 @@ export default {
       "getCurrentSurename",
       "getCurrentPhoneNumber",
       "getCurrentAddress",
+      "getCurrentEmailAddress",
+      "getAdditionalEmailAddress",
+      "getAdditionalPhoneNumber",
     ]),
   },
   mounted() {
@@ -224,15 +249,11 @@ export default {
     this.phoneNumber = this.getCurrentPhoneNumber;
     this.birthDate = this.getCurrentBirthDate;
     this.address = this.getCurrentAddress;
+    this.currentEmailAddress = this.getCurrentEmailAddress;
+    this.additionalPhoneNumber = this.getAdditionalPhoneNumber;
+    this.additionalEmailAddress = this.getAdditionalEmailAddress;
   },
   computed: {
-    // ...mapGetters({
-    //   usernameCom: "getCurrentName",
-    //   birthDateCom: "getCurrentBirthDate",
-    //   userSurnameCom: "getCurrentSurename",
-    //   phoneNumberCom: "getCurrentPhoneNumber",
-    //   addressCom: "getCurrentAddress",
-    // }),
     userNameCom() {
       return this.$store.getters.getCurrentName;
     },
@@ -247,6 +268,15 @@ export default {
     },
     addressCom() {
       return this.$store.getters.getCurrentAddress;
+    },
+    currentEmailAddressCom() {
+      return this.$store.getters.getCurrentEmailAddress;
+    },
+    additionalEmailAddressCom() {
+      return this.$store.getters.getAdditionalEmailAddress;
+    },
+    additionalPhoneNumberCom() {
+      return this.$store.getters.getAdditionalPhoneNumber;
     },
   },
   created() {

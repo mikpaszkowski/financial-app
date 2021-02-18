@@ -1,5 +1,5 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { Store } from "vuex";
 
 Vue.use(Vuex);
 
@@ -11,6 +11,9 @@ export default new Vuex.Store({
         currentName: 'Nicolas',
         currentSurename: 'Kowalsky',
         currentPhoneNumber: '+48 985 652 332',
+        additionalPhoneNumber: "+48 654 887 965",
+        currentEmailAddress: "myEmail@gmail.com",
+        additionalEmailAddress: "mySecondEmailAddress@gmail.com",
         currentBirthDate: '24/05/1994',
         currentAddress: '25 Union Square W, New York, NY 10003, USA',
 
@@ -30,6 +33,15 @@ export default new Vuex.Store({
         },
         setCurrentBirthDate(state, payLoad) {
             state.currentBirthDate = payLoad;
+        },
+        setCurrentEmailAddress(state, payLoad) {
+            state.currentEmailAddress = payLoad;
+        },
+        setAdditionalPhoneNumber(state, payLoad) {
+            state.additionalPhoneNumber = payLoad;
+        },
+        setAdditionalEmailAddress(state, payLoad) {
+            state.additionalEmailAddress = payLoad;
         }
     },
     actions: {
@@ -48,6 +60,15 @@ export default new Vuex.Store({
         updateCurrentAddress({ commit }, payLoad) {
             commit('setCurrentAddress', payLoad);
         },
+        updateCurrentEmailAddress({ commit }, payLoad) {
+            commit('setAdditionalEmailAddress', payLoad);
+        },
+        updateAdditionalEmailAddress({ commit }, payLoad) {
+            commit('setAdditionalEmailAddress', payLoad);
+        },
+        updateAdditionalPhoneNumber({ commit }, payLoad) {
+            commit('setAdditionalPhoneNumber', payLoad);
+        }
 
     },
     modules: {},
@@ -57,5 +78,8 @@ export default new Vuex.Store({
         getCurrentPhoneNumber: state => state.currentPhoneNumber,
         getCurrentAddress: state => state.currentAddress,
         getCurrentBirthDate: state => state.currentBirthDate,
+        getAdditionalEmailAddress: state => state.additionalEmailAddress,
+        getAdditionalPhoneNumber: state => state.additionalPhoneNumber,
+        getCurrentEmailAddress: state => state.currentEmailAddress,
     },
 })
