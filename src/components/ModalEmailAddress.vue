@@ -9,19 +9,16 @@
         <ul class="form2">
           <li>
             <label for="email" id="email">Email</label>
-            <input type="text" name="email"/>
+            <input type="text" name="email" />
           </li>
           <li>
-              <label for="phone" id="phone">Phone number</label>
-              <input type="text" name="phone"/>
+            <label for="phone" id="phone">Phone number</label>
+            <input type="text" name="phone" />
           </li>
         </ul>
         <div class="edit-buttons button-2">
           <button type="submit" id="save-button-2" class="save-button">
             Save
-          </button>
-          <button type="reset" id="cancel-button-2" class="cancel-button">
-            Clear
           </button>
         </div>
       </form>
@@ -49,7 +46,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
 .fade-enter-active {
   animation: bounce-in 0.5s ease-out;
 }
@@ -73,7 +69,7 @@ export default {
 }
 
 * {
-   font-family: "Rubik", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 .dark-background {
@@ -119,8 +115,8 @@ export default {
   height: 20rem;
   top: 0;
   margin: 20% 40% 0 40%;
-  padding: 0 .5rem;
-  background-color: rgb(213, 253, 244);
+  padding: 0 0.5rem;
+  background-color: rgb(255, 255, 255);
 }
 
 .exit1,
@@ -138,21 +134,21 @@ export default {
   justify-content: center;
   align-items: center;
 
-  input{
-      width: 20rem;
-      height: 2rem;
-      border:none;
-      font-size: 1rem;
-      border-radius: .25rem;
-      transition: all .2s ease-in-out;
+  input {
+    width: 20rem;
+    height: 2rem;
+    border: none;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
 
-      &:hover{
-          box-shadow: 1px 1px 7px 0px #c3c3c3;
-      }
+    &:hover {
+      box-shadow: 1px 1px 7px 0px #c3c3c3;
+    }
   }
 
-  ul{
-      padding: 0;
+  ul {
+    padding: 0;
   }
 
   li,
@@ -166,7 +162,7 @@ export default {
 
     label {
       margin-bottom: 0.5rem;
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
   }
 

@@ -44,23 +44,14 @@
               <input v-model="phoneNumber" name="phone-number" />
             </li>
           </ul>
-          <div class="edit-buttons button-1">
-            <button
-              v-on:click.enter="save"
-              @click="save"
-              id="save-button-1"
-              class="save-button"
-            >
-              Save
-            </button>
-            <button
-              @click="modalClosed"
-              id="cancel-button-1"
-              class="cancel-button"
-            >
-              Cancel
-            </button>
-          </div>
+          <button
+            v-on:click.enter="save"
+            @click="save"
+            id="save-button-1"
+            class="save-button"
+          >
+            Save
+          </button>
         </div>
       </div>
     </transition>
@@ -178,7 +169,7 @@ export default {
   z-index: 100;
   width: 600px;
   height: 800px;
-  background-color: #d5fdf4b3;
+  background-color: #ffffff;
   right: 50%;
   margin-right: -200px;
 }
@@ -242,24 +233,13 @@ export default {
     }
   }
 
-  #save-button-1,
-  #cancel-button-1 {
-    margin-top: 1.5rem;
-    width: 8rem;
-    height: 2.5rem;
+  #save-button-1 {
+    width: 90%;
+    height: 50px;
     font-size: 1rem;
     box-shadow: 1px 1px 7px 0px #c3c3c3;
     border: none;
     cursor: pointer;
-  }
-
-  #cancel-button-1 {
-    margin-left: 0.5rem;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      background-color: lightcoral;
-    }
   }
 
   #save-button-1 {

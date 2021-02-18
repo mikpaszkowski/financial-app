@@ -2,16 +2,24 @@
   <div v-show="isAccountModalOpen">
     <div class="dark-background" id="dark-background"></div>
     <div class="conatiner2-module" id="conatiner2-module">
-      <div class="exit2" id="exit2" @click="modalClosed">
-        <ExitSVG id="ExitSVG" />
+      <div class="headline-container">
+        <h1>Personal Details</h1>
+        <div class="exit2" id="exit2" @click="modalClosed">
+          <ExitSVG id="ExitSVG" />
+        </div>
       </div>
+
       <div class="edit-form" id="form1">
         <ul class="form1">
           <li>
             <label for="language" id="language">Language</label>
             <select name="language" id="language" v-model="selectedLanguage">
-              <option value="" disabled>Choose your language</option>
-              <option value="" v-for="(language, idx) in languages" :key="idx">
+              <option value="" disabled>Choose your language...</option>
+              <option
+                :value="language.name"
+                v-for="(language, idx) in languages"
+                :key="idx"
+              >
                 {{ language.name }}
               </option>
             </select>
@@ -19,26 +27,25 @@
           <li>
             <label for="timezone" id="timezone">Time Zone</label>
             <select name="time-zone" id="time-zone" v-model="selectedTimeZone">
-              <option value="" disabled>Your time zone</option>
-              <option value="" v-for="(timezone, idx) in timezones" :key="idx">
+              <option value="" disabled>Choose your timezone...</option>
+              <option
+                :value="timezone.name"
+                v-for="(timezone, idx) in timezones"
+                :key="idx"
+              >
                 {{ timezone.name }}
               </option>
             </select>
           </li>
         </ul>
-        <div class="edit-buttons button-1">
-          <button
-            type="submit"
-            id="save-button-2"
-            class="save-button"
-            @click="saveChanges"
-          >
-            Save
-          </button>
-          <button type="reset" id="cancel-button-2" class="cancel-button">
-            Clear
-          </button>
-        </div>
+        <button
+          type="submit"
+          id="save-button-2"
+          class="save-button"
+          @click="saveChanges"
+        >
+          Save changes
+        </button>
       </div>
     </div>
   </div>
@@ -50,6 +57,7 @@
 import ExitIconSVG from "../assets/exit.svg";
 import { languages } from "../formLanguages";
 import { timeZones } from "../timeZones";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   data() {
@@ -58,6 +66,7 @@ export default {
       timezones: timeZones,
       status: true,
       selectedLanguage: "",
+      selectedTimeZone: "",
     };
   },
   components: {
@@ -68,13 +77,31 @@ export default {
     modalClosed: function () {
       this.$root.$emit("modalAccountSettingsClosed");
     },
-    saveChanges: function () {},
+    ...mapActions(["updateCurrentLanguage", "updateCurrentTimeZone"]),
+    saveChanges: function () {
+      this.updateCurrentLanguage(this.selectedLanguage);
+      this.updateCurrentTimeZone(this.selectedTimeZone);
+      this.modalClosed();
+    },
   },
 };
 </script>
 
 
+
+
 <style lang="scss" scoped>
+$modal-width: 700px;
+$modal-height: 450px;
+$input-border-color: #bdc3c7;
+$input-font-color: #656565;
+$save-button-color: #16a085;
+$border-radius: 5px;
+
+* {
+  font-size: 20px;
+}
+
 .fade-enter-active {
   animation: bounce-in 0.5s ease-out;
 }
@@ -97,10 +124,6 @@ export default {
   }
 }
 
-* {
-  font-family: "Rubik", sans-serif;
-}
-
 .dark-background {
   position: fixed;
   display: flex;
@@ -114,18 +137,12 @@ export default {
   transition: 1s;
 }
 
-.exit1 {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 56px;
-}
-
 #ExitSVG {
   position: relative;
   height: 1.8em;
   margin-top: 0.4em;
   transition: all 0.2s ease-in-out;
+  opacity: 0.5;
 
   &:hover {
     cursor: pointer;
@@ -140,21 +157,38 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 100;
-  width: 25rem;
-  height: 20rem;
-  top: 0;
-  margin: 20% 40% 0 40%;
-  padding: 1.5rem 0;
-  background-color: rgb(213, 253, 244);
-}
+  width: $modal-width;
+  height: $modal-height;
+  top: 50%;
+  left: 50%;
+  margin-top: -$modal-height / 2;
+  margin-left: -$modal-width / 2;
+  padding: 30px;
+  padding-top: 15px;
+  padding-bottom: 0;
+  background-color: white;
+  border-radius: $border-radius;
 
-.exit1,
-.exit2,
-.exit3 {
-  position: absolute;
-  top: 2%;
-  left: 89%;
-  width: 10%;
+  .headline-container {
+    border-bottom: 1px solid $input-border-color;
+    width: 100%;
+    top: 0;
+
+    h1 {
+      color: black;
+      font-size: 1.5em;
+      font-weight: 100;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .exit2 {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 55px;
+    }
+  }
 }
 
 .edit-form {
@@ -162,6 +196,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   li,
   label {
@@ -173,58 +208,41 @@ export default {
     padding: 0;
 
     label {
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-    }
-    input {
-      width: 20rem;
-      height: 2rem;
-      border: none;
-      font-size: 1rem;
-      border-radius: 0.25rem;
-      transition: all 0.2s ease-in-out;
-
-      &:hover {
-        box-shadow: 1px 1px 7px 0px #c3c3c3;
-      }
+      font-size: 0.8em;
+      color: $input-font-color;
+      margin-bottom: 10px;
     }
   }
 
   ul {
     padding: 0;
-  }
+    width: 100%;
 
-  #language-select,
-  #select-time-zone {
-    width: 20rem;
-    height: 2rem;
-    font-size: 1rem;
-    border: none;
-    transition: box-shadow 0.15s ease-in-out;
+    select {
+      border: $input-border-color 1px solid;
+      border-radius: $border-radius;
+      width: 100%;
+      height: 60px;
+      color: $input-font-color;
 
-    &:hover {
-      box-shadow: 1px 1px 7px 0px #c3c3c3;
+      &:focus {
+        box-shadow: 1px 1px 7px 0px $save-button-color;
+      }
     }
   }
 
-  #save-button-2,
-  #cancel-button-2 {
+  #save-button-2 {
     margin-top: 1.5rem;
-    width: 8rem;
-    height: 2.5rem;
-    font-size: 1rem;
+    width: 100%;
+    height: 65px;
+    font-size: 1.2em;
+    color: white;
+    font-weight: 500;
     box-shadow: 1px 1px 7px 0px #c3c3c3;
+    border-radius: $border-radius;
     border: none;
     cursor: pointer;
-  }
-
-  #cancel-button-2 {
-    margin-left: 0.5rem;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      background-color: lightcoral;
-    }
+    background-color: $save-button-color;
   }
 
   #save-button-2 {
@@ -232,7 +250,7 @@ export default {
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      background-color: lightgreen;
+      background-color: lighten($save-button-color, 10%);
     }
   }
 }

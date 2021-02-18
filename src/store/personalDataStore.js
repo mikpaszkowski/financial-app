@@ -16,6 +16,8 @@ export default new Vuex.Store({
         additionalEmailAddress: "mySecondEmailAddress@gmail.com",
         currentBirthDate: '24/05/1994',
         currentAddress: '25 Union Square W, New York, NY 10003, USA',
+        currentTimeZone: "(GMT-4:00) Santiago",
+        currentLanguage: "Spanish",
 
     },
     mutations: {
@@ -42,6 +44,12 @@ export default new Vuex.Store({
         },
         setAdditionalEmailAddress(state, payLoad) {
             state.additionalEmailAddress = payLoad;
+        },
+        setCurrentLanguage(state, payLoad) {
+            state.currentLanguage = payLoad;
+        },
+        setCurrentTimeZone(state, payLoad) {
+            state.currentTimeZone = payLoad;
         }
     },
     actions: {
@@ -68,7 +76,13 @@ export default new Vuex.Store({
         },
         updateAdditionalPhoneNumber({ commit }, payLoad) {
             commit('setAdditionalPhoneNumber', payLoad);
-        }
+        },
+        updateCurrentLanguage({ commit }, payLoad) {
+            commit('setCurrentLanguage', payLoad);
+        },
+        updateCurrentTimeZone({ commit }, payLoad) {
+            commit('setCurrentTimeZone', payLoad);
+        },
 
     },
     modules: {},
@@ -81,5 +95,7 @@ export default new Vuex.Store({
         getAdditionalEmailAddress: state => state.additionalEmailAddress,
         getAdditionalPhoneNumber: state => state.additionalPhoneNumber,
         getCurrentEmailAddress: state => state.currentEmailAddress,
+        getCurrentLanguage: state => state.currentLanguage,
+        getCurrentTimeZone: state => state.currentTimeZone,
     },
 })

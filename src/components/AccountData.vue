@@ -102,12 +102,12 @@
             <ul class="account_ul">
               <li>
                 <label for>Language:</label>
-                <p id="language_p">English</p>
+                <p id="language_p">{{currentLanguageCom.length > 0 ? currentLanguageCom : currentLanguage}}</p>
               </li>
 
               <li>
                 <label for>Time Zone:</label>
-                <p id="time_zone_p">Somewhere</p>
+                <p id="time_zone_p">{{currentTimeZoneCom.length > 0 ? currentTimeZoneCom : currentTimeZone}}</p>
               </li>
               <li>
                 <label for>Status:</label>
@@ -204,6 +204,8 @@ export default {
       additionalEmailAddress: "",
       address: "",
       birthDate: "",
+      currentLanguage: "",
+      currentTimeZone: "",
     };
   },
   components: {
@@ -241,6 +243,8 @@ export default {
       "getCurrentEmailAddress",
       "getAdditionalEmailAddress",
       "getAdditionalPhoneNumber",
+      "getCurrentTimeZone",
+      "getCurrentLanguage",
     ]),
   },
   mounted() {
@@ -252,6 +256,8 @@ export default {
     this.currentEmailAddress = this.getCurrentEmailAddress;
     this.additionalPhoneNumber = this.getAdditionalPhoneNumber;
     this.additionalEmailAddress = this.getAdditionalEmailAddress;
+    this.currentTimeZone = this.getCurrentTimeZone;
+    this.currentLanugage = this.getCurrentLanguage;
   },
   computed: {
     userNameCom() {
@@ -277,6 +283,12 @@ export default {
     },
     additionalPhoneNumberCom() {
       return this.$store.getters.getAdditionalPhoneNumber;
+    },
+    currentTimeZoneCom() {
+      return this.$store.getters.getCurrentTimeZone;
+    },
+    currentLanguageCom() {
+      return this.$store.getters.getCurrentLanguage;
     },
   },
   created() {
