@@ -13,33 +13,77 @@
           <li>
             <label for="email" class="label-email">
               Email
-              <div class="primary"></div>
+              <div class="primary-email"></div>
+              <p
+                @click="makePrimary('.primary-email')"
+                class="make-primary-btn hidden"
+              >
+                make primary
+              </p>
             </label>
-            <input type="text" name="email" />
+            <input
+              type="text"
+              name="email"
+              v-model="emailAddress"
+              :placeholder="currentEmailAddressCom"
+            />
           </li>
           <li>
             <label for="email" class="label-email"
               >Email
-              <div class="primary hidden-primary-mark"></div>
+              <div class="primary-email hidden"></div>
+              <p
+                @click="makePrimary('.primary-email')"
+                class="make-primary-btn"
+              >
+                make primary
+              </p>
             </label>
-            <input type="text" name="email" />
+            <input
+              type="text"
+              name="email"
+              v-model="additionalEmailAddress"
+              :placeholder="additionalEmailAddressCom"
+            />
           </li>
           <li>
             <label for="phone" class="label-phone"
               >Phone number
-              <div class="primary"></div>
+              <div class="primary-phone"></div>
+              <p
+                @click="makePrimary('.primary-phone')"
+                class="make-primary-btn hidden"
+              >
+                make primary
+              </p>
             </label>
-            <input type="text" name="phone" />
+            <input
+              type="text"
+              name="phone"
+              v-model="phoneNumber"
+              :placeholder="currentPhoneNumberCom"
+            />
           </li>
           <li>
             <label for="phone" class="label-phone"
               >Phone number
-              <div class="primary hidden-primary-mark"></div>
+              <div class="primary-phone hidden"></div>
+              <p
+                @click="makePrimary('.primary-phone')"
+                class="make-primary-btn"
+              >
+                make primary
+              </p>
             </label>
-            <input type="text" name="phone" />
+            <input
+              type="text"
+              name="phone"
+              v-model="additionalPhoneNumber"
+              :placeholder="additionalPhoneNumberCom"
+            />
           </li>
         </ul>
-        <button id="save-button" class="save-button">Save</button>
+        <button id="save-button" class="save-button" @click="save">Save</button>
       </div>
     </div>
   </div>
@@ -48,8 +92,19 @@
 
 <script>
 import ExitIconSVG from "../assets/exit.svg";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
+  data() {
+    return {
+      emailAddress: "",
+      additionalEmailAddress: "",
+      phoneNumber: "",
+      additionalPhoneNumber: "",
+      numOfPrimaryPhone: 0,
+      numOfPrimaryEmail: 0,
+    };
+  },
   props: ["isEmailModalOpen"],
   components: {
     ExitSVG: ExitIconSVG,
@@ -58,6 +113,44 @@ export default {
     modalClosed: function () {
       this.$root.$emit("modalEmailClosed");
     },
+    ...mapActions([
+      "updateCurrentEmailAddress",
+      "updateAdditionalEmailAddress",
+      "updateCurrentPhoneNumber",
+      "updateAdditionalPhoneNumber",
+    ]),
+
+    save() {
+      this.updateCurrentEmailAddress(this.emailAddress);
+      this.updateAdditionalEmailAddress(this.additionalEmailAddress);
+      this.updateCurrentPhoneNumber(this.phoneNumber);
+      this.updateAdditionalPhoneNumber(this.additionalPhoneNumber);
+    },
+
+    makePrimary(className) {
+      console.log(primaryMark);
+      let primaryMark = document.querySelectorAll(className);
+      Array.from(primaryMark).forEach((element, index) => {
+        if (element.classList.contains(".hidden")) {
+          element.classList.toggle("hidden");
+          element.nextElementSibling.classList.toggle("hidden");
+          this.numOfPrimaryPhone = index;
+          console.log(this.numOfPrimaryPhone);
+        } else {
+          element.classList.toggle("hidden");
+          element.nextElementSibling.classList.toggle("hidden");
+        }
+      });
+    },
+    savePrimaryPhoneEmail() {},
+  },
+  computed: {
+    ...mapGetters({
+      currentEmailAddressCom: "getCurrentEmailAddress",
+      additionalEmailAddressCom: "getAdditionalEmailAddress",
+      currentPhoneNumberCom: "getCurrentPhoneNumber",
+      additionalPhoneNumberCom: "getAdditionalPhoneNumber",
+    }),
   },
 };
 </script>
@@ -73,9 +166,11 @@ $save-button-color: #16a085;
 $border-radius: 5px;
 $flat-green: #2ecc71;
 $flat-blue: #3498db;
+$main-font: "Rubik", sans-serif;
 
 * {
   font-size: 20px;
+  font-family: $main-font;
 }
 
 .fade-enter-active {
@@ -186,7 +281,23 @@ $flat-blue: #3498db;
         display: flex;
         align-items: center;
 
-        .primary {
+        .make-primary-btn {
+          margin: 0;
+          margin-left: 10px;
+          font-size: 0.9em;
+          font-style: $main-font;
+          text-transform: uppercase;
+          color: $flat-green;
+          transition: text-decoration 0.2s ease-in-out;
+
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+
+        .primary-phone,
+        .primary-email {
           width: 80px;
           height: 20px;
           background-color: $flat-blue;
@@ -225,6 +336,7 @@ $flat-blue: #3498db;
         transition: box-shadow ease-in-out 0.2s;
         outline: none;
         font-size: 1.2em;
+        padding-left: 15px;
 
         &:focus {
           box-shadow: 1px 1px 4px 0px $save-button-color;
@@ -257,7 +369,7 @@ $flat-blue: #3498db;
   }
 }
 
-.hidden-primary-mark {
+.hidden {
   display: none;
 }
 </style>

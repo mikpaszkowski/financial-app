@@ -14,7 +14,7 @@
           <li>
             <label for="language" id="language">Language</label>
             <select name="language" id="language" v-model="selectedLanguage">
-              <option value="" disabled>Choose your language...</option>
+              <option value="" disabled>{{ currentLanguage }}</option>
               <option
                 :value="language.name"
                 v-for="(language, idx) in languages"
@@ -27,7 +27,7 @@
           <li>
             <label for="timezone" id="timezone">Time Zone</label>
             <select name="time-zone" id="time-zone" v-model="selectedTimeZone">
-              <option value="" disabled>Choose your timezone...</option>
+              <option value="" disabled>{{ currentTimeZone }}</option>
               <option
                 :value="timezone.name"
                 v-for="(timezone, idx) in timezones"
@@ -84,6 +84,12 @@ export default {
       this.modalClosed();
     },
   },
+  computed: {
+    ...mapGetters({
+      currentTimeZone: "getCurrentTimeZone",
+      currentLanguage: "getCurrentLanguage",
+    }),
+  },
 };
 </script>
 
@@ -97,9 +103,11 @@ $input-border-color: #bdc3c7;
 $input-font-color: #656565;
 $save-button-color: #16a085;
 $border-radius: 5px;
+$main-font: "Rubik", sans-serif;
 
 * {
   font-size: 20px;
+  font-family: $main-font;
 }
 
 .fade-enter-active {
@@ -228,6 +236,7 @@ $border-radius: 5px;
       transition: box-shadow ease-in-out 0.2s;
       outline: none;
       font-size: 1.2em;
+      padding-left: 15px;
 
       &:focus {
         box-shadow: 1px 1px 4px 0px $save-button-color;

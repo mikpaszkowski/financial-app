@@ -17,6 +17,7 @@
                 v-model="userName"
                 type="text"
                 name="name"
+                :placeholder="currName"
                 id="name-form"
               />
             </li>
@@ -26,6 +27,7 @@
                 v-model="userSurname"
                 type="text"
                 name="surname"
+                :placeholder="currSurname"
                 id="surname-form"
               />
             </li>
@@ -35,16 +37,18 @@
                 v-model="birthDate"
                 type="date"
                 name="birth"
+                :placeholder="currBirthDate"
                 id="date_select"
               />
             </li>
             <li>
               <label for="address">Address</label>
-              <input v-model="address" type="text" name="address" />
-            </li>
-            <li>
-              <label for="phone-number">Phone</label>
-              <input type="text" v-model="phoneNumber" name="phone-number" />
+              <input
+                v-model="address"
+                type="text"
+                name="address"
+                :placeholder="currAddress"
+              />
             </li>
           </ul>
           <button
@@ -65,7 +69,7 @@
 
 <script>
 import ExitIconSVG from "../assets/exit.svg";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   data() {
@@ -74,7 +78,6 @@ export default {
       userSurname: "",
       birthDate: "",
       address: "",
-      phoneNumber: "",
     };
   },
   components: {
@@ -90,16 +93,22 @@ export default {
       "updateCurrentSurname",
       "updateCurrentAddress",
       "updateCurrentBirthDate",
-      "updateCurrentPhoneNumber",
     ]),
     save() {
       this.updateCurrentName(this.userName);
       this.updateCurrentSurname(this.userSurname);
       this.updateCurrentAddress(this.address);
       this.updateCurrentBirthDate(this.birthDate);
-      this.updateCurrentPhoneNumber(this.phoneNumber);
       this.modalClosed();
     },
+  },
+  computed: {
+    ...mapGetters({
+      currName: "getCurrentName",
+      currSurname: "getCurrentSurname",
+      currAddress: "getCurrentAddress",
+      currBirthDate: "getCurrentBirthDate",
+    }),
   },
 };
 </script>
@@ -243,6 +252,7 @@ $border-radius: 5px;
       outline: none;
       transition: box-shadow ease-in-out 0.1s;
       font-size: 1.2em;
+      padding-left: 15px;
 
       &:focus {
         box-shadow: 1px 1px 4px 0px $save-button-color;

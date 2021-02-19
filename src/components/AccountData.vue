@@ -111,7 +111,11 @@
               </li>
               <li>
                 <label for>Status:</label>
-                <div class="status enabled"></div>
+                <div class="status-box">
+                  <div class="status enabled">
+                    <ion-icon name="checkmark-circle-outline" id="enable-icon"></ion-icon>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -160,6 +164,7 @@
                       : additionalEmailAddress
                   }}
                 </p>
+                <div class="primary hidden"></div>
                 </li>
               </li>
               <li>
@@ -174,6 +179,7 @@
                 <p>
                   {{ additionalPhoneNumberCom.length > 0 ? additionalPhoneNumberCom : additionalPhoneNumber }}
                 </p>
+                <div class="primary hidden"></div>
               </li>
             </ul>
           </div>
@@ -239,7 +245,7 @@ export default {
     ...mapGetters([
       "getCurrentName",
       "getCurrentBirthDate",
-      "getCurrentSurename",
+      "getCurrentSurname",
       "getCurrentPhoneNumber",
       "getCurrentAddress",
       "getCurrentEmailAddress",
@@ -251,7 +257,7 @@ export default {
   },
   mounted() {
     this.userName = this.getCurrentName;
-    this.userSurname = this.getCurrentSurename;
+    this.userSurname = this.getCurrentSurname;
     this.phoneNumber = this.getCurrentPhoneNumber;
     this.birthDate = this.getCurrentBirthDate;
     this.address = this.getCurrentAddress;
@@ -265,7 +271,7 @@ export default {
     ...mapGetters({
       userNameCom: "getCurrentName",
       birthDateCom: "getCurrentBirthDate",
-      userSurnameCom: "getCurrentSurename",
+      userSurnameCom: "getCurrentSurname",
       phoneNumberCom: "getCurrentPhoneNumber",
       addressCom: "getCurrentAddress",
       currentEmailAddressCom: "getCurrentEmailAddress",
@@ -313,7 +319,7 @@ $flat-red: #e74c3c;
   position: absolute;
   width: 80px;
   height: 20px;
-  right: 250px;
+  right: 200px;
   background-color: $flat-blue;
   color: white;
   font-weight: bold;
@@ -329,25 +335,39 @@ $flat-red: #e74c3c;
   }
 }
 
-.status {
-  position: absolute;
-  width: 80px;
-  height: 20px;
-  left: 450px;
-  color: white;
-  font-weight: bold;
-  font-size: 0.75em;
-  border-radius: 2em;
-  text-align: center;
-  padding-top: 3px;
-  letter-spacing: 1px;
-  margin-left: 10px;
+.status-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .status {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 40px;
+    left: 450px;
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 2em;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-left: 10px;
+
+    #enable-icon {
+      color: white;
+      font-size: 30px;
+      margin-right: 4px;
+    }
+  }
 }
 
 .enabled {
   background-color: $flat-green;
 
-  &::before {
+  &::after {
     content: "Enabled";
   }
 }
@@ -355,7 +375,7 @@ $flat-red: #e74c3c;
 .disabled {
   background-color: $flat-red;
 
-  &::before {
+  &::after {
     content: "Disabled";
   }
 }
@@ -724,13 +744,12 @@ svg:hover {
 .edit3 {
   position: absolute;
   right: 10px;
-  top: 10px;
-  width: 25px;
-  height: 25px;
+  bottom: 25px;
   background-color: transparent;
   border: none;
   outline: none;
   border-radius: 0;
+  fill: $flat-green;
 }
 
 .nav {
@@ -782,5 +801,9 @@ label {
   .person1 {
     padding: 15px 0;
   }
+}
+
+.hidden {
+  display: none;
 }
 </style>

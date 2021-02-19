@@ -69,7 +69,7 @@ export default new Vuex.Store({
             commit('setCurrentAddress', payLoad);
         },
         updateCurrentEmailAddress({ commit }, payLoad) {
-            commit('setAdditionalEmailAddress', payLoad);
+            commit('setCurrentEmailAddress', payLoad);
         },
         updateAdditionalEmailAddress({ commit }, payLoad) {
             commit('setAdditionalEmailAddress', payLoad);
@@ -88,7 +88,7 @@ export default new Vuex.Store({
     modules: {},
     getters: {
         getCurrentName: state => state.currentName,
-        getCurrentSurename: state => state.currentSurename,
+        getCurrentSurname: state => state.currentSurename,
         getCurrentPhoneNumber: state => state.currentPhoneNumber,
         getCurrentAddress: state => state.currentAddress,
         getCurrentBirthDate: state => state.currentBirthDate,
