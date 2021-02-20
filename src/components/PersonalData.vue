@@ -3,8 +3,8 @@
     <modal-personal-details
       :isPersonalModalOpen="modalPersonalDetails_open"
     ></modal-personal-details>
-    <div class="container">
-      <div class="upper_module">
+    <div class="container container-personal-data">
+      <div class="module">
         <div class="nav">
           <div class="headline">Personal Details</div>
           <ion-icon
@@ -43,7 +43,7 @@
 
 
 <script>
-import ModalPersonalDetails from "./ModalPersonalDetails.vue";
+import ModalPersonalDetails from "./modals/ModalPersonalDetails.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -100,10 +100,11 @@ export default {
 
 
 
-<style lang="scss">
+<style lang="scss" >
 $input-font-color: #656565;
 $flat-green: #2ecc71;
 $save-button-color: #16a085;
+$container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
 .container {
   display: flex;
@@ -111,23 +112,23 @@ $save-button-color: #16a085;
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: center;
-  width: 1000px;
+  width: 100%;
   height: 400px;
-  margin: 10px;
   animation: 0.4s container_animation;
   animation-fill-mode: both;
   background-color: white;
+  border-radius: 5px;
 
-  .upper_module {
+  .module {
     display: flex;
     align-self: flex-start;
     flex-direction: column;
     justify-content: space-around;
     position: relative;
-    box-shadow: 0px 0px 10px 0px #203753;
+    box-shadow: $container-shadow;
     height: 100%;
     border-radius: 5px;
-    width: 1000px;
+    width: 100%;
 
     .nav {
       display: inline-flex;
@@ -180,6 +181,9 @@ $save-button-color: #16a085;
       justify-content: space-between;
     }
   }
+}
+.container-personal-data {
+  margin: 0;
 }
 
 @keyframes container_animation {

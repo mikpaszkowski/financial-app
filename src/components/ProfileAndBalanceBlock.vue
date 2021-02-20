@@ -24,8 +24,11 @@ export default {
 
 <style lang="scss">
 .profile-balance-block {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   width: 400px;
   height: 1500px;
+  margin-right: 20px;
 }
 </style>

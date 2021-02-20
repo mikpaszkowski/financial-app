@@ -1,7 +1,11 @@
 <template>
   <div class="container-profile">
     <div class="personaldata personaldata1">
-      <img src="../assets/face_photo.jpg" id="face_photo" alt="facephoto" />
+      <img
+        src="../../public/assets/face_photo.jpg"
+        id="face_photo"
+        alt="facephoto"
+      />
     </div>
     <div class="personaldata">
       Welcome,
@@ -13,7 +17,7 @@
 </template>
 
 <script>
-import EditSectionSVG from "../assets/edit_icon.svg";
+import EditSectionSVG from "../../public/assets/edit_icon.svg";
 import { mapGetters } from "vuex";
 
 export default {
@@ -36,6 +40,7 @@ $font-size: 20px;
 $main-font: "Rubik", sans-serif;
 $flat-green: #2ecc71;
 $save-button-color: #16a085;
+$container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
 .container-profile {
   display: flex;
@@ -44,7 +49,7 @@ $save-button-color: #16a085;
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  box-shadow: 0px 0px 10px 0px #203753;
+  box-shadow: $container-shadow;
   background-color: white;
   width: 100%;
   height: 360px;

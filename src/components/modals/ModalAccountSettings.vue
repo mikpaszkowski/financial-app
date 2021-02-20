@@ -54,9 +54,9 @@
 
 
 <script>
-import ExitIconSVG from "../assets/exit.svg";
-import { languages } from "../formLanguages";
-import { timeZones } from "../timeZones";
+import ExitIconSVG from "../../../public/assets/exit.svg";
+import { languages } from "../../formLanguages";
+import { timeZones } from "../../timeZones";
 import { mapActions, mapGetters } from "vuex";
 
 export default {

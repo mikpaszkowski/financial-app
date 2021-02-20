@@ -24,7 +24,7 @@
 
 
 <script>
-import LogOutIcon from "../assets/logout.svg";
+import LogOutIcon from "../../public/assets/logout.svg";
 
 export default {
   name: "main-side-bar",

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import HeadlineImage from "../assets/headline_logo.png";
+import HeadlineImage from "../../public/assets/headline_logo.png";
 
 export default {
   data() {

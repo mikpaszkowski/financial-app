@@ -24,6 +24,7 @@ $input-font-color: #656565;
 $flat-green: #2ecc71;
 $save-button-color: #16a085;
 $main-font: "Rubik", sans-serif;
+$container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
 .container-chat {
   display: flex;
@@ -32,7 +33,7 @@ $main-font: "Rubik", sans-serif;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
-  box-shadow: 0px 0px 10px 0px #203753;
+  box-shadow: $container-shadow;
   background-color: white;
   width: 100%;
   height: 360px;
@@ -60,18 +61,22 @@ $main-font: "Rubik", sans-serif;
     color: lighten($input-font-color, 15%);
   }
   .chatwithus {
-    height: 50px;
-    width: 130px;
+    height: 60px;
+    width: 90%;
     border: none;
-    background-color: rgb(131, 235, 209);
+    background-color: $save-button-color;
+    border-radius: 5px;
     font-weight: bold;
     margin: 5px;
-    box-shadow: 1px 1px 5px grey;
+    box-shadow: $container-shadow;
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
+    font-size: 0.8em;
+    color: white;
+    transition: background-color 0.2s ease-in-out;
 
     &:hover {
-      background-color: rgb(87, 153, 136);
+      background-color: lighten($save-button-color, 15%);
       color: white;
     }
   }

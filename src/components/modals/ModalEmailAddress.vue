@@ -91,7 +91,7 @@
 
 
 <script>
-import ExitIconSVG from "../assets/exit.svg";
+import ExitIconSVG from "../../../public/assets/exit.svg";
 import { mapActions, mapGetters } from "vuex";
 
 export default {

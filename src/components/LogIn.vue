@@ -9,7 +9,7 @@
     <div class="frontpage">
       <div class="front_sign_in" id="front_sign_in">
         <div class="headline-image">
-          <img src="../assets/headline_logo.png" alt />
+          <img src="../../public/assets/headline_logo.png" alt />
         </div>
         <div class="headline">Bank Account Manager</div>
         <div class="front-small-window" id="front-small-window">
@@ -102,8 +102,8 @@
 
 
 <script>
-import LogInPicture from "../assets/login.svg";
-import ModalForgotPassword from "./ModalForgotPassword.vue";
+import LogInPicture from "../../public/assets/login.svg";
+import ModalForgotPassword from "./modals/ModalForgotPassword.vue";
 import SignUp from "./SignUp.vue";
 
 export default {
@@ -210,7 +210,7 @@ body {
       rgb(67, 201, 194),
       rgba(192, 252, 244, 0.541)
     ),
-    url("../assets/signin_image.jpg");
+    url("../../public/assets/signin_image.jpg");
   background-size: cover;
   background-position: center;
 }

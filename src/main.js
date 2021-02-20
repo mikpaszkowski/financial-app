@@ -18,6 +18,7 @@ Vue.component('app-dashboard', Dashboard)
 Vue.component('app-history', History)
 Vue.component('app-transfer', AccountTransfer)
 Vue.component('login', LogIn)
+Vue.config.ignoredElements = [/^ion-/]
 
 Vue.use(VueRouter);
 

@@ -64,7 +64,7 @@
 
 
 <script>
-import HeadlineImage from "../assets/headline_logo.png";
+import HeadlineImage from "../../public/assets/headline_logo.png";
 import LogIn from "./LogIn.vue";
 
 export default {
@@ -167,7 +167,7 @@ body {
       rgb(79, 175, 179),
       rgba(167, 255, 233, 0.479)
     ),
-    url("../assets/signin_image.jpg");
+    url("../../public/assets/signin_image.jpg");
   background-size: cover;
   background-position: center;
   animation: 2s ease-out both backgroundImage;
@@ -278,7 +278,7 @@ body {
       rgba(4, 102, 99, 0.2) 58%,
       rgba(79, 175, 179, 0.4) 100%
     ),
-    url("../assets/computer.jpg");
+    url("../../public/assets/computer.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

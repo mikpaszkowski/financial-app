@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
     <router-view></router-view>
   </div>
 </template>
@@ -11,11 +11,17 @@ export default {
 </script>
 
 <style lang="scss">
-html {
-  height: 101%;
-}
+$clouds-color: #ecf0f1;
 
 body {
   margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main-container {
+  background-color: $clouds-color;
 }
 </style>

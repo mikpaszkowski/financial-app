@@ -23,6 +23,7 @@ $input-font-color: #656565;
 $flat-green: #2ecc71;
 $save-button-color: #16a085;
 $main-font: "Rubik", sans-serif;
+$container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
 * {
   font-family: $main-font;
@@ -35,7 +36,7 @@ $main-font: "Rubik", sans-serif;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
-  box-shadow: 0px 0px 10px 0px #203753;
+  box-shadow: $container-shadow;
   background-color: white;
   width: 100%;
   height: 360px;
@@ -83,7 +84,7 @@ $main-font: "Rubik", sans-serif;
       color: white;
       font-size: 27px;
       border: none;
-      box-shadow: 0px 0px 10px 0px #203753;
+      box-shadow: 1px 1px 4px 0px #505050;
       border-radius: 5px;
       transition: background-color 0.2s ease-in-out;
 

@@ -11,7 +11,7 @@
             <ion-icon
               name="create-outline"
               id="edit-icon"
-              @click="modalPersonalDetailsOpen"
+              @click="modalAccountSettingsOpen"
             ></ion-icon>
           </div>
         </div>
@@ -57,7 +57,7 @@
 
 
 <script>
-import ModalAccountSettings from "./ModalAccountSettings.vue";
+import ModalAccountSettings from "./modals/ModalAccountSettings.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -102,10 +102,12 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 $input-font-color: #656565;
 $flat-green: #2ecc71;
 $save-button-color: #16a085;
+$flat-red: #e74c3c;
+$container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
 .container {
   display: flex;
@@ -113,9 +115,9 @@ $save-button-color: #16a085;
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: center;
-  width: 1000px;
+  width: 100%;
   height: 400px;
-  margin: 10px;
+  margin-top: 30px;
   animation: 0.4s container_animation;
   animation-fill-mode: both;
   background-color: white;
@@ -126,10 +128,10 @@ $save-button-color: #16a085;
     flex-direction: column;
     justify-content: space-around;
     position: relative;
-    box-shadow: 0px 0px 10px 0px #203753;
+    box-shadow: $container-shadow;
     height: 100%;
     border-radius: 5px;
-    width: 1000px;
+    width: 100%;
 
     .nav {
       display: inline-flex;
@@ -166,12 +168,56 @@ $save-button-color: #16a085;
 
       li {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         margin: 45px;
         justify-content: space-between;
         label {
           font-weight: 600;
           color: $input-font-color;
+        }
+      }
+      .status-box {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .status {
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 130px;
+          height: 40px;
+          left: 450px;
+          color: white;
+          font-size: 1em;
+          font-weight: 600;
+          border-radius: 2em;
+          text-align: center;
+          letter-spacing: 1px;
+          margin-left: 10px;
+
+          #enable-icon {
+            color: white;
+            font-size: 30px;
+            margin-right: 4px;
+          }
+        }
+      }
+
+      .enabled {
+        background-color: $flat-green;
+
+        &::after {
+          content: "Enabled";
+        }
+      }
+
+      .disabled {
+        background-color: $flat-red;
+
+        &::after {
+          content: "Disabled";
         }
       }
     }

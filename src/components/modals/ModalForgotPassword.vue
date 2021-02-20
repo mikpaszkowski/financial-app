@@ -30,8 +30,8 @@
 
 
 <script>
-import ForgotPasswordSVG from "../assets/forgot_password.svg";
-import ExitIconSVG from "../assets/exit.svg";
+import ForgotPasswordSVG from "../../../public/assets/forgot_password.svg";
+import ExitIconSVG from "../../../public/assets/exit.svg";
 
 export default {
   name: "Modal",
