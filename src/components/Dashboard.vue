@@ -4,72 +4,14 @@
       <modal-personal-details
         :isPersonalModalOpen="modalPersonalDetails_open"
       ></modal-personal-details>
-      <modal-account-settings
-        :isAccountModalOpen="modalAccountSettings_open"
-      ></modal-account-settings>
+
       <modal-email-address
         :isEmailModalOpen="modalEmailAddress_open"
       ></modal-email-address>
-
-      <div class="module1">
-        <div class="container">
-          <div class="person1">
-            <div class="background-1 background-transparency"></div>
-            <div class="personaldata personaldata1">
-              <img
-                src="../assets/face_photo.jpg"
-                id="face_photo"
-                alt="facephoto"
-              />
-              <div class="editAvatar">
-                <EditAvatarImage />
-              </div>
-            </div>
-
-            <div class="personaldata personaldata2">
-              Welcome, <br />
-              {{ userNameCom.length > 0 ? userNameCom : userName }}
-              {{ userSurnameCom.length > 0 ? userSurnameCom : userSurname }}
-            </div>
-          </div>
-          <div class="upper_module">
-            <div class="background"></div>
-            <div class="nav">
-              <div class="headline">Personal Details</div>
-              <div class="edit-button-svg">
-                <button
-                  class="edit1"
-                  id="edit1"
-                  @click="modalPersonalDetailsOpen"
-                >
-                  <EditSectionSVG id="svg-edit" />
-                </button>
-              </div>
-            </div>
-            <ul class="personal_ul">
-              <li>
-                <label for>Name:</label>
-                <p id="personal_name_p">
-                  {{ userNameCom.length > 0 ? userNameCom : userName }}
-                  {{ userSurnameCom.length > 0 ? userSurnameCom : userSurname }}
-                </p>
-              </li>
-
-              <li>
-                <label for>Date of birth:</label>
-                <p id="date_p">
-                  {{ birthDateCom.length > 0 ? birthDateCom : birthDate }}
-                </p>
-              </li>
-              <li>
-                <label for>Address:</label>
-                <p id="address_p">
-                  {{ addressCom.length > 0 ? addressCom : address }}
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <profile-balance-info></profile-balance-info>
+      <user-main-info></user-main-info>
+      <!-- <div class="module1">
+        
 
         <div class="container">
           <div class="person2">
@@ -184,7 +126,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </transition>
 </template>
@@ -193,15 +135,15 @@
 <script>
 import EditAvatar from "../assets/edit_avatar.svg";
 import EditSectionSVG from "../assets/edit_icon.svg";
-import ModalPersonalDetails from "./ModalPersonalDetails.vue";
-import ModalAccountSettings from "./ModalAccountSettings.vue";
+
 import ModalEmailAddress from "./ModalEmailAddress.vue";
 import { mapGetters } from "vuex";
+import UserBalanceInfo from "./ProfileAndBalanceBlock.vue";
+import UserMainInfo from "./UserMainInfo.vue";
 
 export default {
   data() {
     return {
-      modalPersonalDetails_open: false,
       modalAccountSettings_open: false,
       modalEmailAddress_open: false,
       userName: "",
@@ -219,9 +161,9 @@ export default {
   components: {
     EditAvatarImage: EditAvatar,
     EditSectionSVG: EditSectionSVG,
-    "modal-personal-details": ModalPersonalDetails,
-    "modal-account-settings": ModalAccountSettings,
     "modal-email-address": ModalEmailAddress,
+    "profile-balance-info": UserBalanceInfo,
+    "user-main-info": UserMainInfo,
   },
   methods: {
     modalPersonalDetailsOpen: function () {
@@ -315,6 +257,12 @@ $flat-red: #e74c3c;
   font-size: $font-size;
 }
 
+#account {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .primary {
   position: absolute;
   width: 80px;
@@ -378,48 +326,6 @@ $flat-red: #e74c3c;
   &::after {
     content: "Disabled";
   }
-}
-
-.editAvatar {
-  position: absolute;
-  z-index: 1;
-  right: 0;
-  bottom: 0;
-  width: 25px;
-  height: 25px;
-  background-color: white;
-  border-radius: 100%;
-  background-color: rgb(25, 182, 116);
-  transition: 0.2s;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgb(224, 255, 166);
-    transform: scale(1.1);
-  }
-}
-
-.editAvatarImage {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  margin: 0;
-  width: auto;
-  height: auto;
-  padding: 2px;
-  fill: white;
-  transition: all 0.2s;
-
-  &:hover {
-    fill: rgb(70, 70, 70);
-  }
-}
-
-.editAvatar,
-.editAvatarImage {
-  position: absolute;
-  z-index: 1;
 }
 
 .module1 {
@@ -561,10 +467,6 @@ svg:hover {
   z-index: -1;
 }
 
-.background-transparency {
-  border-radius: 5px;
-}
-
 .person2 {
   padding-bottom: 0;
   padding: 0;
@@ -696,9 +598,6 @@ svg:hover {
 #wallet {
   width: 100px;
   margin: 10px;
-}
-
-.availablebalance {
 }
 
 .money {

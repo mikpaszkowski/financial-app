@@ -1,6 +1,6 @@
 import LogIn from './components/LogIn.vue'
 import Home from './components/Home.vue'
-import AccountData from './components/AccountData.vue'
+import Dashboard from './components/Dashboard.vue'
 import History from './components/History.vue'
 import AccountTransfer from './components/AccountTransfer.vue'
 import HomePage from './components/HomePage.vue'
@@ -29,7 +29,7 @@ export default [
         children: [
             {
                 path: 'account',
-                component: AccountData,
+                component: Dashboard,
             },
             {
                 path: 'history',
@@ -40,5 +40,5 @@ export default [
                 component: AccountTransfer,
             }
         ]
-    }, 
+    },
 ]
