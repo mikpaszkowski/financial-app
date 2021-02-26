@@ -15,40 +15,56 @@
             ></ion-icon>
           </div>
         </div>
-        <ul class="account_ul">
-          <li>
-            <label for>Language:</label>
-            <p id="language_p">
-              {{
-                currentLanguageCom.length > 0
-                  ? currentLanguageCom
-                  : currentLanguage
-              }}
-            </p>
-          </li>
+        <div class="labels">
+          <div class="info">
+            <div class="info-name">
+              <p>Language:</p>
+            </div>
+            <div class="info-data">
+              <p id="language_p">
+                {{
+                  currentLanguageCom.length > 0
+                    ? currentLanguageCom
+                    : currentLanguage
+                }}
+              </p>
+            </div>
+          </div>
 
-          <li>
-            <label for>Time Zone:</label>
-            <p id="time_zone_p">
-              {{
-                currentTimeZoneCom.length > 0
-                  ? currentTimeZoneCom
-                  : currentTimeZone
-              }}
-            </p>
-          </li>
-          <li>
-            <label for>Status:</label>
+          <div class="info">
+            <div class="info-name">
+              <p>Language:</p>
+            </div>
+            <div class="info-data">
+              <p id="time_zone_p">
+                {{
+                  currentTimeZoneCom.length > 0
+                    ? currentTimeZoneCom
+                    : currentTimeZone
+                }}
+              </p>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="info-name">
+              <p>Status:</p>
+            </div>
             <div class="status-box">
-              <div class="status enabled">
+          <!-- <div class="status enabled">
                 <ion-icon
                   name="checkmark-circle-outline"
                   id="enable-icon"
                 ></ion-icon>
-              </div>
+              </div> -->
+        </div>
+            
             </div>
-          </li>
-        </ul>
+          </div>
+
+        </div>
+
+        
       </div>
     </div>
   </div>
@@ -102,148 +118,6 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-$input-font-color: #656565;
-$flat-green: #2ecc71;
-$save-button-color: #16a085;
-$flat-red: #e74c3c;
-$container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: center;
-  width: 100%;
-  height: 400px;
-  margin-top: 30px;
-  animation: 0.4s container_animation;
-  animation-fill-mode: both;
-  background-color: white;
-
-  .module {
-    display: flex;
-    align-self: flex-start;
-    flex-direction: column;
-    justify-content: space-around;
-    position: relative;
-    box-shadow: $container-shadow;
-    height: 100%;
-    border-radius: 5px;
-    width: 100%;
-
-    .nav {
-      display: inline-flex;
-      position: relative;
-      justify-content: space-between;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 20px;
-
-      #edit-icon {
-        color: $save-button-color;
-        font-size: 40px;
-        margin-right: 10px;
-        transition: color 0.2s ease-in-out;
-        transition: transform 0.2s ease-in-out;
-
-        &:hover {
-          cursor: pointer;
-          color: lighten($save-button-color, 20%);
-          transform: scale(1.2);
-        }
-      }
-
-      .headline {
-        font-size: 1.4em;
-        font-weight: normal;
-        margin-left: 60px;
-        margin-top: 14px;
-      }
-    }
-
-    ul {
-      list-style-type: none;
-      padding-left: 51px;
-
-      li {
-        display: flex;
-        flex-direction: row;
-        margin: 45px;
-        justify-content: space-between;
-        label {
-          font-weight: 600;
-          color: $input-font-color;
-        }
-      }
-      .status-box {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-
-        .status {
-          position: absolute;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 130px;
-          height: 40px;
-          left: 450px;
-          color: white;
-          font-size: 1em;
-          font-weight: 600;
-          border-radius: 2em;
-          text-align: center;
-          letter-spacing: 1px;
-          margin-left: 10px;
-
-          #enable-icon {
-            color: white;
-            font-size: 30px;
-            margin-right: 4px;
-          }
-        }
-      }
-
-      .enabled {
-        background-color: $flat-green;
-
-        &::after {
-          content: "Enabled";
-        }
-      }
-
-      .disabled {
-        background-color: $flat-red;
-
-        &::after {
-          content: "Disabled";
-        }
-      }
-    }
-
-    .personal_ul li {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-}
-
-@keyframes container_animation {
-  from {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-p {
-  margin: 0;
-  width: 58%;
-  font-weight: 400 !important;
-}
+<style lang="scss">
+@import "../styles/style.scss";
 </style>
