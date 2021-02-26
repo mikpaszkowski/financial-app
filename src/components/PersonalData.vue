@@ -1,8 +1,8 @@
 <template>
   <div>
-    <modal-personal-details
+    <ModalPersonalDetails
       :isPersonalModalOpen="modalPersonalDetails_open"
-    ></modal-personal-details>
+    ></ModalPersonalDetails>
     <div class="container">
       <div class="module">
         <div class="nav">
@@ -68,9 +68,9 @@ export default {
       birthDate: "",
     };
   },
-  components: {
-    "modal-personal-details": ModalPersonalDetails,
-  },
+
+  components: { ModalPersonalDetails },
+
   methods: {
     modalPersonalDetailsOpen: function () {
       this.modalPersonalDetails_open = true;
@@ -112,5 +112,5 @@ export default {
 
 
 <style lang="scss" scoped>
-@import "../styles/style.scss";
+@import "../styles/main.scss";
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <modal-account-settings
+    <ModalAccountSettings
       :isAccountModalOpen="modalAccountSettings_open"
-    ></modal-account-settings>
-    <div class="container">
+    ></ModalAccountSettings>
+    <div class="container container-middle">
       <div class="module">
         <div class="nav">
           <div class="headline">Account settings</div>
@@ -50,21 +50,16 @@
             <div class="info-name">
               <p>Status:</p>
             </div>
-            <div class="status-box">
-          <!-- <div class="status enabled">
+            <div class="info-data">
+              <div class="status enabled">
                 <ion-icon
                   name="checkmark-circle-outline"
                   id="enable-icon"
                 ></ion-icon>
-              </div> -->
-        </div>
-            
+              </div>
             </div>
           </div>
-
         </div>
-
-        
       </div>
     </div>
   </div>
@@ -77,9 +72,8 @@ import ModalAccountSettings from "./modals/ModalAccountSettings.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  components: {
-    "modal-account-settings": ModalAccountSettings,
-  },
+  components: { ModalAccountSettings },
+
   data() {
     return {
       modalAccountSettings_open: false,
@@ -118,6 +112,41 @@ export default {
 </script>
 
 
-<style lang="scss">
-@import "../styles/style.scss";
+<style lang="scss" scoped>
+@import "../styles/main.scss";
+
+.container-middle {
+  margin-top: 30px;
+}
+
+.info-data {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+
+  .status {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 40px;
+    left: 0;
+    top: 10px;
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 2em;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-left: 10px;
+
+    #enable-icon {
+      color: white;
+      font-size: 30px;
+      margin-right: 4px;
+    }
+  }
+}
 </style>

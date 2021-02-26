@@ -1,9 +1,9 @@
 <template>
   <div>
-    <modal-email-address
+    <ModalEmailAddress
       :isEmailModalOpen="modalEmailAddress_open"
-    ></modal-email-address>
-    <div class="container">
+    ></ModalEmailAddress>
+    <div class="container container-lower">
       <div class="module">
         <div class="nav">
           <div class="headline">Email & Phone</div>
@@ -19,6 +19,7 @@
         <div class="labels">
           <div class="info">
             <div class="info-name">
+              <div class="primary"></div>
               <p>Email:</p>
             </div>
             <div class="info-data">
@@ -34,6 +35,7 @@
 
           <div class="info">
             <div class="info-name">
+              <div class="primary"></div>
               <p>Email:</p>
             </div>
             <div class="info-data">
@@ -49,6 +51,7 @@
 
           <div class="info">
             <div class="info-name">
+              <div class="primary"></div>
               <p>Phone:</p>
             </div>
             <div class="info-data">
@@ -64,6 +67,7 @@
 
           <div class="info">
             <div class="info-name">
+              <div class="primary"></div>
               <p>Phone:</p>
             </div>
             <div class="info-data">
@@ -90,9 +94,7 @@ import ModalEmailAddress from "./modals/ModalEmailAddress.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  components: {
-    "modal-email-address": ModalEmailAddress,
-  },
+  components: { ModalEmailAddress },
 
   data() {
     return {
@@ -140,6 +142,35 @@ export default {
 
 
 
-<style lang="scss">
-@import "../styles/style.scss";
+<style lang="scss" scoped>
+@import "../styles/main.scss";
+
+.container-lower {
+  margin-top: 30px;
+}
+
+.primary {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 20px;
+  left: 20px;
+  top: 50%;
+  margin-top: -10px;
+  background-color: $flat-blue;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75em;
+  border-radius: 2em;
+  text-align: center;
+
+  letter-spacing: 1px;
+  margin-left: 10px;
+
+  &::before {
+    content: "Primary";
+  }
+}
 </style>

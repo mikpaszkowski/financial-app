@@ -2,10 +2,10 @@
   <div v-if="isPersonalModalOpen">
     <div class="dark-background" id="dark-background"></div>
     <transition name="fade">
-      <div class="container1-module" id="container1-module">
+      <div class="container-module" id="container-module">
         <div class="headline-container">
           <h1>Personal Details</h1>
-          <div class="exit1" id="exit1" @click="modalClosed">
+          <div class="exit" id="exit" @click="modalClosed">
             <ExitSVG id="ExitSVG" />
           </div>
         </div>
@@ -115,12 +115,7 @@ export default {
 
 
 <style lang="scss" scoped>
-$modal-width: 700px;
-$modal-height: 800px;
-$input-border-color: #bdc3c7;
-$input-font-color: #656565;
-$save-button-color: #16a085;
-$border-radius: 5px;
+@import "../../styles/main.scss";
 
 .fade-enter-active {
   animation: bounce-in 0.5s ease-out;
@@ -146,141 +141,5 @@ $border-radius: 5px;
 
 * {
   font-family: "Rubik", sans-serif;
-}
-
-.dark-background {
-  position: fixed;
-  display: flex;
-  z-index: 10;
-  opacity: 0.5;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  transition: 1s;
-}
-
-#ExitSVG {
-  position: relative;
-  height: 1.8em;
-  margin-top: 0.4em;
-  transition: all 0.2s ease-in-out;
-  opacity: 0.5;
-
-  &:hover {
-    cursor: pointer;
-    transform: rotate(90deg);
-    opacity: 1;
-  }
-}
-
-.container1-module {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-  width: $modal-width;
-  height: $modal-height;
-  top: 50%;
-  left: 50%;
-  margin-top: -$modal-height / 2;
-  margin-left: -$modal-width / 2;
-  padding: 30px;
-  padding-top: 15px;
-  padding-bottom: 0;
-  background-color: white;
-  border-radius: $border-radius;
-
-  .headline-container {
-    border-bottom: 1px solid $input-border-color;
-    width: 100%;
-    top: 0;
-
-    h1 {
-      color: black;
-      font-size: 1.5em;
-      font-weight: lighter;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-
-    .exit1 {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 55px;
-    }
-  }
-}
-
-.edit-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  li,
-  label {
-    display: block;
-  }
-
-  li {
-    margin-top: 1rem;
-    padding: 0;
-
-    label {
-      font-size: 0.8em;
-      color: $input-font-color;
-      margin-bottom: 10px;
-    }
-  }
-
-  ul {
-    padding: 0;
-    width: 100%;
-
-    input[type="text"],
-    input[type="date"] {
-      border: $input-border-color 1px solid;
-      border-radius: $border-radius;
-      width: 100%;
-      height: 60px;
-      color: $input-font-color;
-      outline: none;
-      transition: box-shadow ease-in-out 0.1s;
-      font-size: 1.2em;
-      padding-left: 15px;
-
-      &:focus {
-        box-shadow: 1px 1px 4px 0px $save-button-color;
-      }
-    }
-  }
-
-  #save-button {
-    margin-top: 1.5rem;
-    width: 100%;
-    height: 65px;
-    font-size: 1.2em;
-    color: white;
-    font-weight: 500;
-    box-shadow: 1px 1px 7px 0px #c3c3c3;
-    border-radius: $border-radius;
-    border: none;
-    cursor: pointer;
-    background-color: $save-button-color;
-  }
-
-  #save-button {
-    margin-right: 0.5rem;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      background-color: lighten($save-button-color, 10%);
-    }
-  }
 }
 </style>

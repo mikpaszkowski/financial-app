@@ -4,7 +4,7 @@
     <div class="money">4543 $</div>
     <div class="availablebalance">Available Balance</div>
     <div class="transferbuttons">
-      <button class="transfer" id="transfer">Transfer</button>
+      <button class="btn" id="transfer">Transfer</button>
     </div>
   </div>
 </template>
@@ -72,7 +72,7 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
       width: 100%;
     }
 
-    .transfer {
+    .btn {
       width: 90%;
       height: 60px;
       background-color: transparent;
