@@ -5,11 +5,13 @@
         <div class="nav">
           <div class="headline">Account settings</div>
           <div class="edit-button-svg">
-            <ion-icon
-              name="create-outline"
-              id="edit-icon"
-              @click="modalAccountSettingsOpen"
-            ></ion-icon>
+            <router-link to="/home/account/edit" exact>
+              <ion-icon
+                name="create-outline"
+                id="edit-icon"
+                @click="modalAccountSettingsOpen"
+              ></ion-icon>
+            </router-link>
           </div>
         </div>
         <div class="labels">
@@ -65,7 +67,6 @@
 
 
 <script>
-import ModalAccountSettings from "./modals/ModalAccountSettings.vue";
 import { mapGetters } from "vuex";
 
 export default {

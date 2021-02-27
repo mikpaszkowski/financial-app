@@ -1,6 +1,6 @@
 <template>
-  <div v-if="isEmailModalOpen">
-    <div class="dark-background" id="dark-background"></div>
+  <div>
+    <!-- <div class="dark-background" id="dark-background"></div> -->
     <div class="container-module" id="conatiner-module">
       <div class="headline-container">
         <h1>Email & Phone</h1>
@@ -105,7 +105,6 @@ export default {
       numOfPrimaryEmail: 0,
     };
   },
-  props: ["isEmailModalOpen"],
   components: {
     ExitSVG: ExitIconSVG,
   },

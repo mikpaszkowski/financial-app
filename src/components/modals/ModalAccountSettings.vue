@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isAccountModalOpen">
+  <div>
     <div class="dark-background" id="dark-background"></div>
     <div class="container-module" id="container-module">
       <div class="headline-container">
@@ -71,7 +71,6 @@ export default {
   components: {
     ExitSVG: ExitIconSVG,
   },
-  props: ["isAccountModalOpen"],
   methods: {
     modalClosed: function () {
       this.$root.$emit("account-settings-modal-close");

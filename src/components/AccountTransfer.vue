@@ -138,6 +138,7 @@ export default {
       this.isModalOn = false;
     },
     checkForm: function (e) {
+      e.preventDefault();
       this.errors = [];
 
       if (!this.transferData.typeOfTransaction) {
@@ -350,7 +351,7 @@ $input-height: 50px;
   background-color: rgb(99, 207, 193);
   border-radius: 3px;
   box-shadow: 1px 1px 5px grey;
-  animation: 1s ease-in-out entry;
+  animation: 0.5s ease-in-out entry;
 }
 
 @keyframes entry {

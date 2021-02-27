@@ -45,6 +45,9 @@
         </div>
       </div>
     </div>
+    <transition name="fade">
+      <ModalPersonalDetails v-if="modalPersonalDetails_open" />
+    </transition>
   </div>
 </template>
 
@@ -61,6 +64,7 @@ export default {
       userSurname: "",
       address: "",
       birthDate: "",
+      modalPersonalDetails_open: false,
     };
   },
 
@@ -68,7 +72,10 @@ export default {
 
   methods: {
     modalPersonalDetailsOpen() {
-      this.$root.$emit("personal-data-modal-open");
+      this.modalPersonalDetails_open = true;
+    },
+    modalPersonalDetailsClosed() {
+      this.modalPersonalDetails_open = false;
     },
     ...mapGetters([
       "getCurrentName",
@@ -94,7 +101,7 @@ export default {
   },
   created() {
     this.$root.$on(
-      "modalPersonalDetailsClosed",
+      "personal-data-modal-close",
       this.modalPersonalDetailsClosed
     );
   },
@@ -105,4 +112,26 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";
+
+.fade-enter-active {
+  animation: bounce-in 0.5s ease-out;
+}
+
+.fade-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 </style>

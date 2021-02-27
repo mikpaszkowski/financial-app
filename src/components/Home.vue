@@ -40,12 +40,14 @@ export default {
 .cards-leave-to,
 .cards-enter {
   opacity: 0;
-  transition: all 0.1s ease-in-out;
+  transform: translateY(60px);
+  transition: all 0.3s ease-in-out;
 }
 
 .cards-leave,
 .cards-enter-to {
   opacity: 1;
+  transform: translateY(0);
   transition: all 0.5s ease-in-out;
 }
 

@@ -5,6 +5,7 @@ import History from './components/History.vue'
 import AccountTransfer from './components/AccountTransfer.vue'
 import HomePage from './components/HomePage.vue'
 import SignUp from './components/SignUp.vue'
+import ModalAccountSettings from './components/modals/ModalAccountSettings.vue'
 
 export default [
     {
@@ -30,6 +31,13 @@ export default [
             {
                 path: 'account',
                 component: Dashboard,
+
+                children: [
+                    {
+                        path: 'edit',
+                        component: ModalAccountSettings,
+                    }
+                ]
             },
             {
                 path: 'history',

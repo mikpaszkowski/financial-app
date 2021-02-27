@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isPersonalModalOpen">
+  <div>
     <div class="dark-background" id="dark-background"></div>
     <div class="container-module" id="container-module">
       <div class="headline-container">
@@ -81,7 +81,7 @@ export default {
   components: {
     ExitSVG: ExitIconSVG,
   },
-  props: ["isPersonalModalOpen"],
+
   methods: {
     modalClosed: function () {
       this.$root.$emit("personal-data-modal-close");
@@ -114,4 +114,23 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/main.scss";
+
+.fade-enter-active {
+  animation: bounce-in 0.5s ease-out;
+}
+
+.fade-leave-active {
+  animation: bounce-in 0.3s reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 </style>
