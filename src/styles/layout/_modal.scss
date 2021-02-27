@@ -116,21 +116,21 @@
     }
   }
 
-  #save-button {
+  .confirm-btn {
     margin: 1.5rem 0 20px 0;
     width: 100%;
     height: 65px;
     font-size: 1.2em;
     color: white;
     font-weight: 500;
-    box-shadow: 1px 1px 7px 0px #c3c3c3;
+    box-shadow: 1px 1px 15px 0px #c3c3c3;
     border-radius: $border-radius;
     border: none;
     cursor: pointer;
     background-color: $save-button-color;
   }
 
-  #save-button {
+  .confirm-btn {
     margin-right: 0.5rem;
     transition: all 0.2s ease-in-out;
 

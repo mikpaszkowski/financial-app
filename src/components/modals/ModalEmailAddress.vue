@@ -83,7 +83,7 @@
             />
           </li>
         </ul>
-        <button id="save-button" class="save-button" @click="save">Save</button>
+        <button class="confirm-btn" @click="save">Save</button>
       </div>
     </div>
   </div>

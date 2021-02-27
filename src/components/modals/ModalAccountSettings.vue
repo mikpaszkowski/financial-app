@@ -40,7 +40,7 @@
         <button
           type="submit"
           id="save-button"
-          class="save-button"
+          class="confirm-btn"
           @click="saveChanges"
         >
           Save

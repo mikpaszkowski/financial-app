@@ -1,99 +1,75 @@
 <template>
-  <div id="modal">
+  <div>
     <modal-forgot-password
       v-bind:isModalOpened="modalOpen"
     ></modal-forgot-password>
 
-    <div class="circle-background"></div>
-    <div class="background-image"></div>
+    <!-- <div class="circle-background"></div> -->
+    <!-- <div class="background-image"></div> -->
     <div class="frontpage">
-      <div class="front_sign_in" id="front_sign_in">
+      <div class="front_image">
         <div class="headline-image">
           <img src="../../public/assets/headline_logo.png" alt />
         </div>
         <div class="headline">Bank Account Manager</div>
-        <div class="front-small-window" id="front-small-window">
-          <div class="front_login_draw"></div>
+        <h1>Welcome back!</h1>
+        <p>
+          Online payments?
+          <br />It's never been so easy!
+        </p>
+        <LogInSVG class="LogInSVG" />
+      </div>
 
-          <div class="front_image">
-            <h1>Welcome back!</h1>
-            <p>
-              Online payments?
-              <br />It's never been so easy!
-            </p>
-            <LogInSVG class="LogInSVG" />
+      <div class="form-box" id="form-box">
+        <div class="edit-form">
+          <ul>
+            <li>
+              <input
+                type="text"
+                id="userid"
+                class="input-field"
+                name="userid"
+                placeholder="User ID"
+                v-model="logIn.userId"
+              />
+            </li>
+            <li>
+              <input
+                type="text"
+                id="password"
+                name="password"
+                class="input-field"
+                placeholder="Password"
+                v-model="logIn.password"
+              />
+              <div class="passwordfield">
+                <a id="password-toggle" @click="toggle">
+                  <ion-icon name="eye-outline" id="toggle"></ion-icon>
+                </a>
+              </div>
+            </li>
+            <li>
+              <button type="submit" class="confirm-btn">
+                <router-link to="/home/account" class="router-link">
+                  <div class="s-btn" @click="login">Log in</div>
+                </router-link>
+              </button>
+            </li>
+          </ul>
+
+          <div class="remember">
+            <input type="checkbox" class="check-box" />
+            <span>remember password</span>
           </div>
+        </div>
 
-          <div class="form-box" id="form-box">
-            <div class="button-box">
-              <div id="btn"></div>
-              <div class="upper-buttons">
-                <button
-                  type="button"
-                  class="toggle-btn-left"
-                  id="btn1"
-                  @click="logIn"
-                >
-                  Log In
-                </button>
-                <button
-                  type="button"
-                  class="toggle-btn-right"
-                  id="btn2"
-                  @click="signUp"
-                >
-                  Sign up
-                </button>
-              </div>
-            </div>
-            <form id="login" class="input-group" action="#">
-              <div class="inputarea">
-                <div class="userid">
-                  <input
-                    type="text"
-                    id="userid"
-                    class="input-field"
-                    name="userid"
-                    placeholder="User ID"
-                    v-model="logIn.userId"
-                  />
-                </div>
-                <div class="passwordfield">
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    class="input-field"
-                    placeholder="Password"
-                    v-model="logIn.password"
-                  />
-                  <a id="password-toggle" @click="toggle">
-                    <ion-icon name="eye-outline" id="toggle"></ion-icon>
-                  </a>
-                </div>
-                <div class="remember">
-                  <input type="checkbox" class="check-box" />
-                  <span>remember password</span>
-                </div>
-              </div>
-
-              <div class="loginbutton">
-                <button type="submit" class="submit-btn" id="submit-btn">
-                  <router-link to="/home/account" class="router-link">
-                    <div class="s-btn" @click="login">Log in</div>
-                  </router-link>
-                </button>
-              </div>
-              <div
-                class="forgot"
-                id="forgot"
-                @click="openModal"
-                v-bind:isModalOpened="modalOpen"
-              >
-                Forgot Password?
-              </div>
-            </form>
-          </div>
+        <div
+          class="forgot"
+          id="forgot"
+          @click="openModal"
+          v-bind:isModalOpened="modalOpen"
+        >
+          Forgot Password?
         </div>
       </div>
     </div>
@@ -139,21 +115,6 @@ export default {
     logIn: function () {
       this.$router.replace("/login");
     },
-    toggle: function () {
-      const toggle = document.getElementById("toggle");
-      const password = document.querySelector("#password");
-      const passwordType = password.type;
-      if (passwordType === "text") {
-        password.type = "password";
-      } else {
-        password.type = "text";
-      }
-      if (toggle.name === "eye-outline") {
-        toggle.setAttribute("name", "eye-off-outline");
-      } else {
-        toggle.setAttribute("name", "eye-outline");
-      }
-    },
   },
   components: {
     LogInSVG: LogInPicture,
@@ -168,6 +129,26 @@ export default {
 
 
 <style lang="scss"scoped>
+@import "../styles/main.scss";
+
+.edit-form {
+  li {
+    position: relative;
+    display: flex;
+    align-content: center;
+    #toggle {
+      font-size: 30px;
+    }
+  }
+}
+
+.passwordfield {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  color: $input-font-color;
+}
+
 #modal {
   position: absolute;
   width: 100%;
@@ -176,8 +157,7 @@ export default {
 
 .LogInSVG {
   display: flex;
-  height: 205px;
-  width: 327px;
+  height: 350px;
   position: relative;
   bottom: 0;
 }
@@ -192,12 +172,11 @@ body {
 
 .frontpage {
   display: flex;
-  justify-content: center;
+  justify-content: stretch;
   align-content: center;
-  height: 100vh;
+  position: relative;
   width: 100%;
-  min-height: 100%;
-  min-width: 100%;
+  height: 100vh;
   text-align: center;
 }
 
@@ -267,7 +246,7 @@ body {
 
 .front-small-window {
   display: flex;
-
+  width: 100%;
   position: relative;
   animation: 0.5s ease-in-out 2.5s both shadowEffect;
 }
@@ -316,24 +295,12 @@ body {
 .front_image {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   position: relative;
   font-family: "Rubik", sans-serif;
   z-index: 0;
   overflow: hidden;
-  background-image: linear-gradient(
-    rgba(241, 255, 162, 0.493),
-    rgba(255, 252, 104, 0.87)
-  );
-
-  /*
-    background-image: linear-gradient(rgba(91, 255, 247, 0.87), rgba(241, 255, 162, 0.493)), url("../bank_account_manager/images/sign_in_front_image.jpg");
-    background-size: cover;
-    background-position: center;
-    object-fit: contain;
-    */
-  width: 300px;
-  height: 379px;
+  background-color: $save-button-color;
   animation: 0.6s ease-in-out 0.65s both image_slide_in;
 }
 
@@ -364,22 +331,15 @@ body {
 }
 
 .form-box {
-  overflow: hidden;
-  z-index: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
-  width: 300px;
-  height: 352px;
-  background-color: rgb(172, 251, 255);
-  border-radius: 2px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  padding: 8px;
-  padding-top: 20px;
   animation: 1s ease-in-out both form_box_entry,
     cubic-bezier(0.55, 0.08, 1, 0.18);
   animation-delay: 0;
+  width: 50vw;
+  padding: 50px;
 }
 
 @keyframes form_box_entry {
@@ -399,201 +359,5 @@ body {
     transform: scale(1);
     transform: translateX(0em);
   }
-}
-
-.button-box {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 2.5em;
-  border-radius: 15px;
-  margin: 10px;
-  padding: 0;
-  background-color: rgb(214, 253, 255);
-}
-
-#btn {
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: 1;
-  width: 50%;
-  height: 100%;
-  border-radius: 15px;
-  background: linear-gradient(to right, rgb(72, 182, 255), rgb(62, 255, 136));
-  transition: 0.5s;
-}
-
-.upper-buttons {
-  display: inline;
-  justify-content: center;
-  padding-top: 0.5em;
-  width: 100%;
-}
-
-.toggle-btn-right {
-  position: relative;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  outline: none;
-  font-size: 15px;
-  text-align: center;
-  z-index: 2;
-  border: 0;
-  color: rgb(66, 66, 66);
-  width: 50%;
-}
-
-.toggle-btn-left {
-  font-size: 15px;
-  text-align: center;
-  width: 48%;
-  position: relative;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  outline: none;
-  z-index: 2;
-  border: 0;
-  color: rgb(66, 66, 66);
-}
-
-.entry-animation {
-  position: absolute;
-  z-index: 1;
-  width: 90px;
-  height: 90px;
-  background-color: black;
-}
-
-.input-group {
-  margin: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: center;
-}
-
-#toggle {
-  position: absolute;
-  font-size: 20px;
-  font-weight: 100;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-}
-
-#toggle:hover {
-  color: rgb(82, 160, 82);
-}
-
-.inputarea {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 140px;
-}
-
-.input-field {
-  margin: 10px;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  background-color: transparent;
-  border-bottom: 1px solid #999;
-  outline: none;
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.input-field:focus::placeholder {
-  opacity: 0;
-  border-bottom-color: greenyellow;
-}
-
-.errorFormField::placeholder {
-  color: red;
-}
-
-.input-field:hover {
-  transform: scale(1.2);
-}
-
-.input-field:focus {
-  transform: scale(1.2);
-}
-
-.check-box {
-  text-align: center;
-  margin-right: 10px;
-}
-
-.remember {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  font-size: 10px;
-  margin-top: 15px;
-}
-
-.loginbutton {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 40px;
-  position: relative;
-  margin-bottom: 0;
-  margin-top: 10px;
-}
-
-.submit-btn {
-  cursor: pointer;
-  padding: 10px 10px;
-  margin-top: 20px;
-  background-color: teal;
-  border: 0;
-  color: white;
-  border-radius: 10px;
-  transition: transform 0.2s ease-in-out;
-}
-
-.submit-btn:hover {
-  background-color: rgb(29, 150, 109);
-  transform: scale(1.2);
-}
-
-.forgot {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 10px;
-  margin-top: 20px;
-}
-
-.forgot {
-  text-decoration: none;
-  color: black;
-}
-
-.forgot:hover {
-  color: rgb(194, 27, 105);
-}
-
-#register {
-  display: flex;
-  overflow: hidden;
-  margin-bottom: 0;
-}
-
-.router-link {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  letter-spacing: 1px;
 }
 </style>

@@ -50,12 +50,7 @@
             />
           </li>
         </ul>
-        <button
-          v-on:click.enter="save"
-          @click="save"
-          id="save-button"
-          class="save-button"
-        >
+        <button v-on:click.enter="save" @click="save" class="confirm-btn">
           Save
         </button>
       </div>
