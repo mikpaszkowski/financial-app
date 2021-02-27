@@ -1,8 +1,5 @@
 <template>
   <div>
-    <ModalPersonalDetails
-      :isPersonalModalOpen="modalPersonalDetails_open"
-    ></ModalPersonalDetails>
     <div class="container">
       <div class="module">
         <div class="nav">
@@ -60,8 +57,6 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      modalPersonalDetails_open: false,
-
       userName: "",
       userSurname: "",
       address: "",
@@ -72,11 +67,8 @@ export default {
   components: { ModalPersonalDetails },
 
   methods: {
-    modalPersonalDetailsOpen: function () {
-      this.modalPersonalDetails_open = true;
-    },
-    modalPersonalDetailsClosed: function () {
-      this.modalPersonalDetails_open = false;
+    modalPersonalDetailsOpen() {
+      this.$root.$emit("personal-data-modal-open");
     },
     ...mapGetters([
       "getCurrentName",

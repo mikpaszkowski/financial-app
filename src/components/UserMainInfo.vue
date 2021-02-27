@@ -1,8 +1,8 @@
 <template>
   <div class="user-main-info">
-    <personal-data></personal-data>
-    <account-settings></account-settings>
-    <user-email-phone></user-email-phone>
+    <PersonalDataContainer></PersonalDataContainer>
+    <AccountSettingsContainer></AccountSettingsContainer>
+    <UserPhoneAddress></UserPhoneAddress>
   </div>
 </template>
 
@@ -15,9 +15,9 @@ import UserPhoneAddress from "./EmailPhone.vue";
 
 export default {
   components: {
-    "personal-data": PersonalDataContainer,
-    "account-settings": AccountSettingsContainer,
-    "user-email-phone": UserPhoneAddress,
+    PersonalDataContainer,
+    AccountSettingsContainer,
+    UserPhoneAddress,
   },
 };
 </script>
@@ -30,7 +30,15 @@ export default {
   justify-content: flex-start;
   flex-direction: column;
   align-content: center;
-  width: 71%;
+  width: 50%;
   margin-left: 30px;
+}
+
+@media screen and (max-width: 1306px) {
+  .user-main-info {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
 }
 </style>

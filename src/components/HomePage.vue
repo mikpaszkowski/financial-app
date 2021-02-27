@@ -124,11 +124,11 @@ export default {
 $font-stack: "Rubik", sans-serif;
 
 .fade-enter-active {
-  transition: 5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .fade-leave-active {
-  transition: 5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .fade-leave-to,

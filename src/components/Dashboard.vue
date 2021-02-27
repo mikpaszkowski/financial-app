@@ -1,24 +1,68 @@
 <template>
-  <transition name="fade">
-    <div id="account">
-      <profile-balance-info></profile-balance-info>
-      <user-main-info></user-main-info>
-    </div>
-  </transition>
+  <div class="main-container" id="account">
+    <UserBalanceInfo></UserBalanceInfo>
+    <UserMainInfo></UserMainInfo>
+    <transition name="fade" mode="out-in">
+      <ModalPersonalDetails
+        :isPersonalModalOpen="modalPersonalDetails_open"
+      ></ModalPersonalDetails>
+    </transition>
+    <transition name="fade" mode="out-in">
+      <ModalAccountSettings
+        :isAccountModalOpen="modalAccountSettings_open"
+      ></ModalAccountSettings>
+    </transition>
+    <transition name="fade" mode="out-in">
+      <ModalEmailAddress
+        :isEmailModalOpen="modalEmailAddress_open"
+      ></ModalEmailAddress>
+    </transition>
+  </div>
 </template>
 
 
 <script>
 import UserBalanceInfo from "./ProfileAndBalanceBlock.vue";
 import UserMainInfo from "./UserMainInfo.vue";
+import ModalPersonalDetails from "../components/modals/ModalPersonalDetails";
+import ModalAccountSettings from "../components/modals/ModalAccountSettings";
+import ModalEmailAddress from "../components/modals/ModalEmailAddress";
 
 export default {
   data() {
-    return {};
+    return {
+      modalPersonalDetails_open: false,
+      modalAccountSettings_open: false,
+      modalEmailAddress_open: false,
+    };
   },
   components: {
-    "profile-balance-info": UserBalanceInfo,
-    "user-main-info": UserMainInfo,
+    UserBalanceInfo,
+    UserMainInfo,
+    ModalPersonalDetails,
+    ModalAccountSettings,
+    ModalEmailAddress,
+  },
+  created() {
+    this.$root.$on("personal-data-modal-open", () => {
+      this.modalPersonalDetails_open = true;
+    });
+    this.$root.$on("personal-data-modal-close", () => {
+      this.modalPersonalDetails_open = false;
+    });
+    this.$root.$on("account-settings-modal-open", () => {
+      console.log("open -open");
+      this.modalAccountSettings_open = true;
+    });
+    this.$root.$on("account-settings-modal-close", () => {
+      this.modalAccountSettings_open = false;
+    });
+    this.$root.$on("email-modal-open", () => {
+      this.modalEmailAddress_open = true;
+    });
+    this.$root.$on("email-modal-close", () => {
+      this.modalEmailAddress_open = false;
+    });
   },
 };
 </script>
@@ -38,16 +82,40 @@ $flat-green: #2ecc71;
 $flat-blue: #3498db;
 $flat-red: #e74c3c;
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease-in-out;
+}
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-from {
+  opacity: 0;
+}
+
 * {
   font-family: $main-font;
   font-size: $font-size;
 }
 
-#account {
+.main-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0 100px;
+}
+
+@media screen and (max-width: 1306px) {
+  .main-container {
+    flex-direction: column;
+  }
 }
 
 .primary {
@@ -465,28 +533,6 @@ p {
 label {
   font-weight: 600;
   color: $input-font-color;
-}
-
-@media screen and (max-width: 1306px) {
-  .person1,
-  .person2,
-  .person3,
-  .upper_module,
-  .middle_module,
-  .lower_module {
-    width: 100%;
-  }
-
-  .person1,
-  .person2,
-  .person3 {
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .person1 {
-    padding: 15px 0;
-  }
 }
 
 .hidden {

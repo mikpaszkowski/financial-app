@@ -128,4 +128,15 @@ $flat-red: #e74c3c;
     font-size: 1em;
   }
 }
+
+@media screen and(max-width: 1306px) {
+  .container-history {
+    flex-direction: column;
+
+    .history-table {
+      width: 100%;
+      margin: 20px 0 0 0;
+    }
+  }
+}
 </style>

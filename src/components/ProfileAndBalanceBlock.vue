@@ -28,7 +28,13 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   width: 400px;
-  height: 1500px;
   margin-right: 20px;
+}
+
+@media screen and (max-width: 1306px) {
+  .profile-balance-block {
+    width: 100%;
+    margin: 0;
+  }
 }
 </style>
