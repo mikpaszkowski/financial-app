@@ -10,7 +10,7 @@ import ModalAccountSettings from "../components/modals/ModalAccountSettings.vue"
 
 const routes = [
   {
-    path: "/",
+    path: "",
     component: HomePage,
 
     children: [

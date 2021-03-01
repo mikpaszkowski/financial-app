@@ -46,11 +46,11 @@
               </div>
             </li>
             <li>
-              <button type="submit" class="confirm-btn">
-                <router-link to="/home/account" class="router-link">
+              <router-link to="/home/account" class="router-link">
+                <button type="submit" class="confirm-btn">
                   <div class="s-btn" @click="login">Log in</div>
-                </router-link>
-              </button>
+                </button>
+              </router-link>
             </li>
           </ul>
 
@@ -164,9 +164,10 @@ body {
 .frontpage {
   display: flex;
   justify-content: stretch;
+  flex-direction: row;
   align-content: center;
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   text-align: center;
 }
@@ -290,6 +291,7 @@ body {
   position: relative;
   font-family: "Rubik", sans-serif;
   z-index: 0;
+  width: 50%;
   overflow: hidden;
   background-color: $save-button-color;
   animation: 0.6s ease-in-out 0.65s both image_slide_in;
@@ -318,6 +320,7 @@ body {
   font-size: 14px;
   letter-spacing: 1px;
   margin-bottom: 0;
+  padding: 20px;
   color: rgb(99, 99, 99);
 }
 
@@ -329,8 +332,8 @@ body {
   animation: 1s ease-in-out both form_box_entry,
     cubic-bezier(0.55, 0.08, 1, 0.18);
   animation-delay: 0;
-  width: 50vw;
-  padding: 50px;
+  padding: 40px;
+  width: 50%;
 }
 
 @keyframes form_box_entry {
@@ -349,6 +352,23 @@ body {
   100% {
     transform: scale(1);
     transform: translateX(0em);
+  }
+}
+
+.router-link {
+  width: 100%;
+}
+
+@media screen and(max-width: 850px) {
+  .frontpage {
+    flex-direction: column;
+  }
+
+  .front_image {
+    width: 100%;
+  }
+  .form-box {
+    width: 100%;
   }
 }
 </style>

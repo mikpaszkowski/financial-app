@@ -5,7 +5,7 @@
       <div class="headline-container">
         <h1>Account Settings</h1>
         <div class="exit" id="exit" @click="modalClosed">
-          <img src="../../../public/img/exit.svg" alt="" />
+          <img src="../../../public/img/exit.svg" alt="" class="close-icon" />
         </div>
       </div>
       <div class="edit-form" id="form1">

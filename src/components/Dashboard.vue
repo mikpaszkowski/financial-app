@@ -73,6 +73,7 @@ export default {
   flex-direction: row;
   justify-content: center;
   padding: 0 100px;
+  background-color: $backgroundColor;
 }
 
 @media screen and (max-width: 1306px) {

@@ -80,6 +80,7 @@
         </div>
       </div>
     </div>
+    <ModalEmailAddress v-if="modalOpened" />
   </div>
 </template>
 
@@ -100,11 +101,12 @@ export default {
       currentEmailAddress: "",
       additionalPhoneNumber: "",
       additionalEmailAddress: "",
+      modalOpened: false,
     };
   },
   methods: {
     modalEmailAddressOpen: function () {
-      this.$root.$emit("email-modal-open");
+      this.modalOpened = true;
     },
     ...mapGetters([
       "getCurrentPhoneNumber",
@@ -112,9 +114,6 @@ export default {
       "getAdditionalEmailAddress",
       "getAdditionalPhoneNumber",
     ]),
-  },
-  created() {
-    // this.$root.$on("modalEmailClosed", this.modalEmailAddressClosed);
   },
   computed: {
     ...mapGetters({

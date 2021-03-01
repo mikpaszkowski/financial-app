@@ -6,3 +6,9 @@
 @import 'layout/modal';
 
 @import 'utilities/variables';
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}

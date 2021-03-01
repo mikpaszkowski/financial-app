@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <div class="background-image"></div>
     <Heading />
     <Navbar />
@@ -42,6 +42,12 @@ export default {
 
 
 <style lang="scss">
+@import "../styles/main.scss";
+
+.home {
+  background-color: $backgroundColor;
+}
+
 .cards-leave-to,
 .cards-enter {
   opacity: 0;
@@ -65,7 +71,7 @@ body {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-color: #f1f5f6;
+  background-color: $backgroundColor;
 }
 
 footer {

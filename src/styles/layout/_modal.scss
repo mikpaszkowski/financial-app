@@ -1,12 +1,18 @@
 @import '../utilities/variables';
 
 
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
 
-
-#ExitSVG {
-  position: relative;
-  height: 1.8em;
-  margin-top: 0.4em;
+.close-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
   transition: all 0.2s ease-in-out;
   opacity: 0.5;
 
@@ -18,19 +24,20 @@
 }
 
 .container-module {
-
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  width: 100%;
   margin-top: 20px;
   padding: 30px;
   padding-top: 15px;
   padding-bottom: 0;
+  margin-top: 40px;
   background-color: white;
   border-radius: $border-radius;
+  box-shadow: $container-shadow;
 
 
   .headline-container {
@@ -72,9 +79,11 @@
     padding: 0;
 
     label {
-      font-size: 0.8em;
-      color: $input-font-color;
+      display: flex;
+      font-size: 1em;
+      color: $input-labels;
       margin-bottom: 10px;
+      text-align: left;
     }
   }
 
@@ -108,7 +117,6 @@
       outline: none;
       transition: box-shadow ease-in-out 0.1s;
       font-size: 1.2em;
-      padding-left: 15px;
 
       &:focus {
         box-shadow: 1px 1px 4px 0px $save-button-color;
@@ -131,7 +139,6 @@
   }
 
   .confirm-btn {
-    margin-right: 0.5rem;
     transition: all 0.2s ease-in-out;
 
     &:hover {

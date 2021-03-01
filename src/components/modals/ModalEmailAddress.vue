@@ -5,7 +5,7 @@
       <div class="headline-container">
         <h1>Email & Phone</h1>
         <div class="exit" id="exit" @click="modalClosed">
-          <img src="../../../public/img/exit.svg" alt="" />
+          <img src="../../../public/img/exit.svg" alt="" class="close-icon" />
         </div>
       </div>
       <div class="edit-form" id="form1">
@@ -183,17 +183,16 @@ export default {
 
   .primary-phone,
   .primary-email {
-    width: 80px;
-    height: 20px;
     background-color: $flat-blue;
     color: white;
     font-weight: bold;
     font-size: 0.93em;
     border-radius: 2em;
     text-align: center;
-    padding-top: 3px;
+    padding: 3px;
     letter-spacing: 1px;
     margin-left: 10px;
+    padding: 5px;
 
     &::before {
       content: "Primary";

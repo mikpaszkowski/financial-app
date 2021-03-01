@@ -61,6 +61,7 @@
         </div>
       </div>
     </div>
+    <ModalAccountSettings v-if="modalOpened" />
   </div>
 </template>
 
@@ -68,17 +69,22 @@
 
 <script>
 import { mapGetters } from "vuex";
+import ModalAccountSettings from "./modals/ModalAccountSettings";
 
 export default {
+  components: {
+    ModalAccountSettings,
+  },
   data() {
     return {
       currentTimeZone: "",
       currentLanguage: "",
+      modalOpened: false,
     };
   },
   methods: {
     modalAccountSettingsOpen: function () {
-      this.$root.$emit("account-settings-modal-open");
+      this.modalOpened = true;
     },
     ...mapGetters(["getCurrentLanguage", "getCurrentTimeZone"]),
   },

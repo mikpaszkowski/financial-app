@@ -6,10 +6,14 @@
       v-show="isModalOpened"
     >
       <div class="exit1" id="exit1" @click="closeModal">
-        <!-- <ExitSVG id="ExitSVG" /> -->
+        <img src="../../../public/img/exit.svg" alt="" />
       </div>
       <div class="forgot_headline">
-        <!-- <ForgotPasswordSVG class="ForgotPasswordSVG" /> -->
+        <img
+          src="../../../public/img/forgot_password.svg"
+          alt=""
+          class="modal-img"
+        />
       </div>
       <div class="forgot_password">
         <h1>Reset your password</h1>
@@ -38,15 +42,9 @@ export default {
       required: true,
     },
   },
-  components: {
-    // ForgotPasswordSVG: ForgotPasswordSVG,
-    // ExitSVG: ExitIconSVG,
-  },
   methods: {
     closeModal: function () {
-      // this.isModalOpened = false;
       this.$root.$emit("modalClosed");
-      console.log("isModalOpened: " + this.isModalOpened);
     },
   },
 };
@@ -170,7 +168,7 @@ $modal-height: 600px;
   .forgot_headline {
     animation: 0.5s both 1s forgot cubic-bezier(0.8, 0.18, 0.46, 0.72);
 
-    .ForgotPasswordSVG {
+    .modal-img {
       position: relative;
       width: 300px;
       height: 150px;
