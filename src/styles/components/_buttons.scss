@@ -1,0 +1,27 @@
+@import '../utilities/variables';
+
+
+.btn {
+  width: 90%;
+  height: 60px;
+  background-color: transparent;
+  font-weight: bold;
+  transition: transform 0.6s ease-in-out;
+  cursor: pointer;
+  background-color: $save-button-color;
+  outline: none;
+  color: white;
+  font-size: 27px;
+  border: none;
+  box-shadow: 1px 1px 4px 0px #505050;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: lighten($save-button-color, 15%);
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

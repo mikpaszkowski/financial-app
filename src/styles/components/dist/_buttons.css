@@ -1,0 +1,22 @@
+.btn {
+  width: 90%;
+  height: 60px;
+  background-color: transparent;
+  font-weight: bold;
+  transition: transform 0.6s ease-in-out;
+  cursor: pointer;
+  background-color: #16a085;
+  outline: none;
+  color: white;
+  font-size: 27px;
+  border: none;
+  box-shadow: 1px 1px 4px 0px #505050;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+.btn:hover {
+  background-color: #22e1bb;
+}
+.btn a {
+  text-decoration: none;
+}
