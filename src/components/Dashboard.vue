@@ -2,12 +2,6 @@
   <div class="main-container" id="account">
     <UserBalanceInfo></UserBalanceInfo>
     <UserMainInfo></UserMainInfo>
-    <transition name="fade">
-      <ModalAccountSettings v-if="modalAccountSettings_open" />
-    </transition>
-    <transition name="fade">
-      <ModalEmailAddress v-if="modalEmailAddress_open" />
-    </transition>
   </div>
 </template>
 

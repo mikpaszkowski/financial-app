@@ -8,7 +8,7 @@
             <ion-icon
               name="create-outline"
               id="edit-icon"
-              @click="modalEmailAddressOpen"
+              @click="openModal"
             ></ion-icon>
           </div>
         </div>
@@ -80,7 +80,9 @@
         </div>
       </div>
     </div>
-    <ModalEmailAddress v-if="modalOpened" />
+    <transition name="slide-fade">
+      <ModalEmailAddress v-if="modalOpened" @close="closeModal" />
+    </transition>
   </div>
 </template>
 
@@ -105,8 +107,11 @@ export default {
     };
   },
   methods: {
-    modalEmailAddressOpen: function () {
+    openModal: function () {
       this.modalOpened = true;
+    },
+    closeModal: function () {
+      this.modalOpened = false;
     },
     ...mapGetters([
       "getCurrentPhoneNumber",

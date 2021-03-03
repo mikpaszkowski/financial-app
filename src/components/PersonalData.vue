@@ -7,7 +7,7 @@
           <ion-icon
             name="create-outline"
             id="edit-icon"
-            @click="modalPersonalDetailsOpen"
+            @click="modalOpen"
           ></ion-icon>
         </div>
 
@@ -45,8 +45,8 @@
         </div>
       </div>
     </div>
-    <transition name="fade">
-      <ModalPersonalDetails v-if="modalOpened" />
+    <transition name="slide-fade">
+      <ModalPersonalDetails v-if="modalOpened" @close="modalClosed" />
     </transition>
   </div>
 </template>
@@ -71,10 +71,10 @@ export default {
   components: { ModalPersonalDetails },
 
   methods: {
-    modalPersonalDetailsOpen() {
+    modalOpen() {
       this.modalOpened = true;
     },
-    modalPersonalDetailsClosed() {
+    modalClosed() {
       this.modalOpened = false;
     },
     ...mapGetters([
@@ -98,12 +98,6 @@ export default {
       userSurnameCom: "getCurrentSurname",
       addressCom: "getCurrentAddress",
     }),
-  },
-  created() {
-    // this.$root.$on(
-    //   "personal-data-modal-close",
-    //   this.modalPersonalDetailsClosed
-    // );
   },
 };
 </script>

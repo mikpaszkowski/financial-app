@@ -59,12 +59,12 @@
 
 .exit {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
 
   img {
-    width: 48px;
-    height: 48px;
+    width: 30px;
+    height: 30px;
     color: $close-icon;
   }
 }
@@ -116,7 +116,7 @@ label {
   font-size: 1em;
   color: $input-labels;
   margin-bottom: 10px;
-  text-align: left;
+  float: left;
 }
 
 ul {
@@ -159,4 +159,18 @@ input[type="password"] {
   &:focus {
     box-shadow: 1px 1px 4px 0px $dark-flat-green;
   }
+}
+
+.slide-fade-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-50px);
+  opacity: 0;
 }

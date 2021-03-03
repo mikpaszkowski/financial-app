@@ -1,10 +1,9 @@
 <template>
   <div>
-    <!-- <div class="dark-background" id="dark-background"></div> -->
     <div class="container-module" id="conatiner-module">
       <div class="headline-container">
         <h1>Email & Phone</h1>
-        <div class="exit" id="exit" @click="modalClosed">
+        <div class="exit" id="exit" @click="closeModal">
           <img src="../../../public/img/exit.svg" alt="" class="close-icon" />
         </div>
       </div>
@@ -77,7 +76,6 @@
             </label>
             <input
               type="text"
-              name="phone"
               v-model="additionalPhoneNumber"
               :placeholder="additionalPhoneNumberCom"
             />
@@ -91,7 +89,6 @@
 
 
 <script>
-//import ExitIconSVG from "../../../public/img/exit.svg";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -107,8 +104,8 @@ export default {
   },
 
   methods: {
-    modalClosed: function () {
-      this.$root.$emit("email-modal-close");
+    closeModal: function () {
+      this.$emit("close");
     },
     ...mapActions([
       "updateCurrentEmailAddress",

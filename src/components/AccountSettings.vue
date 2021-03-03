@@ -9,7 +9,7 @@
               <ion-icon
                 name="create-outline"
                 id="edit-icon"
-                @click="modalAccountSettingsOpen"
+                @click="openModal"
               ></ion-icon>
             </router-link>
           </div>
@@ -61,11 +61,11 @@
         </div>
       </div>
     </div>
-    <ModalAccountSettings v-if="modalOpened" />
+    <transition name="slide-fade">
+      <ModalAccountSettings v-if="modalOpened" @close="closeModal" />
+    </transition>
   </div>
 </template>
-
-
 
 <script>
 import { mapGetters } from "vuex";
@@ -83,8 +83,11 @@ export default {
     };
   },
   methods: {
-    modalAccountSettingsOpen: function () {
+    openModal: function () {
       this.modalOpened = true;
+    },
+    closeModal: function () {
+      this.modalOpened = false;
     },
     ...mapGetters(["getCurrentLanguage", "getCurrentTimeZone"]),
   },
