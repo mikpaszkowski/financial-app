@@ -1,50 +1,34 @@
 <template>
-  <transition name="fade">
-    <div
-      class="modal_forgot_password"
-      id="modal_forgot_password"
-      v-show="isModalOpened"
-    >
-      <div class="exit1" id="exit1" @click="closeModal">
+  <div class="modal_forgot_password">
+    <div class="forgot_password">
+      <h1>Reset your password</h1>
+      <div class="forgot_headline">
+        <img src="../../../public/img/forgot_password.svg" class="modal-img" />
+      </div>
+      <div class="exit" @click="closeModal">
         <img src="../../../public/img/exit.svg" alt="" />
       </div>
-      <div class="forgot_headline">
-        <img
-          src="../../../public/img/forgot_password.svg"
-          alt=""
-          class="modal-img"
-        />
+      <p>
+        Seems like you forgot your password for Bank Account Manager Inc. It
+        this is true, write your email below and we send you na email with
+        further instructions.
+      </p>
+      <div class="send-email">
+        <label>Your email</label>
+        <input type="text" />
       </div>
-      <div class="forgot_password">
-        <h1>Reset your password</h1>
-        <p>
-          Seems like you forgot your password for Bank Account Manager Inc. It
-          this is true, write your email below and we send you na email with
-          further instructions.
-        </p>
-        <div class="send_email">
-          <label>Your email</label>
-          <input type="text" />
-        </div>
-        <button type="submit">Reset your password</button>
-      </div>
+      <button type="submit" class="btn">Reset your password</button>
     </div>
-  </transition>
+  </div>
 </template>
 
 
 <script>
 export default {
   name: "Modal",
-  props: {
-    isModalOpened: {
-      type: Boolean,
-      required: true,
-    },
-  },
   methods: {
     closeModal: function () {
-      this.$root.$emit("modalClosed");
+      this.$emit("close");
     },
   },
 };
@@ -52,8 +36,7 @@ export default {
 
 
 <style lang="scss" scoped>
-$modal-width: 700px;
-$modal-height: 600px;
+@import "../../styles/main.scss";
 
 .fade-enter-active {
   animation: bounce-in 0.5s ease-out;
@@ -83,15 +66,11 @@ $modal-height: 600px;
 
 .modal_forgot_password {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -($modal-height/2);
-  margin-left: -($modal-width/2);
-  width: $modal-width;
-  height: $modal-height;
+  height: 100%;
+  width: 100%;
   z-index: 3;
   padding: 30px;
-  background-color: rgba(0, 133, 133, 0.918);
+  background-color: #16a08498;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -104,12 +83,14 @@ $modal-height: 600px;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
-    height: 60%;
+    width: 60%;
+    height: 100%;
     margin-top: 30px;
     z-index: 5;
     border-radius: 5px;
-    background-color: rgb(211, 255, 249);
+    padding: 20px;
+    padding-bottom: 40px;
+    background-color: white;
     box-shadow: 2px 2px 9px 0px black;
     text-align: center;
     animation: 0.3s ease-in-out 1.1s both password_form;
@@ -123,48 +104,8 @@ $modal-height: 600px;
     h1 {
       margin-top: 20px;
     }
-    button {
-      width: 200px;
-      margin-bottom: 20px;
-      margin-top: 30px;
-      padding: 20px 0;
-      border-top-width: 0;
-      border-left-width: 0;
-      border-right-width: 0;
-      border-bottom-width: 4px;
-      border-bottom-color: rgba(196, 192, 0, 0.87);
-      background-color: rgba(252, 249, 61, 0.87);
-      border-radius: 5px;
-      outline: none;
-      font-size: 18px;
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
-
-      &:hover {
-        background-color: rgb(41, 134, 125);
-        border-bottom-color: rgb(3, 163, 147);
-        color: white;
-      }
-    }
   }
-  .exit1 {
-    position: absolute;
-    right: 5px;
-    top: 5px;
 
-    #ExitSVG {
-      position: relative;
-      transition: all 0.2s ease-in-out;
-      width: 48px;
-      height: 48px;
-
-      &:hover {
-        fill: aquamarine;
-        cursor: pointer;
-        transform: rotate(90deg);
-      }
-    }
-  }
   .forgot_headline {
     animation: 0.5s both 1s forgot cubic-bezier(0.8, 0.18, 0.46, 0.72);
 
@@ -174,15 +115,14 @@ $modal-height: 600px;
       height: 150px;
     }
   }
-  .send_email input {
-    border-top-width: 0;
-    border-left-width: 0;
-    border-right-width: 0;
-    background-color: transparent;
-    width: 100%;
-    padding: 5px 0;
-    font-size: 20px;
-  }
+}
+
+.send-email {
+  width: 90%;
+}
+label {
+  display: inline-block;
+  text-align: left;
 }
 
 @keyframes password_form {

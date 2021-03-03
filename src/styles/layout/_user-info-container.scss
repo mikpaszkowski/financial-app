@@ -1,4 +1,4 @@
-@import '../utilities/variables';
+@import '../utilities/_variables.scss';
 
 .container {
   display: flex;
@@ -30,7 +30,7 @@
       padding-bottom: 20px;
 
       #edit-icon {
-        color: $save-button-color;
+        color: $dark-flat-green;
         font-size: 40px;
         margin-right: 10px;
         transition: color 0.2s ease-in-out;
@@ -38,7 +38,7 @@
 
         &:hover {
           cursor: pointer;
-          color: lighten($save-button-color, 20%);
+          color: lighten($dark-flat-green, 20%);
           transform: scale(1.2);
         }
       }

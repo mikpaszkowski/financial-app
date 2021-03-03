@@ -1,11 +1,14 @@
-@import 'components/buttons';
+@import './components/_buttons.scss';
 
-@import 'layout/user-info-container';
+@import './components/_form.scss';
 
 
-@import 'layout/modal';
+@import './layout/_user-info-container.scss';
 
-@import 'utilities/variables';
+
+@import './layout/_modal.scss';
+
+@import './utilities/_variables.scss';
 
 *,
 ::after,

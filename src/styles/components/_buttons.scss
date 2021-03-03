@@ -1,4 +1,4 @@
-@import '../utilities/variables';
+@import '../utilities/_variables.scss';
 
 
 .btn {
@@ -8,7 +8,7 @@
   font-weight: bold;
   transition: transform 0.6s ease-in-out;
   cursor: pointer;
-  background-color: $save-button-color;
+  background-color: $dark-flat-green;
   outline: none;
   color: white;
   font-size: 35px;
@@ -18,7 +18,7 @@
   transition: background-color 0.2s ease-in-out;
 
   &:hover {
-    background-color: lighten($save-button-color, 15%);
+    background-color: lighten($dark-flat-green, 15%);
   }
 
   a {

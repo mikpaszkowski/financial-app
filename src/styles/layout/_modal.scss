@@ -1,4 +1,4 @@
-@import '../utilities/variables';
+@import '../utilities/_variables.scss';
 
 
 *,
@@ -53,12 +53,19 @@
       margin-bottom: 20px;
     }
 
-    .exit {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 55px;
-    }
+
+  }
+}
+
+.exit {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  img {
+    width: 48px;
+    height: 48px;
+    color: $close-icon;
   }
 }
 
@@ -69,60 +76,7 @@
   align-items: center;
   width: 100%;
 
-  li,
-  label {
-    display: block;
-  }
 
-  li {
-    margin-top: 1rem;
-    padding: 0;
-
-    label {
-      display: flex;
-      font-size: 1em;
-      color: $input-labels;
-      margin-bottom: 10px;
-      text-align: left;
-    }
-  }
-
-  ul {
-    padding: 0;
-    width: 100%;
-
-    select {
-      border: $input-border-color 1px solid;
-      border-radius: $border-radius;
-      width: 100%;
-      height: 60px;
-      color: $input-font-color;
-      transition: box-shadow ease-in-out 0.2s;
-      outline: none;
-      font-size: 1.2em;
-      padding-left: 15px;
-
-      &:focus {
-        box-shadow: 1px 1px 4px 0px $save-button-color;
-      }
-    }
-
-    input[type="text"],
-    input[type="date"] {
-      border: $input-border-color 1px solid;
-      border-radius: $border-radius;
-      width: 100%;
-      height: 60px;
-      color: $input-font-color;
-      outline: none;
-      transition: box-shadow ease-in-out 0.1s;
-      font-size: 1.2em;
-
-      &:focus {
-        box-shadow: 1px 1px 4px 0px $save-button-color;
-      }
-    }
-  }
 
   .confirm-btn {
     margin: 1.5rem 0 20px 0;
@@ -135,14 +89,74 @@
     border-radius: $border-radius;
     border: none;
     cursor: pointer;
-    background-color: $save-button-color;
+    background-color: $dark-flat-green;
   }
 
   .confirm-btn {
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      background-color: lighten($save-button-color, 10%);
+      background-color: lighten($dark-flat-green, 10%);
     }
+  }
+}
+
+li,
+label {
+  display: block;
+}
+
+li {
+  margin-top: 1rem;
+  padding: 0;
+}
+
+label {
+  display: inline-block;
+  font-size: 1em;
+  color: $input-labels;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+ul {
+  padding: 0;
+  width: 100%;
+
+  select {
+    border: $input-border-color 1px solid;
+    border-radius: $border-radius;
+    width: 100%;
+    height: 60px;
+    color: $input-font-color;
+    transition: box-shadow ease-in-out 0.2s;
+    outline: none;
+    font-size: 1.2em;
+    padding-left: 15px;
+
+    &:focus {
+      box-shadow: 1px 1px 4px 0px $dark-flat-green;
+    }
+  }
+
+
+}
+
+input[type="text"],
+input[type="date"],
+input[type="checkbox"],
+input[type="password"] {
+  border: $input-border-color 1px solid;
+  border-radius: $border-radius;
+  width: 100%;
+  height: 60px;
+  color: $input-font-color;
+  outline: none;
+  transition: box-shadow ease-in-out 0.1s;
+  font-size: 1.4em;
+  padding-left: 10px;
+
+  &:focus {
+    box-shadow: 1px 1px 4px 0px $dark-flat-green;
   }
 }
