@@ -86,9 +86,6 @@
   </div>
 </template>
 
-
-
-
 <script>
 import ModalEmailAddress from "./modals/ModalEmailAddress.vue";
 import { mapGetters } from "vuex";
