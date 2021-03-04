@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import ModalEmailAddress from "./modals/ModalEmailAddress.vue";
+import ModalEmailAddress from "./UserProfileDetailsEmailPhoneEdit.vue";
 import { mapGetters } from "vuex";
 
 export default {

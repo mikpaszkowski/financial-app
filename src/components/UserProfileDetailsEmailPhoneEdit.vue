@@ -4,7 +4,7 @@
       <div class="headline-container">
         <h1>Email & Phone</h1>
         <div class="exit" id="exit" @click="closeModal">
-          <img src="../../../public/img/exit.svg" alt="" class="close-icon" />
+          <img src="../../public/img/exit.svg" alt="" class="close-icon" />
         </div>
       </div>
       <div class="edit-form" id="form1">
@@ -152,7 +152,7 @@ export default {
 
 
 <style lang="scss" scoped>
-@import "../../styles/main.scss";
+@import "../styles/main.scss";
 
 .hidden {
   display: none;

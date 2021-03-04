@@ -69,7 +69,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import ModalAccountSettings from "./modals/ModalAccountSettings";
+import ModalAccountSettings from "./UserProfileDetailsAccountEdit";
 
 export default {
   components: {

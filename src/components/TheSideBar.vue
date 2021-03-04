@@ -25,21 +25,12 @@
 
 
 <script>
-//import LogOutIcon from "../../public/img/logout.svg";
-
 export default {
-  name: "main-side-bar",
-
-  components: {
-    // LogOut: LogOutIcon,
-  },
-
   data() {
     return {
       isToolbarOn: false,
     };
   },
-
   computed: {
     toolbarPositionStyle: function () {
       return {
@@ -47,7 +38,6 @@ export default {
       };
     },
   },
-
   methods: {
     slideInOutBar: function () {
       this.isToolbarOn = !this.isToolbarOn;

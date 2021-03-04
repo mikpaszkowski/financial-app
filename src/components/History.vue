@@ -30,7 +30,7 @@
 
 
 <script>
-import { history } from "../history";
+import { history } from "../assets/history";
 import TheLeftPanel from "./TheLeftPanel.vue";
 
 export default {

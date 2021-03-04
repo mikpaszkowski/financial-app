@@ -23,11 +23,10 @@
 
 
 <script>
-import ModalForgotPassword from "./modals/ModalForgotPassword.vue";
-import LogInForm from "./form/LogInForm";
+import ModalForgotPassword from "./LoginFormPasswordModal";
+import LogInForm from "./LogInForm";
 
 export default {
-  props: ["signUpOpen"],
   components: {
     ModalForgotPassword,
     LogInForm,

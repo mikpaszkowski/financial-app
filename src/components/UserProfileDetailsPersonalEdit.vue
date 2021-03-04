@@ -4,7 +4,7 @@
       <div class="headline-container">
         <h1>Personal Details</h1>
         <div class="exit" id="exit" @click="modalClosed">
-          <img src="../../../public/img/exit.svg" alt="" class="close-icon" />
+          <img src="../../public/img/exit.svg" alt="" class="close-icon" />
         </div>
       </div>
       <div class="edit-form" id="form1">
@@ -103,7 +103,7 @@ export default {
 
 
 <style lang="scss" scoped>
-@import "../../styles/main.scss";
+@import "../styles/main.scss";
 
 .fade-enter-active {
   animation: bounce-in 0.5s ease-out;

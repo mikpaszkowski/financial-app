@@ -1,8 +1,5 @@
 <template>
   <div id="modal">
-    <modal-forgot-password
-      v-bind:isModalOpened="modalOpen"
-    ></modal-forgot-password>
     <div class="circle-background"></div>
     <div class="background-image"></div>
     <div class="frontpage">
@@ -87,9 +84,6 @@
 
 
 <script>
-//import LogInPicture from "../../public/img/login.svg";
-import ModalForgotPassword from "./modals/ModalForgotPassword.vue";
-
 export default {
   name: "signin",
   data() {
@@ -116,13 +110,9 @@ export default {
       this.$router.replace("/login");
     },
   },
-  components: {
-    //LogInSVG: LogInPicture,
-    "modal-forgot-password": ModalForgotPassword,
-  },
   created: function () {
-    this.$root.$emit("modalClosed", this.closeModal);
-    this.$root.$emit("headlineClosed");
+    this.$emit("modalClosed", this.closeModal);
+    this.$emit("headlineClosed");
   },
 };
 </script>

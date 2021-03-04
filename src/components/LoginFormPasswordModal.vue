@@ -3,10 +3,10 @@
     <div class="forgot_password">
       <h1>Reset your password</h1>
       <div class="forgot_headline">
-        <img src="../../../public/img/forgot_password.svg" class="modal-img" />
+        <img src="../../public/img/forgot_password.svg" class="modal-img" />
       </div>
       <div class="exit" @click="closeModal">
-        <img src="../../../public/img/exit.svg" alt="" />
+        <img src="../../public/img/exit.svg" alt="" />
       </div>
       <p>
         Seems like you forgot your password for Bank Account Manager Inc. It
@@ -36,7 +36,7 @@ export default {
 
 
 <style lang="scss" scoped>
-@import "../../styles/main.scss";
+@import "../styles/main.scss";
 
 .fade-enter-active {
   animation: bounce-in 0.5s ease-out;

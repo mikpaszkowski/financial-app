@@ -3,7 +3,7 @@ import LogIn from "../components/LogIn.vue";
 import Home from "../components/Home.vue";
 import UserProfile from "../components/UserProfile.vue";
 import History from "../components/History.vue";
-import AccountTransfer from "../components/AccountTransfer.vue";
+import AccountTransfer from "../components/Transaction.vue";
 import LandingPage from "../components/LandingPage.vue";
 import SignUp from "../components/SignUp.vue";
 
@@ -11,17 +11,14 @@ const routes = [
   {
     path: "/",
     component: LandingPage,
-
-    children: [
-      {
-        path: "login",
-        component: LogIn,
-      },
-      {
-        path: "signup",
-        component: SignUp,
-      }
-    ]
+  },
+  {
+    path: "/login",
+    component: LogIn,
+  },
+  {
+    path: "/signup",
+    component: SignUp,
   },
   {
     path: "/home",

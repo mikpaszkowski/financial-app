@@ -3,7 +3,7 @@
     <div class="headline-container">
       <h1>Account Settings</h1>
       <div class="exit" id="exit" @click="modalClosed">
-        <img src="../../../public/img/exit.svg" alt="" class="close-icon" />
+        <img src="../../public/img/exit.svg" alt="" class="close-icon" />
       </div>
     </div>
     <div class="edit-form" id="form1">
@@ -50,8 +50,8 @@
 
 
 <script>
-import { languages } from "../../formLanguages";
-import { timeZones } from "../../timeZones";
+import { languages } from "../assets/formLanguages";
+import { timeZones } from "../assets/timeZones";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -89,5 +89,5 @@ export default {
 
 
 <style lang="scss" scoped>
-@import "../../styles/main.scss";
+@import "../styles/main.scss";
 </style>

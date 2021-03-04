@@ -54,7 +54,7 @@
 
 
 <script>
-import ModalPersonalDetails from "./modals/ModalPersonalDetails.vue";
+import ModalPersonalDetails from "./UserProfileDetailsPersonalEdit";
 import { mapGetters } from "vuex";
 
 export default {
