@@ -1,6 +1,6 @@
 <template>
   <div class="container-history">
-    <user-profile></user-profile>
+    <TheLeftPanel />
     <table class="history-table left">
       <thead>
         <tr>
@@ -31,7 +31,7 @@
 
 <script>
 import { history } from "../history";
-import Profile from "./ProfileAndBalanceBlock.vue";
+import TheLeftPanel from "./TheLeftPanel.vue";
 
 export default {
   data() {
@@ -40,7 +40,7 @@ export default {
     };
   },
   components: {
-    "user-profile": Profile,
+    TheLeftPanel,
   },
 };
 </script>

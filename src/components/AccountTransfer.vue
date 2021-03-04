@@ -1,9 +1,6 @@
 <template>
   <div id="transfer-origin">
-    <modal-validation
-      :occuredErrors="errors"
-      :modalOn="isModalOn"
-    ></modal-validation>
+    <TransactionValidation :occuredErrors="errors" :modalOn="isModalOn" />
     <div class="transfer-forms" id="wholewindow">
       <form class="form" id="form">
         <ul class="list">
@@ -108,11 +105,11 @@
 
 
 <script>
-import AccountTransferValidation from "./AccounTransferValidation.vue";
+import TransactionValidation from "./TransactionValidation.vue";
 
 export default {
   components: {
-    "modal-validation": AccountTransferValidation,
+    TransactionValidation,
   },
   data() {
     return {
@@ -147,9 +144,7 @@ export default {
       if (!this.transferData.description) {
         this.errors.push("Description required.");
       }
-      if (
-        (isNaN(this.transferData.amount) || this, transferData.amount == null)
-      ) {
+      if (isNaN(this.transferData.amount) || this.transferData.amount == null) {
         this.errors.push("Invalid amount number.");
       } else if (parseInt(this.transferData.amount) <= 0) {
         alert(parseInt(this.transferData.amount));

@@ -1,17 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LogIn from "../components/LogIn.vue";
 import Home from "../components/Home.vue";
-import Dashboard from "../components/Dashboard.vue";
+import UserProfile from "../components/UserProfile.vue";
 import History from "../components/History.vue";
 import AccountTransfer from "../components/AccountTransfer.vue";
-import HomePage from "../components/HomePage.vue";
+import LandingPage from "../components/LandingPage.vue";
 import SignUp from "../components/SignUp.vue";
-import ModalAccountSettings from "../components/modals/ModalAccountSettings.vue";
 
 const routes = [
   {
-    path: "",
-    component: HomePage,
+    path: "/",
+    component: LandingPage,
 
     children: [
       {
@@ -31,14 +30,8 @@ const routes = [
     children: [
       {
         path: "account",
-        component: Dashboard,
+        component: UserProfile,
 
-        children: [
-          {
-            path: "edit",
-            component: ModalAccountSettings,
-          }
-        ]
       },
       {
         path: 'history',
@@ -66,8 +59,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
-  mode: history
+  routes
 });
 
 export default router;

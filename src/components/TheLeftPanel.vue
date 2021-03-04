@@ -1,22 +1,22 @@
 <template>
   <div class="profile-balance-block">
-    <user-profile></user-profile>
-    <balance-tranfer-info></balance-tranfer-info>
-    <chat-with-us></chat-with-us>
+    <TheLeftPanelUserPhoto />
+    <BalanceInfo />
+    <Chat />
   </div>
 </template>
 
 
 <script>
-import profile from "./UserProfile.vue";
-import balanceInfo from "./TransferBalanceInfo.vue";
-import chat from "./ChatWithUs.vue";
+import TheLeftPanelUserPhoto from "./TheLeftPanelUserPhoto.vue";
+import BalanceInfo from "./TheLeftPanelUserBalance.vue";
+import Chat from "./TheLeftPanelChat.vue";
 
 export default {
   components: {
-    "user-profile": profile,
-    "balance-tranfer-info": balanceInfo,
-    "chat-with-us": chat,
+    TheLeftPanelUserPhoto,
+    BalanceInfo,
+    Chat,
   },
 };
 </script>

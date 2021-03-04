@@ -3,12 +3,8 @@
     <div class="background-image"></div>
     <Heading />
     <Navbar />
-    <router-view></router-view>
-    <footer>
-      <p>Some text in the footer</p>
-      <hr id="lower" />
-      <p>Some other text</p>
-    </footer>
+    <router-view />
+    <Footer />
   </div>
 </template>
 
@@ -16,11 +12,13 @@
 <script>
 import Heading from "./TheHeading";
 import Navbar from "./TheSideBar";
+import Footer from "./TheFooter";
 
 export default {
   components: {
     Heading,
     Navbar,
+    Footer,
   },
   data() {
     return {
@@ -72,28 +70,5 @@ body {
   width: 100%;
   height: 100%;
   background-color: $backgroundColor;
-}
-
-footer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  margin-top: 30rem;
-  background-color: rgba(238, 238, 238, 0.671);
-  height: 20rem;
-}
-
-hr {
-  text-align: center;
-
-  margin: 1rem 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#lower {
-  width: 60%;
 }
 </style>

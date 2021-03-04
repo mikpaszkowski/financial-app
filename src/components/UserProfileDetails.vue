@@ -1,22 +1,22 @@
 <template>
   <div class="user-main-info">
-    <PersonalDataContainer></PersonalDataContainer>
-    <AccountSettingsContainer></AccountSettingsContainer>
-    <UserPhoneAddress></UserPhoneAddress>
+    <PersonalData />
+    <AccountSettings />
+    <UserPhoneAddress />
   </div>
 </template>
 
 
 
 <script>
-import PersonalDataContainer from "./PersonalData.vue";
-import AccountSettingsContainer from "./AccountSettings.vue";
-import UserPhoneAddress from "./EmailPhone.vue";
+import PersonalData from "./UserProfileDetailsPersonal.vue";
+import AccountSettings from "./UserProfileDetailsAccount.vue";
+import UserPhoneAddress from "./UserProfileDetailsEmailPhone.vue";
 
 export default {
   components: {
-    PersonalDataContainer,
-    AccountSettingsContainer,
+    PersonalData,
+    AccountSettings,
     UserPhoneAddress,
   },
 };

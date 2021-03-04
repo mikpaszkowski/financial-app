@@ -4,10 +4,10 @@
       <button class="component" id="component-history">Home</button>
     </router-link>
     <router-link to="/home/account" exact>
-      <button class="component" id="component-account">Account</button>
+      <button class="component" id="component-account">Profile</button>
     </router-link>
     <router-link to="/home/history" exact>
-      <button class="component" id="component-history">History</button>
+      <button class="component" id="component-history">Transactions</button>
     </router-link>
     <button class="component" id="component-offer">Bank offer</button>
     <button class="component" id="component-call">Call center</button>
