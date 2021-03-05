@@ -14,8 +14,7 @@
     <router-link to="/" exact>
       <div class="signin">
         <button class="signinbtn" type="submit" id="logOutBtn">
-          <!-- <LogOut /> -->
-          <img src="../../public/img/logout.svg" alt="" />
+          <LogOutIcon />
         </button>
       </div>
     </router-link>
@@ -25,7 +24,12 @@
 
 
 <script>
+import LogOutIcon from "./icons/LogOut";
+
 export default {
+  components: {
+    LogOutIcon,
+  },
   data() {
     return {
       isToolbarOn: false,

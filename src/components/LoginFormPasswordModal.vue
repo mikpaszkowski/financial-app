@@ -3,10 +3,10 @@
     <div class="forgot_password">
       <h1>Reset your password</h1>
       <div class="forgot_headline">
-        <img src="../../public/img/forgot_password.svg" class="modal-img" />
+        <ForgotPasswordPic />
       </div>
       <div class="exit" @click="closeModal">
-        <img src="../../public/img/exit.svg" alt="" />
+        <CloseIcon />
       </div>
       <p>
         Seems like you forgot your password for Bank Account Manager Inc. It
@@ -24,8 +24,14 @@
 
 
 <script>
+import ForgotPasswordPic from "./icons/ForgotPasswordPic";
+import CloseIcon from "./icons/CloseIcon";
+
 export default {
-  name: "Modal",
+  components: {
+    ForgotPasswordPic,
+    CloseIcon,
+  },
   methods: {
     closeModal: function () {
       this.$emit("close");

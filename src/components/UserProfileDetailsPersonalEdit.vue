@@ -4,7 +4,7 @@
       <div class="headline-container">
         <h1>Personal Details</h1>
         <div class="exit" id="exit" @click="modalClosed">
-          <img src="../../public/img/exit.svg" alt="" class="close-icon" />
+          <CloseIcon />
         </div>
       </div>
       <div class="edit-form" id="form1">
@@ -61,8 +61,12 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import CloseIcon from "./icons/CloseIcon";
 
 export default {
+  components: {
+    CloseIcon,
+  },
   data() {
     return {
       userName: "",
@@ -76,7 +80,7 @@ export default {
     modalClosed: function () {
       this.$emit("close");
     },
-    ...mapActions([
+    ...mapActions("user", [
       "updateCurrentName",
       "updateCurrentSurname",
       "updateCurrentAddress",
@@ -91,7 +95,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({
+    ...mapGetters("user", {
       currName: "getCurrentName",
       currSurname: "getCurrentSurname",
       currAddress: "getCurrentAddress",

@@ -77,7 +77,7 @@ export default {
     modalClosed() {
       this.modalOpened = false;
     },
-    ...mapGetters([
+    ...mapGetters("user", [
       "getCurrentName",
       "getCurrentBirthDate",
       "getCurrentSurname",
@@ -92,7 +92,7 @@ export default {
     this.address = this.getCurrentAddress;
   },
   computed: {
-    ...mapGetters({
+    ...mapGetters("user", {
       userNameCom: "getCurrentName",
       birthDateCom: "getCurrentBirthDate",
       userSurnameCom: "getCurrentSurname",

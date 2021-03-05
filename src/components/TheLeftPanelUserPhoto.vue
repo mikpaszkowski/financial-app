@@ -21,7 +21,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({
+    ...mapGetters("user", {
       userName: "getCurrentName",
       userSurname: "getCurrentSurname",
     }),

@@ -14,7 +14,7 @@
           Online payments?
           <br />It's never been so easy!
         </p>
-        <img src="../../public/img/login.svg" class="svg-image" />
+        <LogInPic />
       </div>
       <LogInForm @open="openModal" />
     </div>
@@ -25,11 +25,13 @@
 <script>
 import ModalForgotPassword from "./LoginFormPasswordModal";
 import LogInForm from "./LogInForm";
+import LogInPic from "./icons/LogInPic";
 
 export default {
   components: {
     ModalForgotPassword,
     LogInForm,
+    LogInPic,
   },
   name: "login",
   data() {

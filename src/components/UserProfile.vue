@@ -22,6 +22,9 @@ export default {
     TheLeftPanel,
     UserProfileDetails,
   },
+  computed() {
+    console.log(this.$store);
+  },
 };
 </script>
 

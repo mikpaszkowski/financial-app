@@ -3,7 +3,7 @@
     <div class="headline-container">
       <h1>Account Settings</h1>
       <div class="exit" id="exit" @click="modalClosed">
-        <img src="../../public/img/exit.svg" alt="" class="close-icon" />
+        <CloseIcon />
       </div>
     </div>
     <div class="edit-form" id="form1">
@@ -53,8 +53,12 @@
 import { languages } from "../assets/formLanguages";
 import { timeZones } from "../assets/timeZones";
 import { mapActions, mapGetters } from "vuex";
+import CloseIcon from "./icons/CloseIcon";
 
 export default {
+  components: {
+    CloseIcon,
+  },
   data() {
     return {
       languages: languages,
@@ -69,15 +73,16 @@ export default {
     modalClosed: function () {
       this.$emit("close");
     },
-    ...mapActions(["updateCurrentLanguage", "updateCurrentTimeZone"]),
-    saveChanges: function () {
+    ...mapActions("user", ["updateCurrentLanguage", "updateCurrentTimeZone"]),
+
+    saveChanges() {
       this.updateCurrentLanguage(this.selectedLanguage);
       this.updateCurrentTimeZone(this.selectedTimeZone);
       this.modalClosed();
     },
   },
   computed: {
-    ...mapGetters({
+    ...mapGetters("user", {
       currentTimeZone: "getCurrentTimeZone",
       currentLanguage: "getCurrentLanguage",
     }),

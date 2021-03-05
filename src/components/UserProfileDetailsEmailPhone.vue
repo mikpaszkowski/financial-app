@@ -110,7 +110,7 @@ export default {
     closeModal: function () {
       this.modalOpened = false;
     },
-    ...mapGetters([
+    ...mapGetters("user", [
       "getCurrentPhoneNumber",
       "getCurrentEmailAddress",
       "getAdditionalEmailAddress",
@@ -118,7 +118,7 @@ export default {
     ]),
   },
   computed: {
-    ...mapGetters({
+    ...mapGetters("user", {
       currentPhoneNumberCom: "getCurrentPhoneNumber",
       currentEmailAddressCom: "getCurrentEmailAddress",
       additionalEmailAddressCom: "getAdditionalEmailAddress",

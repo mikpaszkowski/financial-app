@@ -4,7 +4,7 @@
       <div class="headline-container">
         <h1>Email & Phone</h1>
         <div class="exit" id="exit" @click="closeModal">
-          <img src="../../public/img/exit.svg" alt="" class="close-icon" />
+          <CloseIcon />
         </div>
       </div>
       <div class="edit-form" id="form1">
@@ -90,8 +90,12 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import CloseIcon from "./icons/CloseIcon";
 
 export default {
+  components: {
+    CloseIcon,
+  },
   data() {
     return {
       emailAddress: "",
@@ -107,7 +111,7 @@ export default {
     closeModal: function () {
       this.$emit("close");
     },
-    ...mapActions([
+    ...mapActions("user", [
       "updateCurrentEmailAddress",
       "updateAdditionalEmailAddress",
       "updateCurrentPhoneNumber",
@@ -139,7 +143,7 @@ export default {
     savePrimaryPhoneEmail() {},
   },
   computed: {
-    ...mapGetters({
+    ...mapGetters("user", {
       currentEmailAddressCom: "getCurrentEmailAddress",
       additionalEmailAddressCom: "getAdditionalEmailAddress",
       currentPhoneNumberCom: "getCurrentPhoneNumber",

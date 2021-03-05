@@ -5,13 +5,7 @@
         <div class="nav">
           <div class="headline">Account settings</div>
           <div class="edit-button-svg">
-            <router-link to="/home/account/edit" exact>
-              <ion-icon
-                name="create-outline"
-                id="edit-icon"
-                @click="openModal"
-              ></ion-icon>
-            </router-link>
+            <EditIcon id="edit-icon" @click="openModal" />
           </div>
         </div>
         <div class="labels">
@@ -70,10 +64,12 @@
 <script>
 import { mapGetters } from "vuex";
 import ModalAccountSettings from "./UserProfileDetailsAccountEdit";
+import EditIcon from "./icons/EditIcon";
 
 export default {
   components: {
     ModalAccountSettings,
+    EditIcon,
   },
   data() {
     return {
@@ -89,25 +85,17 @@ export default {
     closeModal: function () {
       this.modalOpened = false;
     },
-    ...mapGetters(["getCurrentLanguage", "getCurrentTimeZone"]),
+    ...mapGetters("user", ["getCurrentLanguage", "getCurrentTimeZone"]),
   },
   computed: {
-    ...mapGetters({
+    ...mapGetters("user", {
       currentTimeZoneCom: "getCurrentTimeZone",
       currentLanguageCom: "getCurrentLanguage",
     }),
   },
-
   mounted() {
     this.currentTimeZone = this.getCurrentTimeZone;
     this.currentLanguage = this.getCurrentLanguage;
-  },
-
-  created() {
-    // this.$root.$on(
-    //   "modalAccountSettingsClosed",
-    //   this.modalAccountSettingsClosed
-    // );
   },
 };
 </script>
