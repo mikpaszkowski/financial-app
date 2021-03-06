@@ -8,7 +8,7 @@
             <ion-icon
               name="create-outline"
               id="edit-icon"
-              @click="openModal"
+              @click="toggleModal"
             ></ion-icon>
           </div>
         </div>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <transition name="slide-fade">
-      <ModalEmailAddress v-if="modalOpened" @close="closeModal" />
+      <ModalEmailAddress class="modal" v-if="modalOpened" @close="closeModal" />
     </transition>
   </div>
 </template>
@@ -104,8 +104,19 @@ export default {
     };
   },
   methods: {
-    openModal: function () {
-      this.modalOpened = true;
+    toggleModal: function () {
+      this.modalOpened = !this.modalOpened;
+      if (this.modalOpened) {
+        this.scrollToElement();
+      }
+    },
+    scrollToElement() {
+      setTimeout(() => {
+        let element = document.querySelector(".modal");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
     },
     closeModal: function () {
       this.modalOpened = false;

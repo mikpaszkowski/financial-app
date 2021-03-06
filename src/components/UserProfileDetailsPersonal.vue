@@ -7,7 +7,7 @@
           <ion-icon
             name="create-outline"
             id="edit-icon"
-            @click="modalOpen"
+            @click="toggleModal"
           ></ion-icon>
         </div>
 
@@ -46,7 +46,11 @@
       </div>
     </div>
     <transition name="slide-fade">
-      <ModalPersonalDetails v-if="modalOpened" @close="modalClosed" />
+      <ModalPersonalDetails
+        class="modal"
+        v-if="modalOpened"
+        @close="modalClosed"
+      />
     </transition>
   </div>
 </template>
@@ -71,11 +75,33 @@ export default {
   components: { ModalPersonalDetails },
 
   methods: {
-    modalOpen() {
-      this.modalOpened = true;
+    toggleModal() {
+      this.modalOpened = !this.modalOpened;
+      if (this.modalOpened) {
+        this.scrollToElement();
+      } else {
+        this.scrollBack();
+      }
+    },
+    scrollToElement() {
+      setTimeout(() => {
+        let element = document.querySelector(".modal");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    },
+    scrollBack() {
+      setTimeout(() => {
+        let element = document.querySelector(".container");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
     },
     modalClosed() {
       this.modalOpened = false;
+      this.scrollBack();
     },
     ...mapGetters("user", [
       "getCurrentName",

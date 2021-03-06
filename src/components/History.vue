@@ -42,6 +42,17 @@ export default {
   components: {
     TheLeftPanel,
   },
+
+  mounted() {
+    this.$nextTick(function () {
+      setTimeout(() => {
+        let element = document.querySelector(".history-table");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    });
+  },
 };
 </script>
 

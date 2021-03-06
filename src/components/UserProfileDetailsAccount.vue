@@ -5,7 +5,7 @@
         <div class="nav">
           <div class="headline">Account settings</div>
           <div class="edit-button-svg">
-            <EditIcon id="edit-icon" @click="openModal" />
+            <EditIcon id="edit-icon" @click="toggleModal" />
           </div>
         </div>
         <div class="labels">
@@ -56,7 +56,11 @@
       </div>
     </div>
     <transition name="slide-fade">
-      <ModalAccountSettings v-if="modalOpened" @close="closeModal" />
+      <ModalAccountSettings
+        class="modal"
+        v-if="modalOpened"
+        @close="closeModal"
+      />
     </transition>
   </div>
 </template>
@@ -79,11 +83,33 @@ export default {
     };
   },
   methods: {
-    openModal: function () {
-      this.modalOpened = true;
+    toggleModal: function () {
+      this.modalOpened = !this.modalOpened;
+      if (this.modalOpened) {
+        this.scrollToElement();
+      } else {
+        this.scrollBack();
+      }
     },
     closeModal: function () {
       this.modalOpened = false;
+      this.scrollBack();
+    },
+    scrollToElement() {
+      setTimeout(() => {
+        let element = document.querySelector(".modal");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    },
+    scrollBack() {
+      setTimeout(() => {
+        let element = document.querySelector(".container-middle");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
     },
     setStatus() {
       const statusLabel = document.querySelector(".status");
@@ -142,7 +168,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 130px;
     height: 40px;
     left: 0;
     top: 10px;
@@ -150,9 +175,7 @@ export default {
     font-size: 1em;
     font-weight: 600;
     border-radius: 2em;
-    text-align: center;
-    letter-spacing: 1px;
-    margin-left: 10px;
+    padding: 10px;
 
     #enable-icon {
       color: white;
