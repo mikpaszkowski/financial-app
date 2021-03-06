@@ -4,7 +4,7 @@
       <div class="headline-container">
         <h1>Email & Phone</h1>
         <div class="exit" id="exit" @click="closeModal">
-          <CloseIcon />
+          <CloseIcon class="close-icon" />
         </div>
       </div>
       <div class="edit-form" id="form1">
@@ -23,8 +23,7 @@
             <input
               type="text"
               name="email"
-              v-model="emailAddress"
-              :placeholder="currentEmailAddressCom"
+              v-model="emailPhoneInfo.emailAddress"
             />
           </li>
           <li>
@@ -41,8 +40,7 @@
             <input
               type="text"
               name="email"
-              v-model="additionalEmailAddress"
-              :placeholder="additionalEmailAddressCom"
+              v-model="emailPhoneInfo.additionalEmailAddress"
             />
           </li>
           <li>
@@ -59,8 +57,7 @@
             <input
               type="text"
               name="phone"
-              v-model="phoneNumber"
-              :placeholder="currentPhoneNumberCom"
+              v-model="emailPhoneInfo.phoneNumber"
             />
           </li>
           <li>
@@ -74,11 +71,7 @@
                 make primary
               </p>
             </label>
-            <input
-              type="text"
-              v-model="additionalPhoneNumber"
-              :placeholder="additionalPhoneNumberCom"
-            />
+            <input type="text" v-model="emailPhoneInfo.additionalPhoneNumber" />
           </li>
         </ul>
         <button class="confirm-btn" @click="save">Save</button>
@@ -98,10 +91,12 @@ export default {
   },
   data() {
     return {
-      emailAddress: "",
-      additionalEmailAddress: "",
-      phoneNumber: "",
-      additionalPhoneNumber: "",
+      emailPhoneInfo: {
+        emailAddress: "",
+        additionalEmailAddress: "",
+        phoneNumber: "",
+        additionalPhoneNumber: "",
+      },
       numOfPrimaryPhone: 0,
       numOfPrimaryEmail: 0,
     };
@@ -111,18 +106,10 @@ export default {
     closeModal: function () {
       this.$emit("close");
     },
-    ...mapActions("user", [
-      "updateCurrentEmailAddress",
-      "updateAdditionalEmailAddress",
-      "updateCurrentPhoneNumber",
-      "updateAdditionalPhoneNumber",
-    ]),
+    ...mapActions("user", ["updateEmailPhone"]),
 
     save() {
-      this.updateCurrentEmailAddress(this.emailAddress);
-      this.updateAdditionalEmailAddress(this.additionalEmailAddress);
-      this.updateCurrentPhoneNumber(this.phoneNumber);
-      this.updateAdditionalPhoneNumber(this.additionalPhoneNumber);
+      this.updateEmailPhone(this.emailPhoneInfo);
     },
 
     makePrimary(className) {

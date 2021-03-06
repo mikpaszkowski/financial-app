@@ -4,49 +4,37 @@
       <div class="headline-container">
         <h1>Personal Details</h1>
         <div class="exit" id="exit" @click="modalClosed">
-          <CloseIcon />
+          <CloseIcon class="close-icon" />
         </div>
       </div>
       <div class="edit-form" id="form1">
         <ul class="form1">
           <li>
             <label for="name" id="name">First Name</label>
-            <input
-              v-model="userName"
-              type="text"
-              name="name"
-              :placeholder="currName"
-              id="name-form"
-            />
+            <input v-model="user.name" type="text" name="name" id="name-form" />
           </li>
           <li>
             <label for="surname" id="surname">Last Name</label>
             <input
-              v-model="userSurname"
+              v-model="user.surname"
               type="text"
+              birth
               name="surname"
-              :placeholder="currSurname"
               id="surname-form"
             />
           </li>
           <li>
             <label for="birth" id="birth">Date of birth</label>
             <input
-              v-model="birthDate"
+              v-model="user.birth"
               type="date"
               name="birth"
-              :placeholder="currBirthDate"
               id="date_select"
             />
           </li>
           <li>
             <label for="address">Address</label>
-            <input
-              v-model="address"
-              type="text"
-              name="address"
-              :placeholder="currAddress"
-            />
+            <input v-model="user.address" type="text" name="address" />
           </li>
         </ul>
         <button v-on:click.enter="save" @click="save" class="confirm-btn">
@@ -60,7 +48,7 @@
 
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import CloseIcon from "./icons/CloseIcon";
 
 export default {
@@ -69,10 +57,12 @@ export default {
   },
   data() {
     return {
-      userName: "",
-      userSurname: "",
-      birthDate: "",
-      address: "",
+      user: {
+        name: this.currName,
+        surname: this.currSurname,
+        birth: this.currAddress,
+        address: this.currBirthDate,
+      },
     };
   },
 
@@ -80,17 +70,8 @@ export default {
     modalClosed: function () {
       this.$emit("close");
     },
-    ...mapActions("user", [
-      "updateCurrentName",
-      "updateCurrentSurname",
-      "updateCurrentAddress",
-      "updateCurrentBirthDate",
-    ]),
     save() {
-      this.updateCurrentName(this.userName);
-      this.updateCurrentSurname(this.userSurname);
-      this.updateCurrentAddress(this.address);
-      this.updateCurrentBirthDate(this.birthDate);
+      this.$store.dispatch("user/updateUser", this.user);
       this.modalClosed();
     },
   },

@@ -8,7 +8,8 @@ const state = () => ({
     currentBirthDate: '24/05/1994',
     currentAddress: '25 Union Square W, New York, NY 10003, USA',
     currentTimeZone: "(GMT-4:00) Santiago",
-    currentLanguage: "Spanish"
+    currentLanguage: "Spanish",
+    status: true,
 });
 
 const getters = {
@@ -22,6 +23,7 @@ const getters = {
     getCurrentEmailAddress: state => state.currentEmailAddress,
     getCurrentLanguage: state => state.currentLanguage,
     getCurrentTimeZone: state => state.currentTimeZone,
+    getStatus: state => state.status
 };
 
 const mutations = {
@@ -54,44 +56,32 @@ const mutations = {
     },
     setCurrentTimeZone(state, payLoad) {
         state.currentTimeZone = payLoad;
+    },
+    setStatus(state, payLoad) {
+        state.status = payLoad;
     }
 };
 
 const actions = {
-    setCurrentName(state, payLoad) {
-        state.currentName = payLoad;
+    updateUser(state, payLoad) {
+        state.commit("setCurrentName", payLoad.name);
+        state.commit("setCurrentSurname", payLoad.surname);
+        state.commit("setCurrentBirthDate", payLoad.birth);
+        state.commit("setCurrentAddress", payLoad.address);
     },
-    setCurrentSurname(state, payLoad) {
-        state.currentSurename = payLoad;
-    },
-    setCurrentPhoneNumber(state, payLoad) {
-        state.currentPhoneNumber = payLoad;
-    },
-    setCurrentAddress(state, payLoad) {
-        state.currentAddress = payLoad;
-    },
-    setCurrentBirthDate(state, payLoad) {
-        state.currentBirthDate = payLoad;
-    },
-    setCurrentEmailAddress(state, payLoad) {
-        state.currentEmailAddress = payLoad;
-    },
-    setAdditionalPhoneNumber(state, payLoad) {
-        state.additionalPhoneNumber = payLoad;
-    },
-    setAdditionalEmailAddress(state, payLoad) {
-        state.additionalEmailAddress = payLoad;
-    },
-    setCurrentLanguage(state, payLoad) {
-        state.currentLanguage = payLoad;
-    },
-    setCurrentTimeZone(state, payLoad) {
-        state.currentTimeZone = payLoad;
-    }
-};
+    updateAccountSettings(state, payLoad) {
+        state.commit("setCurrentLanguage", payLoad.language);
+        state.commit("setCurrentTimeZone", payLoad.timezone);
+        state.commit("setStatus", payLoad.status);
 
-
-
+    },
+    updateEmailPhone(state, payLoad) {
+        state.commit("setCurrentPhoneNumber", payLoad.phoneNumber);
+        state.commit("setCurrentEmailAddress", payLoad.emailAddress);
+        state.commit("setAdditionalPhoneNumber", payLoad.additionalPhoneNumber);
+        state.commit("setAdditionalEmailAddress", payLoad.additionalEmailAddress);
+    },
+}
 
 export default {
     namespaced: true,

@@ -3,14 +3,18 @@
     <div class="headline-container">
       <h1>Account Settings</h1>
       <div class="exit" id="exit" @click="modalClosed">
-        <CloseIcon />
+        <CloseIcon class="close-icon" />
       </div>
     </div>
     <div class="edit-form" id="form1">
       <ul class="form1">
         <li>
           <label for="language" id="language">Language</label>
-          <select name="language" id="language" v-model="selectedLanguage">
+          <select
+            name="language"
+            id="language"
+            v-model="accountSettings.language"
+          >
             <option value="" disabled>{{ currentLanguage }}</option>
             <option
               :value="language.name"
@@ -23,7 +27,11 @@
         </li>
         <li>
           <label for="timezone" id="timezone">Time Zone</label>
-          <select name="time-zone" id="time-zone" v-model="selectedTimeZone">
+          <select
+            name="time-zone"
+            id="time-zone"
+            v-model="accountSettings.timezone"
+          >
             <option value="" disabled>{{ currentTimeZone }}</option>
             <option
               :value="timezone.name"
@@ -33,6 +41,26 @@
               {{ timezone.name }}
             </option>
           </select>
+        </li>
+        <li>
+          <div class="checkboxes">
+            <input
+              id="enale"
+              type="radio"
+              value="true"
+              v-model="accountSettings.status"
+            />
+            <label for="enable">Enabled</label>
+            <br />
+
+            <input
+              id="disable"
+              type="radio"
+              value="false"
+              v-model="accountSettings.status"
+            />
+            <label for="disable">Disabled</label>
+          </div>
         </li>
       </ul>
       <button
@@ -63,9 +91,11 @@ export default {
     return {
       languages: languages,
       timezones: timeZones,
-      status: true,
-      selectedLanguage: "",
-      selectedTimeZone: "",
+      accountSettings: {
+        language: "",
+        timezone: "",
+        status: true,
+      },
     };
   },
 
@@ -73,11 +103,10 @@ export default {
     modalClosed: function () {
       this.$emit("close");
     },
-    ...mapActions("user", ["updateCurrentLanguage", "updateCurrentTimeZone"]),
+    ...mapActions("user", ["updateAccountSettings"]),
 
     saveChanges() {
-      this.updateCurrentLanguage(this.selectedLanguage);
-      this.updateCurrentTimeZone(this.selectedTimeZone);
+      this.updateAccountSettings(this.accountSettings);
       this.modalClosed();
     },
   },
@@ -85,14 +114,24 @@ export default {
     ...mapGetters("user", {
       currentTimeZone: "getCurrentTimeZone",
       currentLanguage: "getCurrentLanguage",
+      currentStatus: "getStatus",
     }),
   },
 };
 </script>
 
-
-
-
 <style lang="scss" scoped>
 @import "../styles/main.scss";
+
+.checkboxes {
+  display: flex;
+
+  label {
+    margin: 0 10px 0 0;
+  }
+  input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.5);
+  }
+}
 </style>

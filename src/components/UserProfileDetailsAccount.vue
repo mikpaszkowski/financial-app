@@ -44,7 +44,7 @@
               <p>Status:</p>
             </div>
             <div class="info-data">
-              <div class="status enabled">
+              <div class="status">
                 <ion-icon
                   name="checkmark-circle-outline"
                   id="enable-icon"
@@ -85,17 +85,40 @@ export default {
     closeModal: function () {
       this.modalOpened = false;
     },
-    ...mapGetters("user", ["getCurrentLanguage", "getCurrentTimeZone"]),
+    setStatus() {
+      const statusLabel = document.querySelector(".status");
+      if (this.statusCom == "false") {
+        console.log("1");
+        statusLabel.classList.add("disabled");
+        statusLabel.classList.remove("enabled");
+      } else {
+        console.log("2");
+        statusLabel.classList.remove("disabled");
+        statusLabel.classList.add("enabled");
+      }
+    },
+    ...mapGetters("user", [
+      "getCurrentLanguage",
+      "getCurrentTimeZone",
+      "getStatus",
+    ]),
   },
   computed: {
     ...mapGetters("user", {
       currentTimeZoneCom: "getCurrentTimeZone",
       currentLanguageCom: "getCurrentLanguage",
+      statusCom: "getStatus",
     }),
+  },
+  watch: {
+    statusCom() {
+      this.setStatus();
+    },
   },
   mounted() {
     this.currentTimeZone = this.getCurrentTimeZone;
     this.currentLanguage = this.getCurrentLanguage;
+    this.setStatus();
   },
 };
 </script>
