@@ -1,17 +1,19 @@
 <template>
   <div class="navbar_main" :class="toolbarPositionStyle">
-    <router-link to="/home/" exact>
+    <router-link :to="{ name: 'Home' }">
       <button class="component" id="component-history">Home</button>
     </router-link>
-    <router-link to="/home/account" exact>
+    <router-link :to="{ name: 'Account' }" exact>
       <button class="component" id="component-account">Profile</button>
     </router-link>
-    <router-link to="/home/history" exact>
+    <router-link :to="{ name: 'History' }" exact>
       <button class="component" id="component-history">Transactions</button>
     </router-link>
-    <button class="component" id="component-offer">Bank offer</button>
+    <router-link :to="{ name: 'AccountTransfer' }" exact>
+      <button class="component" id="component-offer">Send/Request</button>
+    </router-link>
     <button class="component" id="component-call">Call center</button>
-    <router-link to="/" exact>
+    <router-link :to="{ name: 'LandingPage' }" exact>
       <div class="signin">
         <button class="signinbtn" type="submit" id="logOutBtn">
           <LogOutIcon />
@@ -20,8 +22,6 @@
     </router-link>
   </div>
 </template>
-
-
 
 <script>
 import LogOutIcon from "./icons/LogOut";
@@ -46,14 +46,6 @@ export default {
     slideInOutBar: function () {
       this.isToolbarOn = !this.isToolbarOn;
     },
-  },
-  created: function () {
-    //this.$root.$on("clickedMenuButton", this.slideInOutBar);
-  },
-
-  beforeUnmount() {
-    // this.$root.$off("clickedMenuButton");
-    // this.$root.$off("clickedMenuButton");
   },
 };
 </script>
@@ -147,14 +139,13 @@ $color: #336c68;
     }
   }
 }
-
 a {
   display: flex;
   justify-content: center;
   text-decoration: none;
 }
 
-.router-link-active {
+.router-link-exact-active {
   background-color: darken($color, 10%);
 }
 </style>

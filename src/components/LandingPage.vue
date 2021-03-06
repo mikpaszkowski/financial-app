@@ -42,18 +42,6 @@
             <button id="video">Watch a video</button>
           </div>
         </div>
-        <div class="whiteArea">
-          <div class="headline">
-            <h1>Why you should choose Bank Account Manager?</h1>
-            <p>Here's Top 4 reasons why using a BAM for manage your money.</p>
-            <div class="reasons">
-              <div class="reason usage"></div>
-              <div class="reason payments"></div>
-              <div class="reason fees"></div>
-              <div class="reason security"></div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <transition name="fade">
@@ -118,14 +106,15 @@ export default {
 
 
 <style lang="scss" scoped>
+@import "../styles/main.scss";
 $font-stack: "Rubik", sans-serif;
 
 .fade-enter-active {
-  transition: 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .fade-leave-active {
-  transition: 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .fade-leave-to,
@@ -156,31 +145,13 @@ body {
   margin: 0;
 }
 
-.background-image {
-  position: fixed;
-  width: 100%;
-  height: 101%;
-  background-image: linear-gradient(
-      rgb(79, 175, 179),
-      rgba(167, 255, 233, 0.479)
-    ),
-    url("../../public/img/signin_image.jpg");
-  background-size: cover;
-  background-position: center;
-  animation: 2s ease-out both backgroundImage;
-}
-
-@keyframes backgroundImage {
-  from {
-    opacity: 0.3;
-  }
-  to {
-    opacity: 1;
-  }
+.content {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .headlinebar {
-  position: relative;
+  position: absolute;
   z-index: 1;
   display: flex;
   flex-direction: row;
@@ -191,7 +162,7 @@ body {
   width: 100%;
   font-family: $font-stack;
   font-size: 20px;
-  background-color: #225355;
+  background-color: rgba($dark-flat-green, $alpha: 0.6);
   animation: 1s ease-in both headline_slide_in,
     cubic-bezier(0.6, 0.04, 0.98, 0.335);
 
@@ -280,8 +251,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   padding-bottom: 7rem;
-  width: 100%;
-  height: 83%;
+  width: 100vw;
+  height: 100vh;
 
   .buttons {
     display: flex;
@@ -320,22 +291,7 @@ body {
     text-align: center;
     color: white;
     font-size: 2rem;
-  }
-}
-
-.whiteArea {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  text-align: center;
-  font-family: $font-stack;
-  width: 100%;
-  height: 40rem;
-  background-color: rgba(255, 255, 255, 0.767);
-
-  .headline {
-    margin-top: 5rem;
+    margin-top: 150px;
   }
 }
 </style>

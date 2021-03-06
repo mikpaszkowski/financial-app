@@ -11,4 +11,15 @@ export default {
 </script>
 
 <style lang="scss">
+/* *,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+} */
 </style>

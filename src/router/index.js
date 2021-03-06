@@ -6,51 +6,54 @@ import History from "../components/History.vue";
 import AccountTransfer from "../components/Transaction.vue";
 import LandingPage from "../components/LandingPage.vue";
 import SignUp from "../components/SignUp.vue";
+import NotFound from "../views/NotFound.vue";
 
 const routes = [
   {
     path: "/",
+    name: "LandingPage",
     component: LandingPage,
   },
   {
     path: "/login",
+    name: "LogIn",
     component: LogIn,
   },
   {
     path: "/signup",
+    name: "SignUp",
     component: SignUp,
   },
   {
     path: "/home",
+    name: "Home",
     component: Home,
 
     children: [
       {
         path: "account",
+        name: "Account",
         component: UserProfile,
 
       },
       {
         path: 'history',
+        name: "History",
         component: History,
       },
       {
         path: 'transfer',
+        name: "AccountTransfer",
         component: AccountTransfer,
       }
     ]
-    //   path: "/",
-    //   name: "Home",
-    //   component: Home
-    // },
-    // {
-    //   path: "/about",
-    //   name: "About",
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
     //   component: () =>
     //     import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: NotFound
   }
 ];
 

@@ -2,7 +2,7 @@
   <div class="home">
     <div class="background-image"></div>
     <Heading />
-    <Navbar />
+    <!-- <Navbar /> -->
     <router-view />
     <Footer />
   </div>
