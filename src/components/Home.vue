@@ -17,7 +17,7 @@ import Footer from "./TheFooter";
 export default {
   components: {
     Heading,
-    Navbar,
+    //Navbar,
     Footer,
   },
   data() {

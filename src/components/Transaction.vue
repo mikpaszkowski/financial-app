@@ -63,12 +63,7 @@
         </ul>
         <div id="errors" v-if="errors.length"></div>
         <div class="buttons">
-          <button
-            class="btn1"
-            type="submit"
-            ref="submitButton"
-            @click="checkForm"
-          >
+          <button class="btn1" ref="submitButton" @click="checkForm">
             Perform
           </button>
           <button type="reset" class="btn2">Clear</button>

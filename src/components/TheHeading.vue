@@ -105,16 +105,16 @@ $color: #336c68;
   transition: 0.2s all ease;
   will-change: transform;
   outline: none;
-  font-weight: bold;
+  font-weight: 400;
 
   &::before {
     content: "";
     background-color: white;
     width: 100%;
-    height: 3px;
+    height: 1px;
     position: absolute;
     left: 0;
-    bottom: 5px;
+    bottom: 0;
     border-radius: 1px;
     transform: scale(0);
     transition: all 0.3s ease-in-out;
@@ -127,15 +127,10 @@ $color: #336c68;
   }
 }
 
-.router-link-exact-active.component {
-  content: "";
-  background-color: white;
-  width: 100%;
-  height: 3px;
-  position: absolute;
-  left: 0;
-  bottom: 5px;
-  transition: all 0.3s ease-in-out;
+.router-link-exact-active > .component {
+  border-bottom: 1px solid white;
+  padding-bottom: 18px;
+  background-color: rgba($color: #ffffff, $alpha: 0.04);
 }
 
 .signin {

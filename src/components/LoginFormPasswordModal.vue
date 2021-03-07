@@ -1,9 +1,9 @@
 <template>
-  <div class="modal_forgot_password">
+  <div class="modal_forgot_password" @click="closeModal">
     <div class="forgot_password">
       <h1>Reset your password</h1>
       <div class="forgot_headline">
-        <ForgotPasswordPic />
+        <ForgotPasswordPic class="modal-img" />
       </div>
       <div class="exit" @click="closeModal">
         <CloseIcon />
@@ -119,6 +119,10 @@ export default {
       position: relative;
       width: 300px;
       height: 150px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
