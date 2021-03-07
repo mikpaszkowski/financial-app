@@ -6,7 +6,7 @@
         <router-link to="/" exact>
           <div class="logo">
             <img :src="image" id="main_icon" alt="mail" />
-            <h1>Bank Account Manager</h1>
+            <h1>Monify</h1>
           </div>
         </router-link>
         <div id="buttons">
@@ -181,6 +181,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
+    font-family: "Righteous", cursive;
   }
 }
 

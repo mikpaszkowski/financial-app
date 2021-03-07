@@ -46,7 +46,7 @@ export default {
   background-color: $backgroundColor;
 }
 
-@media screen and (max-width: 1306px) {
+@include for-large-desktop {
   .main-container {
     flex-direction: column;
   }

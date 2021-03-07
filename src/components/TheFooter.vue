@@ -52,6 +52,9 @@ footer {
   font-family: $main-font;
   color: $font-color;
   font-weight: 500;
+  bottom: 0;
+  right: 0;
+  width: 100%;
 
   .content {
     width: 1500px;
@@ -106,5 +109,58 @@ hr {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media screen and(max-width: 1500px) {
+  footer {
+    .content {
+      width: 1000px;
+    }
+  }
+}
+
+@media screen and(max-width: 1200px) {
+  footer {
+    .content {
+      width: 800px;
+
+      .upper-info {
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 25px;
+
+        .links {
+          justify-content: center;
+
+          p {
+            margin: 0 10px;
+          }
+        }
+        .social-media {
+          font-size: 1.6em;
+
+          ion-icon {
+            margin: 0 15px;
+          }
+        }
+      }
+
+      .lower-info {
+        flex-direction: column;
+
+        .copyright {
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 882px) {
+  footer {
+    .content {
+      width: 500px;
+    }
+  }
 }
 </style>

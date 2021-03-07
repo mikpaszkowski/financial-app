@@ -8,72 +8,48 @@
         </div>
       </div>
       <div class="edit-form" id="form1">
-        <ul class="form1">
-          <li>
-            <label for="email" class="label-email">
-              Email
-              <div class="primary-email"></div>
-              <p
-                @click="makePrimary('.primary-email')"
-                class="make-primary-btn hidden"
-              >
-                make primary
-              </p>
-            </label>
-            <input
-              type="text"
-              name="email"
-              v-model="emailPhoneInfo.emailAddress"
-            />
-          </li>
-          <li>
-            <label for="email" class="label-email"
-              >Email
-              <div class="primary-email hidden"></div>
-              <p
-                @click="makePrimary('.primary-email')"
-                class="make-primary-btn"
-              >
-                make primary
-              </p>
-            </label>
-            <input
-              type="text"
-              name="email"
-              v-model="emailPhoneInfo.additionalEmailAddress"
-            />
-          </li>
-          <li>
-            <label for="phone" class="label-phone"
-              >Phone number
-              <div class="primary-phone"></div>
-              <p
-                @click="makePrimary('.primary-phone')"
-                class="make-primary-btn hidden"
-              >
-                make primary
-              </p>
-            </label>
-            <input
-              type="text"
-              name="phone"
-              v-model="emailPhoneInfo.phoneNumber"
-            />
-          </li>
-          <li>
-            <label for="phone" class="label-phone"
-              >Phone number
-              <div class="primary-phone hidden"></div>
-              <p
-                @click="makePrimary('.primary-phone')"
-                class="make-primary-btn"
-              >
-                make primary
-              </p>
-            </label>
-            <input type="text" v-model="emailPhoneInfo.additionalPhoneNumber" />
-          </li>
-        </ul>
+        <label for="email" class="label-email">
+          Email
+          <div class="primary-email"></div>
+          <p
+            @click="makePrimary('.primary-email')"
+            class="make-primary-btn hidden"
+          >
+            make primary
+          </p>
+        </label>
+        <input type="text" name="email" v-model="emailPhoneInfo.emailAddress" />
+        <label for="email" class="label-email"
+          >Email
+          <div class="primary-email hidden"></div>
+          <p @click="makePrimary('.primary-email')" class="make-primary-btn">
+            make primary
+          </p>
+        </label>
+        <input
+          type="text"
+          name="email"
+          v-model="emailPhoneInfo.additionalEmailAddress"
+        />
+        <label for="phone" class="label-phone"
+          >Phone number
+          <div class="primary-phone"></div>
+          <p
+            @click="makePrimary('.primary-phone')"
+            class="make-primary-btn hidden"
+          >
+            make primary
+          </p>
+        </label>
+        <input type="text" name="phone" v-model="emailPhoneInfo.phoneNumber" />
+        <label for="phone" class="label-phone"
+          >Phone number
+          <div class="primary-phone hidden"></div>
+          <p @click="makePrimary('.primary-phone')" class="make-primary-btn">
+            make primary
+          </p>
+        </label>
+        <input type="text" v-model="emailPhoneInfo.additionalPhoneNumber" />
         <button class="confirm-btn" @click="save">Save</button>
       </div>
     </div>

@@ -3,7 +3,7 @@
     <router-link to="/home" exact>
       <div class="logo">
         <img :src="image" id="main_icon" alt="mail" />
-        <h1>Monify</h1>
+        <h3>Monify</h3>
       </div>
     </router-link>
     <div class="navigation">
@@ -28,30 +28,29 @@
         </div>
       </router-link>
     </div>
-    <!-- <div class="menubutton" id="menubutton" @click="menuButton">
-      <div class="line1" id="line1"></div>
-      <div class="line2" id="line2"></div>
-      <div class="line3" id="line3"></div>
-    </div> -->
+    <!-- <MenuButton ref="menu" /> -->
   </div>
 </template>
 
 <script>
 import HeadlineImage from "../../public/img/headline_logo.png";
 import LogOutIcon from "./icons/LogOut";
+import MenuButton from "./MenuButton";
 
 export default {
   components: {
     LogOutIcon,
+    MenuButton,
   },
   data() {
     return {
       image: HeadlineImage,
+      menuOpened: false,
     };
   },
   methods: {
-    menuButton: function () {
-      this.$root.$emit("clickedMenuButton");
+    openMenu() {
+      this.$refs.menu.toggleMenu();
     },
   },
 };
@@ -59,7 +58,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";
-@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
 body {
   padding: 0;
@@ -179,10 +177,13 @@ a {
   padding: 1em 0;
   margin-bottom: 80px;
   width: 100%;
-  font-family: "Righteous", cursive;
   font-size: 20px;
   animation: 1s ease-in both headline_slide_in,
     cubic-bezier(0.6, 0.04, 0.98, 0.335);
+
+  h3 {
+    font-family: "Righteous", cursive;
+  }
 
   img {
     width: 60px;

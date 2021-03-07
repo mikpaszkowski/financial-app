@@ -1,0 +1,22 @@
+@import "./_variables.scss";
+
+
+
+* {
+    font-family: $main-font;
+    font-size: $font-size;
+    font-weight: 100;
+}
+
+
+h1 {
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 3rem;
+}

@@ -7,62 +7,53 @@
       </div>
     </div>
     <div class="edit-form" id="form1">
-      <ul class="form1">
-        <li>
-          <label for="language" id="language">Language</label>
-          <select
-            name="language"
-            id="language"
-            v-model="accountSettings.language"
-          >
-            <option value="" disabled>{{ currentLanguage }}</option>
-            <option
-              :value="language.name"
-              v-for="(language, idx) in languages"
-              :key="idx"
-            >
-              {{ language.name }}
-            </option>
-          </select>
-        </li>
-        <li>
-          <label for="timezone" id="timezone">Time Zone</label>
-          <select
-            name="time-zone"
-            id="time-zone"
-            v-model="accountSettings.timezone"
-          >
-            <option value="" disabled>{{ currentTimeZone }}</option>
-            <option
-              :value="timezone.name"
-              v-for="(timezone, idx) in timezones"
-              :key="idx"
-            >
-              {{ timezone.name }}
-            </option>
-          </select>
-        </li>
-        <li>
-          <div class="checkboxes">
-            <input
-              id="enale"
-              type="radio"
-              value="true"
-              v-model="accountSettings.status"
-            />
-            <label for="enable">Enabled</label>
-            <br />
+      <label for="language" id="language">Language</label>
+      <select name="language" id="language" v-model="accountSettings.language">
+        <option value="" selected disabled>{{ currentLanguage }}</option>
+        <option
+          :value="language.name"
+          v-for="(language, idx) in languages"
+          :key="idx"
+        >
+          {{ language.name }}
+        </option>
+      </select>
 
-            <input
-              id="disable"
-              type="radio"
-              value="false"
-              v-model="accountSettings.status"
-            />
-            <label for="disable">Disabled</label>
-          </div>
-        </li>
-      </ul>
+      <label for="timezone" id="timezone">Time Zone</label>
+      <select
+        name="time-zone"
+        id="time-zone"
+        v-model="accountSettings.timezone"
+      >
+        <option value="" disabled>{{ currentTimeZone }}</option>
+        <option
+          :value="timezone.name"
+          v-for="(timezone, idx) in timezones"
+          :key="idx"
+        >
+          {{ timezone.name }}
+        </option>
+      </select>
+
+      <div class="checkboxes">
+        <input
+          id="enale"
+          type="radio"
+          value="true"
+          v-model="accountSettings.status"
+        />
+        <label for="enable">Enabled</label>
+        <br />
+
+        <input
+          id="disable"
+          type="radio"
+          value="false"
+          v-model="accountSettings.status"
+        />
+        <label for="disable">Disabled</label>
+      </div>
+
       <button
         type="submit"
         id="save-button"
@@ -125,6 +116,8 @@ export default {
 
 .checkboxes {
   display: flex;
+  align-self: flex-start;
+  margin-top: 15px;
 
   label {
     margin: 0 10px 0 0;

@@ -8,35 +8,36 @@
         </div>
       </div>
       <div class="edit-form" id="form1">
-        <ul class="form1">
-          <li>
-            <label for="name" id="name">First Name</label>
-            <input v-model="user.name" type="text" name="name" id="name-form" />
-          </li>
-          <li>
-            <label for="surname" id="surname">Last Name</label>
-            <input
-              v-model="user.surname"
-              type="text"
-              birth
-              name="surname"
-              id="surname-form"
-            />
-          </li>
-          <li>
-            <label for="birth" id="birth">Date of birth</label>
-            <input
-              v-model="user.birth"
-              type="date"
-              name="birth"
-              id="date_select"
-            />
-          </li>
-          <li>
-            <label for="address">Address</label>
-            <input v-model="user.address" type="text" name="address" />
-          </li>
-        </ul>
+        <label for="name" id="name">First Name</label>
+        <input
+          v-model="user.name"
+          type="text"
+          name="name"
+          id="name-form"
+          :placeholder="[[currName]]"
+        />
+
+        <label for="surname" id="surname">Last Name</label>
+        <input
+          v-model="user.surname"
+          type="text"
+          birth
+          name="surname"
+          id="surname-form"
+          :placeholder="[[currSurname]]"
+        />
+
+        <label for="birth" id="birth">Date of birth</label>
+        <input v-model="user.birth" type="date" name="birth" id="date_select" />
+
+        <label for="address">Address</label>
+        <input
+          v-model="user.address"
+          type="text"
+          name="address"
+          :placeholder="[[currAddress]]"
+        />
+
         <button v-on:click.enter="save" @click="save" class="confirm-btn">
           Save
         </button>

@@ -1,0 +1,43 @@
+@import '../utilities/_variables.scss';
+
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+
+.container-module {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  margin-top: 20px;
+  padding: 30px;
+  padding-top: 15px;
+  padding-bottom: 0;
+  margin-top: 40px;
+  background-color: white;
+  border-radius: $border-radius;
+  box-shadow: $container-shadow;
+
+
+  .headline-container {
+    border-bottom: 1px solid $input-border-color;
+    width: 100%;
+    top: 0;
+
+    h1 {
+      color: black;
+      font-size: 1.5em;
+      font-weight: lighter;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+
+  }
+}

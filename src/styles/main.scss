@@ -6,9 +6,15 @@
 @import './layout/_user-info-container.scss';
 
 
-@import './layout/_modal.scss';
+@import './layout/_edit-containers.scss';
+
+@import "./utilities/_font-sizes.scss";
 
 @import './utilities/_variables.scss';
+
+@import './utilities/_mixins.scss';
+
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
 *,
 ::after,

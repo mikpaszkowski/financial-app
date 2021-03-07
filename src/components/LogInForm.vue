@@ -1,32 +1,20 @@
 <template>
   <div class="form-box" id="form-box">
-    <div class="edit-form">
-      <ul>
-        <li>
-          <label> Username </label>
-          <input type="text" class="input-field" v-model="logInData.userId" />
-        </li>
-        <li>
-          <label>Password</label>
-          <input
-            type="password"
-            class="input-field"
-            v-model="logInData.password"
-          />
-          <div class="passwordfield">
-            <a id="password-toggle" @click="toggle">
-              <ion-icon name="eye-outline" id="toggle"></ion-icon>
-            </a>
-          </div>
-        </li>
-        <li>
-          <router-link to="/home/account" class="router-link">
-            <button type="submit" class="confirm-btn">
-              <div class="s-btn" @click="login">Log in</div>
-            </button>
-          </router-link>
-        </li>
-      </ul>
+    <div class="log-in-form">
+      <label> Username </label>
+      <input type="text" class="input-field" v-model="logInData.userId" />
+      <label>Password</label>
+      <input type="password" class="input-field" v-model="logInData.password" />
+      <div class="passwordfield">
+        <a id="password-toggle" @click="toggle">
+          <ion-icon name="eye-outline" id="toggle"></ion-icon>
+        </a>
+      </div>
+      <router-link to="/home/account" class="router-link">
+        <button type="submit" class="confirm-btn">
+          <div class="s-btn" @click="login">Log in</div>
+        </button>
+      </router-link>
 
       <div class="remember">
         <input type="checkbox" class="check-box" v-model="rememberMe" />
@@ -60,4 +48,8 @@ export default {
 
 <style>
 @import "../styles/main.scss";
+
+.router-link {
+  width: 100%;
+}
 </style>
