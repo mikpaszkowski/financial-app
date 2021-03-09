@@ -173,7 +173,7 @@ export default {
     top: 10px;
     color: white;
     font-size: 1em;
-    font-weight: 600;
+    font-weight: 400;
     border-radius: 2em;
     padding: 10px;
 

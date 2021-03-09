@@ -8,9 +8,11 @@
       />
     </div>
     <div class="personaldata">
-      Welcome,
-      {{ userName }}
-      {{ userSurname }}
+      <p>
+        Welcome,
+        {{ userName }}
+        {{ userSurname }}
+      </p>
     </div>
     <ion-icon name="create-outline" id="edit-icon"></ion-icon>
   </div>
@@ -49,9 +51,7 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   background-color: white;
   width: 100%;
   height: 360px;
-  font-size: 1em;
-  font-weight: bold;
-  text-align: center;
+
   border-radius: 5px;
   margin-right: 15px;
   margin-bottom: 50px;
@@ -64,6 +64,13 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     text-align: center;
     margin: 30px 5px 5px 5px;
     font-size: 1.1em;
+
+    p {
+      font-weight: 400;
+      font-size: 1em;
+      text-align: center;
+      margin-bottom: 0;
+    }
 
     color: $font-color;
 

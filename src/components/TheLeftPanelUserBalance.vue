@@ -2,7 +2,7 @@
   <div class="person2">
     <ion-icon name="wallet-outline" id="wallet-pic"></ion-icon>
     <div class="money">4543 $</div>
-    <div class="availablebalance">Available Balance</div>
+    <div class="availablebalance"><p>Available Balance</p></div>
     <div class="transferbuttons">
       <button class="btn" id="transfer">Transfer</button>
     </div>
@@ -19,11 +19,7 @@ export default {};
 
 
 <style lang="scss" scoped>
-$input-font-color: #656565;
-$flat-green: #2ecc71;
-$save-button-color: #16a085;
-$main-font: "Rubik", sans-serif;
-$container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+@import "../styles/main.scss";
 
 * {
   font-family: $main-font;
@@ -47,19 +43,23 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
   #wallet-pic {
     font-size: 500%;
-    color: $input-font-color;
+    color: $grey-label;
   }
 
   .money {
     font-size: 50px;
     text-align: center;
     width: 200px;
-    font-weight: bold;
+    font-weight: 400;
   }
   .availablebalance {
-    font-size: 20px;
-    color: lighten($input-font-color, 20%);
-    font-weight: bold;
+    p {
+      font-size: 20px;
+      color: lighten($input-font-color, 20%);
+      font-weight: 500;
+      margin: 0;
+      color: $grey-label;
+    }
   }
   .transferbuttons {
     display: flex;
@@ -76,10 +76,10 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
       width: 90%;
       height: 60px;
       background-color: transparent;
-      font-weight: bold;
+      font-weight: 400;
       transition: transform 0.6s ease-in-out;
       cursor: pointer;
-      background-color: $save-button-color;
+      background-color: $dark-flat-green;
       outline: none;
       color: white;
       font-size: 27px;
@@ -89,7 +89,7 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
       transition: background-color 0.2s ease-in-out;
 
       &:hover {
-        background-color: lighten($save-button-color, 15%);
+        background-color: lighten($dark-flat-green, 15%);
       }
       a {
         text-decoration: none;

@@ -1,30 +1,7 @@
 <template>
   <div class="container-history">
     <TheLeftPanel />
-    <table class="history-table left">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th class="description-head">Description</th>
-          <th>Status</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="row in history" :key="row.id">
-          <td>{{ row.date }}</td>
-          <td class="row-description">{{ row.description }}</td>
-          <td>status</td>
-          <td>
-            {{
-              row.transaction == "deposit"
-                ? `- ${row.amount} (${row.currency})`
-                : `+ ${row.amount} (${row.currency})`
-            }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <Record class="records" />
   </div>
 </template>
 
@@ -32,6 +9,7 @@
 <script>
 import { history } from "../assets/history";
 import TheLeftPanel from "./TheLeftPanel.vue";
+import Record from "./HistoryRecord";
 
 export default {
   data() {
@@ -41,12 +19,13 @@ export default {
   },
   components: {
     TheLeftPanel,
+    Record,
   },
 
   mounted() {
     this.$nextTick(function () {
       setTimeout(() => {
-        let element = document.querySelector(".history-table");
+        let element = document.querySelector(".container-history");
         if (element) {
           element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
@@ -58,18 +37,7 @@ export default {
 
 
 <style lang="scss">
-$font-color: rgb(68, 68, 68);
-$font-size: 20px;
-$main-font: "Rubik", sans-serif;
-$modal-width: 700px;
-$modal-height: 700px;
-$input-border-color: #bdc3c7;
-$input-font-color: #656565;
-$save-button-color: #16a085;
-$border-radius: 5px;
-$flat-green: #2ecc71;
-$flat-blue: #3498db;
-$flat-red: #e74c3c;
+@import "../styles/main.scss";
 
 .container-history {
   display: flex;
@@ -77,66 +45,8 @@ $flat-red: #e74c3c;
   font-family: $main-font;
   font-size: $font-size;
 
-  .history-table {
-    width: 70%;
-    text-align: center;
-    border-collapse: separate;
-    position: relative;
-    margin-left: 30px;
-    margin-right: auto;
-    border-spacing: 0;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-    font-size: 1em;
-  }
-
-  table tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
-  }
-
-  table tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
-  }
-
-  table th:first-child {
-    border-top-left-radius: 10px;
-  }
-  table th:last-child {
-    border-top-right-radius: 10px;
-  }
-
-  td,
-  th {
-    padding: 1rem;
-    color: $font-color;
-  }
-
-  th::first-letter {
-    text-transform: uppercase;
-  }
-
-  table tr:hover {
-    background: rgb(197, 197, 197);
-    color: white;
-    cursor: pointer;
-  }
-  .description-head,
-  .row-description {
-    text-align: left;
-  }
-
-  table tr {
-    background-color: white;
-    height: 80px;
-  }
-
-  td {
-    font-size: 1em;
-  }
-
-  #transaction {
-    text-transform: uppercase;
-    font-size: 1em;
+  .records {
+    box-shadow: $container-shadow;
   }
 }
 

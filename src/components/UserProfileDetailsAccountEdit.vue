@@ -59,6 +59,7 @@
         id="save-button"
         class="confirm-btn"
         @click="saveChanges"
+        :disabled="doesDataChanged"
       >
         Save
       </button>
@@ -107,6 +108,15 @@ export default {
       currentLanguage: "getCurrentLanguage",
       currentStatus: "getStatus",
     }),
+    doesDataChanged() {
+      if (
+        this.accountSettings.language == "" ||
+        this.accountSettings.timezone == ""
+      ) {
+        return true;
+      }
+      return false;
+    },
   },
 };
 </script>

@@ -228,21 +228,4 @@ export default {
     opacity: 1;
   }
 }
-
-.error {
-  border: red 1px solid !important;
-  box-shadow: none !important;
-}
-
-.error-label {
-  color: red;
-}
-
-.non-visible {
-  visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
-}
 </style>

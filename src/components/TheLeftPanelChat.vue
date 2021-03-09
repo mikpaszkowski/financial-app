@@ -20,11 +20,7 @@ export default {};
 
 
 <style lang="scss">
-$input-font-color: #656565;
-$flat-green: #2ecc71;
-$save-button-color: #16a085;
-$main-font: "Rubik", sans-serif;
-$container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+@import "../styles/main.scss";
 
 .container-chat {
   display: flex;
@@ -43,13 +39,13 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
   #chat-pic {
     font-size: 500%;
-    color: $input-font-color;
+    color: $grey-label;
   }
 
   .question1 {
     font-weight: bold;
     text-align: center;
-    color: $input-font-color;
+    color: $grey-label;
     padding: 0 50px 0 50px;
   }
 
@@ -58,15 +54,16 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     text-align: center;
     line-height: 1.3;
     font-size: 15px;
-    color: lighten($input-font-color, 15%);
+    font-weight: 400;
+    color: lighten($grey-label, 15%);
   }
   .chatwithus {
     height: 60px;
     width: 90%;
     border: none;
-    background-color: $save-button-color;
+    background-color: $dark-flat-green;
     border-radius: 5px;
-    font-weight: bold;
+    font-weight: 400;
     margin: 5px;
     box-shadow: $container-shadow;
     transition: transform 0.3s ease-in-out;
@@ -76,7 +73,7 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
-      background-color: lighten($save-button-color, 15%);
+      background-color: lighten($dark-flat-green, 15%);
       color: white;
     }
   }
