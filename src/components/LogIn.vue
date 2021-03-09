@@ -5,7 +5,10 @@
     </transition>
     <div class="frontpage">
       <div class="welcome-message">
-        <h4>Monify</h4>
+        <router-link to="/">
+          <h4>Monify</h4>
+        </router-link>
+
         <h1>Welcome back!</h1>
         <p>
           Online payments?
@@ -81,6 +84,18 @@ export default {
 
 .login-pic {
   height: 200px;
+  animation: imageSlideUp 10s ease-in-out;
+}
+
+@keyframes imageSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
 .frontpage {
@@ -112,6 +127,9 @@ export default {
     text-align: left;
     margin-top: 0;
     font-family: $website-name-font;
+  }
+  a {
+    text-decoration: none;
   }
   p {
     font-weight: lighter;

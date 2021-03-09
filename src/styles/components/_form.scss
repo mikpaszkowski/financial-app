@@ -32,6 +32,13 @@ form {
         &:hover {
             background-color: lighten($dark-flat-green, 10%);
         }
+
+        &:disabled,
+        &[disabled] {
+            cursor: default;
+            background-color: desaturate($dark-flat-green, 50%);
+            opacity: .7;
+        }
     }
 }
 

@@ -8,37 +8,91 @@
         </div>
       </div>
       <div class="edit-form" id="form1">
-        <label for="name" id="name">First Name</label>
+        <label for="name" id="name" :class="{ 'error-label': hasError.name }"
+          >First Name
+          <ion-icon
+            :class="{ 'non-visible': !hasError.name, visible: hasError.name }"
+            name="alert-circle-outline"
+          ></ion-icon>
+        </label>
+
         <input
           v-model="user.name"
           type="text"
           name="name"
           id="name-form"
+          :class="{ error: hasError.name }"
           :placeholder="[[currName]]"
+          @change.capture="checkName"
         />
 
-        <label for="surname" id="surname">Last Name</label>
+        <label
+          for="surname"
+          id="surname"
+          :class="{ 'error-label': hasError.surname }"
+          >Last Name
+          <ion-icon
+            :class="{
+              'non-visible': !hasError.surname,
+              visible: hasError.surname,
+            }"
+            name="alert-circle-outline"
+          ></ion-icon>
+        </label>
         <input
           v-model="user.surname"
+          :class="{ error: hasError.surname }"
           type="text"
-          birth
           name="surname"
           id="surname-form"
           :placeholder="[[currSurname]]"
+          @change.capture="checkSurname"
         />
 
-        <label for="birth" id="birth">Date of birth</label>
-        <input v-model="user.birth" type="date" name="birth" id="date_select" />
+        <label for="birth" id="birth" :class="{ 'error-label': hasError.birth }"
+          >Date of birth
+          <ion-icon
+            :class="{
+              'non-visible': !hasError.birth,
+              visible: hasError.birth,
+            }"
+            name="alert-circle-outline"
+          ></ion-icon>
+        </label>
+        <input
+          v-model="user.birth"
+          type="date"
+          name="birth"
+          :class="{ error: hasError.birth }"
+          id="date_select"
+          @change.capture="checkBirth"
+        />
 
-        <label for="address">Address</label>
+        <label for="address" :class="{ 'error-label': hasError.address }"
+          >Address
+          <ion-icon
+            :class="{
+              'non-visible': !hasError.address,
+              visible: hasError.address,
+            }"
+            name="alert-circle-outline"
+          ></ion-icon>
+        </label>
         <input
           v-model="user.address"
+          :class="{ error: hasError.address }"
           type="text"
           name="address"
           :placeholder="[[currAddress]]"
+          @change.capture="checkAddress"
         />
 
-        <button v-on:click.enter="save" @click="save" class="confirm-btn">
+        <button
+          v-on:click.enter="save"
+          @click="save"
+          class="confirm-btn"
+          :disabled="isButtonDisabled"
+        >
           Save
         </button>
       </div>
@@ -46,11 +100,10 @@
   </div>
 </template>
 
-
-
 <script>
 import { mapGetters } from "vuex";
 import CloseIcon from "./icons/CloseIcon";
+import { checkCapitalWord } from "../utils/formValidation";
 
 export default {
   components: {
@@ -59,10 +112,15 @@ export default {
   data() {
     return {
       user: {
-        name: this.currName,
-        surname: this.currSurname,
-        birth: this.currAddress,
-        address: this.currBirthDate,
+        name: "",
+        surname: "",
+        birth: "",
+        address: "",
+      },
+      hasError: {
+        name: false,
+        surname: false,
+        address: false,
       },
     };
   },
@@ -72,8 +130,63 @@ export default {
       this.$emit("close");
     },
     save() {
-      this.$store.dispatch("user/updateUser", this.user);
-      this.modalClosed();
+      if (!this.isThereAnError()) {
+        this.$store.dispatch("user/updateUser", this.user);
+        this.modalClosed();
+      } else {
+        this.checkName();
+        this.checkSurname();
+        this.checkAddress();
+        this.checkBirth();
+      }
+    },
+    checkSurname() {
+      if (!checkCapitalWord(this.user.surname) || this.user.surname == "") {
+        this.hasError.surname = true;
+      } else {
+        this.hasError.surname = false;
+      }
+    },
+    checkName() {
+      if (!checkCapitalWord(this.user.name) || this.user.name == "") {
+        this.hasError.name = true;
+      } else {
+        this.hasError.name = false;
+      }
+    },
+    checkAddress() {
+      if (this.user.address == "") {
+        this.hasError.address = true;
+      } else {
+        this.hasError.address = false;
+      }
+    },
+    checkBirth() {
+      console.log(this.user.birth);
+      if (this.user.birth == "") {
+        this.hasError.birth = true;
+      } else {
+        this.hasError.birth = false;
+      }
+    },
+    isThereAnError() {
+      if (
+        this.hasError.name ||
+        this.hasError.surname ||
+        this.hasError.address ||
+        this.hasError.birth
+      ) {
+        console.log("heheheheh1");
+        return true;
+      } else if (
+        this.user.name == "" ||
+        this.user.surname == "" ||
+        this.user.address == "" ||
+        this.user.birth == ""
+      ) {
+        return true;
+      }
+      return false;
     },
   },
   computed: {
@@ -83,6 +196,12 @@ export default {
       currAddress: "getCurrentAddress",
       currBirthDate: "getCurrentBirthDate",
     }),
+    isButtonDisabled() {
+      if (!this.isThereAnError()) {
+        return false;
+      }
+      return true;
+    },
   },
 };
 </script>
@@ -108,5 +227,22 @@ export default {
     transform: translateY(0px);
     opacity: 1;
   }
+}
+
+.error {
+  border: red 1px solid !important;
+  box-shadow: none !important;
+}
+
+.error-label {
+  color: red;
+}
+
+.non-visible {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }
 </style>
