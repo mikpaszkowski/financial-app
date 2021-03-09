@@ -40,7 +40,7 @@ export default {
 .main-container {
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   padding: 0 100px;
   background-color: $backgroundColor;
@@ -48,7 +48,7 @@ export default {
 
 @include for-large-desktop {
   .main-container {
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 </style>

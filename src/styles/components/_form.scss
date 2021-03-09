@@ -76,7 +76,6 @@ select {
 
 input[type="text"],
 input[type="date"],
-input[type="checkbox"],
 input[type="password"],
 input[type="number"],
 textarea {
@@ -98,6 +97,14 @@ textarea {
     &::placeholder {
         color: $placeholder-color;
     }
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    margin-right: 10px;
+
 }
 
 .slide-fade-enter-active {

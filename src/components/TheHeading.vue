@@ -2,7 +2,6 @@
   <div class="headlinebar">
     <router-link to="/home" exact>
       <div class="logo">
-        <img :src="image" id="main_icon" alt="mail" />
         <h3>Monify</h3>
       </div>
     </router-link>
@@ -182,7 +181,7 @@ a {
     cubic-bezier(0.6, 0.04, 0.98, 0.335);
 
   h3 {
-    font-family: "Righteous", cursive;
+    font-family: $website-name-font;
   }
 
   img {

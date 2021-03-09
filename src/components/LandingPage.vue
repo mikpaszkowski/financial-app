@@ -5,8 +5,7 @@
       <div class="headlinebar" v-if="isModalsOut">
         <router-link to="/" exact>
           <div class="logo">
-            <img :src="image" id="main_icon" alt="mail" />
-            <h1>Monify</h1>
+            <h2>Monify</h2>
           </div>
         </router-link>
         <div id="buttons">
@@ -294,5 +293,9 @@ body {
     font-size: 2rem;
     margin-top: 150px;
   }
+}
+
+.logo :is(h2) {
+  font-family: $website-name-font;
 }
 </style>

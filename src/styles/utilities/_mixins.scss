@@ -47,7 +47,7 @@ $screen-extra-min: 1800px;
 
 /* Extra large devices*/
 @mixin for-large-desktop {
-    @media (max-width: #{$screen-xl-min}) {
+    @media (min-width: #{$screen-xl-min}) {
         @content;
     }
 }

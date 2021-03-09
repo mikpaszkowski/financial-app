@@ -4,17 +4,14 @@
       <ModalForgotPassword v-if="modalOpened" @close="closeModal" />
     </transition>
     <div class="frontpage">
-      <div class="front_image">
-        <div class="headline-image">
-          <img src="../../public/img/headline_logo.png" alt />
-        </div>
-        <div class="headline">Bank Account Manager</div>
+      <div class="welcome-message">
+        <h4>Monify</h4>
         <h1>Welcome back!</h1>
         <p>
           Online payments?
           <br />It's never been so easy!
         </p>
-        <LogInPic />
+        <LogInPic class="login-pic" />
       </div>
       <LogInForm @open="openModal" />
     </div>
@@ -82,11 +79,8 @@ export default {
   opacity: 0;
 }
 
-.svg-image {
-  display: flex;
-  height: 350px;
-  position: relative;
-  bottom: 0;
+.login-pic {
+  height: 200px;
 }
 
 .frontpage {
@@ -100,88 +94,36 @@ export default {
   text-align: center;
 }
 
-.front_image {
+.welcome-message {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
-  font-family: "Rubik", sans-serif;
   z-index: 0;
   width: 50%;
+  padding: 10px;
   overflow: hidden;
   background-color: $dark-flat-green;
-  animation: 0.6s ease-in-out 0.65s both image_slide_in;
 
   h1 {
-    font-weight: bold;
-    font-size: 35px;
-    color: rgb(99, 99, 99);
+    font-weight: 300;
+  }
+  h4 {
+    text-align: left;
+    margin-top: 0;
+    font-family: $website-name-font;
   }
   p {
     font-weight: lighter;
-    font-size: 14px;
+    font-size: 1.5em;
     letter-spacing: 1px;
-    margin-bottom: 0;
     padding: 20px;
-    color: $input-labels;
+    color: white;
   }
-}
-
-.headline-image {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  animation: 1s image_headline ease-in-out;
-
-  img {
-    width: 140px;
-  }
-}
-
-@keyframes image_headline {
-  from {
-    opacity: 0;
-    transform: translateY(-10rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes image_slide_in {
-  from {
-    transform: translateX(17em);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0em);
-    opacity: 1;
-  }
-}
-
-.headline {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  align-items: center;
-  font-size: 60px;
-  color: white;
-  margin-bottom: 3rem;
-  animation: 1s 2.5s both headline;
-}
-
-@keyframes headline {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
+  p,
+  h1,
+  h4 {
+    color: white;
   }
 }
 
@@ -197,16 +139,57 @@ export default {
   width: 50%;
 }
 
-@media screen and(max-width: 850px) {
+@include for-tablet-portrait-up {
+}
+
+@include for-phones-only {
   .frontpage {
     flex-direction: column;
-  }
 
-  .front_image {
-    width: 100%;
+    .welcome-message {
+      width: 100%;
+    }
+    .form-box {
+      width: 65%;
+      margin: 0 auto;
+    }
   }
-  .form-box {
-    width: 100%;
+  .login-pic {
+    height: 200px;
+  }
+}
+
+@include for-tablet-portrait-landscape {
+  .frontpage {
+    flex-direction: column;
+
+    .welcome-message {
+      width: 100%;
+    }
+    .form-box {
+      width: 65%;
+      margin: 0 auto;
+    }
+  }
+  .login-pic {
+    height: 400px;
+  }
+}
+
+@include for-large-desktop {
+  .frontpage {
+    flex-direction: row;
+  }
+  .login-pic {
+    height: 400px;
+  }
+}
+@include for-extra-large-desktop {
+  .frontpage {
+    flex-direction: row;
+  }
+  .login-pic {
+    height: 600px;
   }
 }
 </style>

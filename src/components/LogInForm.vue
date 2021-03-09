@@ -5,20 +5,16 @@
       <input type="text" class="input-field" v-model="logInData.userId" />
       <label>Password</label>
       <input type="password" class="input-field" v-model="logInData.password" />
-      <div class="passwordfield">
-        <a id="password-toggle" @click="toggle">
-          <ion-icon name="eye-outline" id="toggle"></ion-icon>
-        </a>
-      </div>
+      <div class="passwordfield"></div>
       <router-link to="/home/account" class="router-link">
         <button type="submit" class="confirm-btn">
           <div class="s-btn" @click="login">Log in</div>
         </button>
       </router-link>
 
-      <div class="remember">
+      <div class="remember-me">
         <input type="checkbox" class="check-box" v-model="rememberMe" />
-        <span>Remember me</span>
+        <label>Remember me</label>
       </div>
     </div>
 
@@ -51,5 +47,13 @@ export default {
 
 .router-link {
   width: 100%;
+}
+
+.remember-me {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-self: flex-start;
+  align-items: center;
 }
 </style>
