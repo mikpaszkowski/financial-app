@@ -133,7 +133,7 @@ export default {
     margin: 0 1rem 0 0;
   }
   input[type="radio"] {
-    margin-right: 1rem;
+    margin-right: 10px;
     transform: scale(1.5);
   }
 }

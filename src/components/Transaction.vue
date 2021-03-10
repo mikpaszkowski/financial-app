@@ -90,26 +90,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";
-
-.transfer-origin {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color: white;
-  padding: 5rem 4rem;
-  width: 60rem;
-  margin: 0 auto;
-  box-shadow: $container-shadow;
-  border-radius: $border-radius;
-
-  form {
-    width: 50rem;
-  }
-}
-
-.headline {
-  h3 {
-    text-align: center;
-  }
-}
 </style>

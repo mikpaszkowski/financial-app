@@ -1,0 +1,34 @@
+@import '../utilities/_variables.scss';
+
+
+.container-middle {
+    margin-top: 3rem;
+}
+
+.info-data {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+
+    .status {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 4rem;
+        left: 0;
+        bottom: -1rem;
+        color: white;
+        font-size: 2rem;
+        font-weight: 400;
+        border-radius: 2rem;
+        padding: 1rem;
+
+        #enable-icon {
+            color: white;
+            font-size: 3rem;
+            margin-right: 0.4rem;
+        }
+    }
+}

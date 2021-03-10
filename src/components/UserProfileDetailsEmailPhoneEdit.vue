@@ -120,47 +120,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";
-
-.hidden {
-  display: none;
-}
-
-.label-email,
-.label-phone {
-  display: flex;
-  align-items: center;
-
-  .make-primary-btn {
-    margin: 0;
-    margin-left: 1rem;
-    font-size: 0.9em;
-    font-style: $main-font;
-    text-transform: uppercase;
-    color: $flat-green;
-    transition: text-decoration 0.2s ease-in-out;
-
-    &:hover {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
-
-  .primary-phone,
-  .primary-email {
-    background-color: $flat-blue;
-    color: white;
-    font-weight: bold;
-    font-size: 0.93rem;
-    border-radius: 2rem;
-    text-align: center;
-    padding: 0.3rem;
-    letter-spacing: 0.1rem;
-    margin-left: 1rem;
-    padding: 0.5rem;
-
-    &::before {
-      content: "Primary";
-    }
-  }
-}
 </style>

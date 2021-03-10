@@ -1,0 +1,40 @@
+@import '../utilities/_variables.scss';
+
+.toolbarPosition {
+    transform: rotate(90deg);
+    transform: translateY(25rem);
+    transition: 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.navbar_main {
+    display: flex;
+    z-index: 0;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 0 10rem 0;
+    width: 100%;
+    height: 8rem;
+    color: white;
+    background-color: $dark-flat-green;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    will-change: transform;
+}
+
+.component {
+    cursor: pointer;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    padding: 1.8rem 2.5rem;
+    margin: 0.2rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    transition: 0.2s all ease;
+    will-change: transform;
+    outline: none;
+}

@@ -26,7 +26,7 @@
 
           <div class="info">
             <div class="info-name">
-              <p>Language:</p>
+              <p>Timezone:</p>
             </div>
             <div class="info-data">
               <p id="time_zone_p">
@@ -152,36 +152,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";
-
-.container-middle {
-  margin-top: 3rem;
-}
-
-.info-data {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  position: relative;
-
-  .status {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 4rem;
-    left: 0;
-    top: 1rem;
-    color: white;
-    font-size: 1rem;
-    font-weight: 400;
-    border-radius: 2rem;
-    padding: 1rem;
-
-    #enable-icon {
-      color: white;
-      font-size: 3rem;
-      margin-right: 0.4rem;
-    }
-  }
-}
 </style>

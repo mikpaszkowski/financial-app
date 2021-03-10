@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container" id="account">
+  <div class="user__profile_container">
     <TheLeftPanel />
     <UserProfileDetails />
   </div>
@@ -31,24 +31,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";
-
-* {
-  font-family: $main-font;
-  font-size: $font-size;
-}
-
-.main-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 10rem;
-  background-color: $backgroundColor;
-}
-
-@include for-large-desktop {
-  .main-container {
-    flex-direction: row;
-  }
-}
 </style>

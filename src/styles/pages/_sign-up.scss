@@ -1,0 +1,163 @@
+@import '../utilities/_variables.scss';
+
+
+.slide-fade-enter-active {
+    transition: all 0.2s ease-out;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateY(2rem);
+    opacity: 0;
+}
+
+.signup-pic {
+    height: 20rem;
+    animation: imageSlideUp 10s ease-in-out;
+}
+
+@keyframes imageSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(-10rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.frontpage {
+    display: flex;
+    justify-content: stretch;
+    flex-direction: row;
+    align-content: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+
+.welcome-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+    width: 50%;
+    padding: 1rem;
+    overflow: hidden;
+    background-image: linear-gradient(to right bottom,
+            rgba($dark-flat-green, 90%),
+            rgba($flat-green, 80%));
+
+    h1 {
+        font-weight: 300;
+    }
+
+    h4 {
+        position: absolute;
+        left: 0.5rem;
+        top: 0.5rem;
+        text-align: left;
+        margin-top: 0;
+        font-family: $website-name-font;
+        letter-spacing: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    p {
+        font-weight: lighter;
+        font-size: 1.5em;
+        letter-spacing: 0.1rem;
+        padding: 2rem;
+        color: white;
+    }
+
+    p,
+    h1,
+    h4 {
+        color: white;
+    }
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    animation: 1s ease-in-out both form_box_entry,
+        cubic-bezier(0.55, 0.08, 1, 0.18);
+    animation-delay: 0;
+    padding: 4rem;
+    width: 50%;
+}
+
+@include for-tablet-portrait-up {}
+
+@include for-phones-only {
+    .frontpage {
+        flex-direction: column;
+
+        .welcome-message {
+            width: 100%;
+        }
+
+        .form-box {
+            width: 65%;
+            margin: 0 auto;
+        }
+    }
+
+    .signup-pic {
+        height: 20rem;
+    }
+}
+
+@include for-tablet-portrait-landscape {
+    .frontpage {
+        flex-direction: column;
+
+        .welcome-message {
+            width: 100%;
+        }
+
+        .form-box {
+            width: 65%;
+            margin: 0 auto;
+        }
+    }
+
+    .signup-pic {
+        height: 40rem;
+    }
+}
+
+@include for-large-desktop {
+    .frontpage {
+        flex-direction: row;
+    }
+
+    .signup-pic {
+        height: 40rem;
+    }
+}
+
+@include for-extra-large-desktop {
+    .frontpage {
+        flex-direction: row;
+    }
+
+    .signup-pic {
+        height: 60rem;
+    }
+}

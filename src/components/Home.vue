@@ -2,7 +2,7 @@
   <div class="home">
     <div class="background-image"></div>
     <Heading />
-    <!-- <Navbar /> -->
+    <Navbar />
     <router-view />
     <Footer />
   </div>
@@ -17,7 +17,7 @@ import Footer from "./TheFooter";
 export default {
   components: {
     Heading,
-    //Navbar,
+    Navbar,
     Footer,
   },
   data() {

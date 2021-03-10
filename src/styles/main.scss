@@ -1,15 +1,28 @@
 @import './components/_buttons.scss';
-
 @import './components/_form.scss';
-
+@import './components/_account-settings.scss';
+@import './components/_personal-details.scss';
 
 @import './layout/_user-info-container.scss';
-
-
 @import './layout/_edit-containers.scss';
+@import './layout/_left-panel-container.scss';
+@import './layout/_left-panel-sub-balance.scss';
+@import './layout/_left-panel-sub-chat.scss';
+@import './layout/_left-panel-sub-photo.scss';
+@import './layout/_user-info-personal-container.scss';
 
 @import "./utilities/_set_up_settings.scss";
-
 @import './utilities/_variables.scss';
-
 @import './utilities/_mixins.scss';
+
+@import './pages/_landing-page.scss';
+@import './pages/_log-in.scss';
+@import './pages/_user-info-container.scss';
+@import './pages/_request.scss';
+@import './pages/_send.scss';
+@import './pages/_sign-up.scss';
+
+
+@import './base/_footer.scss';
+@import './base/_heading.scss';
+@import './base/_sidebar.scss';

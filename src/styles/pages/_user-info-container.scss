@@ -1,0 +1,17 @@
+@import '../utilities/_variables.scss';
+
+.user__profile_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10rem;
+    background-color: $backgroundColor;
+    margin-bottom: 10rem;
+}
+
+@include for-large-desktop {
+    .user__profile_container {
+        flex-direction: row;
+    }
+}

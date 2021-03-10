@@ -3,7 +3,7 @@ import LogIn from "../components/LogIn.vue";
 import Home from "../components/Home.vue";
 import UserProfile from "../components/UserProfile.vue";
 import History from "../components/History.vue";
-import AccountTransfer from "../components/Transaction.vue";
+import Transaction from "../components/Transaction.vue";
 import LandingPage from "../components/LandingPage.vue";
 import SignUp from "../components/SignUp.vue";
 import NotFound from "../views/NotFound.vue";
@@ -43,8 +43,8 @@ const routes = [
       },
       {
         path: 'transfer',
-        name: "AccountTransfer",
-        component: AccountTransfer,
+        name: "Transaction",
+        component: Transaction,
       }
     ]
     //   component: () =>

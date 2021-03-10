@@ -25,20 +25,4 @@ export default {
 
 
 <style lang="scss">
-.user-main-info {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-content: center;
-  width: 50%;
-  margin-left: 3rem !important;
-}
-
-@media screen and (max-width: 1306px) {
-  .user-main-info {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 2rem;
-  }
-}
 </style>

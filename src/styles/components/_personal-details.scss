@@ -1,0 +1,55 @@
+@import '../utilities/_variables.scss';
+
+
+.fade-enter-active {
+    animation: bounce-in 0.5s ease-out;
+}
+
+.fade-leave-active {
+    animation: bounce-in 0.5s reverse;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.container-lower {
+    margin-top: 3rem;
+}
+
+.primary {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 2rem;
+    left: 2rem;
+    top: 50%;
+    margin-top: -1rem;
+    background-color: $flat-blue;
+    color: white;
+    font-weight: bold;
+    font-size: 0.75rem;
+    border-radius: 2rem;
+    text-align: center;
+
+    letter-spacing: 0.1rem;
+    margin-left: 1rem;
+
+    &::before {
+        content: "Primary";
+    }
+}
