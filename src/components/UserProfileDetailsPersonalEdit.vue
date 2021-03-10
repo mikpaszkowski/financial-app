@@ -220,11 +220,11 @@ export default {
 
 @keyframes bounce-in {
   0% {
-    transform: translateY(-200px);
+    transform: translateY(-20rem);
     opacity: 0;
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
     opacity: 1;
   }
 }

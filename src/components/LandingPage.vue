@@ -2,43 +2,29 @@
   <div>
     <div :class="headlinePositionStyle">
       <div class="background-image"></div>
-      <div class="headlinebar" v-if="isModalsOut">
-        <router-link to="/" exact>
-          <div class="logo">
-            <h2>Monify</h2>
-          </div>
-        </router-link>
-        <div id="buttons">
-          <router-link to="/login" exact
-            ><button class="login" @click="login">Log in</button></router-link
-          >
-          <router-link to="/signup" exact
-            ><button class="signin" @click="signup">
-              Sign up
-            </button></router-link
-          >
-        </div>
-      </div>
-      <div class="content">
-        <div id="photo">
-          <div id="headline">
-            <h1>
+    </div>
+    <div class="content">
+      <div class="photo">
+        <div class="text_content">
+          <h1 class="headline-primary">
+            <span class="headline">Monify</span>
+            <span class="headline-main-quote">
               Trusted by more than 50,000 <br />
               worldwide.
-            </h1>
-            <p>
-              Bank Account Manager. Over 180 countires and 120 currencies
-              supported.
-            </p>
-          </div>
+            </span>
+            <span class="headline-sub-quote">
+              Over 180 countires and 120 currencies supported.
+            </span>
+          </h1>
           <div class="buttons">
-            <router-link to="/signup" exact>
-              <button @click="freeAccountClicked" id="freeAccount">
-                Open a Free Account
-              </button>
-            </router-link>
-
-            <button id="video">Watch a video</button>
+            <router-link to="/login" exact
+              ><button class="login" @click="login">Log in</button></router-link
+            >
+            <router-link to="/signup" exact
+              ><button class="signin" @click="signup">
+                Sign up
+              </button></router-link
+            >
           </div>
         </div>
       </div>
@@ -91,14 +77,6 @@ export default {
     } else {
       this.isModalsOut = false;
     }
-    // this.$root.$on("logInClose", this.signin);
-    // this.$root.$on("singInClose", this.login);
-    // this.$root.$on("headlineClosed", this.headlineClosed);
-  },
-
-  beforeUnmount() {
-    // this.$root.$off("logInClose");
-    // this.$root.$off("singInClose");
   },
 };
 </script>
@@ -108,143 +86,111 @@ export default {
 @import "../styles/main.scss";
 $font-stack: "Rubik", sans-serif;
 
-.fade-enter-active {
-  transition: opacity 0.5s ease-in-out;
-}
-
-.fade-leave-active {
-  transition: opacity 0.5s ease-in-out;
-}
-
-.fade-leave-to,
-.cards-enter {
-  opacity: 0;
-}
-
-.fade-leave,
-.cards-enter-to {
-  opacity: 1;
-}
-
-.hideHeadline {
-  display: none;
-  animation: opacity homepageOut 1s ease-in-out 0.5s;
-}
-
-@keyframes homepageOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-body {
-  margin: 0;
-}
-
-.content {
+.headline-primary {
   display: flex;
-  justify-content: flex-end;
-}
-
-.headlinebar {
-  position: absolute;
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 1em 0;
-  width: 100%;
-  font-family: $font-stack;
-  font-size: 20px;
-  background-color: rgba($dark-flat-green, $alpha: 0.6);
-  animation: 1s ease-in both headline_slide_in,
-    cubic-bezier(0.6, 0.04, 0.98, 0.335);
-
-  img {
-    width: 100px;
-    margin-right: 20px;
-  }
-
-  a {
-    text-decoration: none;
-    color: white;
-  }
-
-  .logo {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
-    font-family: "Righteous", cursive;
-  }
+  text-align: center;
+  font-family: "Righteous", cursive;
 }
 
-@keyframes headline_slide_in {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 100%;
-  }
-}
-
-#buttons {
-  margin: 0 5rem;
+.buttons {
+  margin-top: 6rem;
 }
 
 .login,
 .signin {
-  width: 8rem;
-  height: 2.5rem;
-  font-size: 1.2rem;
-  border-radius: 0.35rem;
+  width: 20rem;
+  height: 6rem;
+  font-size: 2.5rem;
+  border-radius: 3rem;
   cursor: pointer;
 }
 
 .login {
-  border: 1px solid;
+  border: 0.1rem solid;
+  position: relative;
   border-color: white;
   color: white;
   background-color: transparent;
   margin-right: 1rem;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+  will-change: transform;
 
   &:hover {
-    box-shadow: 0px 1px 7px 0px #ffffff;
-    background-color: rgba(255, 255, 255, 0.842);
-    color: rgb(82, 82, 82);
+    box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.2);
+    color: $font-color;
+    transform: translateY(-0.3rem);
+
+    &::after {
+      transform: translateX(100%);
+      opacity: 1;
+    }
+  }
+
+  &:focus {
+    transform: translateY(-0.1rem);
+    box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 5rem;
+    transition: all 0.2s ease-in-out;
   }
 }
 
 .signin {
+  position: relative;
   border: none;
-  background-color: #00fffaf5;
-  color: rgb(124, 124, 124);
+  background-color: white;
+  color: $font-color;
   margin-left: 1rem;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  will-change: transform;
 
   &:hover {
-    box-shadow: 0px 1px 17px 7px #76fffdf5;
-    background-color: transparent;
-    color: white;
+    box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-0.3rem);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+  &:focus {
+    transform: translateY(-0.1rem);
+    box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 5rem;
+    transition: all 0.2s ease-in-out;
   }
 }
 
-#photo {
+.photo {
   position: relative;
   text-align: center;
   background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.2) 17%,
-      rgba(4, 102, 99, 0.2) 58%,
-      rgba(79, 175, 179, 0.4) 100%
+      to right bottom,
+      rgba($dark-flat-green, 90%),
+      rgba($flat-green, 80%)
     ),
     url("../../public/img/computer.jpg");
   background-size: cover;
@@ -253,49 +199,44 @@ body {
   padding-bottom: 7rem;
   width: 100vw;
   height: 100vh;
-
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 100px;
-
-    #freeAccount {
-      padding: 20px 10px;
-      margin-right: 20px;
-      background-color: #1abc9c;
-      border: none;
-      cursor: pointer;
-    }
-
-    #video {
-      padding: 20px 10px;
-      margin-left: 20px;
-      background-color: transparent;
-      border: 1px solid white;
-      cursor: pointer;
-    }
-
-    button {
-      color: white;
-      border-radius: 0.35rem;
-      font-size: 20px;
-    }
-  }
-
-  #headline {
-    font-family: $font-stack;
-    padding: 0 150px;
-    vertical-align: top;
-    padding-top: 60px;
-    text-align: center;
-    color: white;
-    font-size: 2rem;
-    margin-top: 150px;
-  }
 }
 
-.logo :is(h2) {
-  font-family: $website-name-font;
+.text_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.headline-primary {
+  color: white;
+  height: 70rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .headline {
+    display: block;
+    font-family: $website-name-font;
+    letter-spacing: 2rem;
+    font-size: 20rem;
+  }
+
+  span {
+    font-family: $main-font;
+  }
+
+  .headline-main-quote {
+    display: block;
+    font-size: 4rem;
+    font-weight: 400;
+  }
+
+  .headline-sub-quote {
+    display: block;
+    font-size: 3rem;
+    font-weight: 100;
+    color: white;
+  }
 }
 </style>

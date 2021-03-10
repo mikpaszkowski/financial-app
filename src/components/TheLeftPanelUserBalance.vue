@@ -35,11 +35,11 @@ export default {};
   box-shadow: $container-shadow;
   background-color: white;
   width: 100%;
-  height: 360px;
+  height: 36rem;
   font-size: 1.5em;
-  border-radius: 5px;
-  margin-right: 15px;
-  margin-bottom: 50px;
+  border-radius: $border-radius;
+  margin-right: 1.5rem;
+  margin-bottom: 5rem;
 
   #wallet-pic {
     font-size: 500%;
@@ -47,14 +47,14 @@ export default {};
   }
 
   .money {
-    font-size: 50px;
+    font-size: 5rem;
     text-align: center;
-    width: 200px;
+    width: 20rem;
     font-weight: 400;
   }
   .availablebalance {
     p {
-      font-size: 20px;
+      font-size: 2rem;
       color: lighten($input-font-color, 20%);
       font-weight: 500;
       margin: 0;
@@ -65,7 +65,7 @@ export default {};
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 2rem;
     width: 100%;
 
     a {
@@ -74,7 +74,7 @@ export default {};
 
     .btn {
       width: 90%;
-      height: 60px;
+      height: 6rem;
       background-color: transparent;
       font-weight: 400;
       transition: transform 0.6s ease-in-out;
@@ -82,10 +82,10 @@ export default {};
       background-color: $dark-flat-green;
       outline: none;
       color: white;
-      font-size: 27px;
+      font-size: 2.7rem;
       border: none;
-      box-shadow: 1px 1px 4px 0px #505050;
-      border-radius: 5px;
+      box-shadow: 0.1rem 0.1rem 0.4rem 0rem #505050;
+      border-radius: $border-radius;
       transition: background-color 0.2s ease-in-out;
 
       &:hover {

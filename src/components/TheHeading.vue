@@ -20,8 +20,8 @@
       </router-link>
       <button class="component" id="component-call">Call center</button>
       <router-link :to="{ name: 'LandingPage' }" exact>
-        <div class="signin">
-          <button class="signinbtn" type="submit" id="logOutBtn">
+        <div class="log-out">
+          <button class="log-outbtn" type="submit" id="logOutBtn">
             <LogOutIcon />
           </button>
         </div>
@@ -67,7 +67,7 @@ $color: #336c68;
 
 .toolbarPosition {
   transform: rotate(90deg);
-  transform: translateY(250px);
+  transform: translateY(25rem);
   transition: 0.5s ease-in-out;
   will-change: transform;
 }
@@ -93,8 +93,8 @@ $color: #336c68;
   cursor: pointer;
   border: none;
   font-family: $main-font;
-  padding: 18px 25px;
-  margin: 2px;
+  padding: 1.8rem 2.5rem;
+  margin: 0.2rem;
   font-size: 1.4rem;
   text-decoration: none;
   color: white;
@@ -108,11 +108,11 @@ $color: #336c68;
     content: "";
     background-color: white;
     width: 100%;
-    height: 1px;
+    height: 0.1rem;
     position: absolute;
     left: 0;
     bottom: 0;
-    border-radius: 1px;
+    border-radius: 0.1rem;
     transform: scale(0);
     transition: all 0.3s ease-in-out;
   }
@@ -125,17 +125,17 @@ $color: #336c68;
 }
 
 .router-link-exact-active > .component {
-  border-bottom: 1px solid white;
-  padding-bottom: 18px;
+  border-bottom: 0.1rem solid white;
+  padding-bottom: 1.8rem;
   background-color: rgba($color: #ffffff, $alpha: 0.04);
 }
 
-.signin {
+.log-out {
   display: flex;
   justify-content: flex-end;
   width: 2rem;
 
-  .signinbtn {
+  .log-outbtn {
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -144,10 +144,10 @@ $color: #336c68;
     width: 2rem;
     justify-content: space-evenly;
     border: none;
-    font-size: 1em;
+    font-size: 1rem;
     background-color: transparent;
     color: white;
-    border-radius: 2px;
+    border-radius: 0.2rem;
     transition: all 1s ease-out;
     transition-timing-function: cubic-bezier(0.28, -0.07, 0.5, 1.05);
     will-change: transform;
@@ -157,11 +157,6 @@ $color: #336c68;
       transition: all 0.2s ease-in-out;
     }
   }
-}
-a {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
 }
 
 .headlinebar {
@@ -174,9 +169,9 @@ a {
   justify-content: center;
   align-items: center;
   padding: 1em 0;
-  margin-bottom: 80px;
+  margin-bottom: 8rem;
   width: 100%;
-  font-size: 20px;
+  font-size: 2rem;
   animation: 1s ease-in both headline_slide_in,
     cubic-bezier(0.6, 0.04, 0.98, 0.335);
 
@@ -185,9 +180,9 @@ a {
   }
 
   img {
-    width: 60px;
-    height: 60px;
-    margin-right: 20px;
+    width: 6rem;
+    height: 6rem;
+    margin-right: 2rem;
   }
 
   a {
@@ -201,73 +196,12 @@ a {
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
+    letter-spacing: 1rem;
   }
-}
-
-@keyframes headline_slide_in {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-
-  83% {
-    opacity: 1;
-    transform: translateY(30px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.menubutton {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  height: 40px;
-  width: 40px;
-  cursor: pointer;
-
-  .line1,
-  .line2,
-  .line3 {
-    position: absolute;
-    width: 34px;
-    height: 4px;
-    border-radius: 2px;
-    background-color: white;
-    transition: 0.2s ease-in-out;
-    will-change: transform;
-  }
-}
-
-.line1 {
-  margin-bottom: 20px;
-}
-
-.line2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.line3 {
-  margin-top: 20px;
-}
-
-#menubutton:hover > .line1 {
-  width: 50px;
-}
-
-#menubutton:hover > .line2 {
-  width: 25px;
-}
-
-#menubutton:hover > .line3 {
-  width: 50px;
 }
 
 .navigation {
   display: flex;
-  margin-left: 100px;
+  margin-left: 10rem;
 }
 </style>

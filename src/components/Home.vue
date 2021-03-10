@@ -49,7 +49,7 @@ export default {
 .cards-leave-to,
 .cards-enter {
   opacity: 0;
-  transform: translateY(60px);
+  transform: translateY(6rem);
   transition: all 0.3s ease-in-out;
 }
 

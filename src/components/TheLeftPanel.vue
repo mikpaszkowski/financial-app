@@ -27,8 +27,8 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 400px;
-  margin-right: 20px;
+  width: 40rem;
+  margin-right: 2rem !important;
 }
 
 @media screen and (max-width: 1306px) {

@@ -1,13 +1,13 @@
 @import '../utilities/_variables.scss';
 
-$frame-width: 400px;
-$frame-height: 400px;
+$frame-width: 40rem;
+$frame-height: 40rem;
 $animation-duration: .6s;
 $animation-delay: .3s;
 
 .btn {
   width: 100%;
-  height: 60px;
+  height: 6rem;
   background-color: transparent;
   font-weight: bold;
   transition: transform 0.6s ease-in-out;
@@ -17,8 +17,8 @@ $animation-delay: .3s;
   color: white;
   font-size: 35px;
   border: none;
-  box-shadow: 1px 1px 4px 0px #505050;
-  border-radius: 5px;
+  box-shadow: 0.1rem 0.1rem 0.4rem 0rem #505050;
+  border-radius: 0.5rem;
   transition: background-color 0.2s ease-in-out;
 
   &:hover {
@@ -32,13 +32,13 @@ $animation-delay: .3s;
 
 .exit {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 1rem;
+  right: 1rem;
 
   .close-icon {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 3rem;
+    height: 3rem;
     top: 0;
     right: 0;
     transition: all 0.2s ease-in-out;
@@ -68,8 +68,8 @@ $animation-delay: .3s;
   justify-content: center;
   align-items: center;
   transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
 
   &:hover {
     cursor: pointer;
@@ -78,11 +78,11 @@ $animation-delay: .3s;
 
   .line {
     width: 100%;
-    height: 10px;
-    margin: 10px;
+    height: 1rem;
+    margin: 1rem;
     background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px 0 #555;
+    border-radius: 0.4rem;
+    box-shadow: 0 0.2rem 1rem 0 #555;
   }
 
   .middleLine {
@@ -99,7 +99,7 @@ $animation-delay: .3s;
 
     &.line-1-rotate {
       animation: animateUpperLine $animation-duration;
-      transform: translateY(30px) rotate(45deg);
+      transform: translateY(3rem) rotate(45deg);
     }
   }
 
@@ -108,7 +108,7 @@ $animation-delay: .3s;
 
     &.line-3-rotate {
       animation: animateLowerLine $animation-duration;
-      transform: translateY(-30px) rotateZ(135deg);
+      transform: translateY(-3rem) rotateZ(135deg);
     }
   }
 }
@@ -122,23 +122,23 @@ $animation-delay: .3s;
   }
 
   50% {
-    transform: translateY(30px) rotateZ(0deg);
+    transform: translateY(3rem) rotateZ(0deg);
   }
 
   100% {
-    transform: translateY(30px) rotateZ(45deg);
+    transform: translateY(3rem) rotateZ(45deg);
   }
 }
 
 @keyframes upperLineBack {
   0% {
 
-    transform: translateY(30px) rotateZ(45deg);
+    transform: translateY(3rem) rotateZ(45deg);
 
   }
 
   50% {
-    transform: translateY(30px) rotateZ(0deg);
+    transform: translateY(3rem) rotateZ(0deg);
   }
 
   100% {
@@ -150,12 +150,12 @@ $animation-delay: .3s;
 
   0% {
 
-    transform: translateY(-30px) rotateZ(135deg);
+    transform: translateY(-3rem) rotateZ(135deg);
 
   }
 
   50% {
-    transform: translateY(-30px) rotateZ(0deg);
+    transform: translateY(-3rem) rotateZ(0deg);
   }
 
   100% {
@@ -171,11 +171,11 @@ $animation-delay: .3s;
   }
 
   50% {
-    transform: translateY(-30px) rotateZ(0deg);
+    transform: translateY(-3rem) rotateZ(0deg);
   }
 
   100% {
-    transform: translateY(-30px) rotateZ(135deg);
+    transform: translateY(-3rem) rotateZ(135deg);
   }
 }
 

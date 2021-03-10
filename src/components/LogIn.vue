@@ -83,18 +83,18 @@ export default {
 }
 
 .login-pic {
-  height: 200px;
+  height: 20rem;
   animation: imageSlideUp 10s ease-in-out;
 }
 
 @keyframes imageSlideUp {
   0% {
     opacity: 0;
-    transform: translateY(-100px);
+    transform: translateY(-10rem);
   }
   100% {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(0rem);
   }
 }
 
@@ -116,9 +116,13 @@ export default {
   position: relative;
   z-index: 0;
   width: 50%;
-  padding: 10px;
+  padding: 1rem;
   overflow: hidden;
-  background-color: $dark-flat-green;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($dark-flat-green, 90%),
+    rgba($flat-green, 80%)
+  );
 
   h1 {
     font-weight: 300;
@@ -127,6 +131,7 @@ export default {
     text-align: left;
     margin-top: 0;
     font-family: $website-name-font;
+    letter-spacing: 1rem;
   }
   a {
     text-decoration: none;
@@ -134,8 +139,8 @@ export default {
   p {
     font-weight: lighter;
     font-size: 1.5em;
-    letter-spacing: 1px;
-    padding: 20px;
+    letter-spacing: 0.1rem;
+    padding: 2rem;
     color: white;
   }
   p,
@@ -153,7 +158,7 @@ export default {
   animation: 1s ease-in-out both form_box_entry,
     cubic-bezier(0.55, 0.08, 1, 0.18);
   animation-delay: 0;
-  padding: 40px;
+  padding: 4rem;
   width: 50%;
 }
 
@@ -173,7 +178,7 @@ export default {
     }
   }
   .login-pic {
-    height: 200px;
+    height: 20rem;
   }
 }
 
@@ -190,7 +195,7 @@ export default {
     }
   }
   .login-pic {
-    height: 400px;
+    height: 40rem;
   }
 }
 
@@ -199,7 +204,7 @@ export default {
     flex-direction: row;
   }
   .login-pic {
-    height: 400px;
+    height: 40rem;
   }
 }
 @include for-extra-large-desktop {
@@ -207,7 +212,7 @@ export default {
     flex-direction: row;
   }
   .login-pic {
-    height: 600px;
+    height: 60rem;
   }
 }
 </style>

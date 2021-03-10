@@ -3,7 +3,6 @@
     <h3>Send Money</h3>
   </div>
   <div class="transfer-origin">
-    <TransactionValidation :occuredErrors="errors" :modalOn="isModalOn" />
     <form class="form">
       <label for="name">Recipient</label>
       <input type="text" name="email" placeholder="Enter Email Address" />
@@ -32,12 +31,7 @@
 
 
 <script>
-import TransactionValidation from "./TransactionValidation.vue";
-
 export default {
-  components: {
-    TransactionValidation,
-  },
   data() {
     return {
       errors: [],
@@ -102,14 +96,14 @@ export default {
   flex-direction: row;
   justify-content: center;
   background-color: white;
-  padding: 50px 40px;
-  width: 600px;
+  padding: 5rem 4rem;
+  width: 60rem;
   margin: 0 auto;
   box-shadow: $container-shadow;
   border-radius: $border-radius;
 
   form {
-    width: 500px;
+    width: 50rem;
   }
 }
 

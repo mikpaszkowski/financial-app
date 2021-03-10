@@ -41,7 +41,7 @@ export default {
 
 .container-history {
   display: flex;
-  padding: 0 100px;
+  padding: 0 10rem;
   font-family: $main-font;
   font-size: $font-size;
 
@@ -56,7 +56,7 @@ export default {
 
     .history-table {
       width: 100%;
-      margin: 20px 0 0 0;
+      margin: 2rem 0 0 0;
     }
   }
 }

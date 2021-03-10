@@ -154,7 +154,7 @@ export default {
 @import "../styles/main.scss";
 
 .container-middle {
-  margin-top: 30px;
+  margin-top: 3rem;
 }
 
 .info-data {
@@ -168,19 +168,19 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 4rem;
     left: 0;
-    top: 10px;
+    top: 1rem;
     color: white;
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 400;
-    border-radius: 2em;
-    padding: 10px;
+    border-radius: 2rem;
+    padding: 1rem;
 
     #enable-icon {
       color: white;
-      font-size: 30px;
-      margin-right: 4px;
+      font-size: 3rem;
+      margin-right: 0.4rem;
     }
   }
 }

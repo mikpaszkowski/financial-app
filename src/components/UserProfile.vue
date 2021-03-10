@@ -42,7 +42,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 100px;
+  padding: 0 10rem;
   background-color: $backgroundColor;
 }
 

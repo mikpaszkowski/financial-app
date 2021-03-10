@@ -52,11 +52,12 @@ export default {
 
 
 <style lang="scss" scoped>
+@import "../styles/main.scss";
 $color: #336c68;
 
 .toolbarPosition {
   transform: rotate(90deg);
-  transform: translateY(250px);
+  transform: translateY(25rem);
   transition: 0.5s ease-in-out;
   will-change: transform;
 }
@@ -81,8 +82,8 @@ $color: #336c68;
   cursor: pointer;
   border: none;
   font-family: "Montserrat", sans-serif;
-  padding: 18px 25px;
-  margin: 2px;
+  padding: 1.8rem 2.5rem;
+  margin: 0.2rem;
   font-size: 1.3rem;
   text-decoration: none;
   color: white;
@@ -93,7 +94,8 @@ $color: #336c68;
 }
 
 .component:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2),
+    0 0.6rem 2rem 0 rgba(0, 0, 0, 0.19);
   animation: 0.3s ease both rounded_edges;
 }
 
@@ -120,10 +122,10 @@ $color: #336c68;
     width: 2rem;
     justify-content: space-evenly;
     border: none;
-    font-size: 1em;
+    font-size: 1rem;
     background-color: transparent;
     color: white;
-    border-radius: 2px;
+    border-radius: $border-radius;
     transition: all 1s ease-out;
     transition-timing-function: cubic-bezier(0.28, -0.07, 0.5, 1.05);
     will-change: transform;

@@ -35,7 +35,7 @@ export default {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    height: 140px;
+    height: 14rem;
   }
 }
 </style>

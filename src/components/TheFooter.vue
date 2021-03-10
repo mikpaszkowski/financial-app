@@ -11,12 +11,12 @@
         <p>Help</p>
       </div>
       <div class="social-media">
-        <ion-icon name="logo-facebook"></ion-icon>
-        <ion-icon name="logo-instagram"></ion-icon>
-        <ion-icon name="logo-twitter"></ion-icon>
-        <ion-icon name="logo-google"></ion-icon>
-        <ion-icon name="logo-youtube"></ion-icon>
-        <ion-icon name="logo-discord"></ion-icon>
+        <ion-icon name="logo-facebook" id="fb-icon"></ion-icon>
+        <ion-icon name="logo-instagram" id="ig-icon"></ion-icon>
+        <ion-icon name="logo-twitter" id="twitter-icon"></ion-icon>
+        <ion-icon name="logo-google" id="google-icon"></ion-icon>
+        <ion-icon name="logo-youtube" id="yt-icon"></ion-icon>
+        <ion-icon name="logo-discord" id="disc-icon"></ion-icon>
       </div>
     </div>
     <hr id="lower" />
@@ -57,7 +57,7 @@ footer {
   width: 100%;
 
   .content {
-    width: 1500px;
+    width: 150rem;
     margin: 0 auto;
     .upper-info {
       display: flex;
@@ -68,14 +68,18 @@ footer {
         justify-content: space-between;
         flex-direction: row;
         p {
-          margin: 0 10px;
+          margin: 0 1rem !important;
+          cursor: pointer;
+          transition: color 0.2s ease;
         }
       }
       .social-media {
-        font-size: 1.6em;
+        font-size: 0.8rem;
 
         ion-icon {
-          margin: 0 15px;
+          margin: 0 1.5rem !important;
+          transition: color 0.2s ease-in-out;
+          cursor: pointer;
         }
       }
     }
@@ -85,6 +89,7 @@ footer {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      margin-top: 1.5rem;
 
       .terms {
         display: flex;
@@ -92,7 +97,9 @@ footer {
         flex-direction: row;
 
         p {
-          margin: 0 15px;
+          margin: 0 1.5rem !important;
+          cursor: pointer;
+          transition: color 0.2s ease;
         }
       }
 
@@ -111,10 +118,37 @@ hr {
   margin-right: auto;
 }
 
+#fb-icon:hover {
+  color: $facebook;
+}
+#yt-icon:hover {
+  color: $youtube;
+}
+#disc-icon:hover {
+  color: $discord;
+}
+#twitter-icon:hover {
+  color: $twitter;
+}
+#ig-icon:hover {
+  color: $facebook;
+}
+
+#google-icon:hover {
+  color: $google;
+}
+
+.links > p:nth-child(n):hover {
+  color: $dark-flat-green;
+}
+.terms > p:nth-child(n):hover {
+  color: $dark-flat-green;
+}
+
 @media screen and(max-width: 1500px) {
   footer {
     .content {
-      width: 1000px;
+      width: 100rem;
     }
   }
 }
@@ -122,25 +156,26 @@ hr {
 @media screen and(max-width: 1200px) {
   footer {
     .content {
-      width: 800px;
+      width: 80rem;
 
       .upper-info {
         justify-content: center;
         flex-direction: column;
-        margin-bottom: 25px;
+        margin-bottom: 1rem !important;
 
         .links {
           justify-content: center;
 
           p {
-            margin: 0 10px;
+            margin: 0 1rem;
           }
         }
         .social-media {
           font-size: 1.6em;
+          margin-top: 1.5rem;
 
           ion-icon {
-            margin: 0 15px;
+            margin: 0 1.5rem !important;
           }
         }
       }
@@ -149,7 +184,7 @@ hr {
         flex-direction: column;
 
         .copyright {
-          margin-bottom: 25px;
+          margin-bottom: 2.5rem !important;
         }
       }
     }
@@ -159,7 +194,7 @@ hr {
 @media screen and(max-width: 882px) {
   footer {
     .content {
-      width: 500px;
+      width: 50rem;
     }
   }
 }

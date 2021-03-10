@@ -15,27 +15,27 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  margin-top: 20px;
-  padding: 30px;
-  padding-top: 15px;
+  margin-top: 2rem;
+  padding: 3rem;
+  padding-top: 1.5rem;
   padding-bottom: 0;
-  margin-top: 40px;
+  margin-top: 4rem;
   background-color: white;
   border-radius: $border-radius;
   box-shadow: $container-shadow;
 
 
   .headline-container {
-    border-bottom: 1px solid $input-border-color;
+    border-bottom: 0.1rem solid $input-border-color;
     width: 100%;
     top: 0;
 
     h1 {
       color: black;
-      font-size: 1.5em;
+      font-size: 2.5rem;
       font-weight: lighter;
       margin-top: 0;
-      margin-bottom: 20px;
+      margin-bottom: 2rem;
     }
 
 

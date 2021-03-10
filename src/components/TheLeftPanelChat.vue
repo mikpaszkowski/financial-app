@@ -32,10 +32,10 @@ export default {};
   box-shadow: $container-shadow;
   background-color: white;
   width: 100%;
-  height: 360px;
+  height: 36rem;
   font-size: 1.5em;
-  border-radius: 5px;
-  margin-right: 15px;
+  border-radius: $border-radius;
+  margin-right: 1.5rem;
 
   #chat-pic {
     font-size: 500%;
@@ -46,25 +46,25 @@ export default {};
     font-weight: bold;
     text-align: center;
     color: $grey-label;
-    padding: 0 50px 0 50px;
+    padding: 0 5rem 0 5rem;
   }
 
   .question2 {
-    width: 300px;
+    width: 30rem;
     text-align: center;
     line-height: 1.3;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 400;
     color: lighten($grey-label, 15%);
   }
   .chatwithus {
-    height: 60px;
+    height: 6rem;
     width: 90%;
     border: none;
     background-color: $dark-flat-green;
-    border-radius: 5px;
+    border-radius: $border-radius;
     font-weight: 400;
-    margin: 5px;
+    margin: 0.5rem;
     box-shadow: $container-shadow;
     transition: transform 0.3s ease-in-out;
     cursor: pointer;

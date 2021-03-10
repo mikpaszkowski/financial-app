@@ -8,16 +8,8 @@
 
 @import './layout/_edit-containers.scss';
 
-@import "./utilities/_font-sizes.scss";
+@import "./utilities/_set_up_settings.scss";
 
 @import './utilities/_variables.scss';
 
 @import './utilities/_mixins.scss';
-
-
-
-*,
-::after,
-::before {
-    box-sizing: border-box;
-}

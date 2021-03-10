@@ -132,7 +132,7 @@ export default {
 
   .make-primary-btn {
     margin: 0;
-    margin-left: 10px;
+    margin-left: 1rem;
     font-size: 0.9em;
     font-style: $main-font;
     text-transform: uppercase;
@@ -150,13 +150,13 @@ export default {
     background-color: $flat-blue;
     color: white;
     font-weight: bold;
-    font-size: 0.93em;
-    border-radius: 2em;
+    font-size: 0.93rem;
+    border-radius: 2rem;
     text-align: center;
-    padding: 3px;
-    letter-spacing: 1px;
-    margin-left: 10px;
-    padding: 5px;
+    padding: 0.3rem;
+    letter-spacing: 0.1rem;
+    margin-left: 1rem;
+    padding: 0.5rem;
 
     &::before {
       content: "Primary";

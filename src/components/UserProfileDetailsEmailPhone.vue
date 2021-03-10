@@ -174,7 +174,7 @@ export default {
 }
 
 .container-lower {
-  margin-top: 30px;
+  margin-top: 3rem;
 }
 
 .primary {
@@ -182,20 +182,20 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 20px;
-  left: 20px;
+  width: 8rem;
+  height: 2rem;
+  left: 2rem;
   top: 50%;
-  margin-top: -10px;
+  margin-top: -1rem;
   background-color: $flat-blue;
   color: white;
   font-weight: bold;
-  font-size: 0.75em;
-  border-radius: 2em;
+  font-size: 0.75rem;
+  border-radius: 2rem;
   text-align: center;
 
-  letter-spacing: 1px;
-  margin-left: 10px;
+  letter-spacing: 0.1rem;
+  margin-left: 1rem;
 
   &::before {
     content: "Primary";

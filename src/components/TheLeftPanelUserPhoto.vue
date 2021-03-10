@@ -33,12 +33,7 @@ export default {
 
 
 <style lang="scss" scoped>
-$font-color: rgb(68, 68, 68);
-$font-size: 20px;
-$main-font: "Rubik", sans-serif;
-$flat-green: #2ecc71;
-$save-button-color: #16a085;
-$container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+@import "../styles/main.scss";
 
 .container-profile {
   display: flex;
@@ -50,11 +45,11 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   box-shadow: $container-shadow;
   background-color: white;
   width: 100%;
-  height: 360px;
+  height: 36rem;
 
-  border-radius: 5px;
+  border-radius: $border-radius;
   margin-right: 15px;
-  margin-bottom: 50px;
+  margin-bottom: 5rem;
 
   .personaldata {
     position: relative;
@@ -62,7 +57,7 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    margin: 30px 5px 5px 5px;
+    margin: 3rem 0.5rem 0.5rem 0.5rem;
     font-size: 1.1em;
 
     p {
@@ -77,22 +72,22 @@ $container-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     #face_photo {
       position: relative;
       z-index: 0;
-      width: 150px;
-      height: 135px;
+      width: 15rem;
+      height: 13.5rem;
       border-radius: 100%;
-      margin-top: 40px;
-      box-shadow: 1px 1px 5px 0px grey;
+      margin-top: 4rem;
+      box-shadow: 0.1rem 0.1rem 5px 0rem grey;
     }
   }
 
   #edit-icon {
-    color: $save-button-color;
-    font-size: 40px;
+    color: $dark-flat-green;
+    font-size: 4rem;
     transition: color 0.2s ease-in-out;
     transition: transform 0.2s ease-in-out;
 
     &:hover {
-      color: lighten($save-button-color, 15%);
+      color: lighten($dark-flat-green, 15%);
       transform: scale(1.1);
       cursor: pointer;
     }

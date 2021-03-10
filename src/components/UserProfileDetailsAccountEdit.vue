@@ -127,13 +127,13 @@ export default {
 .checkboxes {
   display: flex;
   align-self: flex-start;
-  margin-top: 15px;
+  margin-top: 1.5rem;
 
   label {
-    margin: 0 10px 0 0;
+    margin: 0 1rem 0 0;
   }
   input[type="radio"] {
-    margin-right: 10px;
+    margin-right: 1rem;
     transform: scale(1.5);
   }
 }

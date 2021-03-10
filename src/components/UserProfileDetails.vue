@@ -31,14 +31,14 @@ export default {
   flex-direction: column;
   align-content: center;
   width: 50%;
-  margin-left: 30px;
+  margin-left: 3rem !important;
 }
 
 @media screen and (max-width: 1306px) {
   .user-main-info {
     width: 100%;
     margin-left: 0;
-    margin-top: 20px;
+    margin-top: 2rem;
   }
 }
 </style>

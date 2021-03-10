@@ -75,7 +75,7 @@ export default {
   height: 100%;
   width: 100%;
   z-index: 3;
-  padding: 30px;
+  padding: 3rem;
   background-color: #16a08498;
   text-align: center;
   display: flex;
@@ -91,13 +91,13 @@ export default {
     align-items: center;
     width: 60%;
     height: 100%;
-    margin-top: 30px;
+    margin-top: 3rem;
     z-index: 5;
-    border-radius: 5px;
-    padding: 20px;
-    padding-bottom: 40px;
+    border-radius: $border-radius;
+    padding: 2rem;
+    padding-bottom: 4rem;
     background-color: white;
-    box-shadow: 2px 2px 9px 0px black;
+    box-shadow: 0.2rem 0.2rem 0.9rem 0rem black;
     text-align: center;
     animation: 0.3s ease-in-out 1.1s both password_form;
     will-change: tansform;
@@ -105,10 +105,10 @@ export default {
     p {
       color: rgb(99, 99, 99);
       width: inherit;
-      margin-bottom: 25px;
+      margin-bottom: 2.5rem;
     }
     h1 {
-      margin-top: 20px;
+      margin-top: 2rem;
     }
   }
 
@@ -117,8 +117,8 @@ export default {
 
     .modal-img {
       position: relative;
-      width: 300px;
-      height: 150px;
+      width: 30rem;
+      height: 15rem;
 
       &:hover {
         cursor: pointer;
@@ -133,25 +133,5 @@ export default {
 label {
   display: inline-block;
   text-align: left;
-}
-
-@keyframes password_form {
-  from {
-    opacity: 0;
-    transform: translateY(10em) scaleX(0);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scaleX(1);
-  }
-}
-
-@keyframes forgot {
-  from {
-    transform: translateY(35%);
-  }
-  to {
-    transform: translateY(0%);
-  }
 }
 </style>
