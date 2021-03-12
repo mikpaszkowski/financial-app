@@ -136,12 +136,12 @@ input[type="checkbox"] {
 
 
 .error {
-    border: red 0.1rem solid !important;
+    border: $flat-red 0.1rem solid !important;
     box-shadow: none !important;
 }
 
 .error-label {
-    color: red;
+    color: $flat-red;
 }
 
 .non-visible {
