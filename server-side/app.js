@@ -3,14 +3,17 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./mysql-orm/connection");
 
+// CONFIGURING *.env variables
 require("dotenv").config({ path: "variables.env" });
 
+//  CREATING THE EXPRESS APP
 const app = express();
 
 const corsOptions = {
   origin: "http://localhost:3001"
 };
 
+// DATABASE CONNECTION
 db.sequelize
   .sync({ force: true })
   .then(() => {
@@ -18,8 +21,6 @@ db.sequelize
     initial();
   })
   .catch(err => console.err(err));
-
-const Role = db.role;
 
 app.use(cors(corsOptions));
 
@@ -32,11 +33,11 @@ app.get("/", (req, res) => {
 
 //CREATING USER / ADMIN ROLES
 function initial() {
-  Role.create({
+  db.role.create({
     id: 1,
     name: "user"
   });
-  Role.create({
+  db.role.create({
     id: 2,
     name: "admin"
   });
