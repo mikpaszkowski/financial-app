@@ -21,7 +21,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.user = require("../users/model.js")(sequelize, Sequelize);
+db.user = require("../users/usersModel.js")(sequelize, Sequelize);
 db.role = require("../roles/model.js")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
@@ -37,16 +37,10 @@ db.user.belongsToMany(db.role, {
 
 db.ROLES = ["user", "admin"];
 
-//testing the connection
-testConnection();
-
-async function testConnection() {
-  try {
-    await sequelize.authenticate();
-    console.log("Connection has been established succesfully.");
-  } catch (err) {
-    console.error("Unable to connect to the database:", err);
-  }
-}
+//testing the connection to DB
+sequelize
+  .authenticate()
+  .then(() => console.log("Database connected successfully!"))
+  .catch(err => console.error("Error : " + err));
 
 module.exports = db;
