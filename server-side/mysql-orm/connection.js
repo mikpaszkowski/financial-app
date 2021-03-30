@@ -38,9 +38,13 @@ db.user.belongsToMany(db.role, {
 db.ROLES = ["user", "admin"];
 
 //testing the connection to DB
-sequelize
-  .authenticate()
-  .then(() => console.log("Database connected successfully!"))
-  .catch(err => console.error("Error : " + err));
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Database connected successfully!");
+  } catch (error) {
+    console.error("Cannot connect with database: ", error);
+  }
+})();
 
 module.exports = db;

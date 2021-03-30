@@ -1,46 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../mysql-orm/connection");
+const userController = require("./userController");
+const authController = require("../services/auth");
 
-const Users = db.user;
+//find User by ID
+router.get("/findUser/:id", userController.findUserById);
 
-//GET list of users
-router.get("/", (req, res) => {
-  Users.findAll()
-    .then(users => {
-      console.log(users);
-      res.sendStatus(200);
-    })
-    .catch(err => console.error(err));
-});
+//SIGN UP - POST user
+router.post("/signup", authController.signUp);
 
-//POST user
-router.post("/add-user", (req, res) => {
-  let { id, username, email, password } = req.body;
-
-  Users.create({
-    id,
-    username,
-    email,
-    password
-  })
-    .then(user => {
-      res.send({ message: "User added successfully!" });
-      console.log(user);
-      res.status(200);
-    })
-    .catch(err => console.error(err));
-});
+//LOG IN - POST user
+router.post("/login", authController.logIn);
 
 //DELETE user by ID
-router.post("/delete/:id", (req, res) => {
-  Users.destroy({ where: { id: req.params.id } })
-    .then(data => {
-      console.log(data);
-      console.log(`id: ` + req.params.id);
-      res.redirect("/");
-    })
-    .catch(err => console.error(err));
-});
+router.delete("/delete/:id", userController.deleteUserById);
+
+//update User by ID
+router.put("/update/:id", userController.updateUser);
 
 module.exports = router;
