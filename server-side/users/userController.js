@@ -2,18 +2,20 @@ const db = require("../mysql-orm/connection");
 
 const Users = db.user;
 
-const findUserById = (req, res) => {
-  Users.findOne({
-    where: {
-      id: parseInt(req.params.id)
-    }
-  })
-    .then(user => {
-      if (!user) {
-        res.status(200).send("null");
+const findUserById = async (req, res) => {
+  try {
+    const user = await Users.findOne({
+      where: {
+        id: parseInt(req.params.id)
       }
-    })
-    .catch(err => console.log(err));
+    });
+    if (!user) {
+      res.status(404).send({ msg: "User not found." });
+    }
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(404).send({ msg: err });
+  }
 };
 
 const deleteUserById = (req, res) => {

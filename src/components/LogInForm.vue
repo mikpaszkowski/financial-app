@@ -6,11 +6,11 @@
       <label>Password</label>
       <input type="password" class="input-field" v-model="logInData.password" />
       <div class="passwordfield"></div>
-      <router-link to="/home/account" class="router-link">
+      <!-- <router-link to="/home/account" class="router-link"> -->
         <button type="submit" class="confirm-btn">
-          <div class="s-btn" @click="login">Log in</div>
+          <div class="s-btn" @click="logIn">Log in</div>
         </button>
-      </router-link>
+      <!-- </router-link> -->
 
       <div class="remember-me">
         <input type="checkbox" class="check-box" v-model="rememberMe" />
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -38,6 +40,14 @@ export default {
       this.$emit("open");
       console.log("open");
     },
+    logIn(){
+      axios.post('/all-users/findUser/2', {
+        username: this.logInData.username,
+        password: this.logInData.password
+      }).then(res => {
+        console.log(res);
+      }).catch(err => console.log(err));
+    }
   },
 };
 </script>

@@ -21,7 +21,7 @@ app.use(morgan("dev"));
 
 // DATABASE CONNECTION
 db.sequelize
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => {
     console.log("Drop and Resync Db");
     initial();
