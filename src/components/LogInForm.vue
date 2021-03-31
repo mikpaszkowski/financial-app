@@ -41,7 +41,7 @@ export default {
       console.log("open");
     },
     logIn(){
-      axios.post('/all-users/findUser/2', {
+      axios.post('https://mysql-node-server.herokuapp.com/all-users/findUser/5', {
         username: this.logInData.username,
         password: this.logInData.password
       }).then(res => {

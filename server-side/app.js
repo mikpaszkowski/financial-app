@@ -13,10 +13,7 @@ const db = require("./mysql-orm/connection");
 const app = express();
 
 //MIDDLEWARES
-const corsOptions = {
-  origin: "http://localhost:3001"
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(morgan("dev"));
 
 // DATABASE CONNECTION
