@@ -1,5 +1,4 @@
 export const timeZones = [
-
   {
     offset: "GMT-12:00",
     name: "Etc/GMT-12"
@@ -372,4 +371,4 @@ export const timeZones = [
     offset: "GMT+14:00",
     name: "Pacific/Kiritimati"
   }
-]
+];

@@ -1,8 +1,9 @@
 @import '../utilities/_variables.scss';
 
 
-.container-middle {
-    margin-top: 3rem;
+.container-middle,
+.container-lower {
+    margin-top: 3rem !important;
 }
 
 .info-data {

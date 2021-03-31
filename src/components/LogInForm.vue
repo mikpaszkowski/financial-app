@@ -2,14 +2,18 @@
   <div class="form-box" id="form-box">
     <div class="log-in-form">
       <label> Username </label>
-      <input type="text" class="input-field" v-model="logInData.userId" />
+      <input type="text" class="input-field" v-model="logInData.email" @keyup.enter="logIn"/>
       <label>Password</label>
-      <input type="password" class="input-field" v-model="logInData.password" />
+      <input type="password" class="input-field" v-model="logInData.password" @keyup.enter="logIn"/>
       <div class="passwordfield"></div>
       <!-- <router-link to="/home/account" class="router-link"> -->
-        <button type="submit" class="confirm-btn">
-          <div class="s-btn" @click="logIn">Log in</div>
-        </button>
+      <button
+        type="submit"
+        class="confirm-btn"
+        @click="logIn"
+      >
+        Log in
+      </button>
       <!-- </router-link> -->
 
       <div class="remember-me">
@@ -29,26 +33,29 @@ export default {
   data() {
     return {
       logInData: {
-        userId: "",
-        password: "",
+        email: "",
+        password: ""
       },
-      rememberMe: false,
+      rememberMe: false
     };
   },
   methods: {
-    openModal: function () {
+    openModal: function() {
       this.$emit("open");
-      console.log("open");
     },
-    logIn(){
-      axios.post('https://mysql-node-server.herokuapp.com/all-users/findUser/5', {
-        username: this.logInData.username,
-        password: this.logInData.password
-      }).then(res => {
-        console.log(res);
-      }).catch(err => console.log(err));
+    logIn() {
+      axios
+        .post("http://localhost:3000/all-users/login", {
+          email: this.logInData.email,
+          password: this.logInData.password
+        })
+        .then(res => {
+          console.log(res);
+          this.$router.push({ name: 'Home'});
+        })
+        .catch(err => console.log(err));
     }
-  },
+  }
 };
 </script>
 

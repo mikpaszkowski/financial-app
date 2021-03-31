@@ -7,22 +7,23 @@ import Transaction from "../components/Transaction.vue";
 import LandingPage from "../components/LandingPage.vue";
 import SignUp from "../components/SignUp.vue";
 import NotFound from "../views/NotFound.vue";
+import HomeNewsContainer from "../components/HomeNewsContainer.vue";
 
 const routes = [
   {
     path: "/",
     name: "LandingPage",
-    component: LandingPage,
+    component: LandingPage
   },
   {
     path: "/login",
     name: "LogIn",
-    component: LogIn,
+    component: LogIn
   },
   {
     path: "/signup",
     name: "SignUp",
-    component: SignUp,
+    component: SignUp
   },
   {
     path: "/home",
@@ -33,18 +34,22 @@ const routes = [
       {
         path: "account",
         name: "Account",
-        component: UserProfile,
-
+        component: UserProfile
       },
       {
-        path: 'history',
+        path: "history",
         name: "History",
-        component: History,
+        component: History
       },
       {
-        path: 'transfer',
+        path: "transfer",
         name: "Transaction",
-        component: Transaction,
+        component: Transaction
+      },
+      {
+        path: "news",
+        name: "News",
+        component: HomeNewsContainer
       }
     ]
     //   component: () =>

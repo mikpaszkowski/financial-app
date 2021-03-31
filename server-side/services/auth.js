@@ -37,10 +37,7 @@ const logIn = async (req, res) => {
       console.log("1");
       return res.status(404).send({ msg: "User has not been found!" });
     } else {
-      console.log(`${req.body.password} : ${user.password}`);
       const authUser = await bcrypt.compare(req.body.password, user.password);
-      console.log(authUser);
-      console.log(`${req.body.password} : ${user.password}`);
       if (!authUser) {
         console.log("3");
         res
@@ -48,15 +45,6 @@ const logIn = async (req, res) => {
           .send({ accessToken: null, message: "Invalid password" });
       }
       const token = createJWToken(user.id);
-      // ,
-      // (err, token) => {
-      //   if (err) {
-      //     console.log("5");
-      //     res.status(401).send({ msg: "Generating token unsuccessfull..." });
-      //   }
-      //   console.log(token);
-      // }
-
       res.status(200).send({
         id: user.id,
         username: user.username,

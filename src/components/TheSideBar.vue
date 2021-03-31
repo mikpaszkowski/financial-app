@@ -10,32 +10,26 @@
 </template>
 
 <script>
-import LogOutIcon from "./icons/LogOut";
-
 export default {
-  components: {
-    LogOutIcon,
-  },
   data() {
     return {
-      isToolbarOn: false,
+      isToolbarOn: false
     };
   },
   computed: {
-    toolbarPositionStyle: function () {
+    toolbarPositionStyle: function() {
       return {
-        toolbarPosition: this.isToolbarOn,
+        toolbarPosition: this.isToolbarOn
       };
-    },
+    }
   },
   methods: {
-    slideInOutBar: function () {
+    slideInOutBar: function() {
       this.isToolbarOn = !this.isToolbarOn;
-    },
-  },
+    }
+  }
 };
 </script>
-
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";

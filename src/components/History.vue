@@ -23,14 +23,14 @@ export default {
   },
 
   mounted() {
-    this.$nextTick(function () {
-      setTimeout(() => {
-        let element = document.querySelector(".container-history");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
-    });
+    // this.$nextTick(function () {
+    //   setTimeout(() => {
+    //     let element = document.querySelector(".container-history");
+    //     if (element) {
+    //       element.scrollIntoView({ behavior: "smooth", block: "start" });
+    //     }
+    //   }, 100);
+    // });
   },
 };
 </script>

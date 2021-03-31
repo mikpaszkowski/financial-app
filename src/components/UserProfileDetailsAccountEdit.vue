@@ -31,7 +31,7 @@
           v-for="(timezone, idx) in timezones"
           :key="idx"
         >
-          {{ timezone.name }}
+          {{ `(${timezone.offset}) ` + timezone.name }}
         </option>
       </select>
 

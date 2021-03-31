@@ -8,13 +8,12 @@
     flex-direction: column;
     align-content: center;
     width: 50%;
-    margin-left: 3rem;
+    margin: 2rem 0 0 3rem;
 }
 
 @media screen and (max-width: 1306px) {
     .user-main-info {
         width: 100%;
-        margin: 0;
-        margin-top: 2rem !important;
+        margin: 2rem 0 0 0;
     }
 }

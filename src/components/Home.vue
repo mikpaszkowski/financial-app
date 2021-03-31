@@ -2,42 +2,35 @@
   <div class="home">
     <div class="background-image"></div>
     <Heading />
-    <Navbar />
+    <SendRequestBar v-show="isSendRequestBarVisible" />
     <router-view />
     <Footer />
   </div>
 </template>
 
-
 <script>
 import Heading from "./TheHeading";
-import Navbar from "./TheSideBar";
+import SendRequestBar from "./TheSideBar";
 import Footer from "./TheFooter";
 
 export default {
   components: {
     Heading,
-    Navbar,
-    Footer,
+    SendRequestBar,
+    Footer
   },
   data() {
     return {
-      isAccountButtonClicked: false,
-      component: "app-home-welcome",
+      isSendRequestBarVisible: false
     };
   },
-  methods: {
-    showAccountData: function () {
-      this.component = "app-account-data";
-    },
-  },
-
-  created: function () {
-    // this.$root.$on("accountDataDisplay", this.showAccountData);
-  },
+  updated: function() {
+    this.$route.name == "Transaction"
+      ? (this.isSendRequestBarVisible = true)
+      : (this.isSendRequestBarVisible = false);
+  }
 };
 </script>
-
 
 <style lang="scss">
 @import "../styles/main.scss";
