@@ -4,10 +4,11 @@ const Transaction = db.transaction;
 
 const getAll = async (req, res) => {
   try {
-    const transactions = await Transaction.findAll();
-    if (!transactions) {
+    const response = await Transaction.findAll();
+    if (!response) {
       res.status(404).send({ msg: "Transactions not found." });
     }
+    res.status(200).send(response);
   } catch (err) {
     res.status(500).send({ msg: err });
   }
@@ -16,10 +17,11 @@ const getAll = async (req, res) => {
 const send = async (req, res) => {
   try {
     const sendTransaction = await Transaction.create({
+      id: req.body.id,
       amount: req.body.amount,
       transactionType: req.body.transactionType,
       description: req.body.description,
-      status: null
+      status: req.body.status
     });
     console.log(sendTransaction);
     res.status(200).json({

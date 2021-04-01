@@ -21,15 +21,14 @@ const signUp = async (req, res) => {
       email: user.email,
       accessToken: token
     });
-  } catch (err) {
-    res.status(400).json({ msg: "Error with generating the JWT Token." });
+  } catch (error) {
+    res.status(400).json({ msg: error });
   }
 };
 
-const maxAge = 3 * 60 * 60;
 const createJWToken = id => {
   return jwt.sign({ id }, authConfig.secret, {
-    expiresIn: maxAge
+    expiresIn: 10800 //3h
   });
 };
 
