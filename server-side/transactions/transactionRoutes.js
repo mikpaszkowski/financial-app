@@ -3,14 +3,15 @@ const router = express.Router();
 const transactionController = require("./transactionController");
 
 //get all transactions
-router.get("/getAll", transactionController.getAll);
+router.get("/getAll/:userId", transactionController.getAll);
 
-// router.get("/getOne/:id", transactionController.getOneById);
+//get one transaction info by ID
+router.get("/getOne/:id", transactionController.getOneById);
 
-//send money
-router.post("/send", transactionController.send);
+//send / request transaction
+router.post("/create", transactionController.create);
 
-// //request money
-// router.post("/request", transactionController.request);
+//modify request
+router.put("/edit/:id", transactionController.modifyTransaction);
 
 module.exports = router;

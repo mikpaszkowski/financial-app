@@ -30,13 +30,13 @@ db.transaction = require("../transactions/transactionModel")(
 
 db.transaction.belongsTo(db.user, {
   through: "user_transactions",
-  foreignKey: "transactionId",
-  otherKey: "userId"
+  as: "user",
+  foreignKey: "userId"
 }),
   db.user.belongsToMany(db.transaction, {
     through: "user_transactions",
-    foreignKey: "userId",
-    otherKey: "transactionId"
+    as: "transactions",
+    foreignKey: "transactionId"
   });
 
 db.role.belongsToMany(db.user, {

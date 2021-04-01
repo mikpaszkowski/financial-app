@@ -4,7 +4,11 @@ const Transaction = db.transaction;
 
 const getAll = async (req, res) => {
   try {
-    const response = await Transaction.findAll();
+    const response = await Transaction.findAll({
+      where: {
+        userId: req.params.userId
+      }
+    });
     if (!response) {
       res.status(404).send({ msg: "Transactions not found." });
     }
@@ -14,18 +18,19 @@ const getAll = async (req, res) => {
   }
 };
 
-const send = async (req, res) => {
+const create = async (req, res) => {
   try {
     const sendTransaction = await Transaction.create({
       id: req.body.id,
       amount: req.body.amount,
       transactionType: req.body.transactionType,
       description: req.body.description,
-      status: req.body.status
+      status: req.body.status,
+      userId: req.body.userId
     });
-    console.log(sendTransaction);
     res.status(200).json({
       id: sendTransaction.id,
+      amount: sendTransaction.amount,
       transactionType: sendTransaction.transactionType,
       description: sendTransaction.description,
       status: sendTransaction.status
@@ -35,7 +40,49 @@ const send = async (req, res) => {
   }
 };
 
+const getOneById = async (req, res) => {
+  try {
+    const transaction = await Transaction.findByPk(req.params.id, {
+      include: ["user"]
+    });
+    if (!transaction) {
+      res.status(404).send({ msg: "Transaction not found." });
+    }
+    res.status(200).send(transaction);
+  } catch (err) {
+    res.status(500).send({ msg: err.message });
+  }
+};
+
+const modifyTransaction = async (req, res) => {
+  try {
+    const transaction = await Transaction.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+    if (!transaction) {
+      res
+        .status(404)
+        .send({ msg: "Transaction not found. Cannot modify transaction." });
+    }
+
+    const updatedTransaction = await transaction.update(req.body);
+
+    if (!updatedTransaction) {
+      res
+        .status(404)
+        .send({ msg: "Transaction not found. Cannot modify transaction." });
+    }
+    res.status(200).send(updatedTransaction);
+  } catch (err) {
+    res.status(500).send({ msg: err.message });
+  }
+};
+
 module.exports = {
   getAll,
-  send
+  create,
+  getOneById,
+  modifyTransaction
 };
