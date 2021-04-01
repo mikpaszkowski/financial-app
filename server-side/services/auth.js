@@ -13,7 +13,14 @@ const signUp = async (req, res) => {
       email: req.body.email,
       password: await bcrypt.hash(req.body.password, salt)
     });
-    res.status(200).json({ user: user.username });
+    const token = createJWToken(user.id);
+    console.log(token);
+    res.status(200).json({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      accessToken: token
+    });
   } catch (err) {
     res.status(400).json({ msg: "Error with generating the JWT Token." });
   }
@@ -21,7 +28,7 @@ const signUp = async (req, res) => {
 
 const maxAge = 3 * 60 * 60;
 const createJWToken = id => {
-  return jwt.sign({ id }, "new user at my website", {
+  return jwt.sign({ id }, authConfig.secret, {
     expiresIn: maxAge
   });
 };
@@ -34,12 +41,10 @@ const logIn = async (req, res) => {
       }
     });
     if (!user) {
-      console.log("1");
-      return res.status(404).send({ msg: "User has not been found!" });
+      return res.status(404).send({ msg: "No user found." });
     } else {
       const authUser = await bcrypt.compare(req.body.password, user.password);
       if (!authUser) {
-        console.log("3");
         res
           .status(401)
           .send({ accessToken: null, message: "Invalid password" });
