@@ -2,16 +2,22 @@
   <div class="form-box" id="form-box">
     <div class="log-in-form">
       <label> Username </label>
-      <input type="text" class="input-field" v-model="logInData.email" @keyup.enter="logIn"/>
+      <input
+        type="text"
+        class="input-field"
+        v-model="logInData.email"
+        @keyup.enter="logIn"
+      />
       <label>Password</label>
-      <input type="password" class="input-field" v-model="logInData.password" @keyup.enter="logIn"/>
+      <input
+        type="password"
+        class="input-field"
+        v-model="logInData.password"
+        @keyup.enter="logIn"
+      />
       <div class="passwordfield"></div>
       <!-- <router-link to="/home/account" class="router-link"> -->
-      <button
-        type="submit"
-        class="confirm-btn"
-        @click="logIn"
-      >
+      <button type="submit" class="confirm-btn" @click="logIn">
         Log in
       </button>
       <!-- </router-link> -->
@@ -27,7 +33,7 @@
 </template>
 
 <script>
-import axios from "axios";
+
 
 export default {
   data() {
@@ -43,17 +49,12 @@ export default {
     openModal: function() {
       this.$emit("open");
     },
-    logIn() {
-      axios
-        .post("http://localhost:3000/all-users/login", {
-          email: this.logInData.email,
-          password: this.logInData.password
-        })
-        .then(res => {
-          console.log(res);
-          this.$router.push({ name: 'Home'});
-        })
-        .catch(err => console.log(err));
+    async logIn() {
+      const user = await this.$dbApi.users.logIn(this.logInData);
+      console.log(user);
+      if (user) {
+        this.$router.push({ name: "Home" });
+      }
     }
   }
 };

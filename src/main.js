@@ -4,10 +4,19 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import axios from "axios";
+import { $dbApi } from "./api/databaseAPI";
 
 axios.defaults.baseURL = "http://localhost:3000";
 
-createApp(App)
+const app = createApp(App);
+
+app.mixin({
+  computed: {
+    $dbApi: () => $dbApi
+  }
+});
+
+app
   .use(store)
   .use(router)
   .mount("#app");
