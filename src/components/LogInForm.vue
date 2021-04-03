@@ -51,7 +51,6 @@ export default {
     },
     async logIn() {
       const user = await this.$dbApi.users.logIn(this.logInData);
-      console.log(user);
       if (user) {
         this.$router.push({ name: "Home" });
       }

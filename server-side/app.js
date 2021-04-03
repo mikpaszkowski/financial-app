@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", require("./user/userRoutes"));
-app.use("/transaction", require("./transactions/transactionRoutes"));
+app.use("/transactions", require("./transactions/transactionRoutes"));
 
 //CREATING USER / ADMIN ROLES
 function initial() {

@@ -6,88 +6,134 @@
     <form class="form">
       <label for="name">Recipient</label>
       <input type="text" name="email" placeholder="Enter Email Address" />
+      <label for="money">You send</label>
+      <div class="input-group">
+        <div class="currency-label">
+          <span>$</span>
+        </div>
+        <div class="input">
+          <input
+            type="text"
+            id="amount"
+            name="amount"
+            v-model="data.amount"
+          />
+        </div>
+        <div class="currency">
+          <select name="currency">
+            <option value="">USD</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="money">Recipient gets</label>
+      <div class="input-group">
+        <div class="currency-label">
+          <span>$</span>
+        </div>
+        <div class="input">
+          <input
+            type="text"
+            id="amount"
+            name="amount"
+            v-model="data.amount"
+          />
+        </div>
+        <div class="currency">
+          <select name="currency">
+            <option value="">USD</option>
+          </select>
+        </div>
+      </div>
       <label for="description">Description:</label>
       <textarea
         type="text"
         id="description"
-        v-model="transferData.description"
+        v-model="data.description"
       ></textarea>
-      <div class="textarea_meassage" id="text_area_message"></div>
 
-      <label for="money">Amount:</label>
-      <input
-        type="text"
-        id="amount"
-        name="amount"
-        v-model="transferData.amount"
-      />
-
-      <div id="message" class="amount_message"></div>
-
-      <button class="btn" ref="submitButton" @click="checkForm">Send</button>
+      <button class="btn" ref="submitButton" @click.prevent="send">Send</button>
     </form>
   </div>
 </template>
 
-
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
       errors: [],
-      transferData: {
-        typeOfTransaction: null,
+      data: {
+        transactionType: "send",
         description: null,
         amount: null,
-        code: null,
+        userId: null,
+        status: null
       },
-      transactions: [
-        { id: 1, name: "withdraw" },
-        { id: 2, name: "deposit" },
-      ],
-      isModalOn: false,
+      isModalOn: false
     };
   },
   methods: {
-    closeModal: function () {
+    closeModal: function() {
       this.isModalOn = false;
     },
-    checkForm: function (e) {
-      e.preventDefault();
-      this.errors = [];
-
-      if (!this.transferData.typeOfTransaction) {
-        this.errors.push("Type of transfer required.");
-      }
-      if (!this.transferData.description) {
-        this.errors.push("Description required.");
-      }
-      if (isNaN(this.transferData.amount) || this.transferData.amount == null) {
-        this.errors.push("Invalid amount number.");
-      } else if (parseInt(this.transferData.amount) <= 0) {
-        alert(parseInt(this.transferData.amount));
-        this.errors.push("Amount number should be greater that 0.");
-      }
-      if (isNaN(this.transferData.code)) {
-        this.errors.push("Invalid 5-digit code - required a number)");
-      } else if (String(this.transferData.code).length != 5) {
-        this.errors.push(
-          "Invalid 5-digit code - required 5-digit long number."
-        );
-      }
-
-      if (!this.errors.length) {
-        return true;
-      } else {
-        this.isModalOn = true;
-        e.preventDefault();
-      }
-    },
+    async send() {
+      this.data.userId = this.userId;
+      console.log(`object : ${this.data.transactionType}`);
+      const transaction = await this.$dbApi.transactions.createTransaction(
+        this.data
+      );
+      console.log(transaction);
+    }
   },
+  computed: {
+    ...mapGetters("user", {
+      userId: "getUserId"
+    })
+  }
 };
 </script>
 
-
 <style lang="scss" scoped>
 @import "../styles/main.scss";
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  input {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .currency {
+    select {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: none;
+    }
+  }
+  .currency-label {
+    width: 6rem;
+    height: 100%;
+    border: 1px solid #bdc3c7;
+    border-right: 0;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    text-align: center;
+    color: $input-font-color;
+    font-size: 3rem;
+    background-color: lighten($input-border-color, 20%);
+    padding: 1rem;
+
+    span {
+      height: 100%;
+    }
+  }
+}
 </style>

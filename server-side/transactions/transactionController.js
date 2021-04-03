@@ -2,7 +2,7 @@ const db = require("../mysql-orm/connection");
 
 const Transaction = db.transaction;
 
-const getAll = async (req, res) => {
+const findAll = async (req, res) => {
   try {
     const response = await Transaction.findAll({
       where: {
@@ -19,6 +19,7 @@ const getAll = async (req, res) => {
 };
 
 const create = async (req, res) => {
+  console.log(req.body);
   try {
     const sendTransaction = await Transaction.create({
       id: req.body.id,
@@ -40,7 +41,7 @@ const create = async (req, res) => {
   }
 };
 
-const getOneById = async (req, res) => {
+const findOneById = async (req, res) => {
   try {
     const transaction = await Transaction.findByPk(req.params.id, {
       include: ["user"]
@@ -81,8 +82,8 @@ const modifyTransaction = async (req, res) => {
 };
 
 module.exports = {
-  getAll,
+  findAll,
   create,
-  getOneById,
+  findOneById,
   modifyTransaction
 };

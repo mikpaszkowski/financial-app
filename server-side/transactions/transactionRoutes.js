@@ -3,10 +3,10 @@ const router = express.Router();
 const transactionController = require("./transactionController");
 
 //get all transactions
-router.get("/getAll/:userId", transactionController.getAll);
+router.get("/findAll/:userId", transactionController.findAll);
 
 //get one transaction info by ID
-router.get("/getOne/:id", transactionController.getOneById);
+router.get("/findOne/:id", transactionController.findOneById);
 
 //send / request transaction
 router.post("/create", transactionController.create);
