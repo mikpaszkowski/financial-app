@@ -27,7 +27,7 @@ class DBApiService {
   checkObjDataType(objectData) {
     if (JSON.stringify(objectData) === "{}")
       throw new Error("Provided object should not be empty.");
-    if (!typeof objectData && !objectData instanceof ObjectS) {
+    if (!typeof objectData && !(objectData instanceof Object)) {
       throw new Error("Provided data should be object data type");
     }
   }
@@ -141,7 +141,6 @@ class TRANSACTIONSApiService extends DBApiService {
 
   async createTransaction(data) {
     this.checkObjDataType(data);
-    console.log(data);
     try {
       const transaction = await axios.post(this.getUrl("create"), {
         amount: parseInt(data.amount),

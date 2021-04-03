@@ -1,24 +1,50 @@
 <template>
   <div class="form-box" id="form-box">
     <div class="log-in-form">
+        <label> First Name </label>
+      <input
+        type="text"
+        class="input-field"
+        v-model="signUpData.userName"
+        @keyup.enter="logIn"
+      />
+      <label> Last Name </label>
+      <input
+        type="text"
+        class="input-field"
+        v-model="signUpData.userSurname"
+        @keyup.enter="logIn"
+      />
       <label> Email </label>
       <input
         type="text"
         class="input-field"
-        v-model="logInData.email"
+        v-model="signUpData.email"
         @keyup.enter="logIn"
       />
+      <label>Date of birth</label>
+      <input type="date" v-model="signUpData.birthDate">
+
+      
       <label>Password</label>
       <input
         type="password"
         class="input-field"
-        v-model="logInData.password"
+        v-model="signUpData.password"
+        @keyup.enter="logIn"
+      />
+
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        class="input-field"
+        v-model="signUpData.password"
         @keyup.enter="logIn"
       />
       <div class="passwordfield"></div>
       <!-- <router-link to="/home/account" class="router-link"> -->
-      <button type="submit" class="confirm-btn" @click="logIn">
-        Log in
+      <button type="submit" class="confirm-btn" @click.prevent="signUp">
+        Sign up
       </button>
       <!-- </router-link> -->
 
@@ -38,9 +64,12 @@
 export default {
   data() {
     return {
-      logInData: {
+      signUpData: {
         email: "",
-        password: ""
+        password: "",
+        userName: "",
+        userSurname: "",
+        birthDate: ""
       },
       rememberMe: false
     };
@@ -49,11 +78,8 @@ export default {
     openModal: function() {
       this.$emit("open");
     },
-    async logIn() {
-      const user = await this.$dbApi.users.logIn(this.logInData);
-      if (user) {
-        this.$router.push({ name: "Home" });
-      }
+    async signUp() {
+      console.log(this.signUpData);
     }
   }
 };

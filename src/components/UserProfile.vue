@@ -21,10 +21,7 @@ export default {
   components: {
     TheLeftPanel,
     UserProfileDetails,
-  },
-  computed() {
-    console.log(this.$store);
-  },
+  }
 };
 </script>
 

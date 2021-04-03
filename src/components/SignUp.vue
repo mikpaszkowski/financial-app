@@ -13,7 +13,7 @@
         <p>We are glad you want to be a member of Monify community!</p>
         <SignUpPic class="signup-pic" />
       </div>
-      <LogInForm @open="openModal" />
+      <SignUpForm @open="openModal" />
     </div>
   </div>
 </template>
@@ -21,13 +21,13 @@
 
 <script>
 import ModalForgotPassword from "./LoginFormPasswordModal";
-import LogInForm from "./LogInForm";
+import SignUpForm from "./SignUpForm";
 import SignUpPic from "./icons/SignUpPic";
 
 export default {
   components: {
     ModalForgotPassword,
-    LogInForm,
+    SignUpForm,
     SignUpPic,
   },
   name: "login",

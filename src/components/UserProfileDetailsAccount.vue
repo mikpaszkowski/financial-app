@@ -114,11 +114,9 @@ export default {
     setStatus() {
       const statusLabel = document.querySelector(".status");
       if (this.statusCom == "false") {
-        console.log("1");
         statusLabel.classList.add("disabled");
         statusLabel.classList.remove("enabled");
       } else {
-        console.log("2");
         statusLabel.classList.remove("disabled");
         statusLabel.classList.add("enabled");
       }
