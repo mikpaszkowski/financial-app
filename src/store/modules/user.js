@@ -1,6 +1,6 @@
 const state = () => ({
   currentName: "Nicolas",
-  currentSurename: "Kowalsky",
+  currentSurname: "Kowalsky",
   currentPhoneNumber: "+48 985 652 332",
   additionalPhoneNumber: "+48 654 887 965",
   currentEmailAddress: "myEmail@gmail.com",
@@ -15,7 +15,7 @@ const state = () => ({
 
 const getters = {
   getCurrentName: state => state.currentName,
-  getCurrentSurname: state => state.currentSurename,
+  getCurrentSurname: state => state.currentSurname,
   getCurrentPhoneNumber: state => state.currentPhoneNumber,
   getCurrentAddress: state => state.currentAddress,
   getCurrentBirthDate: state => state.currentBirthDate,
@@ -25,7 +25,33 @@ const getters = {
   getCurrentLanguage: state => state.currentLanguage,
   getCurrentTimeZone: state => state.currentTimeZone,
   getStatus: state => state.status,
-  getUserId: state => state.userId
+  getUserId: state => state.userId,
+  getPersonalData: state => {
+    const dataObj = {
+      name: state.currentName,
+      surname: state.currentSurname,
+      dateOfBirth: state.currentBirthDate,
+      address: state.currentAddress
+    };
+    return dataObj;
+  },
+  getAccountSettings: state => {
+    const dataObj = {
+      language: state.currentLanguage,
+      timezone: state.currentTimeZone,
+      status: state.status
+    };
+    return dataObj;
+  },
+  getEmailPhoneAddress: state => {
+    const dataObj = {
+      email: state.currentEmailAddress,
+      additionalEmail: state.additionalEmailAddress,
+      phone: state.currentPhoneNumber,
+      additionalPhone: state.additionalPhoneNumber
+    };
+    return dataObj;
+  }
 };
 
 const mutations = {
@@ -33,7 +59,7 @@ const mutations = {
     state.currentName = payLoad;
   },
   setCurrentSurname(state, payLoad) {
-    state.currentSurename = payLoad;
+    state.currentSurname = payLoad;
   },
   setCurrentPhoneNumber(state, payLoad) {
     state.currentPhoneNumber = payLoad;

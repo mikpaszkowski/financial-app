@@ -15,11 +15,7 @@
             </div>
             <div class="info-data">
               <p id="language_p">
-                {{
-                  currentLanguageCom.length > 0
-                    ? currentLanguageCom
-                    : currentLanguage
-                }}
+                {{ accountSettings.language }}
               </p>
             </div>
           </div>
@@ -30,11 +26,7 @@
             </div>
             <div class="info-data">
               <p id="time_zone_p">
-                {{
-                  currentTimeZoneCom.length > 0
-                    ? currentTimeZoneCom
-                    : currentTimeZone
-                }}
+                {{ accountSettings.timezone }}
               </p>
             </div>
           </div>
@@ -66,87 +58,53 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import ModalAccountSettings from "./UserProfileDetailsAccountEdit";
 import EditIcon from "./icons/EditIcon";
+import userDetailsModal from "../composables/userDetailsModal";
+import { watch } from "vue";
+
 
 export default {
   components: {
     ModalAccountSettings,
-    EditIcon,
+    EditIcon
   },
-  data() {
-    return {
-      currentTimeZone: "",
-      currentLanguage: "",
-      modalOpened: false,
-    };
+  props: {
+    accountSettings: {
+      type: Object,
+      required: true
+    }
   },
-  methods: {
-    toggleModal: function () {
-      this.modalOpened = !this.modalOpened;
-      if (this.modalOpened) {
-        this.scrollToElement();
-      } else {
-        this.scrollBack();
-      }
-    },
-    closeModal: function () {
-      this.modalOpened = false;
-      this.scrollBack();
-    },
-    scrollToElement() {
-      setTimeout(() => {
-        let element = document.querySelector(".modal");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      }, 100);
-    },
-    scrollBack() {
-      setTimeout(() => {
-        let element = document.querySelector(".container-middle");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      }, 100);
-    },
-    setStatus() {
+  setup(props) {
+    const {
+      modalOpened,
+      toggleModal,
+      closeModal,
+      scrollBack,
+      scrollToElement
+    } = userDetailsModal(props);
+
+    watch(props.accountSettings.status, () => {
       const statusLabel = document.querySelector(".status");
-      if (this.statusCom == "false") {
+      if (props.accountSettings.status == "false") {
         statusLabel.classList.add("disabled");
         statusLabel.classList.remove("enabled");
       } else {
         statusLabel.classList.remove("disabled");
         statusLabel.classList.add("enabled");
       }
-    },
-    ...mapGetters("user", [
-      "getCurrentLanguage",
-      "getCurrentTimeZone",
-      "getStatus",
-    ]),
-  },
-  computed: {
-    ...mapGetters("user", {
-      currentTimeZoneCom: "getCurrentTimeZone",
-      currentLanguageCom: "getCurrentLanguage",
-      statusCom: "getStatus",
-    }),
-  },
-  watch: {
-    statusCom() {
-      this.setStatus();
-    },
-  },
-  mounted() {
-    this.currentTimeZone = this.getCurrentTimeZone;
-    this.currentLanguage = this.getCurrentLanguage;
-    this.setStatus();
-  },
+    });
+
+    return {
+      modalOpened,
+      toggleModal,
+      closeModal,
+      scrollBack,
+      scrollToElement
+    };
+  }
 };
 </script>
-
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";

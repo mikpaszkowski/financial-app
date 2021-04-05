@@ -17,7 +17,7 @@
               <p>Name:</p>
             </div>
             <div class="info-data">
-              <p>{{ userNameCom.length > 0 ? userNameCom : userName }}</p>
+              <p>{{ personalData.name + " " + personalData.surname }}</p>
             </div>
           </div>
 
@@ -27,7 +27,7 @@
             </div>
             <div class="info-data">
               <p id="date_p">
-                {{ birthDateCom.length > 0 ? birthDateCom : birthDate }}
+                {{ personalData.dateOfBirth }}
               </p>
             </div>
           </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="info-data">
               <p id="address_p">
-                {{ addressCom.length > 0 ? addressCom : address }}
+                {{ personalData.address }}
               </p>
             </div>
           </div>
@@ -55,80 +55,38 @@
   </div>
 </template>
 
-
-
 <script>
 import ModalPersonalDetails from "./UserProfileDetailsPersonalEdit";
-import { mapGetters } from "vuex";
+import userDetailsModal from "../composables/userDetailsModal";
+
 
 export default {
-  data() {
-    return {
-      userName: "",
-      userSurname: "",
-      address: "",
-      birthDate: "",
-      modalOpened: false,
-    };
-  },
-
   components: { ModalPersonalDetails },
+  props: {
+    personalData: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
+    const {
+      modalOpened,
+      toggleModal,
+      closeModal,
+      scrollBack,
+      scrollToElement
+    } = userDetailsModal(props);
 
-  methods: {
-    toggleModal() {
-      this.modalOpened = !this.modalOpened;
-      if (this.modalOpened) {
-        this.scrollToElement();
-      } else {
-        this.scrollBack();
-      }
-    },
-    scrollToElement() {
-      setTimeout(() => {
-        let element = document.querySelector(".modal");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      }, 100);
-    },
-    scrollBack() {
-      setTimeout(() => {
-        let element = document.querySelector(".container");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      }, 100);
-    },
-    modalClosed() {
-      this.modalOpened = false;
-      this.scrollBack();
-    },
-    ...mapGetters("user", [
-      "getCurrentName",
-      "getCurrentBirthDate",
-      "getCurrentSurname",
-      "getCurrentAddress",
-    ]),
-  },
-
-  mounted() {
-    this.userName = this.getCurrentName;
-    this.userSurname = this.getCurrentSurname;
-    this.birthDate = this.getCurrentBirthDate;
-    this.address = this.getCurrentAddress;
-  },
-  computed: {
-    ...mapGetters("user", {
-      userNameCom: "getCurrentName",
-      birthDateCom: "getCurrentBirthDate",
-      userSurnameCom: "getCurrentSurname",
-      addressCom: "getCurrentAddress",
-    }),
-  },
+    return {
+      modalOpened,
+      toggleModal,
+      closeModal,
+      scrollBack,
+      scrollToElement
+    };
+  }
 };
 </script>
-
-
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";

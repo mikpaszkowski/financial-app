@@ -21,11 +21,7 @@
             </div>
             <div class="info-data">
               <p id="email_p">
-                {{
-                  currentEmailAddressCom.length > 0
-                    ? currentEmailAddressCom
-                    : currentEmailAddress
-                }}
+                {{ emailPhoneAddress.email }}
               </p>
             </div>
           </div>
@@ -37,11 +33,7 @@
             </div>
             <div class="info-data">
               <p id="email_p">
-                {{
-                  additionalEmailAddressCom.length > 0
-                    ? additionalEmailAddressCom
-                    : additionalEmailAddress
-                }}
+                {{ emailPhoneAddress.additionalEmail }}
               </p>
             </div>
           </div>
@@ -53,11 +45,7 @@
             </div>
             <div class="info-data">
               <p>
-                {{
-                  currentPhoneNumberCom.length > 0
-                    ? currentPhoneNumberCom
-                    : phoneNumber
-                }}
+                {{ emailPhoneAddress.phone }}
               </p>
             </div>
           </div>
@@ -69,11 +57,7 @@
             </div>
             <div class="info-data">
               <p>
-                {{
-                  additionalPhoneNumberCom.length > 0
-                    ? additionalPhoneNumberCom
-                    : additionalPhoneNumber
-                }}
+                {{ emailPhoneAddress.additionalPhone }}
               </p>
             </div>
           </div>
@@ -88,65 +72,35 @@
 
 <script>
 import ModalEmailAddress from "./UserProfileDetailsEmailPhoneEdit.vue";
-import { mapGetters } from "vuex";
+import userDetailsModal from "../composables/userDetailsModal";
 
 export default {
   components: { ModalEmailAddress },
+  props: {
+    emailPhoneAddress: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
+    const {
+      modalOpened,
+      toggleModal,
+      closeModal,
+      scrollBack,
+      scrollToElement
+    } = userDetailsModal(props);
 
-  data() {
     return {
-      modalEmailAddress_open: false,
-      phoneNumber: "",
-      currentEmailAddress: "",
-      additionalPhoneNumber: "",
-      additionalEmailAddress: "",
-      modalOpened: false,
+      modalOpened,
+      toggleModal,
+      closeModal,
+      scrollBack,
+      scrollToElement
     };
-  },
-  methods: {
-    toggleModal: function () {
-      this.modalOpened = !this.modalOpened;
-      if (this.modalOpened) {
-        this.scrollToElement();
-      }
-    },
-    scrollToElement() {
-      setTimeout(() => {
-        let element = document.querySelector(".modal");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      }, 100);
-    },
-    closeModal: function () {
-      this.modalOpened = false;
-    },
-    ...mapGetters("user", [
-      "getCurrentPhoneNumber",
-      "getCurrentEmailAddress",
-      "getAdditionalEmailAddress",
-      "getAdditionalPhoneNumber",
-    ]),
-  },
-  computed: {
-    ...mapGetters("user", {
-      currentPhoneNumberCom: "getCurrentPhoneNumber",
-      currentEmailAddressCom: "getCurrentEmailAddress",
-      additionalEmailAddressCom: "getAdditionalEmailAddress",
-      additionalPhoneNumberCom: "getAdditionalPhoneNumber",
-    }),
-  },
-  mounted() {
-    this.phoneNumber = this.getCurrentPhoneNumber;
-    this.currentEmailAddress = this.getCurrentEmailAddress;
-    this.additionalPhoneNumber = this.getAdditionalPhoneNumber;
-    this.additionalEmailAddress = this.getAdditionalEmalAddress;
-  },
+  }
 };
 </script>
-
-
-
 
 <style lang="scss" scoped>
 @import "../styles/main.scss";
