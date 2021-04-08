@@ -26,17 +26,20 @@ const deleteUserById = (req, res) => {
     .catch(err => console.error(err));
 };
 
-const updateUser = (req, res) => {
-  Users.update(
-    { username: "luke99855" },
-    {
+const updateUser = async (req, res) => {
+  try {
+    const user = await Users.update({
       where: {
-        id: req.params.id
+        id: parseInt(req.params.id)
       }
+    });
+    if (!user) {
+      res.status(404).send({ msg: "User not found." });
     }
-  )
-    .then(() => res.send({ message: "User updated" }))
-    .catch(err => console.error(err));
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(404).send({ msg: err });
+  }
 };
 
 module.exports = {

@@ -9,17 +9,32 @@ const signUp = async (req, res) => {
   const salt = await bcrypt.genSalt();
   try {
     const user = await Users.create({
-      username: req.body.username,
       email: req.body.email,
-      password: await bcrypt.hash(req.body.password, salt)
+      password: await bcrypt.hash(req.body.password, salt),
+      name: req.body.name,
+      surname: req.body.surname,
+      birth: req.body.birth,
+      address: req.body.address,
+      city: req.body.city,
+      country: req.body.country,
+      state: req.body.state,
+      postalCode: req.body.postalCode
     });
     const token = createJWToken(user.id);
     console.log(token);
-    res.status(200).json({
+    res.status(201).json({
       id: user.id,
       username: user.username,
       email: user.email,
-      accessToken: token
+      accessToken: token,
+      name: user.name,
+      surname: user.surname,
+      birth: user.birth,
+      address: user.address,
+      city: user.city,
+      country: user.country,
+      state: user.state,
+      postalCode: user.postalCode
     });
   } catch (error) {
     res.status(400).json({ msg: error });

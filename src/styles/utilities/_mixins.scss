@@ -19,7 +19,7 @@ $screen-extra-min: 1800px;
 
 /*Small devices*/
 @mixin for-phones-only {
-    @media (max-width: #{$screen-phones-max}) {
+    @media (min-width: #{$screen-phones-max}) {
         @content;
     }
 }
