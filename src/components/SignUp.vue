@@ -4,7 +4,7 @@
       <ModalForgotPassword v-if="modalOpened" @close="closeModal" />
     </transition>
     <div class="frontpage">
-      <div class="welcome-message">
+      <div class="welcome">
         <router-link to="/">
           <h4>Monify</h4>
         </router-link>

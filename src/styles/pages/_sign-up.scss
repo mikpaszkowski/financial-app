@@ -35,7 +35,7 @@
 .frontpage {
     display: flex;
     justify-content: stretch;
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-content: center;
     position: relative;
     width: 100vw;
@@ -43,14 +43,15 @@
     text-align: center;
 }
 
-.welcome-message {
+.welcome {
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    position: relative;
     z-index: 0;
     width: 50%;
+    height: 100%;
     padding: 1rem;
     overflow: hidden;
     background-image: linear-gradient(to right bottom,
@@ -90,7 +91,7 @@
     }
 }
 
-.form-box {
+.form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,7 +100,9 @@
         cubic-bezier(0.55, 0.08, 1, 0.18);
     animation-delay: 0;
     padding: 4rem;
-    width: 50%;
+    width: 40%;
+    margin: 0 0 0 100rem;
+    height: 162rem;
 }
 
 @include for-tablet-portrait-up {}
@@ -112,9 +115,8 @@
             width: 100%;
         }
 
-        .form-box {
+        .form {
             width: 65%;
-            margin: 0 auto;
         }
     }
 
@@ -131,9 +133,9 @@
             width: 100%;
         }
 
-        .form-box {
-            width: 65%;
-            margin: 0 auto;
+        .form {
+            width: 45%;
+            margin-right: 0;
         }
     }
 
@@ -159,5 +161,9 @@
 
     .signup-pic {
         height: 60rem;
+    }
+
+    .welcome-message {
+        width: 50%;
     }
 }
