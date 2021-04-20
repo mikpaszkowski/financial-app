@@ -176,7 +176,6 @@ export default {
         this.hasError.address ||
         this.hasError.birth
       ) {
-        console.log("heheheheh1");
         return true;
       } else if (
         this.user.name == "" ||
