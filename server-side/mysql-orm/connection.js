@@ -23,7 +23,7 @@ db.sequelize = sequelize;
 
 db.user = require("../user/userModel.js")(sequelize, Sequelize);
 db.role = require("../roles/model.js")(sequelize, Sequelize);
-db.transaction = require("../transactions/transactionModel")(
+db.transaction = require("../transactions/transactionModel.js")(
   sequelize,
   Sequelize
 );
@@ -35,8 +35,8 @@ db.transaction.belongsTo(db.user, {
 }),
   db.user.belongsToMany(db.transaction, {
     through: "user_transactions",
-    as: "transactions",
-    foreignKey: "transactionId"
+    as: "transactions"
+    //foreignKey: "transactionId"
   });
 
 db.role.belongsToMany(db.user, {

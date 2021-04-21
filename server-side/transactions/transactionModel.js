@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       allowNull: false
     },
-    transactionType: {
+    transaction_type: {
       type: Sequelize.STRING(10),
       allowNull: false
     },

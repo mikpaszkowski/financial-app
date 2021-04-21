@@ -21,21 +21,8 @@ const findAll = async (req, res) => {
 const create = async (req, res) => {
   console.log(req.body);
   try {
-    const sendTransaction = await Transaction.create({
-      id: req.body.id,
-      amount: req.body.amount,
-      transactionType: req.body.transactionType,
-      description: req.body.description,
-      status: req.body.status,
-      userId: req.body.userId
-    });
-    res.status(200).json({
-      id: sendTransaction.id,
-      amount: sendTransaction.amount,
-      transactionType: sendTransaction.transactionType,
-      description: sendTransaction.description,
-      status: sendTransaction.status
-    });
+    const sendTransaction = await Transaction.create(req.body);
+    res.status(200).json(sendTransaction);
   } catch (err) {
     res.status(500).send({ msg: err });
   }

@@ -18,12 +18,12 @@ app.use(morgan("dev"));
 
 // DATABASE CONNECTION
 db.sequelize
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => {
     console.log("Database synchronized.");
     initial();
   })
-  .catch(err => console.err(err));
+  .catch(err => console.log(err));
 
 //Body Parser - COntent-Type - application/json
 app.use(bodyParser.json());

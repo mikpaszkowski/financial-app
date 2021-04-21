@@ -14,11 +14,11 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false
     },
-    name: {
+    first_name: {
       type: Sequelize.STRING,
       allowNull: false
     },
-    surname: {
+    last_name: {
       type: Sequelize.STRING,
       allowNull: false
     },
@@ -42,7 +42,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false
     },
-    postalCode: {
+    postal_code: {
       type: Sequelize.STRING(20),
       allowNull: false
     },
