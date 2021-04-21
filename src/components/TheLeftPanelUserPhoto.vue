@@ -19,15 +19,25 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { useStore } from "vuex";
+import { computed, ref } from "vue";
 
 export default {
-  computed: {
-    ...mapGetters("user", {
-      userName: "getCurrentName",
-      userSurname: "getCurrentSurname",
-    }),
-  },
+  setup() {
+    const store = useStore();
+
+    const userName = ref("");
+    const userSurname = ref("");
+
+    const user = computed(() => store.getters["user/getPersonalData"]);
+    userName.value = user.value.name;
+    userSurname.value = user.value.surname;
+
+    return {
+      userName,
+      userSurname
+    }
+  }
 };
 </script>
 

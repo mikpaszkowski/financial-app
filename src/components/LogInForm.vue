@@ -5,21 +5,19 @@
       <input
         type="text"
         class="input-field"
-        v-model="logInData.email"
+        v-model="loginData.email"
         @keyup.enter="logIn"
       />
       <label>Password</label>
       <input
         type="password"
         class="input-field"
-        v-model="logInData.password"
+        v-model="loginData.password"
         @keyup.enter="logIn"
       />
       <div class="passwordfield"></div>
       <!-- <router-link to="/home/account" class="router-link"> -->
-      <button type="submit" class="confirm-btn" @click="logIn">
-        Log in
-      </button>
+      <button type="submit" class="confirm-btn" @click="login">Log in</button>
       <!-- </router-link> -->
 
       <div class="remember-me">
@@ -33,26 +31,30 @@
 </template>
 
 <script>
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
 export default {
-  data() {
-    return {
-      logInData: {
-        email: "",
-        password: ""
-      },
-      rememberMe: false
-    };
-  },
-  methods: {
-    openModal: function() {
-      this.$emit("open");
-    },
-    async logIn() {
-      const user = await this.$dbApi.users.logIn(this.logInData);
-      if (user) {
-        this.$router.push({ name: "Home" });
-      }
+  setup(props, context) {
+    const store = useStore();
+
+    const loginData = ref({ email: "", password: "" });
+    const rememberMe = ref(null);
+
+    function openModal() {
+      context.emit("open");
     }
+    function login() {
+      console.log(store);
+       store.dispatch("user/login", { user: loginData });
+      //store.dispatch("check");
+    }
+
+    return {
+      openModal,
+      login,
+      rememberMe,
+      loginData
+    };
   }
 };
 </script>

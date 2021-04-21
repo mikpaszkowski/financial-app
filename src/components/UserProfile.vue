@@ -15,7 +15,7 @@ export default {
       modalPersonalDetails_open: false,
       modalAccountSettings_open: false,
       modalEmailAddress_open: false,
-      show: false,
+      show: false
     };
   },
   components: {
