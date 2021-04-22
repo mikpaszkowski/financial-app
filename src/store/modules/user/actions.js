@@ -1,3 +1,5 @@
+import { $dbApi } from "../../..//api/databaseAPI";
+
 export const updateUser = ({ commit }, payLoad) => {
   commit("setCurrentName", payLoad.name);
   commit("setCurrentSurname", payLoad.surname);
@@ -16,11 +18,11 @@ export const updateEmailPhone = ({ commit }, payLoad) => {
   commit("setAdditionalEmailAddress", payLoad.additionalEmailAddress);
 };
 
-export const login = ({ commit, context }, user) => {
+export const login = ({ commit }, user) => {
   return new Promise((resolve, reject) => {
-    console.log(context.rootState);
+    console.log(user);
     commit("authRequest");
-    this.$dbApi.users
+    $dbApi.users
       .logIn(user)
       .then(res => {
         const token = res.data.token;
@@ -34,5 +36,34 @@ export const login = ({ commit, context }, user) => {
         localStorage.removeItem("token");
         reject(err);
       });
+  });
+};
+
+export const signup = ({ commit, rootState }, user) => {
+  return new Promise((resolve, reject) => {
+    commit("auth_request");
+    console.log(rootState);
+    this.$dbApi.users
+      .signup(user)
+      .then(res => {
+        const token = res.token;
+        const user = res.user;
+        localStorage.setItem("token", token);
+        commit("authSuccess", token, user);
+        resolve(res);
+      })
+      .catch(err => {
+        commit("authError", err);
+        localStorage.removeItem("token");
+        reject(err);
+      });
+  });
+};
+
+export const logout = ({ commit }) => {
+  return new Promise((resolve, reject) => {
+    commit("logout");
+    localStorage.removeItem("token");
+    resolve();
   });
 };

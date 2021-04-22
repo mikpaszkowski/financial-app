@@ -41,10 +41,7 @@ class USERSApiService extends DBApiService {
   async logIn(data) {
     this.checkObjDataType(data);
     try {
-      const user = await axios.post(this.getUrl("login", ""), {
-        email: data.email,
-        password: data.password
-      });
+      const user = await axios.post(this.getUrl("login", ""), data);
       if (!user) {
         this.handleErrors("User not found.");
       }

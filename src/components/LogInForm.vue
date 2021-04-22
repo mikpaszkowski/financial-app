@@ -33,9 +33,12 @@
 <script>
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+
 export default {
   setup(props, context) {
     const store = useStore();
+    const router = useRouter();
 
     const loginData = ref({ email: "", password: "" });
     const rememberMe = ref(null);
@@ -44,9 +47,10 @@ export default {
       context.emit("open");
     }
     function login() {
-      console.log(store);
-       store.dispatch("user/login", { user: loginData });
-      //store.dispatch("check");
+      console.log(loginData.value);
+      store
+        .dispatch("user/login", { user: loginData.value })
+        .then(() => router.push({ name: "Account" }));
     }
 
     return {

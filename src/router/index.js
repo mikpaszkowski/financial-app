@@ -8,6 +8,7 @@ import LandingPage from "../components/LandingPage.vue";
 import SignUp from "../components/SignUp.vue";
 import NotFound from "../views/NotFound.vue";
 import HomeNewsContainer from "../components/HomeNewsContainer.vue";
+import store from "../store";
 
 const routes = [
   {
@@ -29,6 +30,9 @@ const routes = [
     path: "/home",
     name: "Home",
     component: Home,
+    meta: {
+      requiresAuth: true
+    },
 
     children: [
       {
@@ -66,5 +70,14 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 });
+
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.requiresAuth && !store.getters["user/isLoggedIn"]) {
+//     return {
+//       path: "/login",
+//       query: { redirect: to.fullPath }
+//     };
+//   }
+// });
 
 export default router;
