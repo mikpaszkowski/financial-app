@@ -34,8 +34,11 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome on the dark side of the application." });
 });
 
-app.use("/users", require("./user/userRoutes"));
-app.use("/transactions", require("./transactions/transactionRoutes"));
+//app.use("/users", require("./user/userRoutes"));
+//app.use("/transactions", require("./transactions/transactionRoutes"));
+
+require("./user/userHeader")(app);
+require("./transactions/transactionHeader")(app);
 
 //CREATING USER / ADMIN ROLES
 function initial() {

@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("./userController");
-const authController = require("../services/auth");
-
+const authController = require("../services/auth.controller");
 //find User by ID
 router.get("/findUser/:id", userController.findUserById);
 

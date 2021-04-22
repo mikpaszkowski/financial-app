@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const transactionController = require("./transactionController");
+const authorizationJWT = require("../middleware/authJWT");
 
 //get all transactions
 router.get("/findAll/:userId", transactionController.findAll);
@@ -9,7 +10,7 @@ router.get("/findAll/:userId", transactionController.findAll);
 router.get("/findOne/:id", transactionController.findOneById);
 
 //send / request transaction
-router.post("/create", transactionController.create);
+router.post("/create", authorizationJWT, transactionController.create);
 
 //modify request
 router.put("/edit/:id", transactionController.modifyTransaction);

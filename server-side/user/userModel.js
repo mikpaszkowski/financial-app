@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+
 module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define("Users", {
     id: {
@@ -55,6 +57,20 @@ module.exports = (sequelize, Sequelize) => {
       defaultValue: Sequelize.NOW
     }
   });
+
+  User.prototype.findByToken = function(token) {
+    var decoded;
+
+    try {
+      decoded = jwt.verify(token, process.env.SECRET);
+    } catch (err) {
+      return Promise.reject(err);
+    }
+
+    return User.findOne({
+      id: decoded.id
+    });
+  };
 
   return User;
 };

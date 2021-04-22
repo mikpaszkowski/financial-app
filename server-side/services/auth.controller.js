@@ -49,7 +49,6 @@ const logIn = async (req, res) => {
       const response = {};
       response.user = user;
       response.token = token;
-      console.log(response.token);
       res.status(200).send(response);
     }
   } catch (error) {
