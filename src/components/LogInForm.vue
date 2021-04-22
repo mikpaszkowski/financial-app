@@ -15,10 +15,8 @@
         v-model="loginData.password"
         @keyup.enter="logIn"
       />
-      <div class="passwordfield"></div>
-      <!-- <router-link to="/home/account" class="router-link"> -->
+      <div class="passwordfield"></div> 
       <button type="submit" class="confirm-btn" @click="login">Log in</button>
-      <!-- </router-link> -->
 
       <div class="remember-me">
         <input type="checkbox" class="check-box" v-model="rememberMe" />
@@ -47,7 +45,7 @@ export default {
       context.emit("open");
     }
     function login() {
-      console.log(loginData.value);
+      console.log("asfasfasfasf");
       store
         .dispatch("user/login", { user: loginData.value })
         .then(() => router.push({ name: "Account" }));

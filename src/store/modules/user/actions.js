@@ -28,7 +28,8 @@ export const login = ({ commit }, user) => {
         const token = res.data.token;
         const user = res.data.user;
         localStorage.setItem("token", token);
-        commit("authSuccess", token, user);
+        console.log(user);
+        commit("authSuccess", { token, user });
         resolve(res);
       })
       .catch(err => {
@@ -62,6 +63,7 @@ export const signup = ({ commit, rootState }, user) => {
 
 export const logout = ({ commit }) => {
   return new Promise((resolve, reject) => {
+    console.log("logout");
     commit("logout");
     localStorage.removeItem("token");
     resolve();

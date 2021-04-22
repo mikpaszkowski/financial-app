@@ -1,4 +1,5 @@
 import axios from "axios";
+import authHeader from "../services/auth.header";
 
 class DBApiService {
   baseURL;
@@ -114,7 +115,9 @@ class TRANSACTIONSApiService extends DBApiService {
   async findAllByUserId(id) {
     this.checkIntDataType(id);
     try {
-      const transactions = await axios.get(this.getUrl("findAll", id));
+      const transactions = await axios.get(this.getUrl("findAll", id), {
+        headers: authHeader()
+      });
       if (!transactions) {
         this.handleErrors("Transactions not found.");
       }
@@ -126,7 +129,9 @@ class TRANSACTIONSApiService extends DBApiService {
   async findOneById(id) {
     this.checkIntDataType(id);
     try {
-      const transaction = await axios.get(this.getUrl("findOne", id));
+      const transaction = await axios.get(this.getUrl("findOne", id), {
+        headers: authHeader()
+      });
       if (!transaction) {
         this.handleErrors("Transaction not found.");
       }
@@ -139,13 +144,19 @@ class TRANSACTIONSApiService extends DBApiService {
   async createTransaction(data) {
     this.checkObjDataType(data);
     try {
-      const transaction = await axios.post(this.getUrl("create"), {
-        amount: parseInt(data.amount),
-        transactionType: data.transactionType,
-        description: data.description,
-        status: data.status,
-        userId: data.userId
-      });
+      const transaction = await axios.post(
+        this.getUrl("create"),
+        {
+          amount: parseInt(data.amount),
+          transactionType: data.transactionType,
+          description: data.description,
+          status: data.status,
+          userId: data.userId
+        },
+        {
+          headers: authHeader()
+        }
+      );
       if (!transaction) {
         this.handleErrors("Transaction send/request failure.");
       }
@@ -159,13 +170,19 @@ class TRANSACTIONSApiService extends DBApiService {
     this.checkIntDataType(id);
     this.checkObjDataType(data);
     try {
-      const transaction = await axios.post(this.getUrl("edit", id), {
-        amount: data.amount,
-        transactionType: data.transactionType,
-        description: data.description,
-        status: data.status,
-        userId: data.userId
-      });
+      const transaction = await axios.post(
+        this.getUrl("edit", id),
+        {
+          amount: data.amount,
+          transactionType: data.transactionType,
+          description: data.description,
+          status: data.status,
+          userId: data.userId
+        },
+        {
+          headers: authHeader()
+        }
+      );
       if (!transaction) {
         this.handleErrors("Transaction send/request failure.");
       }

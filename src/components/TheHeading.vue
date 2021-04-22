@@ -19,15 +19,12 @@
         <button class="component" id="component-offer">Send/Request</button>
       </router-link>
       <button class="component" id="component-call">Call center</button>
-      <router-link :to="{ name: 'LandingPage' }" exact>
-        <div class="log-out">
-          <button class="log-outbtn" type="submit" id="logOutBtn">
-            <LogOutIcon />
-          </button>
-        </div>
-      </router-link>
+      <div class="log-out">
+        <button class="log-outbtn" type="submit" id="logOutBtn" @click="logout">
+          <LogOutIcon />
+        </button>
+      </div>
     </div>
-    <!-- <MenuButton ref="menu" /> -->
   </div>
 </template>
 
@@ -35,23 +32,29 @@
 import HeadlineImage from "../../public/img/headline_logo.png";
 import LogOutIcon from "./icons/LogOut";
 import MenuButton from "./MenuButton";
+import { ref } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   components: {
     LogOutIcon,
-    MenuButton,
+    MenuButton
   },
-  data() {
-    return {
-      image: HeadlineImage,
-      menuOpened: false,
+  store() {
+     const store = useStore();
+    const router = useRouter();
+
+    function logout() {
+      console.log("dawefwefsdas");
+      store.dispatch("user/logout")
+      .then(() => router.push({ name: "LogIn" }));
     };
-  },
-  methods: {
-    openMenu() {
-      this.$refs.menu.toggleMenu();
-    },
-  },
+
+    return {
+      logout
+    };
+  }
 };
 </script>
 

@@ -3,20 +3,7 @@ import * as actions from "./actions";
 import * as getters from "./getters";
 
 const state = {
-  user: {
-    firstName: "",
-    lastName: "",
-    currPhone: "",
-    additionalPhone: "",
-    currEmail: "",
-    additionalEmail: "",
-    birthDate: "",
-    address: "",
-    timeZone: "",
-    language: "",
-    status: null,
-    userId: null
-  },
+  user: {},
   status: "",
   token: localStorage.getItem("token") || ""
 };

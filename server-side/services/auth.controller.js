@@ -26,7 +26,7 @@ const createJWToken = id => {
 };
 
 const logIn = async (req, res) => {
-  console.log(req.body);
+  console.log("req.body : " + JSON.stringify(req.body));
   try {
     const user = await Users.findOne({
       where: {
