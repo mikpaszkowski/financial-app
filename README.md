@@ -1,35 +1,27 @@
 # financial-app
 
-> A Vue.js project
+## Overview
+
+The main goal of application was to skill myself in the field of full-stack development.
+The app is a kind of finanial app imitation, making simple bank operations such as sending of money and sending requests
+to the other users. Created user authenticated by the JWT is saved to the database, further signing to the app is also controlled by the JWT. Moreover, transactions are saved to the database. User have a chance to send money in different currency (usage of currency API) to another user. At the home page user can read the businees articles (still in development).Basing on the transactions of the user we can calculate the blance of the user's balance. The frontend is styled with the pure CSS/SCSS without any libraries. With the usage of the Vuex, the data-state-managment is handled by creating so called "Vuex Store" (like Redux in React). In this application in the frontend as well as in the backend I've tried to separate the business-logic, extern APIs, controllers, routes from the rest of the application. In the backend I have not created architecture totally based on MVC (Model-View-Controller, separate directories Mode/View/Controllers). I've created the architecture in that way which simple "speak" to the developer at first point what is about, what this app is responsible for and what kind of data or models it handles. This is why, in the backend you can find the separate directories: "user" , "transactions" in which might be find the controllers, models, routes. I've refactored this app many times to make the architecture more cleaner, it still does not fulfills the DDD requirements but I am trying very hard. 
+
 
 ## Tech stack
 
-* HTML5 
-
-* CSS3(SCSS) 
-
 * JavaScript
+* Vue.js
+* Vuex
+* NodeJS
+* Express
+* MySQL + Sequelize
+* JWT auth
 
-## Overview
-
-The main goal of application was to skill myself in the field of front-end.
-The app is making simple bank operations such as deposit/withdraw of money and sending requests
-to the other people. (Still in progress) validation of log in/sign up can keep the input data in proper form and within
-required statements. Input data will be put directly in the data base (MySQL/MongoDb).
-Basing on the transactions of the user we can calculate the blance of the user's cash.
-I've made a lot of work from the ZERO of html/css and JavaScript
-
-These application was one of my first with a full usage of HTML/CSS(SCSS).
-In the first stage of this app I created only html and css files with scss pre-processor.
-Thanks to this app I am still improving my skills in JavaScript.
-Finally I've made a usage of the Vue.js framework. I have devided the application into several components
-to create known single-page-application.
 
 ## Required forward work
 
-* fully-progressive app
-
-* full-stack application (data bases, server-side issues, nothing in fact :D)
+* Testing with Mocha nad Chai
+* Domain-Drive-Design
 
 ## Project setup
 ```
